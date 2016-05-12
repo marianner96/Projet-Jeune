@@ -3,10 +3,19 @@
 <?php echo form_open('form'); ?>
 
 
-<h5>Utilisateur</h5>
-<input type="txt" name="username" value="">
+<h3>Vous avez déjà un compte jeune ? Connectez-vous !</h3>
+<h3>Sinon rendez-vous sur cette <a href="inscription">page</a>!</h3>
 
-<h5>Mot de passe</h5>
-<input rype="password" nam="password" value="">
+<div class="form-group">
+	<label> Utilisateur :
+	<input type="txt" name="user" value="">
+	</label>
+</div>
+
+<div class="form-group">
+	<label>Mot de passe :
+	<input type="password" name="pass" value="">
+	</label>
+</div>
 
 </form>
