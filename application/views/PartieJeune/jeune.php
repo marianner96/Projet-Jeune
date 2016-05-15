@@ -1,28 +1,33 @@
-<html>
-<head>
-<title>My Form</title>
-</head>
-<body>
 
+Décrivez votre expérience et mettez en avant ce que vous en avez retiré :
+
+Mes savoirsetre :
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('form'); ?>
-
-<h5>Username</h5>
-<input type="text" name="username" value="" size="50" />
-
-<h5>Password</h5>
-<input type="text" name="password" value="" size="50" />
-
-<h5>Password Confirm</h5>
-<input type="text" name="passconf" value="" size="50" />
-
-<h5>Email Address</h5>
-<input type="text" name="email" value="" size="50" />
-
+<?php echo form_open('jeune/acceuil'); ?>
+<table>
+<tr><td><INPUT type="checkbox" name="autonome"> Autonome</td></tr>
+<tr><td><INPUT type="checkbox" name="anayse"> Capable d’analyse et de synthèse</td></tr>
+<tr><td><INPUT type="checkbox" name="ecoute"> A l’écoute</td></tr>
+<tr><td><INPUT type="checkbox" name="organise"> Organisé</td></tr>
+<tr><td><INPUT type="checkbox" name="passionne"> Passionné</td></tr>
+<tr><td><INPUT type="checkbox" name="fiable"> Fiable</td></tr>
+<tr><td><INPUT type="checkbox" name="patient"> Patient</td></tr>
+<tr><td><INPUT type="checkbox" name="reflechi"> Réfléchi</td></tr>
+<tr><td><INPUT type="checkbox" name="responsable"> Responsable</td></tr>
+<tr><td><INPUT type="checkbox" name="sociable"> Sociable</td></tr>
+<tr><td><INPUT type="checkbox" ame="optimiste"> Optimiste</td></tr>
+<table>
 <div><input type="submit" value="Submit" /></div>
-
 </form>
 
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
