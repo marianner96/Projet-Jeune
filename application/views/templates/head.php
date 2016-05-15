@@ -17,15 +17,20 @@
   </head>
   <body>
   <header>
-    <nav>
-     <a class="navbar-brand" href="#">
-      <img alt="Jeune 6.4 - Logo" src="">
-     </a>
-     <ul>
-      <li>Accueil</li>
-      <li>Jeune</li>
-      <li>Partenaires</li>
-     </ul>
+    <nav class="ui large secondary menu">
+      <div class="ui container centered">
+        <div class="item">
+          <img class="ui image tiny" alt="Jeunes 6.4" src="<?php echo base_url()?>static/img/j64_logo2.svg">
+        </div>
+        <a class="item" href="<?php echo site_url('accueil') ?>">
+          Accueil
+        </a>
+        <a class="item" href="<?php echo site_url('partenaire') ?>">
+          Partenaires
+        </a>
+        <a class="item pink active" href="<?php echo site_url('jeunes') ?>">
+          Jeunes
+        </a>
+      </div>
     </nav>
   </header>
-
