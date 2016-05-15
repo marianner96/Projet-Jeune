@@ -29,7 +29,7 @@ if($_SERVER['HTTPS'] !== 'on'){
 }else{
   $config['base_url'] = 'https';
 }
-$config['base_url'] .= '://'.$_SERVER['SERVER_NAME'].pathinfo($_SERVER['PHP_SELF'])['dirname'].'/';
+$config['base_url'] .= '://'.$_SERVER['SERVER_NAME'].explode('index.php',$_SERVER['PHP_SELF'])[0];
 
 /*
 |--------------------------------------------------------------------------
