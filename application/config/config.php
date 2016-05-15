@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-if($_SERVER['HTTPS'] !== 'on'){
+if(empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'on'){
   $config['base_url'] = 'http';
 }else{
   $config['base_url'] = 'https';
