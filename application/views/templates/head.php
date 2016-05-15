@@ -6,6 +6,8 @@
   <head>
     <title>Jeunes 6.4 <?php echo (empty($title) ? '' : '- '.$title) ?></title>
 
+    <link rel="icon" type="image/x-icon" href="<?php echo base_url() ?>static/img/favicon.ico" />
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=scale1">
 

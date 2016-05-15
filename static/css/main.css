@@ -12,3 +12,9 @@ aside.home{
 .separateur{
   padding: 20px 0;
 }
+.partenaires{
+  text-align:center;
+}
+.partenaires .segment{
+  padding-top :15px;
+}
