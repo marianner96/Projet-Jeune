@@ -20,12 +20,12 @@
     <nav class="ui large secondary menu">
       <div class="ui container centered">
         <div class="item">
-          <img class="ui image tiny" alt="Jeunes 6.4" src="<?php echo base_url()?>static/img/j64_logo2.svg">
+          <img class="ui image tiny" alt="Jeunes 6.4" src="<?php echo base_url()?>static/img/j64_logo1.svg">
         </div>
         <a class="item" href="<?php echo site_url('accueil') ?>">
           Accueil
         </a>
-        <a class="item" href="<?php echo site_url('partenaire') ?>">
+        <a class="item" href="<?php echo site_url('partenaires') ?>">
           Partenaires
         </a>
         <a class="item pink active" href="<?php echo site_url('jeunes') ?>">
