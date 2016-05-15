@@ -23,7 +23,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://'.$_SERVER['SERVER_NAME'].pathinfo($_SERVER['PHP_SELF'])['dirname'].'/';
+
+if($_SERVER['HTTPS'] !== 'on'){
+  $config['base_url'] = 'http';
+}else{
+  $config['base_url'] = 'https';
+}
+$config['base_url'] .= '://'.$_SERVER['SERVER_NAME'].pathinfo($_SERVER['PHP_SELF'])['dirname'].'/';
 
 /*
 |--------------------------------------------------------------------------

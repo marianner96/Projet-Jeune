@@ -25,3 +25,11 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.stTheme.cache
 *.sublime-workspace
 *.sublime-project
+
+## Vim backup files
+*.swp
+
+## Node modules
+
+node_modules/
+

@@ -1,0 +1,24 @@
+figure{
+  margin:auto;
+  display:block;
+  padding: 80px 0 100px 0;
+}
+figcaption{
+  margin:auto;
+  font-size:1.3em;
+}
+img{
+  max-width:280px;
+  margin-bottom:20px;
+}
+.home-container{
+  text-align:center;
+}
+@media (min-width: 768px){
+  img{
+    max-width:400px;
+  }
+  figure{
+    padding:120px 0 100px 0;
+  }
+}
