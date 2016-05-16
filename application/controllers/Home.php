@@ -11,6 +11,7 @@ class Home extends CI_Controller {
   
   public function accueil(){
     $data['title'] = 'Accueil';
+    $data['menu'] = 'accueil';
 
     $this->load->view('templates/head', $data);
     $this->load->view('home/accueil', $data);
@@ -19,6 +20,7 @@ class Home extends CI_Controller {
   
   public function partenaires(){
     $data['title'] = 'Partenaires';
+    $data['menu'] = 'partenaires';
 
     $this->load->view('templates/head', $data);
     $this->load->view('home/partenaires', $data);

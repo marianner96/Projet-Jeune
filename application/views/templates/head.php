@@ -24,13 +24,13 @@
         <div class="item">
           <img class="ui image tiny" alt="Jeunes 6.4" src="<?php echo base_url()?>static/img/j64_logo1.svg">
         </div>
-        <a class="item" href="<?php echo site_url('accueil') ?>">
+        <a class="item <?php echo !empty($menu) && $menu == 'accueil' ? 'active' : '' ?>" href="<?php echo site_url('accueil') ?>">
           Accueil
         </a>
-        <a class="item" href="<?php echo site_url('partenaires') ?>">
+        <a class="item <?php echo !empty($menu) && $menu == 'partenaires' ? 'active' : '' ?>" href="<?php echo site_url('partenaires') ?>">
           Partenaires
         </a>
-        <a class="item pink active" href="<?php echo site_url('jeunes') ?>">
+        <a class="item pink <?php echo !empty($menu) && $menu == 'jeunes' ? 'active' : '' ?>" href="<?php echo site_url('jeunes') ?>">
           Jeunes
         </a>
       </div>
