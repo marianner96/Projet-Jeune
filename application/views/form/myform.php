@@ -1,27 +1,36 @@
+<div class="separateur"></div>
+<div class="ui container">
+  <div class="ui grid stackable two column middle aligned relative very relaxed">
+    <?php echo form_open('connexion', array('class' => 'ui form column')); ?>
 
 
-<?php echo form_open('connexion'); ?>
+      <div class="field">
+        <label for="user"> Utilisateur</label>
+        <div class="ui left icon input">
+          <input type="text" id="user" name="user" value="<?php echo set_value('user'); ?>">
+          <i class="users icon"></i>
+        </div>
+        <? if (form_error('user') != "") {echo "<div class='alert alert-warning'>";echo form_error('user'); echo "</div>";} ?>
+      </div>
 
+      <div class="field">
+        <label for="pass">Mot de passe</label>
+        <div class="ui left icon input">
+          <input type="password" id="pass" name="pass" value="<?php echo set_value('pass'); ?>"> 
+          <i class="lock icon"></i>
+        </div>
+        <? if (form_error('user') != "") {echo "<div class='alert alert-warning'>";echo form_error('pass'); echo "</div>";} ?>
+      </div>
 
-<h3>Vous avez déjà un compte jeune ? Connectez-vous !</h3>
-<h3>Sinon rendez-vous sur cette <a href="<?php echo site_url('connexion/inscription') ?>">page</a>!</h3>
+      <input class="ui button" type="submit" value="Connexion">
 
-<div class="form-group">
-	<label> Utilisateur :
-	<input type="txt" name="user" value="<?php echo set_value('user'); ?>">
-	</label>
-	<? if (form_error('user') != "") {echo "<div class='alert alert-warning'>";echo form_error('user'); echo "</div>";} ?>
+    </form>
+    <div class="ui vertical divider">ou</div>
+    <div class="center aligned column">
+      <a href="<?php echo site_url('connexion/inscription');?>" class="ui button large pink ">
+        <i class="signup icon"></i>
+        Créer un compte
+      </a>
+    </div>
+  </div>
 </div>
-
-<div class="form-group">
-	<label>Mot de passe :
-	<input type="password" name="pass" value="<?php echo set_value('pass'); ?>"> 
-	</label>
-	<? if (form_error('user') != "") {echo "<div class='alert alert-warning'>";echo form_error('pass'); echo "</div>";} ?>
-</div>
-
-<div class="form-group">
-	<input type="submit" name="ok" value="Connexion">
-</div>
-
-</form>

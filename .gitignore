@@ -29,6 +29,9 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 ## Vim backup files
 *.swp
 
+## Old and ugly backup files
+*.old
+
 ## Node modules
 
 node_modules/
