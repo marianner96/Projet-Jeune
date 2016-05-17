@@ -4,7 +4,7 @@
 
 
 <h3>Vous avez déjà un compte jeune ? Connectez-vous !</h3>
-<h3>Sinon rendez-vous sur cette <a href="inscription">page</a>!</h3>
+<h3>Sinon rendez-vous sur cette <a href="<?php echo site_url('connexion/inscription') ?>">page</a>!</h3>
 
 <div class="form-group">
 	<label> Utilisateur :
