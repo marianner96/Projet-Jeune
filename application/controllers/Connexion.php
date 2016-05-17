@@ -7,7 +7,7 @@
 			$this->form_validation->set_rules('user', 'utilisateur', 'required');
 			$this->form_validation->set_rules('pass', 'mot de passe', 'required');
 
-			$this->load->view('templates/head');
+			$this->load->view('templates/head', array('title' => 'Connexion'));
 			if ($this->form_validation->run()==FALSE) {
 				$this->load->view('form/myform');
 			} else {

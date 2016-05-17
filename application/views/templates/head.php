@@ -4,7 +4,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Jeunes 6.4 <?php echo (empty($title) ? '' : '- '.$title) ?></title>
+    <title><?php echo (empty($title) ? '' : $title.' -') ?> Jeunes 6.4</title>
 
     <link rel="icon" type="image/x-icon" href="<?php echo base_url() ?>static/img/favicon.ico" />
 
