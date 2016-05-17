@@ -10,7 +10,7 @@
           <input type="text" id="user" name="user" value="<?php echo set_value('user'); ?>">
           <i class="users icon"></i>
         </div>
-        <? if (form_error('user') != "") {echo "<div class='alert alert-warning'>";echo form_error('user'); echo "</div>";} ?>
+        <?php if (form_error('user') != "") {echo "<div class='alert alert-warning'>";echo form_error('user'); echo "</div>";} ?>
       </div>
 
       <div class="field">
@@ -19,7 +19,7 @@
           <input type="password" id="pass" name="pass" value="<?php echo set_value('pass'); ?>"> 
           <i class="lock icon"></i>
         </div>
-        <? if (form_error('user') != "") {echo "<div class='alert alert-warning'>";echo form_error('pass'); echo "</div>";} ?>
+        <?php if (form_error('user') != "") {echo "<div class='alert alert-warning'>";echo form_error('pass'); echo "</div>";} ?>
       </div>
 
       <input class="ui button" type="submit" value="Connexion">
