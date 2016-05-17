@@ -4,7 +4,6 @@ class Jeune extends CI_Controller{
 		$this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $data = $this->input->post('savoiretre');
-        echo $data;
             if ($this->form_validation->run() == FALSE){
                 $this->load->view('templates/head.php');
 				$this->load->view('PartieJeune/jeune');
