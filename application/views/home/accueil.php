@@ -11,7 +11,7 @@
         </p>
       </article>
       <article class="column">
-        <h2 class="ui header">A qui s'adesse-t'il ?</h2>
+        <h2 class="ui header">A qui s'adresse-t'il ?</h2>
         <p>
           A vous, jeunes entre 16 et 30 ans, qui vous êtes investis spontanément dans une association ou dans tout type d'action formelle ou informelle, et qui avez partagé de votre temps, de votre énergie, pour apporter un soutien, une aide, une compétence.
         </p>
