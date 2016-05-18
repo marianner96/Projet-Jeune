@@ -56,4 +56,14 @@ CREATE TABLE savoir_etre (
   nom VARCHAR (100)
 );
 
+INSERT INTO savoir_etre (nom) VALUES ('Autonome');
+INSERT INTO savoir_etre (nom) VALUES ('Passionné');
+INSERT INTO savoir_etre (nom) VALUES ('Réfléchi');
+INSERT INTO savoir_etre (nom) VALUES ('A l\'écoute');
+INSERT INTO savoir_etre (nom) VALUES ('Organisé');
+INSERT INTO savoir_etre (nom) VALUES ('Fiable');
+INSERT INTO savoir_etre (nom) VALUES ('Patient');
+INSERT INTO savoir_etre (nom) VALUES ('Responsable');
+INSERT INTO savoir_etre (nom) VALUES ('Optimiste');
+
 COMMIT;
