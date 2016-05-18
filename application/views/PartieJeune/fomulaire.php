@@ -3,35 +3,54 @@
 border-style: solid;
   }
 </style>
-<div class="ui inverted vertical menu">
-  <a class="item <?php echo !empty($menu) && $menu == 'accueil' ? 'active' : '' ?>" href="<?php echo site_url('jeune') ?>">
-    Présentation
+<div class="ui three column divided grid">
+  <div class="stretched row">
+    <div class="column">
+      <div class="ui segment">
+        <div class="ui inverted vertical menu">
+    <a class="item <?php echo !empty($menu) && $menu == 'accueil' ? 'active' : '' ?>" href="<?php echo site_url('jeune') ?>">
+    Mon profil
   </a>
   <a class="active item <?php echo !empty($menu) && $menu == 'accueil' ? 'active' : '' ?>" href="<?php echo site_url('jeune/formulaire') ?>">
     Demande de référence
   </a>
-  <a class="item">
-    Mon profil
-  </a>
-  <a class="item">
+  <a class="item <?php echo !empty($menu) && $menu == 'accueil' ? 'active' : '' ?>" href="<?php echo site_url('jeune/consultant') ?>">
     Consultant
   </a>
 </div>
-Décrivez votre expérience et mettez en avant ce que vous en avez retiré :  
-<form class="ui small form" id="for">
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui segment">
+<form class="ui small form" >
+   <h4 class="ui dividing header">Savoir-être</h4>
+   <div class="field">
+    <select multiple="" class="ui dropdown" name="savoirEtre">
+      <option value="">Selectionner vos savoir être</option>
+      <option value="AU">Autonome</option>
+      <option value="AN">Capable d’analyse et de synthèse</option>
+      <option value="AL">A l’écoute</option>
+      <option value="OR">Organisé</option>
+      <option value="PAS">Passionné</option>
+      <option value="FI">Fiable</option>
+      <option value="PAT">Patient</option>
+      <option value="REF">Réfléchi</option>
+      <option value="RES">Responsable</option>
+      <option value="SO">Sociable</option>
+      <option value="OP">Optimiste</option>
+    </select>
+  </div>
   <h4 class="ui dividing header">Engagement</h4>
+  <div class="two fields">
     <div class="field">
       <label>Description de l'engagement</label>
       <textarea rows="2"></textarea>
     </div>
     <div class="field">
       <label>Durée de l'engagement</label>
-      <textarea rows="2"></textarea>
+      <input type="text">
     </div>
-    <div class="field">
-      <label>Milieu de l'angement</label>
-      <textarea rows="2"></textarea>
-    </div>
+  </div>
   <h4 class="ui dividing header">Référent</h4>
     <div class=" field">
       <label>Identité</label>
@@ -62,27 +81,13 @@ Décrivez votre expérience et mettez en avant ce que vous en avez retiré :
     <label>Adresse email</label>
       <input type="email" name="shipping[address]">
   </div>
-  <h4 class="ui dividing header">Savoir-être</h4>
-   <div class="field">
-    <label>Savoir être</label>
-    <select multiple="" class="ui dropdown" name="savoirEtre">
-      <option value="">Selectionner vos savoir être</option>
-      <option value="AU">Autonome</option>
-      <option value="AN">Capable d’analyse et de synthèse</option>
-      <option value="AL">A l’écoute</option>
-      <option value="OR">Organisé</option>
-      <option value="PAS">Passionné</option>
-      <option value="FI">Fiable</option>
-      <option value="PAT">Patient</option>
-      <option value="REF">Réfléchi</option>
-      <option value="RES">Responsable</option>
-      <option value="SO">Sociable</option>
-      <option value="OP">Optimiste</option>
-    </select>
-  </div>
    <div class="ui submit button">Submit</div>
   <div class="ui error message"></div>
 </form>
+      </div>
+  </div>
+</div>
+
 
 <script>
 $('select.dropdown')
