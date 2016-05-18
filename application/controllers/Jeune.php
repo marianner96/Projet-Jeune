@@ -1,6 +1,6 @@
 <?php
 class Jeune extends CI_Controller{
-	public function accueil(){
+	public function index(){
         $this->load->view('templates/head.php');
         $this ->load->view('PartieJeune/accueil');
         $this->load->view('templates/foot.php');

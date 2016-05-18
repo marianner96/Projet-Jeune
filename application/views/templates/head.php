@@ -30,7 +30,7 @@
         <a class="item <?php echo !empty($menu) && $menu == 'partenaires' ? 'active' : '' ?>" href="<?php echo site_url('partenaires') ?>">
           Partenaires
         </a>
-        <a class="item pink <?php echo !empty($menu) && $menu == 'jeunes' ? 'active' : '' ?>" href="<?php echo site_url('jeune/accueil') ?>">
+        <a class="item pink <?php echo !empty($menu) && $menu == 'jeunes' ? 'active' : '' ?>" href="<?php echo site_url('jeune') ?>">
           Jeunes
         </a>
       </div>
