@@ -13,7 +13,8 @@ CREATE TABLE jeune (
   prenom VARCHAR (100),
   mail VARCHAR (100),
   date_naissance DATE,
-  mdp VARCHAR (60)
+  mdp VARCHAR (60),
+  rang TINYINY
 );
 
 CREATE TABLE reference (
@@ -59,7 +60,7 @@ CREATE TABLE savoir_etre (
 INSERT INTO savoir_etre (nom) VALUES ('Autonome');
 INSERT INTO savoir_etre (nom) VALUES ('Passionné');
 INSERT INTO savoir_etre (nom) VALUES ('Réfléchi');
-INSERT INTO savoir_etre (nom) VALUES ('A l\'écoute');
+INSERT INTO savoir_etre (nom) VALUES ('A l''écoute');
 INSERT INTO savoir_etre (nom) VALUES ('Organisé');
 INSERT INTO savoir_etre (nom) VALUES ('Fiable');
 INSERT INTO savoir_etre (nom) VALUES ('Patient');
