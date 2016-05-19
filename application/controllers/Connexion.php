@@ -4,7 +4,7 @@
 		public function index() {
 			$this->load->library("form_validation");
 
-			$this->form_validation->set_rules('user', 'utilisateur', 'required');
+			$this->form_validation->set_rules('email', 'e-mail', 'required');
 			$this->form_validation->set_rules('pass', 'mot de passe', 'required');
 
 			$this->load->view('templates/head', array('title' => 'Connexion'));

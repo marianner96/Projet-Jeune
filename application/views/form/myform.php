@@ -5,12 +5,12 @@
 
 
       <div class="field">
-        <label for="user"> Utilisateur</label>
+        <label for="email">Email</label>
         <div class="ui left icon input">
-          <input type="text" id="user" name="user" value="<?php echo set_value('user'); ?>">
-          <i class="users icon"></i>
+          <input type="email" id="email" name="email" value="<?php echo set_value('user'); ?>">
+          <i class="at icon"></i>
         </div>
-        <?php if (form_error('user') != "") {echo "<div class='alert alert-warning'>";echo form_error('user'); echo "</div>";} ?>
+        <?php if (form_error('email') != "") {echo "<div class='alert alert-warning'>";echo form_error('email'); echo "</div>";} ?>
       </div>
 
       <div class="field">
