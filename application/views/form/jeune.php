@@ -1,32 +1,73 @@
+<div class="separateur"></div>
+<div class="ui container">
+
+	<?php echo form_open('connexion/inscription', array('class' => 'ui form')); ?>
 
 
-<?php echo form_open('inscription'); ?>
+	<h3>Inscrivez-vous ! (C'est sympa ici)</h3>
 
+	<div class="ui form error">
+		<div class="field">
+			<label>Nom </label>
+			<input type="text" name="nom" value="<?php echo set_value('nom'); ?>">
+			
+		</div>
+		<? if (form_error('nom') != "") {echo "<div class='ui error message'>";echo form_error('nom'); echo "</div>";} ?>
+	</div>
 
-<h3>Inscrivez-vous !(C'est sympa ici)</h3>
+	<div class="ui form error">
+		<div class="field">
+			<label>Prénom </label>
+			<input type="text" name="prenom" value="<?php echo set_value('prenom'); ?>">
+		</div>
+		<? if (form_error('prenom') != "") {echo "<div class='ui error message'>";echo form_error('prenom'); echo "</div>";} ?>
+    </div>
 
-<div class="form-group">
-	<label>Nom : <input type="text" name="nom" value="<?php echo set_value('nom'); ?>"></label>
-	<? if (form_error('nom') != "") {echo "<div class='alert alert-warning'>";echo form_error('nom'); echo "</div>";} ?>
+    <div class="ui form error">
+		<div class="field">
+			<label>Date de naissance </label>
+			<div class="three fields">
+				<div class="field">
+					<label>Jour</label>
+					<input type="number" name="jour" value="">
+				</div>
+				<div class="field">
+					<label>Mois</label>
+					<select name="mois">
+			            <option value="1">Janvier</option>
+			            <option value="2">Février</option>
+			            <option value="3">Mars</option>
+			            <option value="4">Avril</option>
+			            <option value="5">Mai</option>
+			            <option value="6">Juin</option>
+			            <option value="7">Juillet</option>
+			            <option value="8">Août</option>
+			            <option value="9">Septembre</option>
+			            <option value="10">Octobre</option>
+			            <option value="11">Novembre</option>
+			            <option value="12">Decembre</option>
+			        </select>
+				</div>
+				<div class="field">
+					<label>Année</label>
+					<input type="number" name="annee" value="">
+				</div>
+			</div>
+		</div>
+		<? if (form_error('naissance') != "") {echo "<div class='ui error message'>";echo form_error('naissance'); echo "</div>";} ?>
+	</div>
+
+	<div class="ui form error">
+		<div class="field">
+			<label>E-mail </label>
+			<input type="text" name="mail" value="<?php echo set_value('username'); ?>">
+		</div>
+		<? if (form_error('mail') != "") {echo "<div class='ui error message'>";echo form_error('mail'); echo "</div>";} ?>
+	</div>
+
+	<div class="field">
+		<button class="ui button" type="submit">Valider</button>
+	</div>
+
+	</form>
 </div>
-
-<div class="form-group">
-	<label>Prénom : <input type="text" name="prenom" value="<?php echo set_value('prenom'); ?>"></label>
-	<? if (form_error('prenom') != "") {echo "<div class='alert alert-warning'>";echo form_error('prenom'); echo "</div>";} ?>
-</div>
-
-<div class="form-group">
-	<label>Date de naissance : <input type="date" max="2016-07-05" name="naissance"></label>
-	<? if (form_error('naissance') != "") {echo "<div class='alert alert-warning'>";echo form_error('naissance'); echo "</div>";} ?>
-</div>
-
-<div class="form-group">
-	<label>E-mail : <input type="text" name="mail" value="<?php echo set_value('username'); ?>"></label>
-	<? if (form_error('mail') != "") {echo "<div class='alert alert-warning'>";echo form_error('mail'); echo "</div>";} ?>
-</div>
-
-<div class="form-group">
-	<input type="submit" value="Valider" name="valider">
-</div>
-
-</form>
