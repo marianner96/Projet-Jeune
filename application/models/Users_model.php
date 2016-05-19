@@ -10,12 +10,10 @@
         'nom' => $this->input->post('nom'),
         'prenom' => $this->input->post('prenom'),
         'mail' => $this->input->post('mail'),
-        'date_naissance' => DateTime::createFromFormat(
-            'd-m-Y',
-            $this->input->post('jour') . '-' .
+        'date_naissance' => 
+            $this->input->post('annee') . '-' .
             $this->input->post('mois') . '-' .
-            $this->input->post('annee'))->getTimestamp()
-          ,
+            $this->input->post('jour'),
         'mdp' => $this->passwordhash->HashPassword($this->input->post('mdp'))
       );
       return $this->db->insert('jeune', $data);
