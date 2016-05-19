@@ -12,7 +12,7 @@
 			<input type="text" name="nom" value="<?php echo set_value('nom'); ?>">
 			
 		</div>
-		<? if (form_error('nom') != "") {echo "<div class='ui error message'>";echo form_error('nom'); echo "</div>";} ?>
+		<?php if (form_error('nom') != "") {echo "<div class='ui error message'>";echo form_error('nom'); echo "</div>";} ?>
 	</div>
 
 	<div class="ui form error">
@@ -20,7 +20,7 @@
 			<label>Prénom </label>
 			<input type="text" name="prenom" value="<?php echo set_value('prenom'); ?>">
 		</div>
-		<? if (form_error('prenom') != "") {echo "<div class='ui error message'>";echo form_error('prenom'); echo "</div>";} ?>
+		<?php if (form_error('prenom') != "") {echo "<div class='ui error message'>";echo form_error('prenom'); echo "</div>";} ?>
     </div>
 
     <div class="ui form error">
@@ -29,7 +29,7 @@
 			<div class="three fields">
 				<div class="field">
 					<label>Jour</label>
-					<input type="number" name="jour" value="">
+					<input type="number" name="jour" value="<?php echo set_value('jour'); ?>">
 				</div>
 				<div class="field">
 					<label>Mois</label>
@@ -50,20 +50,20 @@
 				</div>
 				<div class="field">
 					<label>Année</label>
-					<input type="number" name="annee" value="">
+					<input type="number" name="annee" value="<?php echo set_value('annee'); ?>">
 				</div>
 			</div>
 		</div>
-		<? if ((form_error('jour') != "") || (form_error('mois') != "") || (form_error('annee') != "")) 
+		<?php if ((form_error('jour') != "") || (form_error('mois') != "") || (form_error('annee') != "")) 
 		{echo "<div class='ui error message'>";echo form_error('jour'); echo form_error('mois'); echo form_error('annee') ; echo "</div>";} ?>
 	</div>
 
 	<div class="ui form error">
 		<div class="field">
 			<label>E-mail </label>
-			<input type="text" name="mail" value="<?php echo set_value('username'); ?>">
+			<input type="text" name="mail" value="<?php echo set_value('mail'); ?>">
 		</div>
-		<? if (form_error('mail') != "") {echo "<div class='ui error message'>";echo form_error('mail'); echo "</div>";} ?>
+		<?php if (form_error('mail') != "") {echo "<div class='ui error message'>";echo form_error('mail'); echo "</div>";} ?>
 	</div>
 
 	<div class="ui form error">
@@ -71,7 +71,7 @@
 			<label>Mot de passe</label>
 			<input type="password" name="mdp" value="">
 		</div>
-		<? if (form_error('mdp') != "")  {echo "<div class='ui error message'>"; echo form_error('mdp'); echo "</div>";} ?>
+		<?php if (form_error('mdp') != "")  {echo "<div class='ui error message'>"; echo form_error('mdp'); echo "</div>";} ?>
 	</div>
 
 	<div class="field">

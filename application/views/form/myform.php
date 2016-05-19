@@ -19,14 +19,14 @@
     </div>
     <div class="ui vertical divider">ou</div>
     <div class="column">
-      <?php echo form_open('connexion', array('class' => 'ui form column')); ?>
+      <?php echo form_open('connexion', array('class' => 'ui form column error')); ?>
         <div class="field">
           <label for="email">Email</label>
           <div class="ui left icon input">
             <input type="email" id="email" name="email" value="<?php echo set_value('user'); ?>">
             <i class="at icon"></i>
           </div>
-          <?php if (form_error('email') != "") {echo "<div class='alert alert-warning'>";echo form_error('email'); echo "</div>";} ?>
+          <?php if (form_error('email') != "") {echo "<div class=\"ui error message\">";echo form_error('email'); echo "</div>";} ?>
         </div>
 
         <div class="field">
@@ -35,8 +35,9 @@
             <input type="password" id="pass" name="pass" value="<?php echo set_value('pass'); ?>"> 
             <i class="lock icon"></i>
           </div>
-          <?php if (form_error('user') != "") {echo "<div class='alert alert-warning'>";echo form_error('pass'); echo "</div>";} ?>
+          <?php if (form_error('user') != "") {echo "<div class=\"ui error message\">";echo form_error('pass'); echo "</div>";} ?>
         </div>
+
         <input class="ui button pink" type="submit" value="Se connecter">
         <a href="<?php echo site_url('connexion/inscription');?>" class="ui button">
             <i class="signup icon"></i>
