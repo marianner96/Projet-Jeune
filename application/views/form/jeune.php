@@ -54,7 +54,8 @@
 				</div>
 			</div>
 		</div>
-		<? if (form_error('naissance') != "") {echo "<div class='ui error message'>";echo form_error('naissance'); echo "</div>";} ?>
+		<? if ((form_error('jour') != "") || (form_error('mois') != "") || (form_error('annee') != "")) 
+		{echo "<div class='ui error message'>";echo form_error('jour'); echo form_error('mois'); echo form_error('annee') ; echo "</div>";} ?>
 	</div>
 
 	<div class="ui form error">
@@ -63,6 +64,14 @@
 			<input type="text" name="mail" value="<?php echo set_value('username'); ?>">
 		</div>
 		<? if (form_error('mail') != "") {echo "<div class='ui error message'>";echo form_error('mail'); echo "</div>";} ?>
+	</div>
+
+	<div class="ui form error">
+		<div class="field">
+			<label>Mot de passe</label>
+			<input type="password" name="mdp" value="">
+		</div>
+		<? if (form_error('mdp') != "")  {echo "<div class='ui error message'>"; echo form_error('mdp'); echo "</div>";} ?>
 	</div>
 
 	<div class="field">
