@@ -26,7 +26,12 @@ border-style: solid;
            <h4 class="ui dividing header">Savoir-être</h4>
            <div class="field">
             <select multiple="" class="ui dropdown" name="savoirEtre">
-              <option value="">Selectionner vos savoir être</option>
+              <?php
+              for ($i=0;$i<count($query);$i++){
+                echo "<option>" . $query[$i] . "</option>";
+              } 
+              ?>
+              <!-- <option value="">Selectionner vos savoir être</option>
               <option value="AU">Autonome</option>
               <option value="AN">Capable d’analyse et de synthèse</option>
               <option value="AL">A l’écoute</option>
@@ -37,7 +42,7 @@ border-style: solid;
               <option value="REF">Réfléchi</option>
               <option value="RES">Responsable</option>
               <option value="SO">Sociable</option>
-              <option value="OP">Optimiste</option>
+              <option value="OP">Optimiste</option> -->
             </select>
           </div>
           <h4 class="ui dividing header">Engagement</h4>
@@ -88,7 +93,6 @@ border-style: solid;
     </div>
   </div>
 </div>
-
 
 <script>
 $('select.dropdown')
