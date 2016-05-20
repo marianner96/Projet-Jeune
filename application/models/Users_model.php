@@ -3,6 +3,7 @@
     public function __construct(){
       $this->load->database();
       $this->load->library('PasswordHash', array(8, FALSE)); 
+      $this->load->library('session');
     }
 
     public function create_user(){
@@ -39,9 +40,13 @@
         return false;
       } 
     }
-
+    public function is_logger(){
+      return $this->session->has_userdata('logged_in');
+    }
     public function is_admin(){
-      return true;
+      if(!$this->session->has_userdata('logged_in'))
+        return false;
+      return $this->session->logged_in['rang'] >= 100;
     }
 
   }
