@@ -1,3 +1,4 @@
+Cette référence sera envoyé par mail à votre référent qui pourra validé votre demande et selectionner les savoir-être vous correspondant.
 <div class="ui grid">
 <div class="ten wide column">
 <form class="ui small form" >

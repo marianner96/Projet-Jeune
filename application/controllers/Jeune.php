@@ -1,7 +1,7 @@
 <?php
 class Jeune extends CI_Controller{
 	public function index(){
-        $data['content'] = 'profil';
+        $data['content'] = 'accueil';
         $data['menu'] = 'jeune';
         $this->load->view('templates/head', $data);
         $this ->load->view('templates/jeunes', $data);
@@ -25,6 +25,13 @@ class Jeune extends CI_Controller{
     }
     public function consultant(){
         $data['content'] = 'consultant';
+        $data['menu'] = 'jeune';
+        $this->load->view('templates/head', $data);
+        $this->load->view('templates/jeunes', $data);
+        $this->load->view('templates/foot');
+    }
+    public function profil(){
+        $data['content'] = 'profil';
         $data['menu'] = 'jeune';
         $this->load->view('templates/head', $data);
         $this->load->view('templates/jeunes', $data);
