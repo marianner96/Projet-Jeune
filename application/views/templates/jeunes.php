@@ -1,7 +1,7 @@
 <div class="ui container">
   <div class="ui grid stackable">
     <div class="four wide column">
-      <div class="ui vertical menu fluid">
+      <div class="ui inverted vertical menu fluid">
         <a class="item <?php echo !empty($content) && $content == 'profil' ? 'active' : '' ?>" href="<?php echo site_url('jeune') ?>">
           Mon profil
         </a>
