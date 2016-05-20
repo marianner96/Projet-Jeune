@@ -17,7 +17,27 @@
         'mdp' => $this->passwordhash->HashPassword($this->input->post('mdp'))
       );
       return $this->db->insert('jeune', $data);
-        
+    }
+
+    public function login($mail, $password) {
+      $this->db->select('id, mail, rang, mdp');
+      $this->db->from('jeune');
+      $this->db->where('mail', $mail);
+      $this->db->limit(1);
+      $query = $this->db->get();
+      if ($query->num_rows() != 1 ) {
+        return false;
+      } 
+      $qr = $query->row();
+      if ($this->passwordhash->CheckPassword($password, $qr->mdp)) {
+        return array (
+          'id'=> $qr->id,
+          'mail'=>$qr->mail,
+          'rang'=>$qr->rang
+          );
+      } else {
+        return false;
+      } 
     }
 
     public function is_admin(){

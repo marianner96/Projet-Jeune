@@ -23,19 +23,19 @@
         <div class="field">
           <label for="email">Email</label>
           <div class="ui left icon input">
-            <input type="email" id="email" name="email" value="<?php echo set_value('user'); ?>">
+            <input type="email" id="email" name="mail" value="<?php echo set_value('mail'); ?>">
             <i class="at icon"></i>
           </div>
           <?php if (form_error('email') != "") {echo "<div class=\"ui error message\">";echo form_error('email'); echo "</div>";} ?>
         </div>
 
         <div class="field">
-          <label for="pass">Mot de passe</label>
+          <label for="mdp">Mot de passe</label>
           <div class="ui left icon input">
-            <input type="password" id="pass" name="pass" value="<?php echo set_value('pass'); ?>"> 
+            <input type="password" id="mdp" name="mdp" value=""> 
             <i class="lock icon"></i>
           </div>
-          <?php if (form_error('user') != "") {echo "<div class=\"ui error message\">";echo form_error('pass'); echo "</div>";} ?>
+          <?php if (form_error('mdp') != "") {echo "<div class=\"ui error message\">";echo form_error('mdp'); echo "</div>";} ?>
         </div>
 
         <input class="ui button pink" type="submit" value="Se connecter">

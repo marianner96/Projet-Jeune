@@ -1,23 +1,38 @@
 <?php
 
 	class Connexion extends CI_Controller {
-                public function __construct(){
-                  parent::__construct();
-                  $this->load->library("form_validation");
-                  $this->load->model('users_model');
-                }
+
+        public function __construct(){
+          parent::__construct();
+          $this->load->library("form_validation");
+          $this->load->model('users_model');
+          $this->load->library('session');
+        }
+
 		public function index() {
 
-			$this->form_validation->set_rules('email', 'e-mail', 'required');
-			$this->form_validation->set_rules('pass', 'mot de passe', 'required');
+			$this->form_validation->set_rules('mail', 'e-mail', 'required');
+			$this->form_validation->set_rules('mdp', 'mot de passe', 'required|callback_check_database');
 
 			$this->load->view('templates/head', array('title' => 'Connexion'));
-			if ($this->form_validation->run()==FALSE) {
+			if ($this->form_validation->run() === FALSE) {
 				$this->load->view('form/myform');
 			} else {
-				$this->load->view('form/success');
+				redirect('/jeune');
 			}
 			$this->load->view('templates/foot');
+		}
+
+		public function check_database($mdp) {
+			$mail = $this->input->post('mail');
+			$result = $this->users_model->login($mail, $mdp);
+			if ($result) {
+				$this->session->set_userdata('logged_in', $result);
+				return TRUE;
+			} else {
+				$this->form_validation->set_message('check_database', "L'adresse mail ou le mot de passe ne correspod pas");
+				return FALSE;
+			}
 		}
 
 		public function inscription () {
