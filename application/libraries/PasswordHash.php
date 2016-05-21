@@ -2,7 +2,7 @@
 #
 # Portable PHP password hashing framework.
 #
-# Version 0.3 / genuine.
+# Version 0.3 / jeune6.4.
 #
 # Written by Solar Designer <solar at openwall.com> in 2004-2006 and placed in
 # the public domain.  Revised in subsequent years, still public domain.
@@ -30,7 +30,7 @@ class PasswordHash {
 	var $portable_hashes;
 	var $random_state;
 
-	function __contruct($param)
+	function __construct($param)
 	{
 		$iteration_count_log2 = $param[0];
 		$portable_hashes = $param[1];
