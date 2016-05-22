@@ -37,4 +37,12 @@ class Jeune extends CI_Controller{
         $this->load->view('templates/jeunes', $data);
         $this->load->view('templates/foot');
     }
+
+    public function reference(){
+        $data['content'] = 'reference';
+        $data['menu'] = 'jeune';
+        $this->load->view('templates/head', $data);
+        $this->load->view('templates/jeunes', $data);
+        $this->load->view('templates/foot');
+    }
 }
