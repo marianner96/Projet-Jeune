@@ -53,4 +53,4 @@ $route['default_controller'] = 'home';
 $route['accueil'] = 'home/accueil';
 $route['partenaires'] = 'home/partenaires';
 $route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+$route['translate_uri_dashes'] = TRUE;

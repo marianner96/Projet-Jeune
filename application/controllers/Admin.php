@@ -6,15 +6,26 @@ class Admin extends CI_Controller {
     parent::__construct();
 
     $this->load->model('users_model');
+    $this->load->model('admin_model');
     
-    if(!$this->users_model->is_admin()){
+    if(false && !$this->users_model->is_admin()){
       show_error('Vous n\'avez pas la permission de voir cette page.', 403, 'Accès reffusé');
     }
   }
   public function index(){
-    $this->load->view('template/head');
-    $this->load->view('template/admin');
-    $this->load->view('template/foot');
+    $data['title'] = 'Adminitration';
+    $data['content'] = 'index';
+    $this->load->view('templates/head', $data);
+    $this->load->view('templates/admin', $data);
+    $this->load->view('templates/foot');
+  }
+  public function savoir_etre($action = ''){
+    $data['content'] = 'savoir_etre';
+    $data['title'] = 'Savoir-être - Administration';
+    $data['savoir_etre'] = $this->admin_model->getAllSavoirEtre();
+    $this->load->view('templates/head', $data);
+    $this->load->view('templates/admin', $data);
+    $this->load->view('templates/foot');
   }
 }
 ?>
