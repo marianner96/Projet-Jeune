@@ -22,7 +22,8 @@ class Admin extends CI_Controller {
   public function savoir_etre($action = ''){
     $data['content'] = 'savoir_etre';
     $data['title'] = 'Savoir-être - Administration';
-    $data['savoir_etre'] = $this->admin_model->getAllSavoirEtre();
+    $data['jeune_savoir_etre'] = $this->admin_model->getJeuneSavoirEtre();
+    $data['referent_savoir_etre'] = $this->admin_model->getReferentSavoirEtre();
     $this->load->view('templates/head', $data);
     $this->load->view('templates/admin', $data);
     $this->load->view('templates/foot');
