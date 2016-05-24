@@ -56,5 +56,6 @@
       $this->db->set('etat', $etat)
         ->where('id', $param['id'])
         ->update('savoir_etre');
+      return array('success' => true);
     }
   } 
