@@ -32,7 +32,7 @@
 			</div>
 			<div class="field">
 				<label>Mois</label>
-				<select name="mois">
+				<select name="mois" class="ui dropdown search selection">
 		            <option value="1">Janvier</option>
 		            <option value="2">Février</option>
 		            <option value="3">Mars</option>
@@ -77,3 +77,7 @@
 
 	</form>
 </div>
+<script>
+$('.ui.dropdown')
+  .dropdown();
+</script>
