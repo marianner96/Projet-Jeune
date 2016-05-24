@@ -63,7 +63,7 @@
       $(this)
         .closest('.message')
         .transition('fade down');
-    })
+    });
   var reqUrl = '<?php echo site_url('/admin/savoir_etre/') ?>';
   var errEl = $('.ui.error.message ul');
 
@@ -90,12 +90,12 @@
 
   function toggleSavoirEtre(e){
     var self = this;
-    $.get(reqUrl+'/toggle/'+this.value, function (data) {
+    $.get(reqUrl+'/toggle/'+this.value, function () {
       $(self).prop('checked', !$(self).prop('checked'))
     })
       .fail(function (xhr, status, msg) {
         displayError(xhr.responseText, msg);
-      })
+      });
     return false;
   }
   $('.toggleSavoirEtre')
