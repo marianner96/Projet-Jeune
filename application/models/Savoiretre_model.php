@@ -56,6 +56,13 @@
       $this->db->set('etat', $etat)
         ->where('id', $param['id'])
         ->update('savoir_etre');
-      return array('success' => true);
+      return array('affectedRows' => $this->db->affected_rows());
+    }
+
+    public function delete($param){
+      $this->db->set('etat', -1)
+        ->where('id', $param['id'])
+        ->update('savoir_etre');
+      return array('affectedRows' => $this->db->affected_rows());
     }
   } 
