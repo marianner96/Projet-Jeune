@@ -33,4 +33,13 @@
 
       return $query->result();
     }
-  }   
+
+    public function create(){
+      //validation données
+      $data = array(
+        'nom' => $this->input->post('nom'),
+        'type' => $this->input->post('type')
+      );
+      //insertion du savoir etre
+    }
+  } 
