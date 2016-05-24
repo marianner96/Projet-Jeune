@@ -34,12 +34,27 @@
       return $query->result();
     }
 
-    public function create(){
-      //validation données
+    public function create($param){
       $data = array(
-        'nom' => $this->input->post('nom'),
-        'type' => $this->input->post('type')
+        'nom' => urldecode($param['nom']),
+        'type' => ($param['type'] == 'jeune' ? 1 : 2)
       );
-      //insertion du savoir etre
+      $this->db->insert('savoir_etre', $data);
+      return array('id' => $this->db->insert_id());
+
+    }
+    public function toggle($param){
+      $query = $this->db->select('etat')->where('id', $param['id'])->get('savoir_etre');
+      $res = $query->row();
+      if(empty($res)){
+        return array('errors' => 'Savoir-être inconnu.');
+      }
+      if($res->etat == -1){
+        return array('errors' => 'Savoir-être supprimé');
+      }
+      $etat = ($res->etat == 0) ? 1 : 0;
+      $this->db->set('etat', $etat)
+        ->where('id', $param['id'])
+        ->update('savoir_etre');
     }
   } 
