@@ -98,15 +98,13 @@ CREATE TABLE `connexion` (
 
 -- id : identifiant unique du savoir être
 -- nom : désignation du savoir être
--- active : 1 -> le savoir est activé / 0 -> le savoir être est désactivé
--- supprime : 1 -> le savoir est supprimé / 0 -> le savoir être est actif
+-- etat : -1 -> le savoir est supprimé / 0 -> le savoir etre est désactivé /1 -> le savoir être est actif
 -- type : 1 -> jeune / 2 -> Référent
 
 CREATE TABLE `savoir_etre` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(100) DEFAULT NULL,
-  `active` TINYINT(1) DEFAULT '1',
-  `supprime` TINYINT(1) DEFAULT '0',
+  `etat` SMALLINT(1) DEFAULT '1',
   `type` SMALLINT(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

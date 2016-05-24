@@ -14,7 +14,7 @@
         </td>
         <td class="two wide">
           <div class="ui toggle checkbox tooltip" data-content="Désactiver le savoir-être" data-position="right center">
-            <input <?php if($item->active == 1){echo 'checked="checked"';} ?> class="hidden" tabindex="0" type="checkbox">
+            <input <?php if($item->etat == 1){echo 'checked="checked"';} ?> class="hidden" tabindex="0" type="checkbox">
             <label></label>
           </div>
         </td>
@@ -39,7 +39,7 @@
           </td>
           <td class="two wide">
             <div class="ui toggle checkbox tooltip" data-content="Désactiver le savoir-être" data-position="right center">
-              <input <?php if($item->active == 1){echo 'checked="checked"';} ?> class="hidden" tabindex="0" type="checkbox">
+              <input <?php if($item->etat == 1){echo 'checked="checked"';} ?> class="hidden" tabindex="0" type="checkbox">
               <label></label>
             </div>
           </td>

@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
     parent::__construct();
 
     $this->load->model('users_model');
-    $this->load->model('admin_model');
+    $this->load->model('savoiretre_model');
     
     if(false && !$this->users_model->is_admin()){
       show_error('Vous n\'avez pas la permission de voir cette page.', 403, 'Accès reffusé');
@@ -22,8 +22,8 @@ class Admin extends CI_Controller {
   public function savoir_etre($action = ''){
     $data['content'] = 'savoir_etre';
     $data['title'] = 'Savoir-être - Administration';
-    $data['jeune_savoir_etre'] = $this->admin_model->getJeuneSavoirEtre();
-    $data['referent_savoir_etre'] = $this->admin_model->getReferentSavoirEtre();
+    $data['jeune_savoir_etre'] = $this->savoiretre_model->getJeune();
+    $data['referent_savoir_etre'] = $this->savoiretre_model->getReferent();
     $this->load->view('templates/head', $data);
     $this->load->view('templates/admin', $data);
     $this->load->view('templates/foot');
