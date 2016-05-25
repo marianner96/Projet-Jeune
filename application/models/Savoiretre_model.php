@@ -45,7 +45,7 @@
     public function create($param){
       $data = array(
         'nom' => urldecode($param['nom']),
-        'type' => ($param['type'] == 'jeune' ? 1 : 2)
+        'type' => $param['type']
       );
       $this->db->insert('savoir_etre', $data);
       return array('id' => $this->db->insert_id());

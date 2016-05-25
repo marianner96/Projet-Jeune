@@ -48,9 +48,9 @@ class Admin extends CI_Controller {
 
       $this->form_validation->set_data($param);
       $this->form_validation->set_rules('nom', 'nom du savoir-être', 'urldecode|required|max_length[100]');
-      $this->form_validation->set_rules('type', 'type du savoir-être', 'required|in_list[jeune,referent]',
+      $this->form_validation->set_rules('type', 'type du savoir-être', 'required|in_list[1,2]',
         array(
-          'in_list' => 'Le %s doit être soit jeune soit referent'
+          'in_list' => 'Le %s doit être soit 1 (jeune) soit 2 (referent).'
         )
       );
     }else if (($action == 'delete' || $action == 'toggle') && $nbSegments == 4){
