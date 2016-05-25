@@ -13,13 +13,13 @@
       <tr>
         <td class="twelve wide"><?php echo $item->nom ?></td>
         <td class="two wide">
-          <button class="ui button mini icon tooltip" data-content="Le savoir-être restera présent dans la base de données mais ne pourra plus être réactivé." data-title="Supprimer le savoir être." data-position="left center">
+          <button class="ui button mini icon tooltip deleteSavoirEtre" data-content="Le savoir-être restera présent dans la base de données mais ne pourra plus être réactivé." data-title="Supprimer le savoir être." data-position="left center" data-value="<?php echo $item->id ?>">
             <i class="icon delete" ></i>
           </button>
         </td>
         <td class="two wide">
           <div class="ui toggle checkbox tooltip toggleSavoirEtre" data-content="Désactiver le savoir-être" data-position="right center">
-            <input <?php if($item->etat == 1){echo 'checked="checked"';} ?> value="<?php echo $item->id ?>" class="hidden" tabindex="0" type="checkbox">
+            <input <?php if($item->etat == 1){echo 'checked="checked"';} ?> value="9<?php echo $item->id ?>" class="hidden" tabindex="0" type="checkbox">
             <label></label>
           </div>
         </td>
@@ -38,7 +38,7 @@
         <tr>
           <td class="twelve wide"><?php echo $item->nom ?></td>
           <td class="two wide">
-            <button class="ui button mini icon tooltip" data-content="Le savoir-être restera présent dans la base de données mais ne pourra plus être réactivé." data-title="Supprimer le savoir être." data-position="left center">
+            <button class="ui button mini icon tooltip deleteSavoirEtre" data-content="Le savoir-être restera présent dans la base de données mais ne pourra plus être réactivé." data-title="Supprimer le savoir être." data-position="left center" data-value="<?php echo $item->id ?>">
               <i class="icon delete" ></i>
             </button>
           </td>
@@ -78,6 +78,7 @@
     //On supprime les anciens messages d'erreur
     errEl.empty();
     //On met les nouveaux
+    console.error(data);
     for(err in data.errors){
       $('<li></li>')
         .text(data.errors[err])
@@ -88,9 +89,9 @@
       .transition('fade down');
   }
 
-  function toggleSavoirEtre(e){
+  function toggleSavoirEtre(){
     var self = this;
-    $.get(reqUrl+'/toggle/'+this.value, function () {
+    $.get(reqUrl+'/toggle/'+this.value, function (data) {
       $(self).prop('checked', !$(self).prop('checked'))
     })
       .fail(function (xhr, status, msg) {
@@ -98,9 +99,25 @@
       });
     return false;
   }
+  function deleteSavoirEtre(){
+    var self = this;
+    $.get(reqUrl+'/delete/'+this.dataset.value, function(data){
+      $(self).popup('destroy');
+      $(self).closest('tr').transition({
+        animation : 'fade down',
+        onComplete : function(){
+          $(self).closest('tr').remove();
+        }
+      });
+    })
+      .fail(function(xhr, status, msg){
+        displayError(xhr.responseText, msg);
+      });
+  }
   $('.toggleSavoirEtre')
     .checkbox({
       beforeChecked: toggleSavoirEtre,
       beforeUnchecked : toggleSavoirEtre
-    })
+    });
+  $('.deleteSavoirEtre').click(deleteSavoirEtre);
 </script>

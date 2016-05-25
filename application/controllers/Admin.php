@@ -72,6 +72,7 @@ class Admin extends CI_Controller {
     }
     $res = call_user_func(array($this->savoiretre_model, $action), $param);
     if($res){
+      $this->output->set_status_header(empty($res['errors']) ? 200 : 400);
       $this->output->set_output(json_encode($res));
     }
   }

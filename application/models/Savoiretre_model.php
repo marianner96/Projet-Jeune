@@ -55,10 +55,10 @@
       $query = $this->db->select('etat')->where('id', $param['id'])->get('savoir_etre');
       $res = $query->row();
       if(empty($res)){
-        return array('errors' => 'Savoir-être inconnu.');
+        return array('errors' => array('Savoir-être inconnu.'));
       }
       if($res->etat == -1){
-        return array('errors' => 'Savoir-être supprimé');
+        return array('errors' => array('Savoir-être supprimé'));
       }
       $etat = ($res->etat == 0) ? 1 : 0;
       $this->db->set('etat', $etat)
