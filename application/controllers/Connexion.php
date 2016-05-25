@@ -30,7 +30,7 @@
 				$this->session->set_userdata('logged_in', $result);
 				return TRUE;
 			} else {
-				$this->form_validation->set_message('check_database', "L'adresse mail ou le mot de passe ne correspod pas");
+				$this->form_validation->set_message('check_database', "L'adresse mail ou le mot de passe ne correspond pas");
 				return FALSE;
 			}
 		}
