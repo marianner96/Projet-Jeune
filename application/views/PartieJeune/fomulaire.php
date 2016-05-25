@@ -18,7 +18,6 @@ foreach ($query as $value) {
   <div class="two fields">
     <div class="field">
       <label>Description de l'engagement</label>
-       <?php echo form_error('description')?>
       <textarea rows="2" name="description"><?php echo set_value('description'); ?></textarea>
     </div>
     <div class="field">
@@ -43,8 +42,15 @@ foreach ($query as $value) {
     <?php echo form_error('mail')?>
       <input placeholder="E-mail" type="email" name="mail" value="<?php echo set_value('mail'); ?>">
   </div>
-   <div class="ui submit button">Envoyer</div>
+   <input class="ui submit button" value="Envoyer" type="submit">
   <div class="ui error message"></div>
+  <?php echo form_error('savoirEtre[]')?>
+   <?php echo form_error('description')?>
+   <?php echo form_error('duree')?>
+   <?php echo form_error('prenom')?>
+   <?php echo form_error('nom')?>
+    <?php echo form_error('mail')?>
+
 
 </form>
 </div>
