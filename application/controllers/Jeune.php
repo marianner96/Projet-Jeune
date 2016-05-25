@@ -16,7 +16,7 @@ class Jeune extends CI_Controller{
 	}
     public function formulaire(){
         $this->load->helper(array('form', 'url'));
-        $this->form_validation->set_rules('savoirEtre[]','SavoirEtre','required|max_length[2]');
+        $this->form_validation->set_rules('savoirEtre[]','SavoirEtre','required|callback_savoirEtre_check');
         $this->form_validation->set_rules('description', 'Description', 'required');
         $this->form_validation->set_rules('duree', 'Durée', 'required');
         $this->form_validation->set_rules('prenom', 'Prénom', 'required');
@@ -24,7 +24,7 @@ class Jeune extends CI_Controller{
         $this->form_validation->set_rules('mail', 'Mail', 'valid_email|required');
 
         $data['query'] = $this->savoiretre_model->getJeune();
-        $data['content'] = 'fomulaire';
+        $data['content'] = 'formulaire';
         $data['menu'] = 'jeune';
         if ($this->form_validation->run() == FALSE){
             $this->load->view('templates/head', $data);
@@ -35,6 +35,23 @@ class Jeune extends CI_Controller{
             $this->load->view('PartieJeune/formsuccess');
         }
     }
+
+      public function savoirEtre_check($chaine)
+        {
+
+                if (count($this->input->post('savoirEtre'))>4)
+                {
+                        $this->form_validation->set_message('savoirEtre_check', 'Veuillez choisir au maximum 4 options');
+                        return FALSE;
+                }
+                else
+                {
+                        return $chaine;
+                }
+        }
+
+
+
     public function consultant(){
         $data['content'] = 'consultant';
         $data['menu'] = 'jeune';

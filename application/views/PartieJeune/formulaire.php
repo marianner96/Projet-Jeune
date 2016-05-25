@@ -51,7 +51,6 @@ foreach ($query as $value) {
    <?php echo form_error('nom')?>
     <?php echo form_error('mail')?>
 
-
 </form>
 </div>
   <div class="six wide column"></div> 
