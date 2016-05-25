@@ -109,6 +109,8 @@ CREATE TABLE `savoir_etre` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- Savoir-être par défaut
+
 INSERT INTO savoir_etre (nom, type) VALUES ('Autonome', '1');
 INSERT INTO savoir_etre (nom, type) VALUES ('Passionné', '1');
 INSERT INTO savoir_etre (nom, type) VALUES ('Réfléchi', '1');
@@ -129,3 +131,8 @@ INSERT INTO savoir_etre (nom, type) VALUES ('Patient', '2');
 INSERT INTO savoir_etre (nom, type) VALUES ('Responsable', '2');
 INSERT INTO savoir_etre (nom, type) VALUES ('Optimiste', '2');
 
+-- Utilisateurs de test
+
+-- Administrateur : (mot de passe : roger64)
+INSERT INTO `jeune` (`nom`, `prenom`, `mail`, `date_naissance`, `mdp`, `rang`) VALUES
+  ('Toto', 'Roger', 'rogerdu64@gmail.com', '1984-07-02', '$2a$08$XF9ERbtlxr9k.tESnID7au8NRck0uBYl7voEFSfyTVU6Z7DmCkx1G', 100);
