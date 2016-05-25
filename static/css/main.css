@@ -21,3 +21,12 @@ aside.home{
 .relative{
   position:relative;
 }
+.customClearing::after{
+  content:'.';
+  visibility: hidden;
+  clear: both;
+  display: block;
+}
+.creationSavoirEtre, .ui.button.creationSavoirEtre{
+  display: none;
+}
