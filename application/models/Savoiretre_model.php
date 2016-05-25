@@ -6,19 +6,27 @@
       $this->load->database();
     }
 
-    public function getJeune()
+    public function getJeune($activeOnly = true)
     { 
       $this->db->select('id, nom, etat');
-      $this->db->where('etat >= 0', NULL);
+      if($activeOnly){
+        $this->db->where('etat', '1');
+      }else{
+        $this->db->where('etat >= 0', NULL);
+      }
       $this->db->where('type', 1);
       $query = $this->db->get('savoir_etre');
-
       return $query->result();
     }
 
-    public function getReferent()
+    public function getReferent($activeOnly = true)
     {
       $this->db->select('id, nom, etat');
+      if($activeOnly){
+        $this->db->where('etat', '1');
+      }else{
+        $this->db->where('etat >= 0', NULL);
+      }
       $this->db->where('etat >= 0', NULL);
       $this->db->where('type', 2);
       $query = $this->db->get('savoir_etre');
