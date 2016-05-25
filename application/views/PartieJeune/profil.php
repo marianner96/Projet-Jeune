@@ -1,7 +1,7 @@
 <div class="ui container">
 	<h1>Modifier ses informations personnelles</h1>
 
-	<?php echo form_open('jeune/profil', array('class' => 'ui form')); ?>
+	<div class='ui form'>
 
 	<div class="disabled field">
 		<label>Nom</label>
@@ -21,22 +21,34 @@
 	<div class="field">
 		<label>E-mail </label>
 		<input type="text" name="mail" value="<?php echo($tab['mail']); ?>">
-		<div class="ui checkbox">
-	      <input type="checkbox" value ="cmail" name="cmail">
-	      <label>Changer l'adresse mail</label>
-	    </div>
 	</div>
+	<input class="ui button pink" type="submit" value="Changer email" name="chmail">
+	    
 
 	<div class="field">
 		<label>Mot de passe</label>
 		<input type="password" name="mdp" value="">
-		<div class="ui checkbox">
-	      <input type="checkbox" value ="cmdp" name="cmdp">
-	      <label>Changer le mot de passe</label>
-	    </div>
+	</div>
+
+	<div class="field">
+		<label>Nouveau mot de passe</label>
+		<input type="password" name="mdp" value="">
 	</div>
 	
+	<div class="field">
+		<label>Confirmer ce mot de passe</label>
+		<input type="password" name="mdp" value="">
+	</div>
 
-	<input class="ui button pink" type="submit" value="Valider">
-	</form>
+	<input class="ui button pink" type="submit" value="Changer mot de passe" name="chmdp">
 </div>
+</div>
+
+<script>
+  $("input[name='chmail']").click(function () {
+  	$.post(<?php echo "'".site_url("jeune/profil/chmail")."'"; ?>, {
+  		mail : 'roger@gmail.com'
+  	})
+  });
+
+</script>
