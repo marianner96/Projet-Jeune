@@ -59,21 +59,20 @@ class Jeune extends CI_Controller{
         $this->load->view('templates/jeunes', $data);
         $this->load->view('templates/foot');
     }
-    public function profil(){
-        $data['content'] = 'profil';
-        $data['menu'] = 'jeune';
-        $tab = $this->session->userdata('logged_in'); 
-        $data['tab'] = $tab;
+    public function profil($action=""){
+        if ($action == "")  {
+            $data['content'] = 'profil';
+            $data['menu'] = 'jeune';
+            $tab = $this->session->userdata('logged_in'); 
+            $data['tab'] = $tab;
 
-        $this->form_validation->set_rules('nom', 'nom', 'required');
-        $this->form_validation->set_rules('prenom', "prénom", 'required');
-        $this->form_validation->set_rules('date_naissance', 'date de naissance', 'required');
-        $this->form_validation->set_rules('mail', 'e-mail', 'required|valid_email');
-        $this->form_validation->set_rules('mdp', 'mot de passe', 'required');
 
-        $this->load->view('templates/head', $data);
-        $this->load->view('templates/jeunes', $data);
-        $this->load->view('templates/foot');
+            $this->load->view('templates/head', $data);
+            $this->load->view('templates/jeunes', $data);
+            $this->load->view('templates/foot');
+        } elseif ($action == "chmail") {
+            $this->chmail();
+        }
     }
 
     public function reference(){
@@ -82,5 +81,32 @@ class Jeune extends CI_Controller{
         $this->load->view('templates/head', $data);
         $this->load->view('templates/jeunes', $data);
         $this->load->view('templates/foot');
+    }
+
+    private function chmail(){
+        $this->form_validation->set_rules('mail', 'e_mail', 'required|valid_email|callback_changement_mail_possible');
+        $this->output->set_content_type('application/json');
+        if ($this->form_validation->run()==false) {
+            $this->output->set_status_header('400');
+            $this->output->set_output(
+                json_encode(array(
+                    'errors'=> array_filter(explode("\n", validation_errors(NULL,NULL))) 
+                    ))
+                );
+        } 
+    }
+
+    public function changement_mail_possible(){
+        $ma = $this->input->post('mail');
+        $tab = $this->session->userdata('logged_in'); 
+        $mail = $tab['mail'];
+        if ($ma == $mail) {
+            $this->form_validation->set_message('changement_mail_possible', "L'adresse mail n'as pas été changée");
+            return FALSE;
+        }
+        $this->load->model('users_model');
+        $val = $this->users_model->change_mail();
+        $this->output->set_output(json_encode($val));
+        return TRUE;
     }
 }

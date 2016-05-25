@@ -21,7 +21,7 @@
     }
 
     public function login($mail, $password) {
-      $this->db->select('id, mail, rang, mdp');
+      $this->db->select('id, mail, rang, mdp, nom, prenom, date_naissance');
       $this->db->from('jeune');
       $this->db->where('mail', $mail);
       $this->db->limit(1);
@@ -34,7 +34,10 @@
         return array (
           'id'=> $qr->id,
           'mail'=>$qr->mail,
-          'rang'=>$qr->rang
+          'rang'=>$qr->rang,
+          'prenom'=>$qr->prenom,
+          'nom'=>$qr->nom,
+          'date_naissance'=>$qr->date_naissance
           );
       } else {
         return false;
@@ -49,5 +52,13 @@
       return $this->session->logged_in['rang'] >= 100;
     }
 
+    public function change_mail(){
+      $id_user = $this->session->userdata('logged_in')['id'];
+      $nv = $this->input->post('mail');
+      $this->db->set('mail', $nv);
+      $this->db->where('id', $id_user);
+      $this->db->update('jeune');
+      return array('affectedRows' => $this->db->affected_rows());
+    }
   }
 ?>

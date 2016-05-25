@@ -51,8 +51,8 @@
 			if ($this->form_validation->run()==FALSE) {
 				$this->load->view('form/jeune');
 			} else {
-                                $this->users_model->create_user();
-				$this->load->view('form/success');
+                $this->users_model->create_user();
+				redirect('/jeune');
 			}
 			$this->load->view('templates/foot');
 		}
