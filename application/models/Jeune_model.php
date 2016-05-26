@@ -25,8 +25,8 @@ class Jeune_model extends CI_Model {
                         'nom' => set_value('nom') , 
                         'prenom' => set_value('prenom'), 
                         'mail' => set_value('mail'));
-                $this->db->insert('reference', $reference); 
-
+                //$this->db->insert('reference', $reference); 
+                $lastID=$this->db->insert_id();
         }
-}
+} 
 ?>
