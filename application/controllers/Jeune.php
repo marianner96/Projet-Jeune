@@ -5,7 +5,11 @@ class Jeune extends CI_Controller{
           $this->load->library("form_validation");
           $this->load->library('session');
           $this->load->model('savoiretre_model');
+<<<<<<< HEAD
           $this->load->library('PasswordHash', array(8, FALSE));
+=======
+          $this->load->model('Jeune_model');
+>>>>>>> a28e4f67838a2c7ffef5c5ce30399dec75a28fb8
         }
 
 	public function index(){
@@ -32,8 +36,14 @@ class Jeune extends CI_Controller{
             $this->load->view('templates/jeunes', $data);
             $this->load->view('templates/foot');
         }
-        else{                
-            $this->load->view('PartieJeune/formsuccess');
+        else{ 
+            $data['content']='reference';
+            $data['tab'] = $this->session->userdata('logged_in');
+            $this->Jeune_model->creationReferences();
+            $this->load->view('templates/head', $data);
+            $this->load->view('PartieJeune/formsuccess',$data);
+            $this->load->view('templates/jeunes', $data);               
+            $this->load->view('templates/foot');
         }
     }
 
@@ -50,7 +60,6 @@ class Jeune extends CI_Controller{
                         return $chaine;
                 }
         }
-
 
 
     public function consultant(){
@@ -112,6 +121,7 @@ class Jeune extends CI_Controller{
         $this->output->set_output(json_encode($val));
         return TRUE;
     }
+<<<<<<< HEAD
 
     private function chmdp(){
         $this->form_validation->set_rules('mdp', 'mot de passe', 'required|trim|callback_change_mdp_possible');
@@ -143,3 +153,6 @@ class Jeune extends CI_Controller{
         return ($this->passwordhash->CheckPassword($mdp, $qr->mdp));
     }
 }
+=======
+}
+>>>>>>> a28e4f67838a2c7ffef5c5ce30399dec75a28fb8
