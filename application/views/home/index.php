@@ -24,7 +24,7 @@
         </figcaption>
         </figure>
         <a class="ui basic button huge" href="<?php echo site_url('accueil') ?>">En savoir plus</a>
-        <a class="ui basic pink button huge" href="<?php echo site_url('jeunes') ?>">Espace jeunes</a>
+        <a class="ui basic pink button huge" href="<?php echo site_url('jeune') ?>">Espace jeune</a>
       </div>
   </body>
 </html>
