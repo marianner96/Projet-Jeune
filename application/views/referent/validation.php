@@ -2,9 +2,23 @@
   <div class="ui stackable two column divided grid"> 
     <div class="column">
       <div class="ui pink segment">
-        <p>
         Confirmez cette expérience que vous avez pu constater au contact de ce jeune.
-        </p>
+
+        <div class="ui card">
+          <div class="content">
+
+            <div class="header"><?php echo($ref['nom'].' '.$ref{'prenom'});?></div>
+            <div class="description">
+              <h5>Description :</h5>
+              <?php echo($ref['description']) ?>
+              <h5>Durée de l'engagement :</h5> <?php echo($ref['duree']) ?>
+              <h5>Savoirs-être dévoloppés :</h5>
+            </div>
+          </div>
+          <div class="extra content">
+            <span class="right floated"> **RECUPERER MAIL DU JEUNE** </span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -31,10 +45,10 @@
               <label>Nom et Prénom</label>
                 <div class="two fields">
                   <div class="field">
-                    <input type="text" name="shipping[last-name]" placeholder="Nom">
+                    <input type="text" name="shipping[last-name]" value=<?php echo($ref['nom']) ?>>
                   </div>
                   <div class="field">
-                    <input type="text" name="shipping[first-name]" placeholder="Prénom">
+                    <input type="text" name="shipping[first-name]" value=<?php echo($ref['prenom']) ?>>
                   </div>
                 </div>
           </div>
@@ -54,7 +68,7 @@
           </div>
           <div class="field">
             <label>E-mail</label>
-            <input placeholder="abc@domaine.com" type="email">
+            <input value=<?php echo($ref['mail']) ?> type="email">
           </div>
 
           <h4 class="ui dividing header">Ajouter un commentaire</h4>
@@ -75,7 +89,7 @@
 $('select.dropdown')
   .dropdown()
 ;
-$('.ui.form')
+$('.ui.form') // Regles formulaire
   .form({
     fields: {
       savoiretre :{
@@ -93,4 +107,6 @@ $('.ui.form')
       }
     }
   })
+
+
 </script>
