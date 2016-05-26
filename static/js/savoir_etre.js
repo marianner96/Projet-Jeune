@@ -2,20 +2,9 @@
 $('.tooltip')
   .popup();
 
-//Initialisation de la gestion de la fermeture des messages
-$('.message .close')
-  .on('click', function () {
-    $(this)
-      .closest('.message')
-      .transition('fade down');
-  });
-
 //Initialisation des radios
 $('.radio.checkbox')
   .checkbox();
-
-var errEl = $('.ui.error.message ul');
-
 
 function toggleSavoirEtre(){
   var self = this;

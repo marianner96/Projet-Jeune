@@ -1,3 +1,13 @@
+var errEl = $('.ui.error.message ul');
+
+//Initialisation de la gestion de la fermeture des messages
+$('.message .close')
+  .on('click', function () {
+    $(this)
+      .closest('.message')
+      .transition('fade down');
+  });
+
 function displayError(rep, msg){
   var data;
   //Récupération de l'erreur
