@@ -5,6 +5,7 @@ class Jeune extends CI_Controller{
           $this->load->library("form_validation");
           $this->load->library('session');
           $this->load->model('savoiretre_model');
+          $this->load->library('PasswordHash', array(8, FALSE));
         }
 
 	public function index(){
@@ -72,6 +73,8 @@ class Jeune extends CI_Controller{
             $this->load->view('templates/foot');
         } elseif ($action == "chmail") {
             $this->chmail();
+        } else {
+            $this->chmdp();
         }
     }
 
@@ -108,5 +111,35 @@ class Jeune extends CI_Controller{
         $val = $this->users_model->change_mail();
         $this->output->set_output(json_encode($val));
         return TRUE;
+    }
+
+    private function chmdp(){
+        $this->form_validation->set_rules('mdp', 'mot de passe', 'required|trim|callback_change_mdp_possible');
+        $this->form_validation->set_rules('nvmdp', 'nouveau mot de passe', 'required|trim');
+        $this->form_validation->set_rules('comdp', 'confirmation du nouveau mot de passe', 'required|trim|matches[nvmdp]');
+        $this->output->set_content_type('application/json');
+        if ($this->form_validation->run() == false) {
+            $this->output->set_status_header('400');
+            $this->output->set_output(
+                json_encode(array(
+                    'errors'=>array_filter(explode("\n", validation_errors(NULL, NULL)))
+                    ))
+                );
+        } else {
+            $this->load->model('users_model');
+            $val = $this->users_model->change_mdp();
+            $this->output->set_output(json_encode($val));
+        }
+    }
+
+    public function change_mdp_possible() {
+        $mdp = $this->input->post('mdp');
+        $id = $this->session->userdata('logged_in')['id'];
+        $this->db->select('mdp');
+        $this->db->where('id', $id);
+        $query = $this->db->get('jeune');
+        $qr = $query->row();
+        $this->form_validation->set_message('change_mdp_possible', "Le mot de passe n'as pas été changée");
+        return ($this->passwordhash->CheckPassword($mdp, $qr->mdp));
     }
 }

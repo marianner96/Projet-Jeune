@@ -60,5 +60,14 @@
       $this->db->update('jeune');
       return array('affectedRows' => $this->db->affected_rows());
     }
+
+    public function change_mdp() {
+      $id_user = $this->session->userdata('logged_in')['id'];
+      $nv = $this->passwordhash->HashPassword($this->input->post('nvmdp'));
+      $this->db->set('mdp', $nv);
+      $this->db->where('id', $id_user);
+      $this->db->update('jeune');
+      return array('affectedRows' => $this->db->affected_rows());
+    }
   }
 ?>
