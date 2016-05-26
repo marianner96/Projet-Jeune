@@ -2,11 +2,14 @@
 <head>
 <title>My Form</title>
 </head>
-<body>
+<body>s
+  <div class="ui success message">
+    <div class="header">Demande de référence</div>
+    <p><?php 
+    echo "Votre demande de référence a bien été crée " . $tab["prenom"] . " " . $tab["nom"];
+?></p>
+  </div>
 
-<h3>Your form was successfully submitted!</h3>
-
-<p><?php echo anchor('form', 'Try it again!'); ?></p>
 
 </body>
 </html>

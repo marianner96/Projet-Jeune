@@ -5,6 +5,7 @@ class Jeune extends CI_Controller{
           $this->load->library("form_validation");
           $this->load->library('session');
           $this->load->model('savoiretre_model');
+          $this->load->model('Jeune_model');
         }
 
 	public function index(){
@@ -31,8 +32,14 @@ class Jeune extends CI_Controller{
             $this->load->view('templates/jeunes', $data);
             $this->load->view('templates/foot');
         }
-        else{                
-            $this->load->view('PartieJeune/formsuccess');
+        else{ 
+            $data['content']='reference';
+            $data['tab'] = $this->session->userdata('logged_in');
+            $this->Jeune_model->creationReferences();
+            $this->load->view('templates/head', $data);
+            $this->load->view('PartieJeune/formsuccess',$data);
+            $this->load->view('templates/jeunes', $data);               
+            $this->load->view('templates/foot');
         }
     }
 
@@ -49,7 +56,6 @@ class Jeune extends CI_Controller{
                         return $chaine;
                 }
         }
-
 
 
     public function consultant(){

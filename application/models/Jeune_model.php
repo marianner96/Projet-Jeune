@@ -5,6 +5,7 @@ class Jeune_model extends CI_Model {
         {
                 parent::__construct();
                 $this->load->database();
+                $this->load->library('session');
         }
 
         public function savoiretre()
@@ -13,11 +14,19 @@ class Jeune_model extends CI_Model {
                 $query = $this->db->get('savoir_etre');
                 return $query->result();
         }
-        public function referenceEnCour()
+        public function creationReferences()
         {
-                $this->db->select('nom');
-                $query = $this->db->get('savoir_etre');
-                return $query->result();
+                $tab = $this->session->userdata('logged_in');
+                $reference = array(
+                        'id_user' => $tab['id'] ,
+                        'description' => set_value('description'),
+                        'duree' => set_value('duree') , 
+                        'etat' => 1, 
+                        'nom' => set_value('nom') , 
+                        'prenom' => set_value('prenom'), 
+                        'mail' => set_value('mail'));
+                $this->db->insert('reference', $reference); 
+
         }
 }
 ?>
