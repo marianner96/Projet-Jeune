@@ -16,6 +16,7 @@ class Admin extends CI_Controller {
   public function index(){
     $data['title'] = 'Administratioin';
     $data['content'] = 'index';
+    $data['users_count'] = $this->users_model->countUsers();
     $this->load->view('templates/head', $data);
     $this->load->view('templates/admin', $data);
     $this->load->view('templates/foot');

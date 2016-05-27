@@ -43,7 +43,7 @@
         return false;
       } 
     }
-    public function is_logger(){
+    public function is_logged(){
       return $this->session->has_userdata('logged_in');
     }
     public function is_admin(){
@@ -68,6 +68,10 @@
       $this->db->where('id', $id_user);
       $this->db->update('jeune');
       return array('affectedRows' => $this->db->affected_rows());
+    }
+
+    public function countUsers(){
+      return $this->db->count_all_results('jeune');
     }
   }
 ?>
