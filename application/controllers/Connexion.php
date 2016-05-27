@@ -1,13 +1,13 @@
 <?php
 
-	class Connexion extends CI_Controller {
+	class Connexion extends J64_Controller {
 
-        public function __construct(){
-          parent::__construct();
-          $this->load->library("form_validation");
-          $this->load->model('users_model');
-          $this->load->library('session');
-        }
+		public function __construct(){
+			parent::__construct();
+			$this->load->library("form_validation");
+			$this->load->model('users_model');
+			$this->load->library('session');
+		}
 
 		public function index() {
 
@@ -43,7 +43,7 @@
 			$this->form_validation->set_rules('mois', 'mois de naisssance', 'required');
 			$this->form_validation->set_rules('annee', 'année de naisssance', 'required|exact_length[4]|is_natural');
 			$this->form_validation->set_rules('mail', 'e-mail', 'required|valid_email|is_unique[jeune.mail]',
-				array('is_unique' => "L'adresse mail est déjà utilisée"));
+			array('is_unique' => "L'adresse mail est déjà utilisée"));
 			$this->form_validation->set_rules('mdp', 'mot de passe', 'required');
 			
 
@@ -51,9 +51,14 @@
 			if ($this->form_validation->run()==FALSE) {
 				$this->load->view('form/jeune');
 			} else {
-                $this->users_model->create_user();
+				$this->users_model->create_user();
 				redirect('/jeune');
 			}
 			$this->load->view('templates/foot');
+		}
+
+		public function deconnexion(){
+			$this->session->sess_destroy();
+			redirect('/accueil');
 		}
 	}

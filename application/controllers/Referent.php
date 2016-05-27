@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Referent extends CI_Controller {
+class Referent extends J64_Controller {
 	
 	function validation($cle=''){
 		$data['title']=''; //Nom dans l'onglet

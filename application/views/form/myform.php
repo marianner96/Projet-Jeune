@@ -23,7 +23,7 @@
         <div class="field">
           <label for="email">Email</label>
           <div class="ui left icon input">
-            <input type="email" id="email" name="mail" value="<?php echo set_value('mail'); ?>">
+            <input tabindex="1" type="email" id="email" name="mail" value="<?php echo set_value('mail'); ?>">
             <i class="at icon"></i>
           </div>
           <?php if (form_error('email') != "") {echo "<div class=\"ui error message\">";echo form_error('email'); echo "</div>";} ?>
@@ -32,14 +32,14 @@
         <div class="field">
           <label for="mdp">Mot de passe</label>
           <div class="ui left icon input">
-            <input type="password" id="mdp" name="mdp" value=""> 
+            <input tabindex="2" type="password" id="mdp" name="mdp" value="">
             <i class="lock icon"></i>
           </div>
           <?php if (form_error('mdp') != "") {echo "<div class=\"ui error message\">";echo form_error('mdp'); echo "</div>";} ?>
         </div>
 
-        <input class="ui button pink" type="submit" value="Se connecter">
-        <a href="<?php echo site_url('connexion/inscription');?>" class="ui button">
+        <input tabindex="3" class="ui button pink" type="submit" value="Se connecter">
+        <a tabindex="4" href="<?php echo site_url('connexion/inscription');?>" class="ui button">
             <i class="signup icon"></i>
             Créer un compte
         </a>

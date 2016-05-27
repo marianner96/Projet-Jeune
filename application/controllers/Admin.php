@@ -1,45 +1,49 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends J64_Controller {
   public function __construct(){
     parent::__construct();
 
-    $this->load->model('users_model');
     $this->load->model('savoiretre_model');
+    $this->load->model('admin_model');
     $this->load->library('form_validation');
 
-    if(false && !$this->users_model->is_admin()){
+    $this->data['title'] = 'Administration';
+
+    if(false && !$this->data['is_admin']){
       show_error('Vous n\'avez pas la permission de voir cette page.', 403, 'Accès reffusé');
     }
   }
   public function index(){
-    $data['title'] = 'Administratioin';
-    $data['content'] = 'index';
-    $data['users_count'] = $this->users_model->countUsers();
-    $this->load->view('templates/head', $data);
-    $this->load->view('templates/admin', $data);
+    $this->data['content'] = 'index';
+    $this->data['users_count'] = $this->admin_model->countUsers();
+
+    $this->load->view('templates/head', $this->data);
+    $this->load->view('templates/admin', $this->data);
     $this->load->view('templates/foot');
   }
   public function savoir_etre(){
     if($this->uri->total_segments() == 2 ){
 
-      $data['content'] = 'savoir_etre';
-      $data['title'] = 'Savoir-être - Administration';
-      $data['savoir_etre'] = array(
+      $this->data['content'] = 'savoir_etre';
+      $this->data['title'] = 'Savoir-être - ' . $this->data['title'] ;
+
+      $this->data['savoir_etre'] = array(
         'Jeune' => $this->savoiretre_model->getJeune(false),
         'Référent' => $this->savoiretre_model->getReferent(false)
       );
+      $this->data['scripts'] = array('utils', 'savoir_etre');
 
-      $this->load->view('templates/head', $data);
-      $this->load->view('templates/admin', $data);
-      $this->load->view('templates/foot');
+      $this->load->view('templates/head', $this->data);
+      $this->load->view('templates/admin', $this->data);
+      $this->load->view('templates/foot', $this->data);
     }else{
       $this->output->set_content_type('application/json');
-      $this->checkAction();
+      $this->performAction();
     }
   }
-  private function checkAction(){
+  private function performAction(){
     
     $action = $this->uri->segment(3);
     $nbSegments = $this->uri->total_segments();

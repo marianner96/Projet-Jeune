@@ -1,5 +1,5 @@
 <?php
-class Jeune extends CI_Controller{
+class Jeune extends J64_Controller{
     public function __construct(){
           parent::__construct();
           $this->load->library("form_validation");

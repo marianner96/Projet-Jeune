@@ -5,4 +5,8 @@
     {
       $this->load->database();
     }
+
+    public function countUsers(){
+      return $this->db->count_all_results('jeune');
+    }
   }

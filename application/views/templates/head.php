@@ -1,6 +1,3 @@
-<?php
-  $this->load->helper('url');
-?>
 <!doctype html>
 <html>
   <head>
@@ -33,8 +30,25 @@
         <a class="item pink <?php echo !empty($menu) && $menu == 'jeune' ? 'active' : '' ?>" href="<?php echo site_url('jeune') ?>">
           Jeunes
         </a>
-        <div class="right menu">
-          <a class="item <?php echo !empty($menu) && $menu == 'admin' ? 'active' : '' ?>" href="<?php echo site_url('admin') ?>">Administration</a>
+        <?php
+          if(!empty($is_admin) && $is_admin){
+        ?>
+          <a class="item <?php echo !empty($menu) && $menu == 'admin' ? 'active' : '' ?>"
+             href="<?php echo site_url('admin') ?>">
+            Administration
+          </a>
+        <?php
+          }
+        ?>
+        <?php
+          if(!empty($is_logged) && $is_logged){
+        ?>
+          <div class="right menu">
+            <a class="item" href="<?php echo site_url('deconnexion') ?>">Déconnexion</a>
+          </div>
+        <?php
+          }
+        ?>
       </div>
     </nav>
   </header>

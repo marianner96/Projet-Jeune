@@ -70,8 +70,5 @@
       return array('affectedRows' => $this->db->affected_rows());
     }
 
-    public function countUsers(){
-      return $this->db->count_all_results('jeune');
-    }
   }
 ?>

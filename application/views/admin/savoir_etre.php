@@ -85,5 +85,3 @@
 <script>
   var reqUrl = '<?php echo site_url('/admin/savoir_etre/') ?>';
 </script>
-<script src="<?php echo base_url().'static/js/utils.js'?>"></script>
-<script src="<?php echo base_url().'static/js/savoir_etre.js'?>"></script>

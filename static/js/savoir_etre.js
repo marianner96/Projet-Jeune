@@ -71,6 +71,7 @@ function createSavoirEtre(){
   })
     .fail(function(xhr, status, msg){
       displayError(xhr.responseText, msg);
+      $(self).toggleClass('loading');
     });
 }
 
