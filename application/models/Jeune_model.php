@@ -25,8 +25,15 @@ class Jeune_model extends CI_Model {
                         'nom' => set_value('nom') , 
                         'prenom' => set_value('prenom'), 
                         'mail' => set_value('mail'));
-                //$this->db->insert('reference', $reference); 
+                $this->db->insert('reference', $reference);
+                $nombre =  count($this->input->post('savoirEtre'));
                 $lastID=$this->db->insert_id();
+                for($i=0;$i<$nombre;$i++){
+                        $savoir = array(
+                        'id_ref'=>$lastID,
+                        'id_savoir_etre'=>set_value('savoirEtre[]'));
+                        $this->db->insert('savoir_etre_user',$savoir);
+                }
         }
 } 
 ?>
