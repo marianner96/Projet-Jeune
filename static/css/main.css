@@ -21,12 +21,26 @@ aside.home{
 .relative{
   position:relative;
 }
+
+/* Admin */
+
 .customClearing::after{
   content:'.';
   visibility: hidden;
   clear: both;
   display: block;
 }
-.creationSavoirEtre, .ui.button.creationSavoirEtre{
+.creationSavoirEtre,
+.ui.button.creationSavoirEtre{
+  display: none;
+}
+/* Jeune - Liste références */
+.referencesHeader{
+  margin-bottom: -2em;
+}
+.selectionItem,
+.selectionItem:before,
+.selectionItem:after,
+.long{
   display: none;
 }

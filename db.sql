@@ -50,7 +50,6 @@ CREATE TABLE `reference` (
   `duree` VARCHAR(50) DEFAULT NULL,
   `endroit` VARCHAR(150) DEFAULT NULL,
   `commentaire` TEXT,
-  `savoir_etre_ref` VARCHAR(15) DEFAULT NULL,
   `etat` SMALLINT(6) DEFAULT NULL,
   `nom` VARCHAR(100) DEFAULT NULL,
   `prenom` VARCHAR(100) DEFAULT NULL,
@@ -66,10 +65,9 @@ CREATE TABLE `reference` (
 -- id_ref : identiant de la référence
 -- id_savoir_etre : identifiant du savoir être
 CREATE TABLE `savoir_etre_user` (
-  `id` INT (11) NOT NULL AUTO_INCREMENT,
   `id_ref` INT(11) DEFAULT NULL,
   `id_savoir_etre` INT(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id_ref`, `id_savoir_etre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Regroupement de référence
@@ -78,10 +76,9 @@ CREATE TABLE `savoir_etre_user` (
 -- lien_consultation : identifant unique alpha numérique de 40 caractères identifiant la groupement
 -- id_ref : identifiant une référence présente dans le groupement
 CREATE TABLE `groupement` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `lien_consultation` VARCHAR(40) DEFAULT NULL,
   `id_ref` INT(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`lien_consultation`, `id_ref`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Initialment prévu pour les connexion via twitter / google / fb -> à revoir car pas terrible du tout
