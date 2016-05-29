@@ -14,10 +14,10 @@ class Jeune extends J64_Controller{
   }
 
 	public function index(){
-    $data['content'] = 'accueil';
-    $data['menu'] = 'jeune';
-    $this->load->view('templates/head', $data);
-    $this ->load->view('templates/jeunes', $data);
+    $this->data['content'] = 'accueil';
+    $this->data['menu'] = 'jeune';
+    $this->load->view('templates/head', $this->data);
+    $this ->load->view('templates/jeunes', $this->data);
     $this->load->view('templates/foot');
 	}
 
@@ -30,21 +30,21 @@ class Jeune extends J64_Controller{
     $this->form_validation->set_rules('nom', 'Nom', 'required');
     $this->form_validation->set_rules('mail', 'Mail', 'valid_email|required');
 
-    $data['query'] = $this->savoiretre_model->getJeune();
-    $data['content'] = 'formulaire';
-    $data['menu'] = 'jeune';
+    $this->data['query'] = $this->savoiretre_model->getJeune();
+    $this->data['content'] = 'formulaire';
+    $this->data['menu'] = 'jeune';
     if ($this->form_validation->run() == FALSE){
-      $this->load->view('templates/head', $data);
-      $this->load->view('templates/jeunes', $data);
+      $this->load->view('templates/head', $this->data);
+      $this->load->view('templates/jeunes', $this->data);
       $this->load->view('templates/foot');
     }
     else{
       $data['content']='reference';
       $data['tab'] = $this->session->userdata('logged_in');
       $this->Jeune_model->creationReferences();
-      $this->load->view('templates/head', $data);
-      $this->load->view('PartieJeune/formsuccess',$data);
-      $this->load->view('templates/jeunes', $data);
+      $this->load->view('templates/head', $this->data);
+      $this->load->view('PartieJeune/formsuccess',$this->data);
+      $this->load->view('templates/jeunes', $this->data);
       $this->load->view('templates/foot');
     }
   }
@@ -61,23 +61,23 @@ class Jeune extends J64_Controller{
 
 
   public function consultant(){
-      $data['content'] = 'consultant';
-      $data['menu'] = 'jeune';
-      $this->load->view('templates/head', $data);
-      $this->load->view('templates/jeunes', $data);
+      $this->data['content'] = 'consultant';
+      $this->data['menu'] = 'jeune';
+      $this->load->view('templates/head', $this->data);
+      $this->load->view('templates/jeunes', $this->data);
       $this->load->view('templates/foot');
   }
 
   public function profil($action=""){
     if ($action == "")  {
-      $data['content'] = 'profil';
-      $data['menu'] = 'jeune';
+      $this->data['content'] = 'profil';
+      $this->data['menu'] = 'jeune';
       $tab = $this->session->userdata('logged_in');
-      $data['tab'] = $tab;
+      $this->data['tab'] = $tab;
 
 
-      $this->load->view('templates/head', $data);
-      $this->load->view('templates/jeunes', $data);
+      $this->load->view('templates/head', $this->data);
+      $this->load->view('templates/jeunes', $this->data);
       $this->load->view('templates/foot');
     } elseif ($action == "chmail") {
       $this->chmail();

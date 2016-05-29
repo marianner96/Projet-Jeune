@@ -126,8 +126,13 @@
 
   $('.list.selection .item')
     .click(function (e) {
-      if(selectGroup || e.target.classList.contains('button'))
+      // Si on a cliqué sur le bouton d'archive on s'arrete
+      if(selectGroup ||
+        e.target.classList.contains('button') ||
+        e.target.classList.contains('archive')
+      )
         return;
+      //Sinon on affiche les détails de la référence
       $(this)
         .find('.long')
         .toggle();
@@ -158,7 +163,13 @@
     ;
     selectGroup = !selectGroup;
   }
-
+  
+  /*
+  * On rentre dans la séléction quand on clique sur "Créer un groupement"
+  * On en sort en cliquant sur annuler
+  * Quand on entre dans la vue de séléction l'onglet des références validées
+  * est automatiquement séléctionné
+  */
   $('button[name=createGrp], button[name=cancel]')
     .click(function(){
       if(!selectGroup){
@@ -167,5 +178,10 @@
       }
       toggleView();
     });
-  $('')
+
+  //On sort de la séléction quand on change d'onglet
+  $('.top.menu .item[data-tab!=validee]').click(function(){
+    if(selectGroup)
+      toggleView();
+  })
 </script>

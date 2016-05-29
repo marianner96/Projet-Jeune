@@ -18,6 +18,7 @@ class Admin extends J64_Controller {
   public function index(){
     $this->data['content'] = 'index';
     $this->data['users_count'] = $this->admin_model->countUsers();
+    $this->data['refs_count'] = $this->admin_model->countRefs();
 
     $this->load->view('templates/head', $this->data);
     $this->load->view('templates/admin', $this->data);
