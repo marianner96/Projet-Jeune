@@ -61,10 +61,15 @@ class Jeune extends J64_Controller{
 
 
   public function consultant(){
-      $this->data['content'] = 'consultant';
+      $this->load->view('templates/head', $this->data);
+      $this->load->view('consultant/consultant', $this->data);
+      $this->load->view('templates/foot');
+  }
+
+  public function consultation(){
       $this->data['menu'] = 'jeune';
       $this->load->view('templates/head', $this->data);
-      $this->load->view('templates/jeunes', $this->data);
+      $this->load->view('consultant/consultation');
       $this->load->view('templates/foot');
   }
 
