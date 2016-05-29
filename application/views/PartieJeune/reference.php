@@ -53,6 +53,7 @@
                   <!-- Durée -->
                   <div class="four wide column header">
                     Durée
+                    g
                   </div>
                   <div class="twelve wide column">
                     <?php echo $reference['duree'] ?>

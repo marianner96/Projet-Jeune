@@ -85,7 +85,6 @@ class Jeune extends J64_Controller{
 
     public function reference(){
       $this->load->model('reference_model');
-
       $this->data['content'] = 'reference';
       $this->data['menu'] = 'jeune';
       $this->data['references'] = $this->reference_model->getRefByUser(1);
