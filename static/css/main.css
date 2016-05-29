@@ -44,3 +44,14 @@ aside.home{
 .long{
   display: none;
 }
+.reference i ~ .content{
+  width: 100%;
+}
+.reference.list .ui.grid{
+  margin-top:0;
+  margin-bottom:0;
+}
+.reference.list .ui.grid .column{
+  padding-bottom: 0;
+  padding-top: 0.5rem;
+}

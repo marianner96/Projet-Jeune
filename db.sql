@@ -34,7 +34,6 @@ CREATE TABLE `jeune` (
 -- id_user : identifiant de l'utilisateur faisant la demande de référence
 -- description : description de l'engagement
 -- duree : durée de l'engagement
--- endroit : milieu de l'engagement (association / club de sport...)
 -- commentaire : j'en sais rien
 -- savoir_etre_ref : toujours aucune idée
 -- etat : 1 = en cours de validation / 2 = validé / 3 = archivé
@@ -48,7 +47,6 @@ CREATE TABLE `reference` (
   `id_user` INT(11) DEFAULT NULL,
   `description` TEXT,
   `duree` VARCHAR(50) DEFAULT NULL,
-  `endroit` VARCHAR(150) DEFAULT NULL,
   `commentaire` TEXT,
   `etat` SMALLINT(6) DEFAULT NULL,
   `nom` VARCHAR(100) DEFAULT NULL,
