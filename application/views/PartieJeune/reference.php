@@ -94,6 +94,9 @@
         <?php
         }
       }
+      if($nb_references[2] == 0){
+        echo 'Pas encore de références ici.';
+      }
     ?>
     <!-- Fin de l'affichage  des références validées-->
   </div>

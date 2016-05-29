@@ -28,6 +28,7 @@
       ';
       $queryRef = $this->db->query($sqlRef, array($id));
       $querySE = $this->db->query($sqlSE, array($id));
+      $res = array();
       foreach ($queryRef->result_array() as $ref){
         $res[$ref['id']] = $ref;
       }
