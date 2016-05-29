@@ -7,7 +7,15 @@
     <i class="icon plus"></i>
     Demande de référence
   </a>
-  <button class="ui right floated button pink">
+  <button class="ui right floated button pink selectionView" name="cancel">
+    <i class="icon cancel"></i>
+    Annuler
+  </button>
+  <button class="ui right floated button pink selectionView" name="submit">
+    <i class="icon check"></i>
+    Valider
+  </button>
+  <button class="ui right floated button pink overView" name="createGrp">
     <i class="icon plus"></i>
     Créer un groupement
   </button>
@@ -35,8 +43,8 @@
       foreach ($references as $reference) {
       if($reference['etat'] == 2) {
         ?>
-        <div class="item">
-          <div class="right floated content">
+        <div class="item" >
+          <div class="right floated content overView">
             <div class="ui button">
               <i class="icon archive"></i>
               Archiver
@@ -95,6 +103,9 @@
         <?php
         }
       }
+      if($nb_references[2] == 0){
+        echo 'Pas encore de références ici.';
+      }
     ?>
     <!-- Fin de l'affichage  des références validées-->
   </div>
@@ -111,11 +122,18 @@
     .tab();
   $('.ui.checkbox')
     .checkbox();
+
   var selectGroup = false;
-  $('div[data-tab=validee] .list.selection .item')
+
+  $('.list.selection .item')
     .click(function (e) {
-      if(selectGroup || e.target.classList.contains('button'))
+      // Si on a cliqué sur le bouton d'archive on s'arrete
+      if(selectGroup ||
+        e.target.classList.contains('button') ||
+        e.target.classList.contains('archive')
+      )
         return;
+      //Sinon on affiche les détails de la référence
       $(this)
         .find('.long')
         .toggle();
@@ -124,4 +142,47 @@
         .toggleClass('right')
         .toggleClass('down');
     });
+
+  $('div[data-tab=validee] .list.selection .item')
+    .click(function(){
+      if(!selectGroup)
+        return;
+      $(this).toggleClass('active');
+    })
+
+  function toggleView(){
+    $('.selectionView').toggle();
+    $('.overView').toggle();
+
+    $('div[data-tab=validee] .reference .item')
+      .toggleClass('active', false)
+      .get(0)
+      .dataset
+      .state = selectGroup
+        ?'overview'
+        :'selection'
+    ;
+    selectGroup = !selectGroup;
+  }
+  
+  /*
+  * On rentre dans la séléction quand on clique sur "Créer un groupement"
+  * On en sort en cliquant sur annuler
+  * Quand on entre dans la vue de séléction l'onglet des références validées
+  * est automatiquement séléctionné
+  */
+  $('button[name=createGrp], button[name=cancel]')
+    .click(function(){
+      if(!selectGroup){
+        $('.top.menu .item:first-child')
+          .click();
+      }
+      toggleView();
+    });
+
+  //On sort de la séléction quand on change d'onglet
+  $('.top.menu .item[data-tab!=validee]').click(function(){
+    if(selectGroup)
+      toggleView();
+  })
 </script>
