@@ -2,6 +2,9 @@
 class Jeune extends J64_Controller{
   public function __construct(){
     parent::__construct();
+    if(!$this->data['is_logged']){
+      redirect('/connexion');
+    }
     $this->load->library("form_validation");
     $this->load->library('session');
     $this->load->library('PasswordHash', array(8, FALSE));

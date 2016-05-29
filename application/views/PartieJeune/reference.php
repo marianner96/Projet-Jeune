@@ -7,7 +7,15 @@
     <i class="icon plus"></i>
     Demande de référence
   </a>
-  <button class="ui right floated button pink">
+  <button class="ui right floated button pink selectionView" name="cancel">
+    <i class="icon cancel"></i>
+    Annuler
+  </button>
+  <button class="ui right floated button pink selectionView" name="submit">
+    <i class="icon check"></i>
+    Valider
+  </button>
+  <button class="ui right floated button pink overView" name="createGrp">
     <i class="icon plus"></i>
     Créer un groupement
   </button>
@@ -35,8 +43,8 @@
       foreach ($references as $reference) {
       if($reference['etat'] == 2) {
         ?>
-        <div class="item">
-          <div class="right floated content">
+        <div class="item" >
+          <div class="right floated content overView">
             <div class="ui button">
               <i class="icon archive"></i>
               Archiver
@@ -113,8 +121,10 @@
     .tab();
   $('.ui.checkbox')
     .checkbox();
+
   var selectGroup = false;
-  $('div[data-tab=validee] .list.selection .item')
+
+  $('.list.selection .item')
     .click(function (e) {
       if(selectGroup || e.target.classList.contains('button'))
         return;
@@ -126,4 +136,36 @@
         .toggleClass('right')
         .toggleClass('down');
     });
+
+  $('div[data-tab=validee] .list.selection .item')
+    .click(function(){
+      if(!selectGroup)
+        return;
+      $(this).toggleClass('active');
+    })
+
+  function toggleView(){
+    $('.selectionView').toggle();
+    $('.overView').toggle();
+
+    $('div[data-tab=validee] .reference .item')
+      .toggleClass('active', false)
+      .get(0)
+      .dataset
+      .state = selectGroup
+        ?'overview'
+        :'selection'
+    ;
+    selectGroup = !selectGroup;
+  }
+
+  $('button[name=createGrp], button[name=cancel]')
+    .click(function(){
+      if(!selectGroup){
+        $('.top.menu .item:first-child')
+          .click();
+      }
+      toggleView();
+    });
+  $('')
 </script>

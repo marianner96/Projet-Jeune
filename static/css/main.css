@@ -38,9 +38,7 @@ aside.home{
 .referencesHeader{
   margin-bottom: -2em;
 }
-.selectionItem,
-.selectionItem:before,
-.selectionItem:after,
+.ui.button.selectionView,
 .long{
   display: none;
 }
@@ -54,4 +52,13 @@ aside.home{
 .reference.list .ui.grid .column{
   padding-bottom: 0;
   padding-top: 0.5rem;
+}
+.reference .item[data-state='selection'] > i.icon:before{
+  content : "\f096";
+}
+.reference .item[data-state='selection'].active > i.icon:before{
+  content : "\f046";
+}
+.reference .item[data-state='selection'] .long{
+  display: none!important;
 }
