@@ -25,14 +25,14 @@ class LinkGenerator
    * Génère un id unique
    *
    * @param int    $nb    le nombre de caractère à générer
-   * @param string $salt  sel utilisé pour la génération de la graine de la
-   *  fonction srand
    * @param string $table nom de la table pour la vérification de l'existence
    * @param string $field nom du champ de la table $table pour la vérification
    *  de l'existence
+   * @param string $salt  sel utilisé pour la génération de la graine de la
+   *  fonction srand
    * @return string       l'id généré
    */
-  private function generateId($nb, $salt = '', $table, $field){
+  private function generateId($nb, $table, $field,  $salt = ''){
     $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     $seed = base_convert(hash('sha512', $salt, true), 16, 10) * (double)microtime() * time();
     srand((int)$seed);
@@ -50,7 +50,7 @@ class LinkGenerator
    *  de donnée
    * @param string $table table de la base de donnée contenant les identifants à
    *  vérifier
-   * @param string $field champs de la base de donnée contenant les identifants à
+   * @param string $field champ de la base de donnée contenant les identifants à
    *  vérifier
    * @return bool retourne FALSE si $id existe déjà TRUE sinon
    */
@@ -65,15 +65,15 @@ class LinkGenerator
    * Crée un id unique
    *
    * @param int    $nb    la longueur de l'id
-   * @param string $salt  sel utilisé lors de la création de l'id
    * @param string $table paramètre de la base de donnée sous la forme
    *  table.champ
+   * @param string $salt  sel utilisé lors de la création de l'id
    * @return null|string  renvoie l'id généré ou NULL si une erreur est survenue
    */
-  public function create($nb, $salt, $table = ''){
+  public function create($nb, $table, $salt = ''){
     $dbParam = explode('.', $table);
 
-    if(!sizeof($dbParam))
+    if(sizeof($dbParam) != 2 || $nb < 0)
       return NULL;
 
     return $this->generateId($nb, $salt, $dbParam[0], $dbParam[1]);
