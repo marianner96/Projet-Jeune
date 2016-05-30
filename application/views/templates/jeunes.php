@@ -11,7 +11,7 @@
         <a class="item <?php echo !empty($content) && ($content == 'reference' || $content == 'formulaire') ? 'active' : '' ?>" href="<?php echo site_url('jeune/reference')?>">
           Référence
         </a>
-        <a class="item <?php echo !empty($content) && $content == 'consultant' ? 'active' : '' ?>" href="<?php echo site_url('jeune/consultant') ?>">
+        <a class="item <?php echo !empty($content) && $content == 'consultant' ? 'active' : '' ?>" href="<?php echo site_url('consultant/consultant') ?>">
           Consultant
         </a>
       </div>

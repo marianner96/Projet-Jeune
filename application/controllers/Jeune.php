@@ -60,7 +60,7 @@ class Jeune extends J64_Controller{
   }
 
 
-  public function consultant(){
+  /*public function consultant(){
       $this->load->view('templates/head', $this->data);
       $this->load->view('consultant/consultant', $this->data);
       $this->load->view('templates/foot');
@@ -71,7 +71,7 @@ class Jeune extends J64_Controller{
       $this->load->view('templates/head', $this->data);
       $this->load->view('consultant/consultation');
       $this->load->view('templates/foot');
-  }
+  }*/
 
   public function profil($action=""){
     if ($action == "")  {
