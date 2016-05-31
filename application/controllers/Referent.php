@@ -8,6 +8,7 @@ class Referent extends J64_Controller {
 		//$data['menu']=''; Dans le menu en haut
 		$this->load->model('reference_model');
 		$data['ref'] = $this->reference_model->getRef($cle);
+		$data['savoirEtre'] = $this->reference_model->getSavoirByRef($cle);
 
 		$this->load->library("form_validation");
 
