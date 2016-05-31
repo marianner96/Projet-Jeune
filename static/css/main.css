@@ -53,12 +53,12 @@ aside.home{
   padding-bottom: 0;
   padding-top: 0.5rem;
 }
-.reference .item[data-state='selection'] > i.icon:before{
+.reference .item.state-selection > i.icon:before{
   content : "\f096";
 }
-.reference .item[data-state='selection'].active > i.icon:before{
+.reference .item.state-selection.active > i.icon:before{
   content : "\f046";
 }
-.reference .item[data-state='selection'] .long{
+.reference .item.state-selection .long{
   display: none!important;
 }

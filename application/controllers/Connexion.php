@@ -1,12 +1,13 @@
 <?php
 
-	class Connexion extends J64_Controller {
+	class Connexion extends CI_Controller {
 
 		public function __construct(){
 			parent::__construct();
 			$this->load->library("form_validation");
 			$this->load->model('users_model');
 			$this->load->library('session');
+                        $this->load->helper('url');
 		}
 
 		public function index() {
@@ -48,6 +49,7 @@
 			
 
 			$this->load->view('templates/head');
+
 			if ($this->form_validation->run()==FALSE) {
 				$this->load->view('form/jeune');
 			} else {

@@ -39,8 +39,8 @@ class Jeune extends J64_Controller{
       $this->load->view('templates/foot');
     }
     else{
-      $data['content']='reference';
-      $data['tab'] = $this->session->userdata('logged_in');
+      $this->data['content']='reference';
+      $this->data['tab'] = $this->session->userdata('logged_in');
       $this->Jeune_model->creationReferences();
       $this->load->view('templates/head', $this->data);
       $this->load->view('PartieJeune/formsuccess',$this->data);
@@ -93,11 +93,13 @@ class Jeune extends J64_Controller{
 
   public function reference(){
     $this->load->model('reference_model');
+    $jeune = $this->session->userdata('logged_in');
 
     $this->data['content'] = 'reference';
     $this->data['menu'] = 'jeune';
-    $this->data['references'] = $this->reference_model->getRefByUser(1);
-    $this->data['nb_references'] = $this->reference_model->countRefUser(1);
+    
+    $this->data['references'] = $this->reference_model->getRefByUser($jeune['id']);
+    $this->data['nb_references'] = $this->reference_model->countRefUser($jeune['id']);
 
     $this->load->view('templates/head', $this->data);
     $this->load->view('templates/jeunes', $this->data);

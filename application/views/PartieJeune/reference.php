@@ -24,11 +24,11 @@
 <div class="ui top attached tabular menu">
   <a class="item active" data-tab="validee">
     Validées
-    <label class="ui label green"><?php echo $nb_references[1] ?></label>
+    <label class="ui label green"><?php echo $nb_references[2] ?></label>
   </a>
   <a class="item" data-tab="non-validee">
     En cours de validation
-    <label class="ui label orange"><?php echo $nb_references[2] ?></label>
+    <label class="ui label orange"><?php echo $nb_references[1] ?></label>
   </a>
   <a class="item" data-tab="archivee">
     Archivées
@@ -152,16 +152,12 @@
   function toggleView(){
     $('.selectionView').toggle();
     $('.overView').toggle();
-
+    selectGroup = !selectGroup;
+    if(!$('div[data-tab=validee] .reference .item').length)
+      return;
     $('div[data-tab=validee] .reference .item')
       .toggleClass('active', false)
-      .get(0)
-      .dataset
-      .state = selectGroup
-        ?'overview'
-        :'selection'
-    ;
-    selectGroup = !selectGroup;
+      .toggleClass('state-selection', selectGroup);
   }
   
   /*
@@ -181,6 +177,7 @@
 
   //On sort de la séléction quand on change d'onglet
   $('.top.menu .item[data-tab!=validee]').click(function(){
+    console.log('lol');
     if(selectGroup)
       toggleView();
   })

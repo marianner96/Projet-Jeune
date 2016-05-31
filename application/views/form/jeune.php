@@ -1,7 +1,7 @@
 <div class="separateur"></div>
 <div class="ui container">
 
-	<?php echo form_open('connexion/inscription', array('class' => 'ui form')); ?>
+	<?php echo form_open('connexion/inscription', array('class' => 'ui error form')); ?>
 
 
 	<h3>Inscrivez-vous ! (C'est sympa ici)</h3>
@@ -12,7 +12,7 @@
 		<input type="text" name="nom" value="<?php echo set_value('nom'); ?>">
 		
 	</div>
-	<?php if (form_error('nom') != "") {echo "<div class='ui error message'>";echo form_error('nom'); echo "</div>";} ?>
+	<?php echo form_error('nom',"<div class='ui error message'>","</div>") ?>
 
 
 
@@ -20,7 +20,7 @@
 		<label>Prénom </label>
 		<input type="text" name="prenom" value="<?php echo set_value('prenom'); ?>">
 	</div>
-	<?php if (form_error('prenom') != "") {echo "<div class='ui error message'>";echo form_error('prenom'); echo "</div>";} ?>
+	<?php echo form_error('prenom','<div class="ui error message">',"</div>")?>
 
 
 	<div class="field">
@@ -53,15 +53,23 @@
 			</div>
 		</div>
 	</div>
-	<?php if ((form_error('jour') != "") || (form_error('mois') != "") || (form_error('annee') != "")) 
-	{echo "<div class='ui error message'>";echo form_error('jour'); echo form_error('mois'); echo form_error('annee') ; echo "</div>";} ?>
+	<?php 
+          if ((form_error('jour') != "") || (form_error('mois') != "") || (form_error('annee') != "")) 
+	  {
+            echo "<div class='ui error message'>";
+            echo form_error('jour');
+            echo form_error('mois');
+            echo form_error('annee') ;
+            echo "</div>";
+          } 
+        ?>
 
 
 	<div class="field">
 		<label>E-mail </label>
 		<input type="text" name="mail" value="<?php echo set_value('mail'); ?>">
 	</div>
-	<?php if (form_error('mail') != "") {echo "<div class='ui error message'>";echo form_error('mail'); echo "</div>";} ?>
+	<?php echo form_error('mail','<div class="ui error message">', "</div>"); ?>
 
 
 
@@ -69,7 +77,7 @@
 		<label>Mot de passe</label>
 		<input type="password" name="mdp" value="">
 	</div>
-	<?php if (form_error('mdp') != "")  {echo "<div class='ui error message'>"; echo form_error('mdp'); echo "</div>";} ?>
+	<?php echo form_error('mdp', '<div class="ui error message">',"</div>"); ?>
 
 	
 	<input class="ui button pink" type="submit" value="Valider">
