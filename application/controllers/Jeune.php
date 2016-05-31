@@ -32,20 +32,15 @@ class Jeune extends J64_Controller{
 
     $this->data['query'] = $this->savoiretre_model->getJeune();
     $this->data['content'] = 'formulaire';
-    $this->data['menu'] = 'jeune';
     if ($this->form_validation->run() == FALSE){
       $this->load->view('templates/head', $this->data);
       $this->load->view('templates/jeunes', $this->data);
       $this->load->view('templates/foot');
     }
     else{
-      $data['content']='reference';
-      $data['tab'] = $this->session->userdata('logged_in');
       $this->Jeune_model->creationReferences();
-      $this->load->view('templates/head', $this->data);
-      $this->load->view('PartieJeune/formsuccess',$this->data);
-      $this->load->view('templates/jeunes', $this->data);
-      $this->load->view('templates/foot');
+      $this->session->set_flashdata('validation', [$this->input->post('nom'), $this->input->post('prenom')]);
+      redirect('/jeune/reference');
     }
   }
 
@@ -59,24 +54,9 @@ class Jeune extends J64_Controller{
     }
   }
 
-
-  /*public function consultant(){
-      $this->load->view('templates/head', $this->data);
-      $this->load->view('consultant/consultant', $this->data);
-      $this->load->view('templates/foot');
-  }
-
-  public function consultation(){
-      $this->data['menu'] = 'jeune';
-      $this->load->view('templates/head', $this->data);
-      $this->load->view('consultant/consultation');
-      $this->load->view('templates/foot');
-  }*/
-
   public function profil($action=""){
     if ($action == "")  {
       $this->data['content'] = 'profil';
-      $this->data['menu'] = 'jeune';
       $tab = $this->session->userdata('logged_in');
       $this->data['tab'] = $tab;
 
@@ -93,6 +73,8 @@ class Jeune extends J64_Controller{
 
   public function reference(){
     $this->load->model('reference_model');
+    $this->data['validation']=$this->session->userdata('validation');
+    $this->data['tab'] = $this->session->userdata('logged_in');
 
     $this->data['content'] = 'reference';
     $this->data['menu'] = 'jeune';
