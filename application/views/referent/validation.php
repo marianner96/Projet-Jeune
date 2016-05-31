@@ -2,24 +2,19 @@
   <div class="ui stackable two column divided grid"> 
     <div class="column">
       <div class="ui pink segment">
-        Confirmez cette expérience que vous avez pu constater au contact de ce jeune.
+        Confirmez cette expérience que vous avez pu constater au contact de ce jeune. <br>
 
-        <div class="ui card">
-          <div class="content">
+            <h2><?php echo($ref['nom'].' '.$ref{'prenom'});?></h2>
+            <h4 class="ui dividing header">Description</h4>
 
-            <div class="header"><?php echo($ref['nom'].' '.$ref{'prenom'});?></div>
-            <div class="description">
-              <h5>Description :</h5>
-              <?php echo($ref['description']) ?>
-              <h5>Durée de l'engagement :</h5> <?php echo($ref['duree']) ?>
-              <h5>Savoirs-être dévoloppés :</h5>
-            </div>
-          </div>
-          <div class="extra content">
-            <span class="right floated"> **RECUPERER MAIL DU JEUNE** </span>
-          </div>
+            <?php echo($ref['description']) ?>
+            <h4 class="ui dividing header">Durée de l'engagement</h4> <?php echo($ref['duree']) ?>
+            
+            <h4 class="ui dividing header">Savoirs-être dévoloppés</h4>
+            <?php foreach ($savoirEtre as $ligne){
+              echo($ligne."\n");  //Haha ..
+            }?>
         </div>
-      </div>
     </div>
 
     <div class="column">

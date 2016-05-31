@@ -1,1 +1,1 @@
-accueil
+<h1>Bienvenue sur le Projet Jeune</h1>

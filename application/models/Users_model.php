@@ -4,6 +4,7 @@
       $this->load->database();
       $this->load->library('PasswordHash', array(8, FALSE)); 
       $this->load->library('session');
+      $this->load->helper('date');
     }
 
     public function create_user(){
@@ -17,7 +18,14 @@
             $this->input->post('jour'),
         'mdp' => $this->passwordhash->HashPassword($this->input->post('mdp'))
       );
-      return $this->db->insert('jeune', $data);
+      $this->db->insert('jeune', $data);
+      $ajout = array(
+        'id_user' => $this->db->insert_id(),
+        'type' => '1',
+        'date' => unix_to_human(time()),
+        'id_ref' => '0'
+        );
+      $this->db->insert('dashboard', $ajout);
     }
 
     public function login($mail, $password) {
