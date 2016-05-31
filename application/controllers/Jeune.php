@@ -16,8 +16,9 @@ class Jeune extends J64_Controller{
 	public function index(){
     $this->data['content'] = 'accueil';
     $this->data['menu'] = 'jeune';
+
     $this->load->view('templates/head', $this->data);
-    $this ->load->view('templates/jeunes', $this->data);
+    $this->load->view('templates/jeunes', $this->data);
     $this->load->view('templates/foot');
 	}
 
