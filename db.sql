@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS consultant;
 DROP TABLE IF EXISTS groupement;
 DROP TABLE IF EXISTS connexion;
 DROP TABLE IF EXISTS savoir_etre;
+DROP TABLE IF EXISTS dashboard;
 
 -- Information sur le jeune (utilisateur)
 
@@ -103,6 +104,20 @@ CREATE TABLE `savoir_etre` (
   `type` SMALLINT(6) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Création ou validation d'une référence
+
+-- id_user : identifiant du jeune
+-- type : 1 ->création du compte / 2 -> demande de validation envoyée / 3 -> validation d'une référence
+-- date : date de la création / validation
+-- id_ref : identifiant de la référence
+
+CREATE TABLE `dashboard` (
+  `id_user` INT(11) DEFAULT NULL,
+  `type` SMALLINT(1) DEFAULT '1',
+  `date` DATE DEFAULT NULL,
+  `id_ref` INT(11) DEFAULT NULL
+)
 
 -- Savoir-être par défaut
 
