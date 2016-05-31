@@ -12,7 +12,7 @@
             
             <h4 class="ui dividing header">Savoirs-être dévoloppés</h4>
             <?php foreach ($savoirEtre as $ligne){
-              echo($ligne."\n");  //Haha
+              echo($ligne."\n");  //Haha ..
             }?>
         </div>
     </div>
