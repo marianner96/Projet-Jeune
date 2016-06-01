@@ -11,7 +11,7 @@
             <h4 class="ui dividing header">Durée de l'engagement</h4> <?php echo($ref['duree']) ?>
             
             <h4 class="ui dividing header">Savoirs-être dévoloppés</h4>
-            <?php foreach ($savoirEtre as $ligne){
+            <?php foreach ($savoirEtreJeune as $ligne){
               echo($ligne."\n");  //Haha ..
             }?>
         </div>
@@ -19,19 +19,15 @@
 
     <div class="column">
       <div class="ui green segment">
-        <form class="ui form">
+        <?php echo validation_errors(); ?>
+        <?php echo form_open('referent/validation/'.$cle, array('class' => 'ui small form')); ?>
           <h4 class="ui dividing header">Savoir-être</h4>
       		<div class="field">
             <select multiple="" class="ui dropdown" name="savoirEtre">
               <option value="">Selectionner ses savoir être</option>
-              <option value="CO">Confiance</option>
-              <option value="BI">Bienveillance</option> 
-              <option value="RE">Respect</option> 
-              <option value="HO">Honnêteté</option> 
-              <option value="TO">Tolérance</option> 
-              <option value="JU">Juste</option> 
-              <option value="IM">Impartial</option> 
-              <option value="TR">Travail</option> 
+              <?php foreach ($savoirEtreRef as $savoir) {
+                echo('<option value="'.$savoir->id.'">'.$savoir->nom.'</option>');
+              } ?>
             </select>
           </div>
 

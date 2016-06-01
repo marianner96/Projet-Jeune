@@ -6,6 +6,7 @@ class Jeune_model extends CI_Model {
                 parent::__construct();
                 $this->load->database();
                 $this->load->library('session');
+                $this->load->helper('date');
         }
 
         public function savoiretre()
@@ -16,6 +17,8 @@ class Jeune_model extends CI_Model {
         }
         public function creationReferences()
         {
+                $this->load->library('linkGenerator');
+                $lien = $this->linkgenerator->create(40,"reference.lien_validation");
                 $tab = $this->session->userdata('logged_in');
                 $reference = array(
                         'id_user' => $tab['id'] ,
@@ -24,12 +27,13 @@ class Jeune_model extends CI_Model {
                         'etat' => 1, 
                         'nom' => set_value('nom') , 
                         'prenom' => set_value('prenom'), 
-                        'mail' => set_value('mail'));
+                        'mail' => set_value('mail'),
+                        'lien_validation'=> $lien);
                 $this->db->insert('reference', $reference);
                 $dashboard = array(
                         'id_user' => $tab['id'],
                         'type' => '2',
-                        'date' => unix_to_human(time()),
+                        'date' => date('Y-m-d'),
                         'id_ref' => $this->db->insert_id());
                 $this->db->insert('dashboard', $dashboard);
                 $nombre =  count($this->input->post('savoirEtre'));
@@ -43,18 +47,11 @@ class Jeune_model extends CI_Model {
         }
 
         public function creadash() {
+                $sql = 'SELECT date, type FROM dashboard WHERE id_user = ? ORDER BY date DESC';
                 $id_user = $this->session->userdata('logged_in')['id'];
-                $this->db->select('type');
-                $this->db->where('id_user', $id_user);
-                $query = $this->db->get('dashboard');
-                $qr = $query->row();
-                if ($qr->type == 1) {
-                        $tab = array(
-                                'date'=> $qr->date
-                                );
-                } elseif ($qr->type == 2) {
-                        # code...
-                }
+                $query = $this->db->query($sql, array($id_user));
+                $tab = $query->result_array();
+                return $tab;
         }
 } 
 ?>
