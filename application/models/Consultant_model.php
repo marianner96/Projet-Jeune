@@ -8,11 +8,11 @@ class Consultant_model extends CI_Model {
                 $this->load->library('session');
         }
 
-        // public function affichage($lien)
-        // {
-        //         $this->db->select('nom');
-        //         $query = $this->db->get('savoir_etre');
-        //         return $query->result();
-        // }
+        public function affichage($lien)
+        {
+                $this->db->select('nom');
+                $query = $this->db->get('savoir_etre');
+                return $query->result();
+        }
 } 
 ?>
