@@ -39,11 +39,6 @@ class Jeune extends J64_Controller{
       $this->load->view('templates/foot');
     }
     else{
-<<<<<<< HEAD
-      $this->data['content']='reference';
-      $this->data['tab'] = $this->session->userdata('logged_in');
-=======
->>>>>>> 5c107706764333cf62129107f1ce12cde1e743e8
       $this->Jeune_model->creationReferences();
       $this->session->set_flashdata('validation', [$this->input->post('nom'), $this->input->post('prenom')]);
       redirect('/jeune/reference');
