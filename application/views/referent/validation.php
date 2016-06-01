@@ -1,10 +1,9 @@
 <div class="ui container">
+  Confirmez cette expérience que vous avez pu constater au contact de ce jeune. <br>
   <div class="ui stackable two column divided grid"> 
     <div class="column">
       <div class="ui pink segment">
-        Confirmez cette expérience que vous avez pu constater au contact de ce jeune. <br>
-
-            <h2><?php echo($ref['nom'].' '.$ref{'prenom'});?></h2>
+            <h2><?php echo($infoJeune['nom'].' '.$infoJeune{'prenom'});?></h2>
             <h4 class="ui dividing header">Description</h4>
 
             <?php echo($ref['description']) ?>
@@ -12,8 +11,17 @@
             
             <h4 class="ui dividing header">Savoirs-être dévoloppés</h4>
             <?php foreach ($savoirEtreJeune as $ligne){
-              echo($ligne."\n");  //Haha ..
+              echo"<div class=\"ui label\">";
+              echo($ligne);  //Haha ..
+              echo "</div>";
             }?>
+            
+            <div class="ui right aligned grid">
+              <div class="sixteen wide column">
+                <i class="mail icon"></i><a href=<?php echo ("mailto:".$infoJeune['mail']);?> >Contacter</a>  
+              </div>
+            </div>
+            
         </div>
     </div>
 
@@ -57,10 +65,6 @@
               </div>
             </div>
           </div>
-          <div class="field">
-            <label>E-mail</label>
-            <input value=<?php echo($ref['mail']) ?> type="email">
-          </div>
 
           <h4 class="ui dividing header">Ajouter un commentaire</h4>
           <div class="field" name="commentary">
@@ -80,24 +84,24 @@
 $('select.dropdown')
   .dropdown()
 ;
-$('.ui.form') // Regles formulaire
-  .form({
-    fields: {
-      savoiretre :{
-        identifier :'savoirEtre',
-        rules: [
-          {
-            type   : 'maxCount[4]',
-            prompt : 'Veuillez selectionner au maximum 4 savoir-être'
-          },
-          {
-            type   : 'minCount[1]',
-            prompt : 'Veuillez selectionner au minimum 1 savoir-être'
-          }
-        ]
-      }
-    }
-  })
+// $('.ui.form') // Regles formulaire
+//   .form({
+//     fields: {
+//       savoiretre :{
+//         identifier :'savoirEtre',
+//         rules: [
+//           {
+//             type   : 'maxCount[4]',
+//             prompt : 'Veuillez selectionner au maximum 4 savoir-être'
+//           },
+//           {
+//             type   : 'minCount[1]',
+//             prompt : 'Veuillez selectionner au minimum 1 savoir-être'
+//           }
+//         ]
+//       }
+//     }
+//   })
 
 
 </script>

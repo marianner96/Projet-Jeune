@@ -15,11 +15,6 @@
     }
 
     public function getSavoirByRef($ref){
-      // recup id de la ref      
-      $this->db->select('id'); 
-      $this->db->where('lien_validation', $ref); // selectionne tout parmis ceux qui ont $ref dans le champ lien_validation
-      $query = $this->db->get('reference');
-      $idRef = $query->row_array();
       // recup id des savoirs etres
       $sqlRef= '
         SELECT nom
@@ -33,6 +28,20 @@
       return $res;
     }
 
+    public function getInfoJeuneByRef($ref){
+      //recupere id du jeune
+      $this->db->select('id_user'); 
+      $this->db->where('lien_validation', $ref); // selectionne tout parmis ceux qui ont $ref dans le champ lien_validation
+      $query = $this->db->get('reference');
+      $idJeune = $query->row_array();
+
+      //recupere info jeune
+      $this->db->select(); 
+      $this->db->where('id', $idJeune['id_user']); // selectionne tout parmis ceux qui ont $ref dans le champ lien_validation
+      $query = $this->db->get('jeune');
+      $jeune = $query->row_array();
+      return $jeune;
+    }
 
     public function getRefByUser($id){
       $sqlRef = '

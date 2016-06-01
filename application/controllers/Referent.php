@@ -21,12 +21,13 @@ class Referent extends J64_Controller {
 		$data['ref'] = $this->reference_model->getRef($cle); // Infos sur la référence
 		$data['savoirEtreJeune'] = $this->reference_model->getSavoirByRef($cle); // Savoir être selectionnés par le jeune
 		$data['savoirEtreRef'] = $this->savoiretre_model->getReferent(); // Savoir être disponnible pour le referent
+		$data['infoJeune'] = $this->reference_model->getInfoJeuneByRef($cle);
 
 		//Regles du formulaire de confirmation
 		$this->load->helper(array('form', 'url'));
-		$this->form_validation->set_rules('jourNaissance', 'Jour : date de Naissance', 'required');
-		$this->form_validation->set_rules('moisNaissance', 'Mois : date de Naissance', 'required');
-		$this->form_validation->set_rules('anneeNaissance', 'Année : date de Naissance', 'required');
+		$this->form_validation->set_rules('jourNaissance', 'Jour : date de Naissance', 'trim|required|max_length[2]|is_natural');
+		$this->form_validation->set_rules('moisNaissance', 'Mois : date de Naissance', 'trim|required');
+		$this->form_validation->set_rules('anneeNaissance', 'Année : date de Naissance', 'trim|required|max_length[4]|is_natural');
 
 		$this->load->view('templates/head');
 			if ($this->form_validation->run()==FALSE) {
