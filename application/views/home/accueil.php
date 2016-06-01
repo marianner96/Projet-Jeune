@@ -52,7 +52,7 @@
         <div class="ui sub header blue">
           3<sup>ème</sup> étape
         </div>
-        La consulatation
+        La consultation
       </h2>
       Validez cet engagement en prenant en compte sa valeur.
     </div>
