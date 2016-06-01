@@ -1,5 +1,5 @@
 <div class="ui container">
-	<h1>Modifier ses informations personnelles</h1>
+	<h1>Mes informations personnelles</h1>
 
 	<div class="ui message error hidden">
 		<i class="icon close"></i>

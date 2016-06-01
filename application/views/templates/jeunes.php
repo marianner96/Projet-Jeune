@@ -9,7 +9,10 @@
           Mon profil
         </a>
         <a class="item <?php echo !empty($content) && ($content == 'reference' || $content == 'formulaire') ? 'active' : '' ?>" href="<?php echo site_url('jeune/reference')?>">
-          Référence
+          Références
+        </a>
+        <a class="item <?php echo !empty($content) && $content == 'listes-references' ? 'active' : '' ?>" href="<?php echo site_url('jeune/listes-references') ?>">
+          Listes de mes références
         </a>
         <a class="item <?php echo !empty($content) && $content == 'consultant' ? 'active' : '' ?>" href="<?php echo site_url('consultant/consultant') ?>">
           Consultant
