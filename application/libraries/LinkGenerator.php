@@ -76,6 +76,6 @@ class LinkGenerator
     if(sizeof($dbParam) != 2 || $nb < 0)
       return NULL;
 
-    return $this->generateId($nb, $salt, $dbParam[0], $dbParam[1]);
+    return $this->generateId($nb, $dbParam[0], $dbParam[1], $salt);
   }
 }
