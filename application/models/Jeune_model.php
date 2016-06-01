@@ -49,14 +49,13 @@ class Jeune_model extends CI_Model {
     $dashboard = array(
       'id_user' => $user,
       'type' => '2',
-      'date' => date('Y-m-d'),
       'id_ref' => $id
     );
     $this->db->insert('dashboard', $dashboard);
   }
 
   public function creadash() {
-    $sql = 'SELECT date, type FROM dashboard WHERE id_user = ? ORDER BY date DESC';
+    $sql = 'SELECT `date`, `type` FROM dashboard WHERE `id_user` = ? ORDER BY date DESC';
     $id_user = $this->session->userdata('logged_in')['id'];
     $query = $this->db->query($sql, array($id_user));
     $tab = $query->result_array();

@@ -115,7 +115,7 @@ CREATE TABLE `savoir_etre` (
 CREATE TABLE `dashboard` (
   `id_user` INT(11) DEFAULT NULL,
   `type` SMALLINT(1) DEFAULT '1',
-  `date` DATE DEFAULT NULL,
+  `date` TIMESTAMP DEFAULT NOW(),
   `id_ref` INT(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

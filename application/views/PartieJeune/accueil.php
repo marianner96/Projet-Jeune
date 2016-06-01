@@ -1,20 +1,7 @@
-<?php
-  function diff_date($date1, $date2)
-  {
-    $second = floor($date1 - $date2);
-    if ($second == 0) return "0";
-
-    return array(
-      "an" => date('Y', $second) - 1970,
-      "mois" => date('m', $second) - 1,
-      "semaine" => floor((date('d', $second) - 1) / 7),
-      "jour" => (date('d', $second) - 1) % 7
-    );
-  }
-?>
 <h1>Bienvenue sur le Projet Jeune</h1>
 <div class="ui feed">
 <?php
+  $this->load->helper('date');
 	foreach ($tableau as $value) {
 ?>
 	<div class="event">
@@ -30,22 +17,11 @@
 							echo 'Votre référence a été validée';
 						}
 					?>
-					<div class="date">
+					<div class="date" data-position="top center" data-content="<?php echo $value['date']; ?>">
 						<?php
-							$datedepart = strtotime($value['date']);
-							$dateactuelle = time(); //strtotime(time('Y-m-d'));
-							$tab = diff_date($dateactuelle, $datedepart) ;
-							$compteur = 0;
-							foreach ($tab as $key => $value) {
-								if ($value > 0) {
-									echo (($compteur) ? ', ' : "Il y a ") . $value .' '. $key;
-									if ($value > 1 && $key != "mois") echo  's';
-									$compteur++;
-								}
-							}
-							if ($compteur == 0) {
-								echo "Aujourd'hui";
-							}
+              $datedepart = DateTime::createFromFormat('Y-m-d H:i:s', $value['date'], new DateTimeZone('Europe/Paris'));
+              $diff = time()-$datedepart->getTimestamp();
+              echo 'Il y a ' . timespan(1, $diff, 1);
 						?>
 					</div>
 				</div>
@@ -56,3 +32,6 @@
 	}
 ?>
 </div>
+<script>
+  $('.date').popup();
+</script>

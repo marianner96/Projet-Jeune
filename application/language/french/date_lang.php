@@ -1,19 +1,19 @@
 <?php
 
-$lang['date_year'] = "Ann&eacute;e";
-$lang['date_years'] = "Ann&eacute;es";
-$lang['date_month'] = "Mois";
-$lang['date_months'] = "Mois";
-$lang['date_week'] = "Semaine";
-$lang['date_weeks'] = "Semaines";
-$lang['date_day'] = "Jour";
-$lang['date_days'] = "Jours";
-$lang['date_hour'] = "Heure";
-$lang['date_hours'] = "Heures";
-$lang['date_minute'] = "Minute";
-$lang['date_minutes'] = "Minutes";
-$lang['date_second'] = "Seconde";
-$lang['date_seconds'] = "Secondes";
+$lang['date_year'] = "an";
+$lang['date_years'] = "ans";
+$lang['date_month'] = "mois";
+$lang['date_months'] = "mois";
+$lang['date_week'] = "semaine";
+$lang['date_weeks'] = "semaines";
+$lang['date_day'] = "jour";
+$lang['date_days'] = "jours";
+$lang['date_hour'] = "heure";
+$lang['date_hours'] = "heures";
+$lang['date_minute'] = "minute";
+$lang['date_minutes'] = "minutes";
+$lang['date_second'] = "seconde";
+$lang['date_seconds'] = "secondes";
 
 $lang['UM12']	= "(UTC - 12:00) &Icirc;les Baker / Howland";
 $lang['UM11']	= "(UTC - 11:00) Samoa fuseau horaire, Niue";
