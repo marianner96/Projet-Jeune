@@ -90,4 +90,9 @@
         $this->db->query($sql, ['id' => $id_ref]);
       }
     }
+
+    public function archiver($id){
+      $sql = 'UPDATE reference SET etat=3 WHERE id = ?';
+      $this->db->query($sql, [$id]);
+    }
   }

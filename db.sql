@@ -116,7 +116,8 @@ CREATE TABLE `dashboard` (
   `id_user` INT(11) DEFAULT NULL,
   `type` SMALLINT(1) DEFAULT '1',
   `date` TIMESTAMP DEFAULT NOW(),
-  `id_ref` INT(11) DEFAULT NULL
+  `id_ref` INT(11) DEFAULT NULL,
+  PRIMARY KEY (`date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Savoir-être par défaut

@@ -118,9 +118,30 @@ class Jeune extends J64_Controller{
     $this->load->database();
     $this->load->library('session');
     $sql = 'SELECT id_user FROM reference WHERE id = ? AND etat = 2';
-    $res = $this->db->query($sql, array($id_ref))->row_array();
     $user = $this->session->userdata('logged_in');
     return !empty($res) && $res['id_user'] == $user['id'];
+  }
+
+  public function archiver_reference(){
+    $id = $this->input->post('id');
+    var_dump($id);
+    if(!$this->checkIdRef($id)){
+      $this->output->set_status_header('400');
+      $this->output->set_output(json_encode(['errors' => 'Vous n\'avez pas accès à la cette référence n°'. $id . '. Raisons possibles : vous n\'avez pas les droits nécessaire, elle n\'existe pas, elle n\'est pas dans l\'état "validée".']));
+      $this->output->_display();
+      exit;
+    }
+    $this->load->model('reference_model');
+    $this->reference_model->archiver($id);
+  }
+
+  private function checkIdRef($id_ref){
+    $this->load->database();
+    $this->load->library('session');
+    $user = $this->session->userdata('logged_in');
+    $sql = 'SELECT COUNT(*) AS nb FROM reference WHERE id = ? AND id_user = ?';
+    $res = $this->db->query($sql, [$id_ref, $user['id']])->row_array();
+    return $res['nb'] == 1;
   }
 
   private function chmail(){
