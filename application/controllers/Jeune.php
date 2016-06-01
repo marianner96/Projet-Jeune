@@ -74,12 +74,9 @@ class Jeune extends J64_Controller{
 
   public function reference(){
     $this->load->model('reference_model');
-<<<<<<< HEAD
     $jeune = $this->session->userdata('logged_in');
-=======
     $this->data['validation']=$this->session->userdata('validation');
     $this->data['tab'] = $this->session->userdata('logged_in');
->>>>>>> 5c107706764333cf62129107f1ce12cde1e743e8
 
     $this->data['content'] = 'reference';
     $this->data['menu'] = 'jeune';
