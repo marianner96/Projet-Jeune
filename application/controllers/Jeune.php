@@ -24,6 +24,7 @@ class Jeune extends J64_Controller{
 
   public function formulaire(){
     $this->load->helper(array('form', 'url'));
+  
     $this->form_validation->set_rules('savoirEtre[]','SavoirEtre','required|callback_savoirEtre_check');
     $this->form_validation->set_rules('description', 'Description', 'required');
     $this->form_validation->set_rules('duree', 'Durée', 'required');
