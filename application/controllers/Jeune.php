@@ -89,6 +89,23 @@ class Jeune extends J64_Controller{
     $this->load->view('templates/foot');
   }
 
+  public function creer_groupement(){
+    $err = array();
+    $grp = $this->input->post('grp');
+    if(!is_array($grp)){
+      $err[] = 'Les données doivent être sous la forme d\'un tableau.';
+    }else{
+      foreach($grp as $ref){
+        if(!$this->checkRefGrp($ref))
+          $err[] = 'Vous n\'avez pas accès à cette référence';
+        
+      }
+    }
+  }
+
+  private function checkRefGrp(){
+  }
+
   private function chmail(){
     $this->form_validation->set_rules('mail', 'e_mail', 'required|valid_email|callback_changement_mail_possible');
     $this->output->set_content_type('application/json');

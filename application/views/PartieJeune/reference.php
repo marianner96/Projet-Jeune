@@ -54,7 +54,7 @@
       foreach ($references as $reference) {
       if($reference['etat'] == 2) {
         ?>
-        <div class="item" >
+        <div class="item" data-value="<?php echo $reference['id']?>">
           <div class="right floated content overView">
             <div class="ui button">
               <i class="icon archive"></i>
@@ -185,7 +185,19 @@
       }
       toggleView();
     });
-
+  $('button[name=submit]').click(function (){
+    var tab = [];
+    $('div[data-tab=validee] .list.selection .item.active')
+      .each(function(i){
+        tab[i] = $(this).data('value');
+      });
+    $.post('<?php echo site_url('/jeune/creer-groupement'); ?>', 
+      {grp : tab},
+      function(data){
+        console.log(data);
+      });
+    console.log(tab);
+  });
   //On sort de la séléction quand on change d'onglet
   $('.top.menu .item[data-tab!=validee]').click(function(){
     console.log('lol');
