@@ -2,14 +2,25 @@
   if (count($validation)!=0){
 ?>
   <div class="ui success message">
+    <i class="close icon"></i>
     <div class="header">Demande de référence</div>
     <p>
-      Votre demande de référence a bien été crée <?php echo $tab["prenom"] . ' ' . $tab["nom"]; ?>, elle sera envoyée à <?php echo $validation[0] . ' ' . $validation[1]; ?>
+      Votre demande de référence a bien été créee <?php echo $tab["prenom"] . ' ' . $tab["nom"]; ?>, elle sera envoyée à <?php echo $validation[0] . ' ' . $validation[1]; ?>
     </p>
   </div>
 <?php
   }
 ?>
+<div class="ui error message hidden">
+  <i class="close icon"></i>
+  <ul class="list">
+  </ul>
+</div>
+<div class="ui success message hidden grp">
+  <i class="close icon"></i>
+  <div class="header">Liste d'engagement</div>
+  Votre liste d'engagement a bien été créée !
+</div>
 <!-- Header de la section -->
 <div class="customClearing referencesHeader">
   <h1 class="ui left floated header">
@@ -128,81 +139,4 @@
   Third
 </div>
 
-<script>
-  $('.menu .item')
-    .tab();
-  $('.ui.checkbox')
-    .checkbox();
-
-  var selectGroup = false;
-
-  $('.list.selection .item')
-    .click(function (e) {
-      // Si on a cliqué sur le bouton d'archive on s'arrete
-      if(selectGroup ||
-        e.target.classList.contains('button') ||
-        e.target.classList.contains('archive')
-      )
-        return;
-      //Sinon on affiche les détails de la référence
-      $(this)
-        .find('.long')
-        .toggle();
-      $(this)
-        .find('.icon.caret')
-        .toggleClass('right')
-        .toggleClass('down');
-    });
-
-  $('div[data-tab=validee] .list.selection .item')
-    .click(function(){
-      if(!selectGroup)
-        return;
-      $(this).toggleClass('active');
-    })
-
-  function toggleView(){
-    $('.selectionView').toggle();
-    $('.overView').toggle();
-    selectGroup = !selectGroup;
-    if(!$('div[data-tab=validee] .reference .item').length)
-      return;
-    $('div[data-tab=validee] .reference .item')
-      .toggleClass('active', false)
-      .toggleClass('state-selection', selectGroup);
-  }
-  
-  /*
-  * On rentre dans la séléction quand on clique sur "Créer un groupement"
-  * On en sort en cliquant sur annuler
-  * Quand on entre dans la vue de séléction l'onglet des références validées
-  * est automatiquement séléctionné
-  */
-  $('button[name=createGrp], button[name=cancel]')
-    .click(function(){
-      if(!selectGroup){
-        $('.top.menu .item:first-child')
-          .click();
-      }
-      toggleView();
-    });
-  $('button[name=submit]').click(function (){
-    var tab = [];
-    $('div[data-tab=validee] .list.selection .item.active')
-      .each(function(i){
-        tab[i] = $(this).data('value');
-      });
-    $.post('<?php echo site_url('/jeune/creer-groupement'); ?>', 
-      {grp : tab},
-      function(data){
-        console.log(data);
-      });
-    console.log(tab);
-  });
-  //On sort de la séléction quand on change d'onglet
-  $('.top.menu .item[data-tab!=validee]').click(function(){
-    console.log('lol');
-    if(selectGroup)
-      toggleView();
-  })
-</script>
+<script>var reqUrl = '<?php echo site_url('/jeune/'); ?>' </script>

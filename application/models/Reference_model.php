@@ -81,4 +81,13 @@
       }
       return $res;
     }
+
+    public function creerGrp($grp){
+      $this->load->library('LinkGenerator');
+      $lien = $this->linkgenerator->create(40, 'groupement.lien_consultation');
+      $sql = "INSERT INTO groupement VALUES ('$lien', ?)";
+      foreach ($grp as $id_ref) {
+        $this->db->query($sql, ['id' => $id_ref]);
+      }
+    }
   }

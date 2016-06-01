@@ -81,14 +81,14 @@ class Jeune extends J64_Controller{
     $this->data['tab'] = $this->session->userdata('logged_in');
 
     $this->data['content'] = 'reference';
-    $this->data['menu'] = 'jeune';
+    $footerData['scripts'] = ['jeune', 'utils'];
     
     $this->data['references'] = $this->reference_model->getRefByUser($jeune['id']);
     $this->data['nb_references'] = $this->reference_model->countRefUser($jeune['id']);
 
     $this->load->view('templates/head', $this->data);
     $this->load->view('templates/jeunes', $this->data);
-    $this->load->view('templates/foot');
+    $this->load->view('templates/foot', $footerData);
   }
 
   public function creer_groupement(){
@@ -99,13 +99,28 @@ class Jeune extends J64_Controller{
     }else{
       foreach($grp as $ref){
         if(!$this->checkRefGrp($ref))
-          $err[] = 'Vous n\'avez pas accès à cette référence';
-        
+          $err[] = 'Vous n\'avez pas accès à la cette référence n°'. $ref . '. Raisons possibles : vous n\'avez pas les droits nécessaire, elle n\'existe pas, elle n\'est pas dans l\'état "validée".';
       }
     }
+    if(!empty($err)) {
+      $this->output->set_status_header('400');
+      $this->output->set_output(
+        json_encode(['errors' => $err])
+      );
+      $this->output->_display();
+      exit;
+    }
+    $this->load->model('reference_model');
+    $this->reference_model->creerGrp(array_unique($grp));
   }
 
-  private function checkRefGrp(){
+  private function checkRefGrp($id_ref){
+    $this->load->database();
+    $this->load->library('session');
+    $sql = 'SELECT id_user FROM reference WHERE id = ? AND etat = 2';
+    $res = $this->db->query($sql, array($id_ref))->row_array();
+    $user = $this->session->userdata('logged_in');
+    return !empty($res) && $res['id_user'] == $user['id'];
   }
 
   private function chmail(){
@@ -123,7 +138,7 @@ class Jeune extends J64_Controller{
 
   public function changement_mail_possible(){
     $ma = $this->input->post('mail');
-    $tab = $this->session->userdata('logged_in');
+    $tab = $this->session->user_data('logged_in');
     $mail = $tab['mail'];
     if ($ma == $mail) {
       $this->form_validation->set_message('changement_mail_possible', "L'adresse mail n'as pas été changée");
