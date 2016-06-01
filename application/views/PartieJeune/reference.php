@@ -1,15 +1,16 @@
-<!-- Header de la section -->
-      <?php
+<?php
   if (count($validation)!=0){
-    echo "<div class=\"ui success message\">";
-       echo "<div class=header>Demande de référence</div>";
-    echo "<p>";
-    echo "Votre demande de référence a bien été crée " . $tab["prenom"] . " " . $tab["nom"] . "," . " elle sera envoyé à " . $validation[0] . " " . $validation[1];
-  echo "</p>";
-  echo "</div>";
-  echo "</div>";
+?>
+  <div class="ui success message">
+    <div class="header">Demande de référence</div>
+    <p>
+      Votre demande de référence a bien été crée <?php echo $tab["prenom"] . ' ' . $tab["nom"]; ?>, elle sera envoyée à <?php echo $validation[0] . ' ' . $validation[1]; ?>
+    </p>
+  </div>
+<?php
   }
-  ?>
+?>
+<!-- Header de la section -->
 <div class="customClearing referencesHeader">
   <h1 class="ui left floated header">
     Gérer vos références

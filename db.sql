@@ -45,16 +45,16 @@ CREATE TABLE `jeune` (
 -- lien_validation : identifant unique alpha numérique de 40 caractères identifiant la référence pour la validation
 CREATE TABLE `reference` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `id_user` INT(11) DEFAULT NULL,
-  `description` TEXT,
-  `duree` VARCHAR(50) DEFAULT NULL,
-  `commentaire` TEXT,
-  `etat` SMALLINT(6) DEFAULT NULL,
-  `nom` VARCHAR(100) DEFAULT NULL,
-  `prenom` VARCHAR(100) DEFAULT NULL,
+  `id_user` INT(11) NOT NULL,
+  `description` TEXT NOT NULL,
+  `duree` VARCHAR(50) NOT NULL,
+  `commentaire` TEXT DEFAULT NULL,
+  `etat` SMALLINT(6) DEFAULT 1,
+  `nom` VARCHAR(100) NOT NULL,
+  `prenom` VARCHAR(100) NOT NULL,
   `date_naissance` DATE DEFAULT NULL,
-  `mail` VARCHAR(100) DEFAULT NULL,
-  `lien_validation` VARCHAR(40) DEFAULT NULL,
+  `mail` VARCHAR(100) NOT NULL,
+  `lien_validation` VARCHAR(40) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -117,7 +117,7 @@ CREATE TABLE `dashboard` (
   `type` SMALLINT(1) DEFAULT '1',
   `date` DATE DEFAULT NULL,
   `id_ref` INT(11) DEFAULT NULL
-)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Savoir-être par défaut
 
