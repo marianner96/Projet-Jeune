@@ -66,17 +66,19 @@ aside.home{
   float: right;
 }
 /* Fix responsive design */ 
-header .menu i{
+header .menu i,
+.tabular.menu label i{
   display: none;
 }
 header > .menu {
   width: 100vw;
 }
 @media (max-width: 767px) {
-  header .menu i {
+  header .menu i{
     display: inline-block;
   }
-  header .menu span{
+  header .menu span,
+  .reference .ui.button span{
     display: none;
   }
   header .menu .image{
@@ -97,7 +99,12 @@ header > .menu {
   .referencesHeader .button{
     margin: 5px 0;
   }
-  .reference .ui.button span{
+}
+@media (max-width: 500px) {
+  .tabular.menu span{
     display: none;
+  }
+  .tabular.menu label i{
+    display: inline-block;
   }
 }

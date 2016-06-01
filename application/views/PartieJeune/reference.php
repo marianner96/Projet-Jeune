@@ -48,16 +48,25 @@
 <!-- Menu onglet -->
 <div class="ui top attached tabular menu">
   <a class="item active" data-tab="validee">
-    Validées
-    <label class="ui label green"><?php echo $nb_references[2] ?></label>
+    <span>Validées</span>
+    <label class="ui label green">
+      <i class="icon checkmark"></i>
+      <?php echo $nb_references[2] ?>
+    </label>
   </a>
   <a class="item" data-tab="non-validee">
-    En cours de validation
-    <label class="ui label orange"><?php echo $nb_references[1] ?></label>
+    <span>En cours de validation</span>
+    <label class="ui label orange">
+      <i class="icon exchange"></i>
+      <?php echo $nb_references[1] ?>
+    </label>
   </a>
   <a class="item" data-tab="archivee">
-    Archivées
-    <label class="ui label blue"><?php echo $nb_references[3] ?></label>
+    <span>Archivées</span>
+    <label class="ui label blue">
+      <i class="icon archive"></i>
+      <?php echo $nb_references[3] ?>
+    </label>
   </a>
 </div>
 <!-- Liste des références validées -->
