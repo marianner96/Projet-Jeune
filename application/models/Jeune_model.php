@@ -17,6 +17,8 @@ class Jeune_model extends CI_Model {
         }
         public function creationReferences()
         {
+                $this->load->library('linkGenerator');
+                $lien = $this->linkgenerator->create(40,"reference.lien_validation");
                 $tab = $this->session->userdata('logged_in');
                 $reference = array(
                         'id_user' => $tab['id'] ,
@@ -25,7 +27,8 @@ class Jeune_model extends CI_Model {
                         'etat' => 1, 
                         'nom' => set_value('nom') , 
                         'prenom' => set_value('prenom'), 
-                        'mail' => set_value('mail'));
+                        'mail' => set_value('mail'),
+                        'lien_validation'=> $lien);
                 $this->db->insert('reference', $reference);
                 $dashboard = array(
                         'id_user' => $tab['id'],
