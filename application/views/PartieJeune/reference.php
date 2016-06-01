@@ -26,22 +26,24 @@
   <h1 class="ui left floated header">
     Gérer vos références
   </h1>
-  <a class="ui right floated button pink" href="<?php echo site_url('jeune/formulaire') ?>">
-    <i class="icon plus"></i>
-    Demande de référence
-  </a>
-  <button class="ui right floated button pink selectionView" name="cancel">
-    <i class="icon cancel"></i>
-    Annuler
-  </button>
-  <button class="ui right floated button pink selectionView" name="submit">
-    <i class="icon check"></i>
-    Valider
-  </button>
-  <button class="ui right floated button pink overView" name="createGrp">
-    <i class="icon plus"></i>
-    Créer un groupement
-  </button>
+  <div>
+    <button class="ui button pink overView" name="createGrp">
+      <i class="icon plus"></i>
+      Créer un groupement
+    </button>
+    <button class="ui button pink selectionView" name="cancel">
+      <i class="icon cancel"></i>
+      Annuler
+    </button>
+    <button class="ui button pink selectionView" name="submit">
+      <i class="icon check"></i>
+      Valider
+    </button>
+    <a class="ui button pink" href="<?php echo site_url('jeune/formulaire') ?>">
+      <i class="icon plus"></i>
+      Demande de référence
+    </a>
+  </div>
 </div>
 <!-- Menu onglet -->
 <div class="ui top attached tabular menu">
@@ -68,9 +70,9 @@
         ?>
         <div class="item" data-value="<?php echo $reference['id']?>">
           <div class="right floated content overView">
-            <div class="ui button">
+            <div class="ui icon button">
               <i class="icon archive"></i>
-              Archiver
+              <span>Archiver</span>
             </div>
           </div>
           <i class="icon caret right icon large"></i>

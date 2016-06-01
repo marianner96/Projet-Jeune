@@ -15,7 +15,7 @@ class Jeune extends J64_Controller{
 
 	public function index(){
     $this->data['content'] = 'accueil';
-    $this->data['menu'] = 'jeune';
+
     $this->data['tableau'] = $this->Jeune_model->creadash();  
 
     $this->load->view('templates/head', $this->data);
@@ -95,7 +95,7 @@ class Jeune extends J64_Controller{
     $err = array();
     $grp = $this->input->post('grp');
     if(!is_array($grp)){
-      $err[] = 'Les données doivent être sous la forme d\'un tableau.';
+      $err[] = 'Il semblerait que vous n\'ayez pas spécifé de références.';
     }else{
       foreach($grp as $ref){
         if(!$this->checkRefGrp($ref))

@@ -3,7 +3,7 @@
     <div class="four wide column">
       <div class="ui secondary vertical menu pink fluid">
          <a class="item <?php echo !empty($content) && $content == 'accueil' ? 'active' : '' ?>" href="<?php echo site_url('jeune') ?>">
-          Accueil
+          Activité
         </a>
         <a class="item <?php echo !empty($content) && $content == 'profil' ? 'active' : '' ?>" href="<?php echo site_url('jeune/profil') ?>">
           Mon profil

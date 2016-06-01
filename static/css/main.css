@@ -62,3 +62,42 @@ aside.home{
 .reference .item.state-selection .long{
   display: none!important;
 }
+.referencesHeader > div{
+  float: right;
+}
+/* Fix responsive design */ 
+header .menu i{
+  display: none;
+}
+header > .menu {
+  width: 100vw;
+}
+@media (max-width: 767px) {
+  header .menu i {
+    display: inline-block;
+  }
+  header .menu span{
+    display: none;
+  }
+  header .menu .image{
+    width: 50px!important;
+  }
+  .referencesHeader *{
+    float: none!important;
+  }
+  .referencesHeader > div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .referencesHeader > div > *{
+    display: flex;
+    width: 100%;
+    margin: 5px 0;
+  }
+  .referencesHeader .button{
+    margin: 5px 0;
+  }
+  .reference .ui.button span{
+    display: none;
+  }
+}
