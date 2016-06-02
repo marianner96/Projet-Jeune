@@ -13,7 +13,7 @@ class Jeune extends J64_Controller{
     $this->load->model('Jeune_model');
   }
 
-	public function index(){
+  public function index(){
     $this->data['content'] = 'accueil';
 
     $this->data['tableau'] = $this->Jeune_model->creadash();  
@@ -21,7 +21,7 @@ class Jeune extends J64_Controller{
     $this->load->view('templates/head', $this->data);
     $this->load->view('templates/jeunes', $this->data);
     $this->load->view('templates/foot');
-	}
+  }
 
   public function formulaire(){
     $this->load->helper(array('form', 'url'));
@@ -111,7 +111,10 @@ class Jeune extends J64_Controller{
       exit;
     }
     $this->load->model('reference_model');
-    $this->reference_model->creerGrp(array_unique($grp));
+    $this->load->library('session');
+    $lien = $this->reference_model->creerGrp(array_unique($grp));
+    $user = $this->session->userdata('logged_in');
+    $this->reference_model->addGrpToDashboard($lien, $user['id']);
   }
 
   private function checkRefGrp($id_ref){
