@@ -97,4 +97,14 @@
       $sql = 'UPDATE reference SET etat=3 WHERE id = ?';
       $this->db->query($sql, [$id]);
     }
+
+
+    public function addInfoReferent($infoRef){
+      $naissance=$this->input->post('anneeNaissance')."-".$this->input->post('moisNaissance')."-".$this->input->post('jourNaissance');
+      $referent = array(
+        'date_naissance' => $naissance
+        );
+      $this->db->where('id', $infoRef['id']);
+      $this->db->update('reference', $referent); 
+    }
   }

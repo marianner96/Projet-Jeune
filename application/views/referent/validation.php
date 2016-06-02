@@ -58,7 +58,7 @@
                 <input type="text" name="jourNaissance" placeholder="17">
               </div>
               <div class="eight wide field">
-                <input type="text" name="moisNaissance" placeholder="Janvier">
+                <input type="text" name="moisNaissance" placeholder="03">
               </div>
               <div class="five wide field">
                 <input type="text" name="anneeNaissance" placeholder="1977">
