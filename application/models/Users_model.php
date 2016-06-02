@@ -21,9 +21,7 @@
       $this->db->insert('jeune', $data);
       $ajout = array(
         'id_user' => $this->db->insert_id(),
-        'type' => 1,
-        'date' => unix_to_human(time()),
-        'id_ref' => 0
+        'type' => 1
         );
       $this->db->insert('dashboard', $ajout);
     }
