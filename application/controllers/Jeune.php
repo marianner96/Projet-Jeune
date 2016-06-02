@@ -111,10 +111,11 @@ class Jeune extends J64_Controller{
       exit;
     }
     $this->load->model('reference_model');
+    $this->load->model('jeune_model');
     $this->load->library('session');
     $lien = $this->reference_model->creerGrp(array_unique($grp));
     $user = $this->session->userdata('logged_in');
-    $this->reference_model->addGrpToDashboard($lien, $user['id']);
+    $this->jeune_model->addGrpToDashboard($lien, $user['id']);
   }
 
   private function checkRefGrp($id_ref){
@@ -122,6 +123,8 @@ class Jeune extends J64_Controller{
     $this->load->library('session');
     $sql = 'SELECT id_user FROM reference WHERE id = ? AND etat = 2';
     $user = $this->session->userdata('logged_in');
+    $res = $this->db->query($sql, [$user['id']])->row_array();
+    var_dump($res);
     return !empty($res) && $res['id_user'] == $user['id'];
   }
 
