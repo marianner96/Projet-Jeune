@@ -66,7 +66,8 @@ CREATE TABLE `reference` (
 CREATE TABLE `savoir_etre_user` (
   `id_ref` INT(11) DEFAULT NULL,
   `id_savoir_etre` INT(11) DEFAULT NULL,
-  PRIMARY KEY (`id_ref`, `id_savoir_etre`)
+  `type` SMALLINT(6) DEFAULT 1,
+  PRIMARY KEY (`id_ref`, `id_savoir_etre`, `type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Regroupement de référence
