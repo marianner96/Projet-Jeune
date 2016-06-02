@@ -144,10 +144,130 @@
   </div>
 </div>
 <div class="ui bottom attached tab segment" data-tab="non-validee">
-  Second
+  <div class="ui middle aligned divided list selection reference">
+    <!-- Début de l'affichage  des références en cours de validation -->
+    <?php
+      foreach ($references as $reference) {
+      if($reference['etat'] == 1) {
+        ?>
+        <div class="item" data-value="<?php echo $reference['id']?>">
+          <div class="right floated content overView">
+            <div class="ui icon button">
+              <i class="icon archive"></i>
+              <span>Archiver</span>
+            </div>
+          </div>
+          <i class="icon caret right icon large"></i>
+          <div class="content">
+            <div class="description">
+              <?php echo $reference['description'] ?>
+
+              <!-- Détail de la référence -->
+              <div class="long">
+                <div class="ui grid stackable">
+                  <!-- Durée -->
+                  <div class="four wide column header">
+                    Durée
+                  </div>
+                  <div class="twelve wide column">
+                    <?php echo $reference['duree'] ?>
+                  </div>
+                  <!-- Savoir être-->
+                  <div class="four wide column header">
+                    Savoir-être
+                  </div>
+                  <div class="twelve wide column">
+                    <?php
+                    foreach ($reference['savoir_etre'] as $savoir_etre) {
+                      ?>
+                      <label class="ui label"><?php echo $savoir_etre['nom'] ?></label>
+                      <?php
+                    }
+                    ?>
+                  </div>
+                  <!-- Coordonnées référent-->
+                  <div class="four wide column header">
+                    Référent
+                  </div>
+                  <div class="twelve wide column">
+                    <?php echo $reference['prenom'] . ' ' . $reference['nom'] . ' - ' . mailto($reference['mail']) ?>
+                  </div>
+                </div>
+              </div>
+              <!-- Fin détail de la référence -->
+
+            </div>
+          </div>
+        </div>
+        <?php
+        }
+      }
+      if($nb_references[1] == 0){
+        echo 'Pas encore de références ici.';
+      }
+    ?>
+    <!-- Fin de l'affichage  des références en cours de validation-->
+  </div>
 </div>
 <div class="ui bottom attached tab segment" data-tab="archivee">
-  Third
+  <div class="ui middle aligned divided list selection reference">
+    <!-- Début de l'affichage  des références en cours de validation -->
+    <?php
+      foreach ($references as $reference) {
+      if($reference['etat'] == 3) {
+        ?>
+        <div class="item" data-value="<?php echo $reference['id']?>">
+          <i class="icon caret right icon large"></i>
+          <div class="content">
+            <div class="description">
+              <?php echo $reference['description'] ?>
+
+              <!-- Détail de la référence -->
+              <div class="long">
+                <div class="ui grid stackable">
+                  <!-- Durée -->
+                  <div class="four wide column header">
+                    Durée
+                  </div>
+                  <div class="twelve wide column">
+                    <?php echo $reference['duree'] ?>
+                  </div>
+                  <!-- Savoir être-->
+                  <div class="four wide column header">
+                    Savoir-être
+                  </div>
+                  <div class="twelve wide column">
+                    <?php
+                    foreach ($reference['savoir_etre'] as $savoir_etre) {
+                      ?>
+                      <label class="ui label"><?php echo $savoir_etre['nom'] ?></label>
+                      <?php
+                    }
+                    ?>
+                  </div>
+                  <!-- Coordonnées référent-->
+                  <div class="four wide column header">
+                    Référent
+                  </div>
+                  <div class="twelve wide column">
+                    <?php echo $reference['prenom'] . ' ' . $reference['nom'] . ' - ' . mailto($reference['mail']) ?>
+                  </div>
+                </div>
+              </div>
+              <!-- Fin détail de la référence -->
+
+            </div>
+          </div>
+        </div>
+        <?php
+        }
+      }
+      if($nb_references[1] == 3){
+        echo 'Pas encore de références ici.';
+      }
+    ?>
+    <!-- Fin de l'affichage  des références en cours de validation-->
+  </div>
 </div>
 
 <script>var reqUrl = '<?php echo site_url('/jeune/'); ?>' </script>

@@ -81,3 +81,20 @@ $('.top.menu .item[data-tab!=validee]').click(function(){
   if(selectGroup)
     toggleView();
 })
+
+function goToRef(){
+  var hash = window.location.hash;
+  var id = hash.slice(1);
+  if(!id)
+    return;
+  $('.item[data-value='+id+']')
+    .find('.long')
+    .click();
+  var tab = $('.item[data-value='+id+']')
+    .parents('.tab')
+    .data('tab');
+  console.log(tab);
+  $('.menu .item[data-tab='+tab+']').click();
+}
+window.onhashchange = goToRef;
+goToRef();
