@@ -16,7 +16,7 @@ class Jeune extends J64_Controller{
 	public function index(){
     $this->data['content'] = 'accueil';
 
-    $this->data['tableau'] = $this->Jeune_model->creadash();  
+    $this->data['tableau'] = $this->Jeune_model->creadash();  //récupération des données du jeune (inscription/reference)
 
     $this->load->view('templates/head', $this->data);
     $this->load->view('templates/jeunes', $this->data);
@@ -60,7 +60,7 @@ class Jeune extends J64_Controller{
   public function profil($action=""){
     if ($action == "")  {
       $this->data['content'] = 'profil';
-      $tab = $this->session->userdata('logged_in');
+      $tab = $this->session->userdata('logged_in'); //recupération des données de session
       $this->data['tab'] = $tab;
 
 
@@ -145,28 +145,28 @@ class Jeune extends J64_Controller{
   }
 
   private function chmail(){
-    $this->form_validation->set_rules('mail', 'e_mail', 'required|valid_email|callback_changement_mail_possible');
+    $this->form_validation->set_rules('mail', 'e_mail', 'required|valid_email|callback_changement_mail_possible'); 
     $this->output->set_content_type('application/json');
     if ($this->form_validation->run()==false) {
       $this->output->set_status_header('400');
       $this->output->set_output(
         json_encode(array(
-          'errors'=> array_filter(explode("\n", validation_errors(NULL,NULL)))
+          'errors'=> array_filter(explode("\n", validation_errors(NULL,NULL))) //affichage des erreurs de validation
           ))
         );
     }
   }
 
   public function changement_mail_possible(){
-    $ma = $this->input->post('mail');
-    $tab = $this->session->user_data('logged_in');
-    $mail = $tab['mail'];
+    $ma = $this->input->post('mail'); //recuperation de l'email envoyé
+    $tab = $this->session->user_data('logged_in'); //donnéesde session
+    $mail = $tab['mail']; // mail du jeune
     if ($ma == $mail) {
-      $this->form_validation->set_message('changement_mail_possible', "L'adresse mail n'as pas été changée");
+      $this->form_validation->set_message('changement_mail_possible', "L'adresse mail n'as pas été changée"); //si le mail n'as pas été changé
       return FALSE;
     }
-    $this->load->model('users_model');
-    $val = $this->users_model->change_mail();
+    $this->load->model('users_model'); 
+    $val = $this->users_model->change_mail(); //modèle qui change le mail dans la bdd
     $this->output->set_output(json_encode($val));
     return TRUE;
   }
@@ -174,30 +174,30 @@ class Jeune extends J64_Controller{
   private function chmdp(){
     $this->form_validation->set_rules('mdp', 'mot de passe', 'required|trim|callback_change_mdp_possible');
     $this->form_validation->set_rules('nvmdp', 'nouveau mot de passe', 'required|trim');
-    $this->form_validation->set_rules('comdp', 'confirmation du nouveau mot de passe', 'required|trim|matches[nvmdp]');
+    $this->form_validation->set_rules('comdp', 'confirmation du nouveau mot de passe', 'required|trim|matches[nvmdp]'); //verification si la verification du mdp est la meme que le nouveau mdp
     $this->output->set_content_type('application/json');
     if ($this->form_validation->run() == false) {
       $this->output->set_status_header('400');
       $this->output->set_output(
         json_encode(array(
-          'errors'=>array_filter(explode("\n", validation_errors(NULL, NULL)))
+          'errors'=>array_filter(explode("\n", validation_errors(NULL, NULL))) //affichage des erreurs de validation
           ))
         );
     } else {
       $this->load->model('users_model');
-      $val = $this->users_model->change_mdp();
+      $val = $this->users_model->change_mdp(); //modèle qui change le mot de passe
       $this->output->set_output(json_encode($val));
     }
   }
 
   public function change_mdp_possible() {
     $mdp = $this->input->post('mdp');
-    $id = $this->session->userdata('logged_in')['id'];
-    $this->db->select('mdp');
-    $this->db->where('id', $id);
+    $id = $this->session->userdata('logged_in')['id']; //recuperation de l'id du jeune
+    $this->db->select('mdp'); // recherche  du mot de passe haché dans la bdd
+    $this->db->where('id', $id); 
     $query = $this->db->get('jeune');
     $qr = $query->row();
-    $this->form_validation->set_message('change_mdp_possible', "Le mot de passe n'as pas été changée");
-    return ($this->passwordhash->CheckPassword($mdp, $qr->mdp));
+    $this->form_validation->set_message('change_mdp_possible', "Le mot de passe n'as pas été changée"); //le message d'erreur
+    return ($this->passwordhash->CheckPassword($mdp, $qr->mdp)); //regarde si les mdp sont les mêmes 
   }
 }

@@ -42,7 +42,7 @@ class Jeune_model extends CI_Model {
       $this->db->insert('savoir_etre_user',$savoir);
     }
 
-    $this->addRefToDashboard($lastID, $tab['id']);
+    $this->addRefToDashboard($lastID, $tab['id']); 
   }
 
   private function addRefToDashboard($id, $user){
@@ -55,10 +55,10 @@ class Jeune_model extends CI_Model {
   }
 
   public function creadash() {
-    $sql = 'SELECT `date`, `type` FROM dashboard WHERE `id_user` = ? ORDER BY date DESC';
-    $id_user = $this->session->userdata('logged_in')['id'];
-    $query = $this->db->query($sql, array($id_user));
-    $tab = $query->result_array();
+    $sql = 'SELECT `date`, `type` FROM dashboard WHERE `id_user` = ? ORDER BY date DESC'; //recherche de toutes les references du jeune trié par date, de la plus récente a la plus ancienne
+    $id_user = $this->session->userdata('logged_in')['id']; //id du jeune
+    $query = $this->db->query($sql, array($id_user)); //requete effectuée avec id du jeune
+    $tab = $query->result_array(); //resultat sous forme de tableau
     return $tab;
   }
 } 
