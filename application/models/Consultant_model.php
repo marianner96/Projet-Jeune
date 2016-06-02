@@ -10,8 +10,16 @@ class Consultant_model extends CI_Model {
 
         public function affichage($lien)
         {
-                $this->db->select('nom');
-                $query = $this->db->get('savoir_etre');
+                $tabIdRef=[];
+                $this->db->select('lien_consultation');
+                $lienCon = $this->db->get('groupement');
+                foreach ($lienCon as $value) {
+                if($value== $lien) {
+                        $this->db->select('id_ref');
+                        $id = $this->db->get('groupement');
+                        $tabIdRef = [$tabIdRef]
+                }
+                }
                 return $query->result();
         }
 } 
