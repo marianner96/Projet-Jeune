@@ -42,7 +42,7 @@ class Jeune_model extends CI_Model {
       $this->db->insert('savoir_etre_user',$savoir);
     }
 
-    $this->addRefToDashboard($lastID, $tab['id']);
+    $this->addRefToDashboard($lastID, $tab['id']); 
   }
   
   public function addRefToDashboard($id, $user){
