@@ -85,16 +85,18 @@
     public function creerGrp($grp){
       $this->load->library('LinkGenerator');
       $lien = $this->linkgenerator->create(40, 'groupement.lien_consultation');
-      $sql = "INSERT INTO groupement VALUES ('$lien', ?)";
+      $sql = "INSERT INTO groupement (lien_consultation, id_ref) VALUES ('$lien', ?)";
       foreach ($grp as $id_ref) {
         $this->db->query($sql, ['id' => $id_ref]);
       }
+      return $lien;
     }
 
     public function archiver($id){
       $sql = 'UPDATE reference SET etat=3 WHERE id = ?';
       $this->db->query($sql, [$id]);
     }
+
 
     public function addInfoReferent($infoRef){
       $naissance=$this->input->post('anneeNaissance')."-".$this->input->post('moisNaissance')."-".$this->input->post('jourNaissance');

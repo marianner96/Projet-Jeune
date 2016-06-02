@@ -108,7 +108,10 @@ CREATE TABLE `savoir_etre` (
 -- Création ou validation d'une référence
 
 -- id_user : identifiant du jeune
--- type : 1 ->création du compte / 2 -> demande de validation envoyée / 3 -> validation d'une référence
+-- type : 1 -> création du compte 
+--        2 -> demande de validation envoyée 
+--        3 -> validation d'une référence
+--        4 -> création d'un groupement
 -- date : date de la création / validation
 -- id_ref : identifiant de la référence
 
@@ -116,7 +119,7 @@ CREATE TABLE `dashboard` (
   `id_user` INT(11) DEFAULT NULL,
   `type` SMALLINT(1) DEFAULT '1',
   `date` TIMESTAMP DEFAULT NOW(),
-  `id_ref` INT(11) DEFAULT NULL,
+  `options` VARCHAR(100) DEFAULT NULL,
   PRIMARY KEY (`date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

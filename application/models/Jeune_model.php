@@ -42,20 +42,28 @@ class Jeune_model extends CI_Model {
       $this->db->insert('savoir_etre_user',$savoir);
     }
 
-    $this->addRefToDashboard($lastID, $tab['id']);
+    $this->addRefToDashboard($lastID, $tab['id']); 
+  }
+  
+  public function addRefToDashboard($id, $user){
+    $this->addEntryToDashboard(2, $user, $id);
   }
 
-  private function addRefToDashboard($id, $user){
+  public function addGrpToDashboard($lien, $user){
+    $this->addEntryToDashboard(4, $user, $lien);
+  }
+
+  private function addEntryToDashboard($type, $user, $opt){
     $dashboard = array(
       'id_user' => $user,
-      'type' => '2',
-      'id_ref' => $id
+      'type' => $type,
+      'options' => $opt
     );
     $this->db->insert('dashboard', $dashboard);
   }
 
   public function creadash() {
-    $sql = 'SELECT `date`, `type` FROM dashboard WHERE `id_user` = ? ORDER BY date DESC';
+    $sql = 'SELECT `date`, `type`, `options` FROM dashboard WHERE `id_user` = ? ORDER BY date DESC';
     $id_user = $this->session->userdata('logged_in')['id'];
     $query = $this->db->query($sql, array($id_user));
     $tab = $query->result_array();

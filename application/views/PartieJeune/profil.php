@@ -11,22 +11,34 @@
 		<p></p>
 	</div>
 
+	<div class="ui segments">
+		<h5 class="ui top attached header">
+		  Nom
+		</h5>
+		<div class="ui attached segment">
+		  <p><?php echo($tab['nom']);?></p>
+		</div>
+	</div>
+
+	<div class="ui segments">
+		<h5 class="ui attached header">
+		  Prénom
+		</h5>
+		<div class="ui attached segment">
+		  <p><?php echo($tab['prenom']); ?></p>
+		</div>
+	</div>
+
+	<div class="ui segments">
+		<h5 class="ui attached header">
+		  Date de naissance
+		</h5>
+		<div class="ui attached segment">
+		  <p><?php echo($tab['date_naissance']); ?></p>
+		</div>
+	</div>
+
 	<div class='ui form'>
-		<div class="disabled field">
-			<label>Nom</label>
-			<input type="text" name="nom" value="<?php echo($tab['nom']); ?>">
-		</div>
-
-		<div class="disabled field">
-			<label>Prénom </label>
-			<input type="text" name="prenom" value="<?php echo($tab['prenom']); ?>">
-		</div>
-
-		<div class="disabled field">
-			<label>Date de naissance</label>
-			<input type="text" name="date_naissance" value="<?php echo($tab['date_naissance']); ?>">
-		</div>
-
 		<div class="field">
 			<label>E-mail </label>
 			<input type="text" name="mail" value="<?php echo($tab['mail']); ?>">
@@ -55,14 +67,14 @@
 <script src="<?php echo base_url()?>static/js/utils.js"></script>
 
 <script>
-  $("input[name='chmail']").click(function () {
-  	$.post(<?php echo "'".site_url("jeune/profil/chmail")."'"; ?>, {
+  $("input[name='chmail']").click(function () { //on clique sur le bouton de modification de mail
+  	$.post(<?php echo "'".site_url("jeune/profil/chmail")."'"; ?>, { //on appelle le contrôleur de modifiaction de mail
   		mail : $("input[name='mail']").val()
   	}, function() {
-  		$('.message.success p').text("Vos changements ont bien été modifiés !");
+  		$('.message.success p').text("Vos changements ont bien été modifiés !"); //message mis si les changements ont été effectué
   		$('.message.success').transition('fade down');
   	}).fail(function(xhr, status, messagehttp){
-  		displayError(xhr.responseText, messagehttp);
+  		displayError(xhr.responseText, messagehttp); // si il y a eu un problème ça s'affiche
   	})
   });
 
