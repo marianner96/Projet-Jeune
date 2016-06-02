@@ -87,14 +87,18 @@ function goToRef(){
   var id = hash.slice(1);
   if(!id)
     return;
-  $('.item[data-value='+id+']')
-    .find('.long')
+  $('.item[data-value='+id+'] .long')
     .click();
   var tab = $('.item[data-value='+id+']')
+    .addClass('flash')
     .parents('.tab')
     .data('tab');
   console.log(tab);
   $('.menu .item[data-tab='+tab+']').click();
+  setTimeout(function(){
+    $('.item[data-value='+id+']')
+      .removeClass('flash');
+  }, 1000);
 }
 window.onhashchange = goToRef;
 goToRef();

@@ -65,6 +65,56 @@ aside.home{
 .referencesHeader > div{
   float: right;
 }
+/* Animation mise en valeur de la référence */
+.item.flash{
+  -webkit-animation-name: flash;
+  -moz-animation-name: flash;
+  -o-animation-name: flash;
+  animation-name: flash;
+
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  -o-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+@-webkit-keyframes flash {
+  0% {
+    background-color: #fff6d8;
+  }
+  100%{
+    background-color: inherit;
+  }
+}
+@-moz-document flash {
+  0% {
+    background-color: #fff6d8;
+  }
+  100%{
+    background-color: inherit;
+  }
+}
+@-o-keyframes flash {
+  0% {
+    background-color: #fff6d8;
+  }
+  100%{
+    background-color: inherit;
+  }
+}
+@keyframes flash {
+  0% {
+    background-color: #fff6d8;
+  }
+  100%{
+    background-color: inherit;
+  }
+}
+
 /* Fix responsive design */ 
 header .menu i,
 .tabular.menu label i{

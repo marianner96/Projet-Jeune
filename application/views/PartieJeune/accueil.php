@@ -32,6 +32,8 @@
   </div>
 <?php
   }
+  if(!count($tableau))
+    echo 'Aucune activité.'
 ?>
 </div>
 <script>

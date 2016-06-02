@@ -43,7 +43,7 @@
 			<label>E-mail </label>
 			<input type="text" name="mail" value="<?php echo($tab['mail']); ?>">
 		</div>
-		<input class="ui button pink" type="submit" value="Changer email" name="chmail">
+		<input class="ui button pink" type="submit" value="Changer l'e-mail" name="chmail">
 
 		<div class="field">
 			<label>Mot de passe</label>
@@ -59,7 +59,7 @@
 			<label>Confirmer ce mot de passe</label>
 			<input type="password" name="comdp" value="">
 		</div>
-		<input class="ui button pink" type="submit" value="Changer mot de passe" name="chmdp">
+		<input class="ui button pink" type="submit" value="Changer le mot de passe" name="chmdp">
 
 	</div>
 </div>
