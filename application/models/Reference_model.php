@@ -98,7 +98,7 @@
     }
 
 
-    public function addInfoReferent($infoRef){
+    public function addInfoReferent($infoRef){ // Ajoute la date de naissance du référent dans la table reference
       $naissance=$this->input->post('anneeNaissance')."-".$this->input->post('moisNaissance')."-".$this->input->post('jourNaissance');
       $referent = array(
         'date_naissance' => $naissance
@@ -106,4 +106,18 @@
       $this->db->where('id', $infoRef['id']);
       $this->db->update('reference', $referent); 
     }
+
+    public function addSavoirRef($infoRef){ // Ajoute les savoirs être référents
+      $listSavoir=$this->input->post('savoirEtre');
+      foreach ($listSavoir as $id) { // Pour chaque savoir être on cree un lien
+        $entree=array(
+          'id_ref' => $infoRef['id'] ,
+          'id_savoir_etre' => $id ,
+          'type' => "2"
+          );
+        $this->db->insert('savoir_etre_user', $entree);
+      }
+    }
+
   }
+

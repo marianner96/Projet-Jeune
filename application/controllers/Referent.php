@@ -35,6 +35,7 @@ class Referent extends J64_Controller {
 			} else {
 				$this->load->view('referent/success', $data);
 				$this->reference_model->addInfoReferent($data['ref']);
+				$this->reference_model->addSavoirRef($data['ref']);
 			}
 			$this->load->view('templates/foot');
     	

@@ -31,7 +31,7 @@
         <?php echo form_open('referent/validation/'.$cle, array('class' => 'ui small form')); ?>
           <h4 class="ui dividing header">Savoir-être</h4>
       		<div class="field">
-            <select multiple="" class="ui dropdown" name="savoirEtre">
+            <select multiple="" class="ui dropdown" name="savoirEtre[]">
               <option value="">Selectionner ses savoir être</option>
               <?php foreach ($savoirEtreRef as $savoir) {
                 echo('<option value="'.$savoir->id.'">'.$savoir->nom.'</option>');
@@ -44,10 +44,10 @@
               <label>Nom et Prénom</label>
                 <div class="two fields">
                   <div class="field">
-                    <input type="text" name="shipping[last-name]" value=<?php echo($ref['nom']) ?>>
+                    <input type="text" name="prenom" value=<?php echo($ref['nom']) ?>>
                   </div>
                   <div class="field">
-                    <input type="text" name="shipping[first-name]" value=<?php echo($ref['prenom']) ?>>
+                    <input type="text" name="nom" value=<?php echo($ref['prenom']) ?>>
                   </div>
                 </div>
           </div>
