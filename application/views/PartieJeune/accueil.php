@@ -13,8 +13,10 @@
               echo 'Vous vous êtes inscrit';
             } elseif ($value['type'] == '2') {
               echo 'Vous avez créé une nouvelle '. anchor('/jeune/reference#'.$value['options'], 'référence');
-            } else {
+            } elseif($value['type'] == 2) {
               echo 'Votre référence a été validée';
+            } elseif($value['type'] == 4) {
+              echo 'Vous avez créé un ' . anchor('/jeune/listes-references/'.$value['options'], 'groupement');
             }
           ?>
           <div class="date" data-position="top center" data-content="<?php echo $value['date']; ?>">
