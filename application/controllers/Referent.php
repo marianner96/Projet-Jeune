@@ -25,15 +25,16 @@ class Referent extends J64_Controller {
 
 		//Regles du formulaire de confirmation
 		$this->load->helper(array('form', 'url'));
-		$this->form_validation->set_rules('jourNaissance', 'Jour : date de Naissance', 'trim|required|max_length[2]|is_natural');
-		$this->form_validation->set_rules('moisNaissance', 'Mois : date de Naissance', 'trim|required');
-		$this->form_validation->set_rules('anneeNaissance', 'Année : date de Naissance', 'trim|required|max_length[4]|is_natural');
+		$this->form_validation->set_rules('jourNaissance', 'Jour : date de Naissance', 'trim|required|exact_length[2]|is_natural');
+		$this->form_validation->set_rules('moisNaissance', 'Mois : date de Naissance', 'trim|exact_length[2]|is_natural|required');
+		$this->form_validation->set_rules('anneeNaissance', 'Année : date de Naissance', 'trim|required|exact_length[4]|is_natural');
 
 		$this->load->view('templates/head');
 			if ($this->form_validation->run()==FALSE) {
 				$this->load->view('referent/validation', $data);
 			} else {
 				$this->load->view('referent/success', $data);
+				$this->reference_model->addInfoReferent($data['ref']);
 			}
 			$this->load->view('templates/foot');
     	

@@ -20,7 +20,7 @@
         SELECT nom
         FROM savoir_etre_user
         JOIN savoir_etre ON savoir_etre.id = savoir_etre_user.id_savoir_etre
-        WHERE id_ref IN (SELECT id FROM reference WHERE lien_validation = ?)';
+        WHERE id_ref IN (SELECT id FROM reference WHERE lien_validation = ?) AND type = 1';
       $query = $this->db->query($sqlRef, array($ref));
       foreach ($query->result_array() as $nom){
         $res[]=$nom['nom'];
@@ -60,6 +60,7 @@
       $res = array();
       foreach ($queryRef->result_array() as $ref){
         $res[$ref['id']] = $ref;
+        $res[$ref['id']]['savoir_etre'] = [];
       }
       foreach ($querySE->result_array() as $se){
         $res[$se['id_ref']]['savoir_etre'][] = array('nom' => $se['nom'], 'id' => $se['id']);
@@ -95,5 +96,15 @@
     public function archiver($id){
       $sql = 'UPDATE reference SET etat=3 WHERE id = ?';
       $this->db->query($sql, [$id]);
+    }
+
+
+    public function addInfoReferent($infoRef){
+      $naissance=$this->input->post('anneeNaissance')."-".$this->input->post('moisNaissance')."-".$this->input->post('jourNaissance');
+      $referent = array(
+        'date_naissance' => $naissance
+        );
+      $this->db->where('id', $infoRef['id']);
+      $this->db->update('reference', $referent); 
     }
   }
