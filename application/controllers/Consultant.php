@@ -8,6 +8,10 @@ class Consultant extends J64_Controller{
   }
   public function consultant(){
       $lien=$this->uri->segment(3);
+      if(($lien=='') || (strlen($lien)!=40)){
+        show_404($page = '', $log_error = TRUE);
+      }
+      else{
   	  $this->data['jeune'] = $lien;
       $this->data['tabIdRef'] = $this->consultant_model->recupIdRef($lien);
       $this->data['ref'] = $this->consultant_model->recupRef($this->data['tabIdRef']);
@@ -17,6 +21,7 @@ class Consultant extends J64_Controller{
       $this->load->view('templates/head', $this->data);
       $this->load->view('consultant/consultation', $this->data);
       $this->load->view('templates/foot');
+    }
   }
   public function presentation(){
       $this->load->view('templates/head');
