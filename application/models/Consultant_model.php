@@ -8,6 +8,11 @@ class Consultant_model extends CI_Model {
                 $this->load->library('session');
         }
 
+        public function verifLien($lien){
+            $tabLienGroupement = $this->db->get_where('groupement', array('lien_consultation' => $lien));
+            return $tabLienGroupement->result();
+        }
+
 //prend en paramètre la chaine de 40 caractère de l'url
 //retourne un tableau composé des elements de la table groupement dont l'url correspondant à l'url en cour
         public function recupIdRef($lien)
