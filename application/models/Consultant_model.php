@@ -8,19 +8,23 @@ class Consultant_model extends CI_Model {
                 $this->load->library('session');
         }
 
-        public function affichage($lien)
+        public function recupIdRef($lien)
         {
                 $tabIdRef=[];
-                $this->db->select('lien_consultation');
-                $lienCon = $this->db->get('groupement');
-                foreach ($lienCon as $value) {
-                if($value== $lien) {
-                        $this->db->select('id_ref');
-                        $id = $this->db->get('groupement');
-                        $tabIdRef = [$tabIdRef]
-                }
-                }
-                return $query->result();
+                $tab=array(
+                        'lien_consultation'=>$lien);
+                $tabIdRef = $this->db->get_where("groupement",$tab);
+                return $tabIdRef->result();
+        }
+        public function recupRef($tabIdRef)
+        {
+        $acc=[];
+        for ($i=0; $i <count($tabIdRef) ; $i++) { 
+           array_push($acc,$tabIdRef[$i]->id_ref);     
+        }
+        $this->db->where_in('id', $acc);
+        $this->db->from('reference'); 
+        $toto = $this->db->get();
+        return $toto->result();
         }
 } 
-?>
