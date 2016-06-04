@@ -80,4 +80,10 @@ class Consultant_model extends CI_Model {
         }
        return $tab;       
         }
+
+        public function informationJeune($ref){
+                $idJeune = $ref[0]->id_user;
+                $infoJeune = $this->db->get_where('jeune', array('id' => $idJeune));
+                return $infoJeune->result();
+        }
 } 

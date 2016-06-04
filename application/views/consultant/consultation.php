@@ -12,10 +12,10 @@
       <div class="ui segment center aligned">
                 <h3>Profil du jeune</h3>
         <div class="ui list">
-       <div class="item"> Nom : Christ</div>
-       <div class="item"> Prénom : Jésus</div>
-        <div class="item">Date de naissance : 01/01/01</div>
-       <div class="item"> Mail : jesusRaptor@gmail.com</div>
+       <div class="item"> Nom : <?php echo $jeune[0]->nom?></div>
+       <div class="item"> Prénom : <?php echo $jeune[0]->prenom?></div>
+        <div class="item">Date de naissance : <?php echo $jeune[0]->date_naissance?></div>
+       <div class="item"> Mail : <?php echo $jeune[0]->mail?></div>
       </div>
       </div>
     </div>
@@ -65,7 +65,7 @@ for ($i=0; $i <count($ref) ; $i++) {
   echo "Coordonnées du référent :";
   echo "</div>";
   echo "<div class=\"twelve wide column\">";
-  echo $ref[$i]->nom . " " . $ref[$i]->prenom . mailto($ref[$i]->mail);
+  echo $ref[$i]->nom . " " . $ref[$i]->prenom . " -" . mailto($ref[$i]->mail);
   echo "</div>";
   //Commentaire du référent
    echo "<div class=\"four wide column header\">";
