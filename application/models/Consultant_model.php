@@ -8,7 +8,8 @@ class Consultant_model extends CI_Model {
                 $this->load->library('session');
         }
 
-
+//prend en paramètre la chaine de 40 caractère de l'url
+//retourne un tableau composé des elements de la table groupement dont l'url correspondant à l'url en cour
         public function recupIdRef($lien)
         {
                 $tabIdRef=[];
@@ -18,7 +19,8 @@ class Consultant_model extends CI_Model {
                 return $tabIdRef->result();
         }
 
-
+//prend en paramètre ce que renvoie la fonction precedente
+//retourne un tableau composé des références appartenant au groupement
 
         public function recupRef($tabIdRef)
         {
@@ -32,8 +34,8 @@ class Consultant_model extends CI_Model {
         return $toto->result();
         }
 
-
-
+//prend en paramètre ce que renvoie la fonction precedente
+//retourne un tableau avec les elements de la table savoir_etre_user corrsepondant au référence du groupement
         public function recupIdSavoirEtre($tabIdRef){
          $acc=[];
         for ($i=0; $i <count($tabIdRef) ; $i++) { 
@@ -45,7 +47,11 @@ class Consultant_model extends CI_Model {
         return $toto->result();       
         }
 
+//prend en paramètre ce que renvoie la fonction precedente
+//retourne un tableau avec pour chaque référence, les elements de la table savoir-être correspondant
+
         public function recupSavoirEtre($savoirEtre){
+        //on commence par récuperer les id des savoir-être
         $acc="";
         $num=0;
         $tab=[];
@@ -64,6 +70,7 @@ class Consultant_model extends CI_Model {
                 $tab[$num]=$acc;
                }
         }
+        //après avoir construit un tableau $tab contenant pour chaque référence, les id des savoir être correspondant, on récupere les information de ces savoir-être
         for ($i=0; $i <count($tab) ; $i++) { 
                 $tabNumRef = explode(" ", $tab[$i]); 
                 $this->db->where_in('id', $tabNumRef);
