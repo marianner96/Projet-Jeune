@@ -25,13 +25,15 @@
   </div>
   <div class="row">
 <?php 
-for ($i=0; $i <count($ref) ; $i++) { 
+for ($i=0; $i <count($ref) ; $i++) {
+  $j=$i+1; 
   echo "<div class=column>";
   echo "<div class=\"ui segment\">";
   echo "<div class=\"ui middle aligned divided list selection reference\">";
   //Début de l'affichage  des références validées
   echo "<div class=content>";
   echo "<div class=description>";
+  echo "<h3>  Référence " . $j . "</h3>";
   echo "<div class=\"ui grid stackable\">";
   echo "<div class=\"four wide column header\">";
   echo "Description : ";
@@ -52,7 +54,11 @@ for ($i=0; $i <count($ref) ; $i++) {
   echo "Savoir-être :";
   echo "</div>";
   echo "<div class=\"twelve wide column\">";
-  echo "cc";
+  foreach ($savoirEtreNum[$i] as $value) {
+    echo "<label class=\"ui label\">";
+      echo $value->nom;
+      echo "</label>";
+  }
   echo "</div>";
   //Coordonnées référent
   echo "<div class=\"four wide column header\">";
@@ -75,6 +81,7 @@ for ($i=0; $i <count($ref) ; $i++) {
   echo "</div>";
   echo "</div>";
 }
+
 ?>
   </div>
 </div> 

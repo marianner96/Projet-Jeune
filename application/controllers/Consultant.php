@@ -11,6 +11,8 @@ class Consultant extends J64_Controller{
   	  $this->data['jeune'] = $lien;
       $this->data['tabIdRef'] = $this->consultant_model->recupIdRef($lien);
       $this->data['ref'] = $this->consultant_model->recupRef($this->data['tabIdRef']);
+      $this->data['savoirEtre'] = $this->consultant_model->recupIdSavoirEtre($this->data['tabIdRef']);
+      $this->data['savoirEtreNum'] = $this->consultant_model->recupSavoirEtre($this->data['savoirEtre']);
       $this->load->view('templates/head', $this->data);
       $this->load->view('consultant/consultation', $this->data);
       $this->load->view('templates/foot');
