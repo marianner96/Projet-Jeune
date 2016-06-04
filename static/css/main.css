@@ -90,7 +90,7 @@ aside.home{
     background-color: inherit;
   }
 }
-@-moz-document flash {
+@-moz-keyframes flash {
   0% {
     background-color: #fff6d8;
   }

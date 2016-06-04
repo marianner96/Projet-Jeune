@@ -123,14 +123,12 @@ class Jeune extends J64_Controller{
     $this->load->library('session');
     $sql = 'SELECT id_user FROM reference WHERE id = ? AND etat = 2';
     $user = $this->session->userdata('logged_in');
-    $res = $this->db->query($sql, [$user['id']])->row_array();
-    var_dump($res);
+    $res = $this->db->query($sql, [$id_ref])->row_array();
     return !empty($res) && $res['id_user'] == $user['id'];
   }
 
   public function archiver_reference(){
     $id = $this->input->post('id');
-    var_dump($id);
     if(!$this->checkIdRef($id)){
       $this->output->set_status_header('400');
       $this->output->set_output(json_encode(['errors' => 'Vous n\'avez pas accès à la cette référence n°'. $id . '. Raisons possibles : vous n\'avez pas les droits nécessaire, elle n\'existe pas, elle n\'est pas dans l\'état "validée".']));

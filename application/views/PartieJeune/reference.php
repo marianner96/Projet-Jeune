@@ -21,6 +21,11 @@
   <div class="header">Liste d'engagement</div>
   Votre liste d'engagement a bien été créée !
 </div>
+<div class="ui success message hidden archive">
+  <i class="close icon"></i>
+<div class="header">Référence archivée</div>
+  La référence n°<span></span> a bien été archivée.
+</div>
 <!-- Header de la section -->
 <div class="customClearing referencesHeader">
   <h1 class="ui left floated header">
@@ -51,21 +56,21 @@
     <span>Validées</span>
     <label class="ui label green">
       <i class="icon checkmark"></i>
-      <?php echo $nb_references[2] ?>
+      <span><?php echo $nb_references[2] ?></span>
     </label>
   </a>
   <a class="item" data-tab="non-validee">
     <span>En cours de validation</span>
     <label class="ui label orange">
       <i class="icon exchange"></i>
-      <?php echo $nb_references[1] ?>
+      <span><?php echo $nb_references[1] ?></span>
     </label>
   </a>
   <a class="item" data-tab="archivee">
     <span>Archivées</span>
     <label class="ui label blue">
       <i class="icon archive"></i>
-      <?php echo $nb_references[3] ?>
+      <span><?php echo $nb_references[3] ?></span>
     </label>
   </a>
 </div>
@@ -211,7 +216,7 @@
 </div>
 <div class="ui bottom attached tab segment" data-tab="archivee">
   <div class="ui middle aligned divided list selection reference">
-    <!-- Début de l'affichage  des références en cours de validation -->
+    <!-- Début de l'affichage  des références archivée -->
     <?php
       foreach ($references as $reference) {
       if($reference['etat'] == 3) {
@@ -252,6 +257,19 @@
                   <div class="twelve wide column">
                     <?php echo $reference['prenom'] . ' ' . $reference['nom'] . ' - ' . mailto($reference['mail']) ?>
                   </div>
+                  <!-- Commentaire du référent-->
+                  <?php
+                    if(!empty($reference['commentaire'])) {
+                      ?>
+                      <div class="four wide column header">
+                        Commentaire
+                      </div>
+                      <div class="twelve wide column">
+                        <?php echo $reference['commentaire'] ?>
+                      </div>
+                      <?php
+                    }
+                  ?>
                 </div>
               </div>
               <!-- Fin détail de la référence -->
@@ -266,7 +284,7 @@
         echo 'Pas encore de références ici.';
       }
     ?>
-    <!-- Fin de l'affichage  des références en cours de validation-->
+    <!-- Fin de l'affichage  des références archivée-->
   </div>
 </div>
 
