@@ -14,7 +14,7 @@
         <a class="item <?php echo !empty($content) && $content == 'listes-references' ? 'active' : '' ?>" href="<?php echo site_url('jeune/listes-references') ?>">
           Listes de mes références
         </a>
-        <a class="item <?php echo !empty($content) && $content == 'consultant' ? 'active' : '' ?>" href="<?php echo site_url('consultant/consultant') ?>">
+        <a class="item <?php echo !empty($content) && $content == 'consultant' ? 'active' : '' ?>" href="<?php echo site_url('consultant//') ?>">
           Consultant
         </a>
       </div>

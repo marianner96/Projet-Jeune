@@ -6,8 +6,8 @@ class Consultant extends J64_Controller{
     $this->load->model('consultant_model');
     $this->load->helper('url');
   }
-  public function consultant(){
-      $lien=$this->uri->segment(3);
+  public function index(){
+      $lien=$this->uri->segment(2);
       $tabLienGroupement=$this->consultant_model->verifLien($lien);
       if (count($tabLienGroupement)==0){
         show_404($page = '', $log_error = TRUE);
