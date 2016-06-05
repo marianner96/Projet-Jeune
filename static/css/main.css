@@ -115,7 +115,7 @@ aside.home{
   }
 }
 /* Jeune - Listes engagement */
-.liste-engagement, .ui.button.liste-engagement{
+.liste-engagement.hidden, .ui.button.liste-engagement.hidden{
   display: none;
 }
 .liste-engagement .ui.grid .column{
@@ -162,20 +162,23 @@ header > .menu {
   header .menu .image{
     width: 50px!important;
   }
-  .referencesHeader *{
+  .jeuneHeader *{
     float: none!important;
   }
-  .referencesHeader > div {
+  .jeuneHeader > div {
     display: flex;
     flex-wrap: wrap;
   }
-  .referencesHeader > div > *{
+  .jeuneHeader > div > *{
     display: flex;
     width: 100%;
     margin: 5px 0;
   }
-  .referencesHeader .button{
+  .jeuneHeader .button{
     margin: 5px 0;
+  }
+  .liste-engagement.content{
+    margin-top: 1.5em;
   }
 }
 @media (max-width: 500px) {

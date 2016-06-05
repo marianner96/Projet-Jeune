@@ -27,7 +27,7 @@
   La référence n°<span></span> a bien été archivée.
 </div>
 <!-- Header de la section -->
-<div class="customClearing referencesHeader">
+<div class="customClearing jeuneHeader">
   <h1 class="ui left floated header">
     Gérer mes références
   </h1>

@@ -3,7 +3,7 @@
  */
 
 function toggleView(){
-  $('.liste-engagement').toggle();
+  $('.liste-engagement').toggleClass('hidden');
   $('.list.selection').toggle();
 }
 

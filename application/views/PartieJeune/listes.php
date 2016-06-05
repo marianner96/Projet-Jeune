@@ -1,9 +1,12 @@
-<div class="customClearing">
+<div class="customClearing jeuneHeader">
   <h1 class="ui left floated header">
     Listes de mes engagements
   </h1>
   <div>
-    <a class="ui button pink liste-engagement" href="#">Retour</a>
+    <a class="ui button pink liste-engagement hidden" href="#">
+      <i class="icon arrow left"></i>
+      Retour
+    </a>
   </div>
 </div>
 <div class="ui middle aligned divided list selection">
@@ -26,6 +29,6 @@
   ?>
   <!-- Fin de l'affichage  des liste d'engagements -->
 </div>
-<div class="liste-engagement content">
+<div class="liste-engagement content hidden">
 </div>
 <script>var reqUrl = '<?php echo site_url('/jeune/'); ?>' </script>
