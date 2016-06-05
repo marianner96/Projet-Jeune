@@ -1,5 +1,3 @@
-    L'objectif de ce site est de permettre à un jeune de mettre en avant ses savoir-être, pour cela il a la possibilité de faire valider ses savoir-être par un consultant. Vous avez ici accés au savoir être que le jeune à choisit de mettre en avant.
-  <br>
    <a class="ui button" href="<?php echo site_url('consultant/presentation') ?>">
     En savoir plus
   </a>
@@ -62,7 +60,7 @@ for ($i=0; $i <count($ref) ; $i++) {
   echo "</div>";
   //Coordonnées référent
   echo "<div class=\"four wide column header\">";
-  echo "Coordonnées du référent :";
+  echo "Référent :";
   echo "</div>";
   echo "<div class=\"twelve wide column\">";
   echo $ref[$i]->nom . " " . $ref[$i]->prenom . " -" . mailto($ref[$i]->mail);

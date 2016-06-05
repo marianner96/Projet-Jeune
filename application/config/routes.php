@@ -55,4 +55,5 @@ $route['partenaires'] = 'home/partenaires';
 $route['deconnexion'] = 'connexion/deconnexion';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
+$route['consultant/presentation'] = "consultant/presentation";
 $route['consultant/(.*)'] = "consultant/index";
