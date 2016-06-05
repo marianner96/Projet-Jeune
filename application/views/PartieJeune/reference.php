@@ -19,7 +19,7 @@
 <div class="ui success message hidden grp">
   <i class="close icon"></i>
   <div class="header">Liste d'engagement</div>
-  Votre liste d'engagement a bien été créée !
+  Votre <a data-base-url="<?php echo site_url('/jeune/listes-engagements'); ?>">liste d'engagement</a> a bien été créée !
 </div>
 <div class="ui success message hidden archive">
   <i class="close icon"></i>

@@ -25,9 +25,14 @@ function creerGrp (){
     .each(function(i){
       tab[i] = $(this).data('value');
     });
-  $.post(reqUrl+'/creer-groupement', {grp : tab}, function(){
+  $.post(reqUrl+'/creer-groupement', {grp : tab}, function(data){
     $('.message.grp.hidden')
-      .transition('fade down');
+      .transition('fade down')
+      .find('a')
+      .attr('href', function () {
+        console.log(data);
+        return $(this).data('base-url')+'#'+data.lien;
+      });
     toggleView();
   })
     .fail(function(xhr, status, msg){

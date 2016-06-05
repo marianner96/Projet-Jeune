@@ -137,8 +137,8 @@ class Jeune extends J64_Controller{
           $err[] = 'Vous n\'avez pas accès à la cette référence n°'. $ref . '. Raisons possibles : vous n\'avez pas les droits nécessaire, elle n\'existe pas, elle n\'est pas dans l\'état "validée".';
       }
     }
+    $this->output->set_content_type('application/json');
     if(!empty($err)) {
-      $this->output->set_content_type('application/json');
       $this->output->set_status_header('400');
       $this->output->set_output(
         json_encode(['errors' => $err])
@@ -152,6 +152,7 @@ class Jeune extends J64_Controller{
     $lien = $this->reference_model->creerGrp(array_unique($grp));
     $user = $this->session->userdata('logged_in');
     $this->jeune_model->addGrpToDashboard($lien, $user['id']);
+    $this->output->set_output(json_encode(['lien' => $lien]));
   }
 
   /**
