@@ -16,7 +16,7 @@
             } elseif($value['type'] == 3) {
               echo 'Votre référence a été validée';
             } elseif($value['type'] == 4) {
-              echo 'Vous avez créé un ' . anchor('/jeune/listes-references/'.$value['options'], 'groupement');
+              echo 'Vous avez créé un ' . anchor('/jeune/listes-engagements#'.$value['options'], 'groupement');
             }
           ?>
           <div class="date" data-position="top center" data-content="<?php echo $value['date']; ?>">

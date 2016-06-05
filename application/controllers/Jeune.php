@@ -68,23 +68,6 @@ class Jeune extends J64_Controller{
   }
 
   /**
-   * Véréfie si l'utilisateur a entrée un nombre correct de savoir être
-   *
-   * @param string $chaine Un savoir etre
-   * @return bool|string Retourne le savoir etre s'il y a au plus quatre savoir
-   *  être qui on été envoyé au serveur FALSE sinon
-   */
-  public function savoirEtre_check($chaine){
-    if (count($this->input->post('savoirEtre'))>4) {
-      $this->form_validation->set_message('savoirEtre_check', 'Veuillez choisir au maximum 4 options');
-      return FALSE;
-    }
-    else {
-      return $chaine;
-    }
-  }
-
-  /**
    * Route /jeune/profile/$action
    *
    * Affiche la vue du profile ou execute l'action demandée.
@@ -124,8 +107,9 @@ class Jeune extends J64_Controller{
     $this->data['tab'] = $this->session->userdata('logged_in');
 
     $this->data['content'] = 'reference';
-    $footerData['scripts'] = ['jeune', 'utils'];
-    
+    $this->data['title'] = 'Mes engagements';
+    $footerData['scripts'] = ['references', 'utils'];
+
     $this->data['references'] = $this->reference_model->getRefByUser($jeune['id']);
     $this->data['nb_references'] = $this->reference_model->countRefUser($jeune['id']);
 
@@ -153,8 +137,8 @@ class Jeune extends J64_Controller{
           $err[] = 'Vous n\'avez pas accès à la cette référence n°'. $ref . '. Raisons possibles : vous n\'avez pas les droits nécessaire, elle n\'existe pas, elle n\'est pas dans l\'état "validée".';
       }
     }
-    $this->output->set_content_type('application/json');
     if(!empty($err)) {
+      $this->output->set_content_type('application/json');
       $this->output->set_status_header('400');
       $this->output->set_output(
         json_encode(['errors' => $err])
@@ -168,6 +152,67 @@ class Jeune extends J64_Controller{
     $lien = $this->reference_model->creerGrp(array_unique($grp));
     $user = $this->session->userdata('logged_in');
     $this->jeune_model->addGrpToDashboard($lien, $user['id']);
+  }
+
+  /**
+   * Route /jeune/archive-reference
+   *
+   * Archive une référence.
+   * En cas d'erreur, affiche les erreurs avec le status 400.
+   * En cas de réussite répond avec le status 200.
+   */
+  public function archiver_reference(){
+    $id = $this->input->post('id');
+    if(!$this->checkIdRef($id)){
+      $this->output->set_content_type('application/json');
+      $this->output->set_status_header('400');
+      $this->output->set_output(json_encode(['errors' => 'Vous n\'avez pas accès à la cette référence n°'. $id . '. Raisons possibles : vous n\'avez pas les droits nécessaire, elle n\'existe pas, elle n\'est pas dans l\'état "validée".']));
+      $this->output->_display();
+      exit;
+    }
+    $this->load->model('reference_model');
+    $this->reference_model->archiver($id);
+  }
+
+
+  /**
+   * Route /jeune/listes-engagements
+   */
+  public function listes_engagements(){
+    $this->data['title'] = 'Mes listes d\'engagements';
+    $this->data['content'] = 'listes';
+    $this->data['scripts'] = ['utils', 'listes'];
+    $this->load->model('groupement_model');
+    $this->data['grp'] = $this->groupement_model->getGrpsLinkByUser(1);
+    $this->load->view('templates/head', $this->data);
+    $this->load->view('templates/jeunes', $this->data);
+    $this->load->view('templates/foot', $this->data);
+  }
+
+  public function get_liste($key = ''){
+    $this->load->model('groupement_model');
+    $res = $this->groupement_model->getGrpByLink($key);
+    if(!$res){
+      $this->output->set_status_header('404');
+    }
+    $this->load->view('partials/liste.php', ['grps' => $res]);
+  }
+
+  /**
+   * Véréfie si l'utilisateur a entrée un nombre correct de savoir être
+   *
+   * @param string $chaine Un savoir etre
+   * @return bool|string Retourne le savoir etre s'il y a au plus quatre savoir
+   *  être qui on été envoyé au serveur FALSE sinon
+   */
+  public function savoirEtre_check($chaine){
+    if (count($this->input->post('savoirEtre'))>4) {
+      $this->form_validation->set_message('savoirEtre_check', 'Veuillez choisir au maximum 4 options');
+      return FALSE;
+    }
+    else {
+      return $chaine;
+    }
   }
 
   /**
@@ -185,26 +230,6 @@ class Jeune extends J64_Controller{
     $user = $this->session->userdata('logged_in');
     $res = $this->db->query($sql, [$id_ref])->row_array();
     return !empty($res) && $res['id_user'] == $user['id'];
-  }
-
-  /**
-   * Route /jeune/archive-reference
-   *
-   * Archive une référence.
-   * En cas d'erreur, affiche les erreurs avec le status 400.
-   * En cas de réussite répond avec le status 200.
-   */
-  public function archiver_reference(){
-    $id = $this->input->post('id');
-    $this->output->set_content_type('application/json');
-    if(!$this->checkIdRef($id)){
-      $this->output->set_status_header('400');
-      $this->output->set_output(json_encode(['errors' => 'Vous n\'avez pas accès à la cette référence n°'. $id . '. Raisons possibles : vous n\'avez pas les droits nécessaire, elle n\'existe pas, elle n\'est pas dans l\'état "validée".']));
-      $this->output->_display();
-      exit;
-    }
-    $this->load->model('reference_model');
-    $this->reference_model->archiver($id);
   }
 
   /**
@@ -227,7 +252,10 @@ class Jeune extends J64_Controller{
    * Change l'email de l'utilisateur connecté.
    *
    * En cas d'erreur, affiche les erreurs avec le status 400.
-   * En cas de réussite répond avec le status 200.
+   * En cas de réussite répond avec le status 200 et affiche le nombre de lignes
+   *  affectées dans la base de données.
+   * 
+   * @uses Jeune::changement_mail_possible
    */
   private function chmail(){
     $this->form_validation->set_rules('mail', 'e_mail', 'required|valid_email|callback_changement_mail_possible'); 
@@ -248,7 +276,8 @@ class Jeune extends J64_Controller{
    * Cette fonction est appelée après que s'être assuré qu'un email valide
    * a été fourni par l'utilisateur. Si l'utilisateur veut changer un email par
    * le même, on définie une erreur pour qu'elle lui soit affichée. Si toutes
-   * les conditions sont réunies l'email sera changé.
+   * les conditions sont réunies l'email sera changée et affiche le nombre de
+   * lignes affectées dans la base de données.
    *
    * @return bool TRUE si l'email à été changé FALSE sinon
    */
@@ -270,7 +299,8 @@ class Jeune extends J64_Controller{
    * Change le mot de passe de l'utilisateur connecté.
    *
    * En cas d'erreur, affiche les erreurs avec le status 400.
-   * En cas de réussite répond avec le status 200.
+   * En cas de réussite répond avec le status 200 et affiche le nombre de lignes
+   *  affectées dans la base de données.
    * @todo Longueur minimum du mot de passe
    */
   private function chmdp(){

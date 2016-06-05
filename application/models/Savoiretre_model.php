@@ -5,7 +5,7 @@
     {
       $this->load->database();
     }
-
+    //Accès
     public function getJeune($activeOnly = true)
     { 
       $this->db->select('id, nom, etat');
@@ -42,6 +42,24 @@
       return $query->result();
     }
 
+    public function getSavoirEtreByRefs($refsId){
+      $sqlSE = '
+      SELECT *
+      FROM savoir_etre_user
+      JOIN savoir_etre ON savoir_etre.id = savoir_etre_user.id_savoir_etre
+      WHERE id_ref IN ('.implode(',', $refsId).')
+    ';
+      $querySE = $this->db->query($sqlSE);
+      $res = [];
+      foreach ($querySE->result_array() as $ref){
+        isset($res[$ref['id_ref']]) || $res[$ref['id_ref']] = ['jeune' => [], 'referent' => []];
+        $type = $ref['type'] == 1 ? 'jeune' : 'referent';
+        $res[$ref['id_ref']][$type][] = $ref['nom'];
+      }
+      return $res;
+    }
+
+    //Modification
     public function create($param){
       $data = array(
         'nom' => urldecode($param['nom']),

@@ -29,7 +29,7 @@
 <!-- Header de la section -->
 <div class="customClearing referencesHeader">
   <h1 class="ui left floated header">
-    Gérer vos références
+    Gérer mes références
   </h1>
   <div>
     <button class="ui button pink overView" name="createGrp">
@@ -112,7 +112,7 @@
                     <?php
                     foreach ($reference['savoir_etre'] as $savoir_etre) {
                       ?>
-                      <label class="ui label"><?php echo $savoir_etre['nom'] ?></label>
+                      <label class="ui label"><?php echo $savoir_etre ?></label>
                       <?php
                     }
                     ?>
@@ -185,7 +185,7 @@
                     <?php
                     foreach ($reference['savoir_etre'] as $savoir_etre) {
                       ?>
-                      <label class="ui label"><?php echo $savoir_etre['nom'] ?></label>
+                      <label class="ui label"><?php echo $savoir_etre ?></label>
                       <?php
                     }
                     ?>
@@ -245,7 +245,7 @@
                     <?php
                     foreach ($reference['savoir_etre'] as $savoir_etre) {
                       ?>
-                      <label class="ui label"><?php echo $savoir_etre['nom'] ?></label>
+                      <label class="ui label"><?php echo $savoir_etre ?></label>
                       <?php
                     }
                     ?>

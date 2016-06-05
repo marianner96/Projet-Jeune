@@ -35,7 +35,7 @@ aside.home{
   display: none;
 }
 /* Jeune - Liste références */
-.referencesHeader{
+.jeuneHeader {
   margin-bottom: -2em;
 }
 .ui.button.selectionView,
@@ -62,7 +62,7 @@ aside.home{
 .reference .item.state-selection .long{
   display: none!important;
 }
-.referencesHeader > div{
+.jeuneHeader > div{
   float: right;
 }
 /* Animation mise en valeur de la référence */
@@ -114,8 +114,36 @@ aside.home{
     background-color: inherit;
   }
 }
+/* Jeune - Listes engagement */
+.liste-engagement, .ui.button.liste-engagement{
+  display: none;
+}
+.liste-engagement .ui.grid .column{
+  padding-bottom: 0;
+  padding-top: 0.5rem;
+}
 
-/* Fix responsive design */ 
+h2.engagement {
+  margin-bottom: 1rem 0!important;
+}
+h2.engagement div{
+  display: inline-block;
+  position: relative;
+  background-color: white;
+  padding-right: 0.5em;
+  z-index: 2;
+}
+h2.engagement hr{
+  position: relative;
+  bottom: -0.8em;
+  margin: 0;
+  z-index: 1;
+  border-top: none;
+}
+h2.engagement hr.pink{
+  color: #cc0093;
+}
+/* Fix responsive design */
 header .menu i,
 .tabular.menu label i{
   display: none;
