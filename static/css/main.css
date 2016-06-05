@@ -143,6 +143,9 @@ h2.engagement hr{
 h2.engagement hr.pink{
   color: #cc0093;
 }
+.liste-engagement.content{
+  clear: both;
+}
 /* Fix responsive design */
 header .menu i,
 .tabular.menu label i{

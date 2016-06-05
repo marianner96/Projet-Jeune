@@ -9,6 +9,7 @@
     </a>
   </div>
 </div>
+
 <div class="ui middle aligned divided list selection">
   <!-- Début de l'affichage  des listes d'engagement -->
   <?php
@@ -30,5 +31,6 @@
   <!-- Fin de l'affichage  des liste d'engagements -->
 </div>
 <div class="liste-engagement content hidden">
+  Chargements...
 </div>
 <script>var reqUrl = '<?php echo site_url('/jeune/'); ?>' </script>
