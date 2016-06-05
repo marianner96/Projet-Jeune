@@ -67,6 +67,7 @@
 <script src="<?php echo base_url()?>static/js/utils.js"></script>
 
 <script>
+	//TODO Gérer le submit avec un event de type submit plutot que click.
   $("input[name='chmail']").click(function () { //on clique sur le bouton de modification de mail
   	$.post(<?php echo "'".site_url("jeune/profil/chmail")."'"; ?>, { //on appelle le contrôleur de modifiaction de mail
   		mail : $("input[name='mail']").val()

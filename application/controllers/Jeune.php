@@ -1,5 +1,13 @@
 <?php
+
+/**
+ * Class Jeune
+ * Controlleur du module "jeune". Match les routes de type /jeune/*
+ */
 class Jeune extends J64_Controller{
+  /**
+   * Jeune constructor.
+   */
   public function __construct(){
     parent::__construct();
     if(!$this->data['is_logged']){
@@ -13,6 +21,11 @@ class Jeune extends J64_Controller{
     $this->load->model('Jeune_model');
   }
 
+  /**
+   * Route : /jeune/index
+   *
+   * Page par défaut du module jeune.
+   */
   public function index(){
     $this->data['content'] = 'accueil';
 
@@ -23,6 +36,13 @@ class Jeune extends J64_Controller{
     $this->load->view('templates/foot');
   }
 
+  /**
+   * Route /jeune/formulaire
+   *
+   * Affiche le form de création de reference et créer la référence.
+   *
+   * @todo changer cette route parce que voila
+   */
   public function formulaire(){
     $this->load->helper(array('form', 'url'));
   
@@ -47,6 +67,13 @@ class Jeune extends J64_Controller{
     }
   }
 
+  /**
+   * Véréfie si l'utilisateur a entrée un nombre correct de savoir être
+   *
+   * @param string $chaine Un savoir etre
+   * @return bool|string Retourne le savoir etre s'il y a au plus quatre savoir
+   *  être qui on été envoyé au serveur FALSE sinon
+   */
   public function savoirEtre_check($chaine){
     if (count($this->input->post('savoirEtre'))>4) {
       $this->form_validation->set_message('savoirEtre_check', 'Veuillez choisir au maximum 4 options');
@@ -57,23 +84,39 @@ class Jeune extends J64_Controller{
     }
   }
 
+  /**
+   * Route /jeune/profile/$action
+   *
+   * Affiche la vue du profile ou execute l'action demandée.
+   * Affiche une erreur 404 si l'action ne fait pas partie des actions
+   *  attendues.
+   *
+   * @param string $action : [""|"chmdp"|chmail"]
+   */
   public function profil($action=""){
     if ($action == "")  {
       $this->data['content'] = 'profil';
       $tab = $this->session->userdata('logged_in'); //recupération des données de session
       $this->data['tab'] = $tab;
 
-
       $this->load->view('templates/head', $this->data);
       $this->load->view('templates/jeunes', $this->data);
       $this->load->view('templates/foot');
+
     } elseif ($action == "chmail") {
       $this->chmail();
-    } else {
+    } elseif ($action == "chmdp") {
       $this->chmdp();
+    } else {
+      show_404();
     }
   }
 
+  /**
+   * Route /jeune/reference
+   *
+   * Affiche la vue reference.
+   */
   public function reference(){
     $this->load->model('reference_model');
     $jeune = $this->session->userdata('logged_in');
@@ -91,6 +134,14 @@ class Jeune extends J64_Controller{
     $this->load->view('templates/foot', $footerData);
   }
 
+  /**
+   * Route /jeune/creer-groupement
+   *
+   * Créer un groupement.
+   * En cas d'erreur, affiche les erreurs avec le status 400.
+   * En cas de réussite répond avec le status 200.
+   *
+   */
   public function creer_groupement(){
     $err = array();
     $grp = $this->input->post('grp');
@@ -102,6 +153,7 @@ class Jeune extends J64_Controller{
           $err[] = 'Vous n\'avez pas accès à la cette référence n°'. $ref . '. Raisons possibles : vous n\'avez pas les droits nécessaire, elle n\'existe pas, elle n\'est pas dans l\'état "validée".';
       }
     }
+    $this->output->set_content_type('application/json');
     if(!empty($err)) {
       $this->output->set_status_header('400');
       $this->output->set_output(
@@ -118,6 +170,14 @@ class Jeune extends J64_Controller{
     $this->jeune_model->addGrpToDashboard($lien, $user['id']);
   }
 
+  /**
+   * Vérifie qu'une référence existe, appartient à l'utilisateur connecté et a
+   *  l'etat "validée" (2)
+   *
+   * @param int $id_ref L'id de la référence
+   * @return bool Renvoie TRUE si l'utilisateur peut accéder à la référence,
+   *  FALSE sinon
+   */
   private function checkRefGrp($id_ref){
     $this->load->database();
     $this->load->library('session');
@@ -127,8 +187,16 @@ class Jeune extends J64_Controller{
     return !empty($res) && $res['id_user'] == $user['id'];
   }
 
+  /**
+   * Route /jeune/archive-reference
+   *
+   * Archive une référence.
+   * En cas d'erreur, affiche les erreurs avec le status 400.
+   * En cas de réussite répond avec le status 200.
+   */
   public function archiver_reference(){
     $id = $this->input->post('id');
+    $this->output->set_content_type('application/json');
     if(!$this->checkIdRef($id)){
       $this->output->set_status_header('400');
       $this->output->set_output(json_encode(['errors' => 'Vous n\'avez pas accès à la cette référence n°'. $id . '. Raisons possibles : vous n\'avez pas les droits nécessaire, elle n\'existe pas, elle n\'est pas dans l\'état "validée".']));
@@ -139,6 +207,13 @@ class Jeune extends J64_Controller{
     $this->reference_model->archiver($id);
   }
 
+  /**
+   * Vérifie qu'une référence existe et appartient à l'utilisateur connecté
+   *
+   * @param int $id_ref L'id de la référence
+   * @return bool Renvoie TRUE si l'utilisateur peut accéder à la référence,
+   *  FALSE sinon
+   */
   private function checkIdRef($id_ref){
     $this->load->database();
     $this->load->library('session');
@@ -148,6 +223,12 @@ class Jeune extends J64_Controller{
     return $res['nb'] == 1;
   }
 
+  /**
+   * Change l'email de l'utilisateur connecté.
+   *
+   * En cas d'erreur, affiche les erreurs avec le status 400.
+   * En cas de réussite répond avec le status 200.
+   */
   private function chmail(){
     $this->form_validation->set_rules('mail', 'e_mail', 'required|valid_email|callback_changement_mail_possible'); 
     $this->output->set_content_type('application/json');
@@ -161,6 +242,16 @@ class Jeune extends J64_Controller{
     }
   }
 
+  /**
+   * Change l'email de l'utilisateur connectée.
+   *
+   * Cette fonction est appelée après que s'être assuré qu'un email valide
+   * a été fourni par l'utilisateur. Si l'utilisateur veut changer un email par
+   * le même, on définie une erreur pour qu'elle lui soit affichée. Si toutes
+   * les conditions sont réunies l'email sera changé.
+   *
+   * @return bool TRUE si l'email à été changé FALSE sinon
+   */
   public function changement_mail_possible(){
     $ma = $this->input->post('mail'); //recuperation de l'email envoyé
     $tab = $this->session->user_data('logged_in'); //donnéesde session
@@ -175,6 +266,13 @@ class Jeune extends J64_Controller{
     return TRUE;
   }
 
+  /**
+   * Change le mot de passe de l'utilisateur connecté.
+   *
+   * En cas d'erreur, affiche les erreurs avec le status 400.
+   * En cas de réussite répond avec le status 200.
+   * @todo Longueur minimum du mot de passe
+   */
   private function chmdp(){
     $this->form_validation->set_rules('mdp', 'mot de passe', 'required|trim|callback_change_mdp_possible');
     $this->form_validation->set_rules('nvmdp', 'nouveau mot de passe', 'required|trim');
@@ -194,6 +292,13 @@ class Jeune extends J64_Controller{
     }
   }
 
+  /**
+   *
+   * Vérifie si le mot de passe entrée est correct. Si ce n'est pas le cas, on
+   * définie une erreur pour qu'elle lui soit affichée.
+   *
+   * @return bool TRUE si l'utilisateur a saisi son mot de passe FALSE sinon
+   */
   public function change_mdp_possible() {
     $mdp = $this->input->post('mdp');
     $id = $this->session->userdata('logged_in')['id']; //recuperation de l'id du jeune
@@ -201,7 +306,7 @@ class Jeune extends J64_Controller{
     $this->db->where('id', $id); 
     $query = $this->db->get('jeune');
     $qr = $query->row();
-    $this->form_validation->set_message('change_mdp_possible', "Le mot de passe n'as pas été changée"); //le message d'erreur
+    $this->form_validation->set_message('change_mdp_possible', "Mot de passe inconrect."); //le message d'erreur
     return ($this->passwordhash->CheckPassword($mdp, $qr->mdp)); //regarde si les mdp sont les mêmes 
   }
 }
