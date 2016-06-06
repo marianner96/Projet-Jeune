@@ -91,7 +91,10 @@ class Admin extends J64_Controller {
 
       $this->form_validation->set_rules('id', 'id du savoir-être', 'required|is_natural_no_zero');
     }else{
-      $this->output->set_status_header('404');
+      $this->output->set_status_header('400')
+        ->set_output(json_encode(array('errors' => ["Requête invalide"]))
+        )
+        ->_display();
       exit;
     }
     if($this->form_validation->run() == FALSE){

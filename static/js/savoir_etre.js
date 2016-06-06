@@ -32,9 +32,10 @@ function deleteSavoirEtre(){
     });
 }
 
-function createSavoirEtre(){
+function createSavoirEtre(e){
+  e.preventDefault();
   if ($(this).hasClass('loading'))
-    return
+    return;
   $(this).toggleClass('loading');
   var self = this;
 
@@ -92,4 +93,4 @@ initEvent();
 
 $('#savoirEtreHeader button').click(toggleDisplay);
 
-$('.creationSavoirEtre button').click(createSavoirEtre);
+$('.creationSavoirEtre form').submit(createSavoirEtre);

@@ -57,7 +57,7 @@
   ?>
 </div>
 <div class="creationSavoirEtre">
-  <div class="ui form">
+  <form class="ui form">
     <h3 class="ui dividing header">Créer un nouveau savoir-être</h3>
     <div class="ui inline field">
       <label for="nouveauSavoirEtre">Nom du savoir être : </label>
@@ -80,7 +80,7 @@
         Valider
       </button>
     </div>
-  </div>
+  </form>
 </div>
 <script>
   var reqUrl = '<?php echo site_url('/admin/savoir_etre/') ?>';
