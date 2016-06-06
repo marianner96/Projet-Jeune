@@ -34,4 +34,43 @@
       ';
       return $this->db->query($sql, [($page - 1)*5])->result_array();
     }
+    
+    public function toggleAdmin($id){
+      $sqlGet = '
+        SELECT rang
+        FROM jeune
+        WHERE id = ?
+      ';
+      $res = $this->db->query($sqlGet, [$id])->row_array();
+      if(empty($res)){
+        return false;
+      }
+      $sqlUpdate = '
+        UPDATE jeune 
+        SET rang = ? 
+        WHERE id = ?
+      ';
+      $this->db->query($sqlUpdate, [$res['rang'] >= 100 ? 0 : 100, $id]);
+      return true;
+    }
+    
+    public function deleteUser($id){
+      $sql1 = '
+        DELETE groupement, reference, savoir_etre_user FROM groupement 
+          INNER JOIN reference 
+            ON groupement.id_ref=reference.id
+          INNER JOIN savoir_etre_user 
+            ON reference.id=savoir_etre_user.id_ref
+          WHERE reference.id_user = ?;
+      ';
+      $sql2 = '
+        DELETE jeune, dashboard 
+          FROM jeune 
+          LEFT JOIN dashboard 
+            ON jeune.id = dashboard.id_user
+          WHERE jeune.id = ?;
+      ';
+      $this->db->query($sql1, [$id]);
+      $this->db->query($sql2, [$id]);
+    }
   }

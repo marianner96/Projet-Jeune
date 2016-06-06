@@ -43,6 +43,9 @@
     }
 
     public function getSavoirEtreByRefs($refsId){
+      if(empty($refsId)){
+        return [];
+      }
       $sqlSE = '
       SELECT *
       FROM savoir_etre_user

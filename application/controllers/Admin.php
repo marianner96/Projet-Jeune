@@ -11,7 +11,7 @@ class Admin extends J64_Controller {
 
     $this->data['title'] = 'Administration';
 
-    if(false && !$this->data['is_admin']){
+    if(!$this->data['is_admin']){
       show_error('Vous n\'avez pas la permission de voir cette page.', 403, 'Accès reffusé');
     }
   }
@@ -53,6 +53,7 @@ class Admin extends J64_Controller {
     $this->data['page'] = $page;
     $this->data['users'] = $this->admin_model->getUsers($page);
     $this->data['nbUsers'] = $this->admin_model->countUsers();
+    $this->data['scripts'] = ['utils', 'users'];
 
     $this->load->library('pagination');
     $config['base_url'] = site_url('/admin/utilisateurs/');
@@ -112,5 +113,22 @@ class Admin extends J64_Controller {
       $this->output->set_status_header(empty($res['errors']) ? 200 : 400);
       $this->output->set_output(json_encode($res));
     }
+  }
+  public function toggle_admin(){
+    $id = $this->input->post('id_user');
+    $ok = $this->admin_model->toggleAdmin($id);
+    $err = [];
+    if(!$ok){
+      $err[] = 'Cet utilisateur n\'existe pas.';
+    }
+    $this->output->set_content_type('application/json');
+    $this->output->set_status_header(empty($err) ? 200 : 400);
+    $this->output->set_output(json_encode(['errors' => $err]));
+  }
+
+  public function delete_user(){
+    $id = $this->input->post('id_user', 0);
+    var_dump($id);
+    $this->admin_model->deleteUser($id);
   }
 }

@@ -1,4 +1,11 @@
-
+<div class="ui error message hidden">
+  <i class="close icon"></i>
+  <ul class="list">
+  </ul>
+</div>
+<h1 class="ui left floated header">
+  Gestion des savoir-être
+</h1>
 <table class="ui very basic table users">
   <thead>
     <tr>
@@ -11,8 +18,8 @@
 <?php
   foreach ($users as $user){
     ?>
-      <tr>
-        <td><?php echo $user['nom'] . ' ' . $user['prenom']?></td>
+      <tr data-user-id="<?php echo $user['id'] ?>">
+        <td><?php echo $user['prenom'] . ' ' . $user['nom']?></td>
         <td><?php echo mailto($user['mail']) ?></td>
         <td class="center aligned"><i class="<?php echo $user['rang'] > 99 ? '' : 'empty' ?> star large icon"></i></td>
         <td class="center aligned"><i class="remove user large icon"></i></td>
@@ -25,14 +32,5 @@
   echo $this->pagination->create_links();
 ?>
 <script>
-  $('.icon.star').click(function(){
-    console.log('test');
-    $(this)
-      .toggleClass('empty');
-    $(this)
-      .transition({
-        animation : 'jiggle',
-        duration : '0.5s'
-      });
-  })
+  var reqUrl = '<?php echo site_url('/admin/') ?>';
 </script>
