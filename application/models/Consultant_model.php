@@ -52,6 +52,7 @@ class Consultant_model extends CI_Model {
         return $toto->result();       
         }
 
+
 //prend en paramètre ce que renvoie la fonction precedente
 //retourne un tableau avec pour chaque référence, les elements de la table savoir-être correspondant
 
