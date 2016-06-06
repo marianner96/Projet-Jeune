@@ -30,6 +30,9 @@
     $(this)
       .toggleClass('empty');
     $(this)
-      .transition('jiggle');
+      .transition({
+        animation : 'jiggle',
+        duration : '0.5s'
+      });
   })
 </script>
