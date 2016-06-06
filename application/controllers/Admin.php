@@ -44,6 +44,32 @@ class Admin extends J64_Controller {
       $this->performAction();
     }
   }
+  public function utilisateurs($page = 1){
+    if(!is_numeric($page) || $page < 1){
+      show_404();
+    }
+    $this->data['content'] = 'users';
+    $this->data['title'] = 'Utilisateurs - ' . $this->data['title'] ;
+    $this->data['page'] = $page;
+    $this->data['users'] = $this->admin_model->getUsers($page);
+    $this->data['nbUsers'] = $this->admin_model->countUsers();
+
+    $this->load->library('pagination');
+    $config['base_url'] = site_url('/admin/utilisateurs/');
+    $config['total_rows'] = $this->data['nbUsers'];
+    $config['per_page'] = 5;
+    $config['use_page_numbers'] = TRUE;
+    $config['full_tag_open'] = '<div class="ui pagination menu">';
+    $config['full_tag_close'] = '</div>';
+    $config['attributes'] = array('class' => 'item');
+    $config['cur_tag_open'] = '<a class="item active">';
+    $config['cur_tag_close'] = '</a>';
+    $this->pagination->initialize($config);
+
+    $this->load->view('templates/head', $this->data);
+    $this->load->view('templates/admin', $this->data);
+    $this->load->view('templates/foot', $this->data);
+  }
   private function performAction(){
     
     $action = $this->uri->segment(3);

@@ -24,6 +24,10 @@ aside.home{
 
 /* Admin */
 
+.users .icon{
+  cursor: pointer;
+}
+
 .customClearing::after{
   content:'.';
   visibility: hidden;
