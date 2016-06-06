@@ -106,8 +106,9 @@ CREATE TABLE `savoir_etre` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Création ou validation d'une référence
+-- Activités affichées sur la page d'accueil du jeune
 
+-- id : id unique pour différencier les entrées
 -- id_user : identifiant du jeune
 -- type : 1 -> création du compte 
 --        2 -> demande de validation envoyée 
@@ -117,11 +118,12 @@ CREATE TABLE `savoir_etre` (
 -- id_ref : identifiant de la référence
 
 CREATE TABLE `dashboard` (
+  `id` INT (11) NOT NULL AUTO_INCREMENT,
   `id_user` INT(11) DEFAULT NULL,
   `type` SMALLINT(1) DEFAULT '1',
   `date` TIMESTAMP DEFAULT NOW(),
   `options` VARCHAR(100) DEFAULT NULL,
-  PRIMARY KEY (`date`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Savoir-être par défaut
