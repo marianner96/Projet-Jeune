@@ -16,6 +16,8 @@ class Referent extends J64_Controller {
 		//charge les models
 		$this->load->model('reference_model'); 
 		$this->load->model('savoiretre_model');
+		$this->load->model('jeune_model');
+
 
 		if ($this->reference_model->checkRef($cle)==2){ // Si la ref à déjà été validée
 			show_404();
@@ -43,6 +45,7 @@ class Referent extends J64_Controller {
 				$this->load->view('referent/success', $data);
 				$this->reference_model->addInfoReferent($data['ref']);
 				$this->reference_model->addSavoirRef($data['ref']);
+				$this->jeune_model->addRefvalidateToDashboard($data['ref']);
 			}
 			$this->load->view('templates/foot');   	
 

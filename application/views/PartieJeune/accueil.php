@@ -14,7 +14,7 @@
             } elseif ($value['type'] == '2') {
               echo 'Vous avez créé une nouvelle '. anchor('/jeune/reference#'.$value['options'], 'référence');
             } elseif($value['type'] == 3) {
-              echo 'Votre référence a été validée';
+              echo 'Votre '. anchor('/jeune/reference#'.$value['options'], 'référence').' a été validée';
             } elseif($value['type'] == 4) {
               echo 'Vous avez créé un ' . anchor('/jeune/listes-engagements#'.$value['options'], 'groupement');
             }
