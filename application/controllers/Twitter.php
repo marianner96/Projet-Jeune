@@ -51,8 +51,11 @@ class Twitter extends CI_Controller{
       $access_token = $this->connection->oauth('oauth/access_token', ['oauth_verifier' => $oauth_verifier]);
     }catch (Exception $e){
       show_error($e->getMessage(), $this->connection->getLastHttpCode(), 'Voilà qui est fâcheux');
-      exit;
     }
-    var_dump($access_token);
+    $this->session->set_userdata('terminer_inscription', 'twitter');
+    $this->session->set_userdata('twitter_oauth_token', $access_token['oauth_token']);
+    $this->session->set_userdata('twitter_oauth_token_secret', $access_token['oauth_token_secret']);
+    $this->session->set_userdata('twitter_user_id', $access_token['user_id']);
+    redirect('/connexion/terminer-inscription');
   }
 }

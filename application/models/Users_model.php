@@ -86,6 +86,42 @@
       $this->db->update('jeune');
       return array('affectedRows' => $this->db->affected_rows());
     }
+    
+    public function inscriptionTwitter(){
+      $sqlTwitter = '
+        INSERT INTO twitter(id,oauth_token,oauth_token_secret,id_user)
+        VALUE (?,?,?,?)
+      ';
+      $sqlJeune = '
+        INSERT INTO jeune (nom, prenom, mail, date_naissance) 
+        VALUE (?,?,?,?) 
+      ';
+      $dateNaissance = $this->input->post('annee') . '-' .$this->input->post('mois') . '-' .$this->input->post('jour');
+      $this->db->query($sqlJeune, [
+        $this->input->post('nom'),
+        $this->input->post('prenom'),
+        $this->input->post('mail'),
+        $dateNaissance
+      ]);
+      if(!$this->db->affected_rows()){
+        return false;
+      }
+      $userId = $this->db->insert_id();
+      $this->db->query($sqlTwitter, [
+        $this->session->userdata('twitter_user_id'),
+        $this->session->userdata('twitter_oauth_token'),
+        $this->session->userdata('twitter_oauth_token_secret'),
+        $userId
+      ]);
+      return array (
+        'id'=> $userId,
+        'mail'=>$this->input->post('mail'),
+        'rang'=>0,
+        'prenom'=>$this->input->post('prenom'),
+        'nom'=>$this->input->post('nom'),
+        'date_naissance'=>$dateNaissance
+      );
+    }
 
   }
 ?>
