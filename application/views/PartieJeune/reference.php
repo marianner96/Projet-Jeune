@@ -44,7 +44,7 @@
       <i class="icon check"></i>
       Valider
     </button>
-    <a class="ui button pink" href="<?php echo site_url('jeune/formulaire') ?>">
+    <a class="ui button pink" href="<?php echo site_url('jeune/nouvelleDemande') ?>">
       <i class="icon plus"></i>
       Demande de référence
     </a>

@@ -66,6 +66,12 @@ class Jeune_model extends CI_Model {
     $this->addEntryToDashboard(4, $user, $lien);
   }
 
+  public function addRefvalidateToDashboard($ref){
+    $idUser=$ref['id_user'];
+    $idRef=$ref['id'];
+    $this->addEntryToDashboard(3, $idUser, $idRef); 
+  }
+
   private function addEntryToDashboard($type, $user, $opt){
     $dashboard = array(
       'id_user' => $user,
