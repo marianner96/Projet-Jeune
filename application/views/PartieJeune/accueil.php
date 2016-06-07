@@ -19,7 +19,10 @@
               echo 'Vous avez créé un ' . anchor('/jeune/listes-engagements#'.$value['options'], 'groupement');
             }
           ?>
-          <div class="date" data-position="top center" data-content="<?php echo $value['date']; ?>">
+          <div class="date" data-position="top center" data-content="<?php 
+          $endate = $value['date'];
+          $frdate = date("d/m/Y H:i:s", strtotime($endate));
+          echo ($frdate); ?>">
             <?php
               $datedepart = DateTime::createFromFormat('Y-m-d H:i:s', $value['date'], new DateTimeZone('Europe/Paris'));
               $diff = time()-$datedepart->getTimestamp();

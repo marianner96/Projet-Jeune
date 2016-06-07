@@ -8,22 +8,33 @@
     }
 
     public function create_user(){
+      $nom = $this->input->post('nom');
+      $prenom = $this->input->post('prenom');
+      $mail = $this->input->post('mail');
+      $date = $this->input->post('annee') . '-' .$this->input->post('mois') . '-' .$this->input->post('jour');
+
       $data = array(
-        'nom' => $this->input->post('nom'),
-        'prenom' => $this->input->post('prenom'),
-        'mail' => $this->input->post('mail'),
-        'date_naissance' => 
-            $this->input->post('annee') . '-' .
-            $this->input->post('mois') . '-' .
-            $this->input->post('jour'),
+        'nom' => $nom,
+        'prenom' => $prenom,
+        'mail' => $mail,
+        'date_naissance' => $date,
         'mdp' => $this->passwordhash->HashPassword($this->input->post('mdp'))
       );
       $this->db->insert('jeune', $data);
+      $id_user = $this->db->insert_id();
       $ajout = array(
-        'id_user' => $this->db->insert_id(),
+        'id_user' => $id_user,
         'type' => 1
         );
       $this->db->insert('dashboard', $ajout);
+      return array(
+        'id' => $id_user,
+        'mail' => $mail,
+        'rang' => 0,
+        'prenom' => $prenom,
+        'nom' => $nom,
+        'date_naissance' => $date
+        );
     }
 
     public function login($mail, $password) {

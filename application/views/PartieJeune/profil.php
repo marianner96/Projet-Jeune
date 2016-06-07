@@ -34,17 +34,22 @@
 		  Date de naissance
 		</h5>
 		<div class="ui attached segment">
-		  <p><?php echo($tab['date_naissance']); ?></p>
+		  <p><?php 
+		  $endate = $tab['date_naissance'];
+		  $frdate = date("d/m/Y", strtotime($endate));
+		  echo($frdate); ?></p>
 		</div>
 	</div>
 
-	<div class='ui form'>
+	<form class='ui form' id="chmail">
 		<div class="field">
 			<label>E-mail </label>
 			<input type="text" name="mail" value="<?php echo($tab['mail']); ?>">
 		</div>
 		<input class="ui button pink" type="submit" value="Changer l'e-mail" name="chmail">
+	</form>
 
+	<form class='ui form' id="chmdp">
 		<div class="field">
 			<label>Mot de passe</label>
 			<input type="password" name="mdp" value="">
@@ -60,15 +65,15 @@
 			<input type="password" name="comdp" value="">
 		</div>
 		<input class="ui button pink" type="submit" value="Changer le mot de passe" name="chmdp">
-
-	</div>
+	</form>
 </div>
 
 <script src="<?php echo base_url()?>static/js/utils.js"></script>
 
 <script>
 	//TODO Gérer le submit avec un event de type submit plutot que click.
-  $("input[name='chmail']").click(function () { //on clique sur le bouton de modification de mail
+  $("#chmail").submit(function(event) {
+  	event.preventDefault(); //on clique sur le bouton de modification de mail
   	$.post(<?php echo "'".site_url("jeune/profil/chmail")."'"; ?>, { //on appelle le contrôleur de modifiaction de mail
   		mail : $("input[name='mail']").val()
   	}, function() {
@@ -79,7 +84,8 @@
   	})
   });
 
-  $("input[name='chmdp']").click(function() {
+  $("#chmdp").submit(function(event) {
+  	event.preventDefault();
   	$.post(<?php echo "'".site_url("jeune/profil/chmdp")."'";?>, {
   		mdp : $("input[name='mdp']").val(),
   		nvmdp : $("input[name='nvmdp']").val(),
