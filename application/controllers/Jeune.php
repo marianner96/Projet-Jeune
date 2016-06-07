@@ -43,7 +43,7 @@ class Jeune extends J64_Controller{
    *
    * @todo changer cette route parce que voila
    */
-  public function formulaire(){
+  public function nouvelleDemande(){
     $this->load->helper(array('form', 'url'));
   
     $this->form_validation->set_rules('savoirEtre[]','SavoirEtre','required|callback_savoirEtre_check');
