@@ -25,7 +25,7 @@ class Twitter extends CI_Controller{
 
   public function auth(){
     $request_token = $this->connection->oauth('/oauth/request_token', ['oauth_callback' => site_url('/twitter/callback')]);
-    $url = $this->connection->url('oauth/authorize', ['oauth_token' => $request_token['oauth_token']]);
+    $url = $this->connection->url('oauth/authenticate', ['oauth_token' => $request_token['oauth_token']]);
 
     $this->session->set_userdata('twitter_oauth_token', $request_token['oauth_token']);
     $this->session->set_userdata('twitter_oauth_token_secret', $request_token['oauth_token_secret']);
@@ -34,7 +34,8 @@ class Twitter extends CI_Controller{
   }
 
   public function callback(){
-    if(!empty($this->input->get('denied'))){
+    $denied = $this->input->get('denied');
+    if(!empty($denied)){
       redirect('/connexion');
     }
     $oauth_token = $this->session->userdata('twitter_oauth_token');
