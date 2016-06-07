@@ -81,12 +81,17 @@ CREATE TABLE `groupement` (
   PRIMARY KEY (`lien_consultation`, `id_ref`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Initialment prévu pour les connexion via twitter / google / fb -> à revoir car pas terrible du tout
+-- Authentification via twitter
 
-CREATE TABLE `connexion` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `type_connexion` SMALLINT(6) DEFAULT NULL,
-  `id_connexion` INT(11) DEFAULT NULL,
+-- id : d'user twitter
+-- oauth_token / oauth_token_secret : clés d'authentification, utilisées pour effectuer des action sur le compte du jeune (pour l'instant non utilisé)
+-- id_user : id du jeune dans la table 'jeune'
+
+
+CREATE TABLE `twitter` (
+  `id` INT(11) NOT NULL,
+  `oauth_token` VARCHAR(100) DEFAULT NULL,
+  `oauth_token_secret` VARCHAR(100) DEFAULT NULL,
   `id_user` INT(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

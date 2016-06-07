@@ -4,7 +4,7 @@
     <div class="column">
       <div class="ui grid">
         <div class="eight wide column">
-          <a href="#" class="ui twitter button fluid">
+          <a href="<?php echo site_url('twitter/auth')?>" class="ui twitter button fluid">
             <i class="icon twitter"></i>
             Connexion avec Twitter
           </a>
