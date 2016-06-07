@@ -184,7 +184,9 @@ class Jeune extends J64_Controller{
     $this->data['content'] = 'listes';
     $this->data['scripts'] = ['utils', 'listes'];
     $this->load->model('groupement_model');
-    $this->data['grp'] = $this->groupement_model->getGrpsLinkByUser(1);
+    $this->load->library('session');
+    $userInfo = $this->session->userdata('logged_in');
+    $this->data['grp'] = $this->groupement_model->getGrpsLinkByUser($userInfo['id']);
     $this->load->view('templates/head', $this->data);
     $this->load->view('templates/jeunes', $this->data);
     $this->load->view('templates/foot', $this->data);
