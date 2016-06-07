@@ -68,9 +68,9 @@ class Jeune extends J64_Controller{
   }
 
   /**
-   * Route /jeune/profile/$action
+   * Route /jeune/profil/$action
    *
-   * Affiche la vue du profile ou execute l'action demandée.
+   * Affiche la vue du profil ou execute l'action demandée.
    * Affiche une erreur 404 si l'action ne fait pas partie des actions
    *  attendues.
    *
