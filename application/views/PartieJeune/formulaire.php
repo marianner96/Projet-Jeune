@@ -9,7 +9,7 @@ Cette référence sera envoyé par mail à votre référent qui pourra validé v
       <option value="">Selectionner vos savoir être</option>
       <?php
 foreach ($query as $value) {
-    echo "<option value=\"$value->id\" " . set_select('savoirEtre', $value->id) . ">" . $value->nom . "</option>";
+    echo "<option value=\"$value->id\" " . set_select('savoirEtre', $value->id, in_array($value->id, $favori)) . ">" . $value->nom . "</option>";
 }
 ?>
     </select>

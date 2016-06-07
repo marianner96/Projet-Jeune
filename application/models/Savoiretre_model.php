@@ -4,6 +4,7 @@
     public function __construct()
     {
       $this->load->database();
+      $this->load->library('session');
     }
     //Accès
     public function getJeune($activeOnly = true)
@@ -17,6 +18,26 @@
       $this->db->where('type', 1);
       $query = $this->db->get('savoir_etre');
       return $query->result();
+    }
+
+    public function getFavori() {
+      $sql = 'SELECT id_savoir_etre, COUNT(id_savoir_etre) AS nb 
+      FROM savoir_etre_user 
+      JOIN savoir_etre ON savoir_etre.id = savoir_etre_user.id_savoir_etre 
+      WHERE savoir_etre_user.type = 1  
+        AND savoir_etre.etat = 1 
+          AND savoir_etre_user.id_ref
+          IN (
+              SELECT id FROM reference WHERE id_user = ?
+          ) 
+      GROUP BY savoir_etre_user.id_savoir_etre 
+      ORDER BY nb DESC';
+      $user = $this->session->userdata('logged_in');
+      $res = $this->db->query($sql, [$user['id']])->result_array();
+      $res = array_map(function($case) {
+        return $case['id_savoir_etre'];
+      }, $res);
+      return $res;
     }
 
     public function getReferent($activeOnly = true)

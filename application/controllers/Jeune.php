@@ -54,6 +54,7 @@ class Jeune extends J64_Controller{
     $this->form_validation->set_rules('mail', 'Mail', 'valid_email|required');
 
     $this->data['query'] = $this->savoiretre_model->getJeune();
+    $this->data['favori'] = $this->savoiretre_model->getFavori();
     $this->data['content'] = 'formulaire';
     if ($this->form_validation->run() == FALSE){
       $this->load->view('templates/head', $this->data);
