@@ -53,7 +53,8 @@
 			if ($this->form_validation->run()==FALSE) {
 				$this->load->view('form/jeune');
 			} else {
-				$this->users_model->create_user();
+				$donnes = $this->users_model->create_user();
+				$this->session->set_userdata('logged_in', $donnes);
 				redirect('/jeune');
 			}
 			$this->load->view('templates/foot');

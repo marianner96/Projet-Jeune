@@ -68,9 +68,9 @@ class Jeune extends J64_Controller{
   }
 
   /**
-   * Route /jeune/profile/$action
+   * Route /jeune/profil/$action
    *
-   * Affiche la vue du profile ou execute l'action demandée.
+   * Affiche la vue du profil ou execute l'action demandée.
    * Affiche une erreur 404 si l'action ne fait pas partie des actions
    *  attendues.
    *
@@ -271,6 +271,7 @@ class Jeune extends J64_Controller{
           ))
         );
     }
+
   }
 
   /**
@@ -286,7 +287,7 @@ class Jeune extends J64_Controller{
    */
   public function changement_mail_possible(){
     $ma = $this->input->post('mail'); //recuperation de l'email envoyé
-    $tab = $this->session->user_data('logged_in'); //donnéesde session
+    $tab = $this->session->userdata('logged_in'); //donnéesde session
     $mail = $tab['mail']; // mail du jeune
     if ($ma == $mail) {
       $this->form_validation->set_message('changement_mail_possible', "L'adresse mail n'as pas été changée"); //si le mail n'as pas été changé
@@ -295,6 +296,7 @@ class Jeune extends J64_Controller{
     $this->load->model('users_model'); 
     $val = $this->users_model->change_mail(); //modèle qui change le mail dans la bdd
     $this->output->set_output(json_encode($val));
+    $mail = $ma;
     return TRUE;
   }
 

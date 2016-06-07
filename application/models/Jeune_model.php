@@ -43,6 +43,19 @@ class Jeune_model extends CI_Model {
     }
 
     $this->addRefToDashboard($lastID, $tab['id']); 
+    $this->emailReferent($lien, set_value('nom'), set_value('prenom'), set_value('mail'));
+  }
+
+  public function emailReferent($lien, $nomRef, $prenomRef, $mail){
+    $sql = 'SELECT nom, prenom FROM jeune WHERE id = ?';
+    $user = $this->session->userdata('logged_in');
+    $res = $this->db->query($sql, [$user['id']])->row();
+    $nom = $res->nom;
+    $prenom = $res->prenom;
+    mail($mail, 'Jeune 6.4 - Demande de référence',"Bonjour $prenomRef $nomRef,\n
+    $prenom $nom aimerait a fait une demande de référence sur le site de Jeune 6.4 et vous a renseigné en tant que référent. Pour que sa référence soit validée vous devez cliquer sur ce lien " . site_url("/referent/validation/$lien") . " . \n
+    Cordialement,
+    L'équipe de Jeune 6.4");
   }
   
   public function addRefToDashboard($id, $user){
