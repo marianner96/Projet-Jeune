@@ -6,7 +6,7 @@
 ?>
   <div class="event">
     <div class="content">
-      <div class="ui pink segment">
+      <div class="ui blue segment">
         <div class="summary">
           <?php
             if ($value['type']=='1') {
