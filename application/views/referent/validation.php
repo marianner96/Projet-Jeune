@@ -1,8 +1,9 @@
 <div class="ui container">
-  Confirmez cette expérience que vous avez pu constater au contact de ce jeune. <br>
-  <div class="ui stackable two column divided grid"> 
+   <div class="ui stackable two column divided grid"> 
     <div class="column">
       <div class="ui pink segment">
+            Confirmez cette expérience que vous avez pu constater au contact de ce jeune. <br>
+            
             <h2><?php echo($infoJeune['nom'].' '.$infoJeune{'prenom'});?></h2>
             <h4 class="ui dividing header">Description</h4>
 
@@ -23,6 +24,8 @@
             </div>
             
         </div>
+        <a class="ui boutton" target="_blank" href="<?php echo site_url('accueil')?>">En savoir plus sur la démarche</a> 
+
     </div>
 
     <div class="column">
@@ -67,8 +70,8 @@
           </div>
 
           <h4 class="ui dividing header">Ajouter un commentaire</h4>
-          <div class="field" name="commentary">
-            <textarea></textarea>
+          <div class="field">
+            <textarea name="commentary"></textarea>
           </div>
 
           <div class="ui error message"></div>
@@ -84,24 +87,24 @@
 $('select.dropdown')
   .dropdown()
 ;
-// $('.ui.form') // Regles formulaire
-//   .form({
-//     fields: {
-//       savoiretre :{
-//         identifier :'savoirEtre',
-//         rules: [
-//           {
-//             type   : 'maxCount[4]',
-//             prompt : 'Veuillez selectionner au maximum 4 savoir-être'
-//           },
-//           {
-//             type   : 'minCount[1]',
-//             prompt : 'Veuillez selectionner au minimum 1 savoir-être'
-//           }
-//         ]
-//       }
-//     }
-//   })
+$('.ui.form') // Regles formulaire
+  .form({
+    fields: {
+      savoiretre :{
+        identifier :'savoirEtre',
+        rules: [
+          {
+            type   : 'maxCount[4]',
+            prompt : 'Veuillez selectionner au maximum 4 savoir-être'
+          },
+          {
+            type   : 'minCount[1]',
+            prompt : 'Veuillez selectionner au minimum 1 savoir-être'
+          }
+        ]
+      }
+    }
+  })
 
 
 </script>

@@ -34,7 +34,7 @@ class Reference_model extends CI_Model{
       SELECT nom
       FROM savoir_etre_user
       JOIN savoir_etre ON savoir_etre.id = savoir_etre_user.id_savoir_etre
-      WHERE id_ref IN (SELECT id FROM reference WHERE lien_validation = ?) AND type = 1';
+      WHERE id_ref IN (SELECT id FROM reference WHERE lien_validation = ?) AND savoir_etre_user.type = 1';
     $query = $this->db->query($sqlRef, array($ref));
     foreach ($query->result_array() as $nom){
       $res[]=$nom['nom'];
@@ -155,8 +155,11 @@ class Reference_model extends CI_Model{
    */
   public function addInfoReferent($infoRef){ // Ajoute la date de naissance du référent dans la table reference
     $naissance=$this->input->post('anneeNaissance')."-".$this->input->post('moisNaissance')."-".$this->input->post('jourNaissance');
+    $commentaire=$this->input->post('commentary');
     $referent = array(
-      'date_naissance' => $naissance
+      'date_naissance' => $naissance ,
+      'commentaire' => $commentaire ,
+      'etat' => 2
       );
     $this->db->where('id', $infoRef['id']);
     $this->db->update('reference', $referent);
@@ -175,6 +178,15 @@ class Reference_model extends CI_Model{
         );
       $this->db->insert('savoir_etre_user', $entree);
     }
+  }
+
+  public function checkRef($ref){
+    $this->db->select('etat');
+    $this->db->where('lien_validation', $ref); // selectionne tout parmis ceux qui ont $ref dans le champ lien_validation
+    $query = $this->db->get('reference');
+    $etat = $query->row_array();
+
+    return $etat['etat'];
   }
 
 
