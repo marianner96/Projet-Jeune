@@ -58,14 +58,29 @@ class Jeune_model extends CI_Model {
     L'équipe de Jeune 6.4");
   }
   
+  /**
+  * ajoute une reference dans le dashboard
+  *
+  *@param string $id : l'id de la référence, string $user : l'id de l'utilisateur
+  */
   public function addRefToDashboard($id, $user){
     $this->addEntryToDashboard(2, $user, $id);
   }
 
+   /**
+  * ajoute un groupement dans le dashboard
+  *
+  *@param string $lien : lien de consultation, string $user : l'id de l'utilisateur
+  */
   public function addGrpToDashboard($lien, $user){
     $this->addEntryToDashboard(4, $user, $lien);
   }
 
+   /**
+  * ajoute une référence validée
+  *
+  *@param string $ref : 
+  */
   public function addRefvalidateToDashboard($ref){
     $idUser=$ref['id_user'];
     $idRef=$ref['id'];
