@@ -280,7 +280,7 @@
         <?php
         }
       }
-      if($nb_references[1] == 3){
+      if($nb_references[3] == 0){
         echo 'Pas encore de références ici.';
       }
     ?>

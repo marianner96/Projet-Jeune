@@ -189,7 +189,7 @@ header > .menu {
   }
 }
 @media (max-width: 500px) {
-  .tabular.menu span{
+  .tabular.menu a > span{
     display: none;
   }
   .tabular.menu label i{
