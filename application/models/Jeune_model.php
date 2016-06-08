@@ -72,6 +72,10 @@ class Jeune_model extends CI_Model {
     $this->addEntryToDashboard(3, $idUser, $idRef); 
   }
 
+  public function addInscriptionToDashboard($id){
+    $this->addEntryToDashboard(1, $id, NULL);
+  }
+
   private function addEntryToDashboard($type, $user, $opt){
     $dashboard = array(
       'id_user' => $user,

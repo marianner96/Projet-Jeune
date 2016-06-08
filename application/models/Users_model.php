@@ -113,6 +113,8 @@
         $this->session->userdata('twitter_oauth_token_secret'),
         $userId
       ]);
+      $this->load->model('jeune_model');
+      $this->jeune_model->addInscriptionToDashboard($userId);
       return array (
         'id'=> $userId,
         'mail'=>$this->input->post('mail'),

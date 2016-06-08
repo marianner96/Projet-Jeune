@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS groupement;
 DROP TABLE IF EXISTS connexion;
 DROP TABLE IF EXISTS savoir_etre;
 DROP TABLE IF EXISTS dashboard;
+DROP TABLE IF EXISTS twitter;
 
 -- Information sur le jeune (utilisateur)
 

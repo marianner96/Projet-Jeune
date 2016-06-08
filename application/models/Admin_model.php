@@ -64,10 +64,12 @@
           WHERE reference.id_user = ?;
       ';
       $sql2 = '
-        DELETE jeune, dashboard 
+        DELETE jeune, dashboard, twitter
           FROM jeune 
           LEFT JOIN dashboard 
             ON jeune.id = dashboard.id_user
+          LEFT JOIN twitter
+            ON jeune.id = twitter.id_user
           WHERE jeune.id = ?;
       ';
       $this->db->query($sql1, [$id]);
