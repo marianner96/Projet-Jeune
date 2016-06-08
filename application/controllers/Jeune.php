@@ -218,7 +218,7 @@ class Jeune extends J64_Controller{
           ))
         );
     }else{
-      $this->groupement_model->emailConsultant($key, $email);
+      $this->groupement_model->emailConsultant($key, $this->input->post('email'));
     }
   }
 

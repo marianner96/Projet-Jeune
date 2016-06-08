@@ -85,9 +85,9 @@ class Groupement_model extends CI_Model
     $user = $this->session->userdata('logged_in');
     $nom = $user['nom'];
     $prenom = $user['prenom'];
-    mail($mail, 'Jeune 6.4 - Liste d\engagements',"Madame, Monsieur,\n
+    mail($mail, 'Jeune 6.4 - Liste d\'engagements',"Madame, Monsieur,\n
     $prenom $nom a validé plusieurs savoir-être avec le projet Jeune 6.4 et souhaiterait vous les partager. Vous pouvez les visualiser en cliquant sur ce lient : " . site_url("/consultant/$cle") . " . \n
-    Cordialement,
-    L'équipe de Jeune 6.4");
+Cordialement,
+L'équipe de Jeune 6.4");
   }
 }
