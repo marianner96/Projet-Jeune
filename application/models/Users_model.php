@@ -60,6 +60,18 @@
         return false;
       } 
     }
+    public function twitterLogin($id){
+      $sql = 'SELECT mail, rang, mdp, nom, prenom, date_naissance FROM jeune WHERE id = ?';
+      $res = $this->db->query($sql, [$id])->row();
+      return [
+        'id' => $id,
+        'mail' => $res->mail,
+        'rang' => $res->rang,
+        'prenom' => $res->prenom,
+        'nom' => $res->nom,
+        'date_naissance' => $res->date_naissance
+      ];
+    }
     public function is_logged(){
       return $this->session->has_userdata('logged_in');
     }
@@ -124,6 +136,10 @@
         'date_naissance'=>$dateNaissance
       );
     }
-
+    public function getTwitterUserId($id){
+      $sql = 'SELECT id_user FROM twitter WHERE id = ?';
+      $res = $this->db->query($sql, [$id])->row();
+      return empty($res) ? NULL : $res->id_user;
+    }
   }
 ?>

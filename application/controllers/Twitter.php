@@ -52,10 +52,18 @@ class Twitter extends CI_Controller{
     }catch (Exception $e){
       show_error($e->getMessage(), $this->connection->getLastHttpCode(), 'Voilà qui est fâcheux');
     }
-    $this->session->set_userdata('terminer_inscription', 'twitter');
-    $this->session->set_userdata('twitter_oauth_token', $access_token['oauth_token']);
-    $this->session->set_userdata('twitter_oauth_token_secret', $access_token['oauth_token_secret']);
-    $this->session->set_userdata('twitter_user_id', $access_token['user_id']);
-    redirect('/connexion/terminer-inscription');
+    $this->load->model('users_model');
+    $id = $this->users_model->getTwitterUserId($access_token['user_id']);
+    if($id == NULL) {
+      $this->session->set_userdata('terminer_inscription', 'twitter');
+      $this->session->set_userdata('twitter_oauth_token', $access_token['oauth_token']);
+      $this->session->set_userdata('twitter_oauth_token_secret', $access_token['oauth_token_secret']);
+      $this->session->set_userdata('twitter_user_id', $access_token['user_id']);
+      redirect('/connexion/terminer-inscription');
+    }else {
+      $user_info = $this->users_model->twitterLogin($id);
+      $this->session->set_userdata('logged_in', $user_info);
+      redirect('/jeune');
+    }
   }
 }

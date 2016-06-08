@@ -87,6 +87,7 @@
         switch ($socialType) {
           case 'twitter' :
             $userSession = $this->users_model->inscriptionTwitter();
+						break;
         }
         if($userSession === false){
           show_error('Une erreur s\'est produite lors de l\'inscription.',500);
