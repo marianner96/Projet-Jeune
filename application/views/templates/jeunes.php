@@ -14,9 +14,6 @@
         <a class="item <?php echo !empty($content) && $content == 'listes' ? 'active' : '' ?>" href="<?php echo site_url('jeune/listes-engagements') ?>">
           Listes de mes engagements
         </a>
-        <a class="item <?php echo !empty($content) && $content == 'consultant' ? 'active' : '' ?>" href="<?php echo site_url('consultant//') ?>">
-          Consultant
-        </a>
       </div>
     </div>
     <div class="twelve wide streched column">
