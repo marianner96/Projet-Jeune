@@ -10,36 +10,31 @@
 		<i class="icon close"></i>
 		<p></p>
 	</div>
-
-	<div class="ui segments">
-		<h5 class="ui top attached header">
-		  Nom
-		</h5>
-		<div class="ui attached segment">
-		  <p><?php echo($tab['nom']);?></p>
-		</div>
-	</div>
-
-	<div class="ui segments">
-		<h5 class="ui attached header">
-		  Prénom
-		</h5>
-		<div class="ui attached segment">
-		  <p><?php echo($tab['prenom']); ?></p>
-		</div>
-	</div>
-
-	<div class="ui segments">
-		<h5 class="ui attached header">
-		  Date de naissance
-		</h5>
-		<div class="ui attached segment">
-		  <p><?php 
-		  $endate = $tab['date_naissance'];
-		  $frdate = date("d/m/Y", strtotime($endate));
-		  echo($frdate); ?></p>
-		</div>
-	</div>
+        <div class="ui grid stackable">
+          <div class="eight wide column">
+            <div class="ui segments">
+                    <h5 class="ui top attached header">
+                      Prenom Nom
+                    </h5>
+                    <div class="ui attached segment">
+                      <p><?php echo $tab['prenom'] . ' ' .$tab['nom'] ;?></p>
+                    </div>
+            </div>
+          </div>
+          <div class="eight wide column">
+            <div class="ui segments">
+                    <h5 class="ui attached header">
+                      Date de naissance
+                    </h5>
+                    <div class="ui attached segment">
+                      <p><?php 
+                      $endate = $tab['date_naissance'];
+                      $frdate = date("d/m/Y", strtotime($endate));
+                      echo($frdate); ?></p>
+                    </div>
+            </div>
+          </div>
+        </div>
 
 	<form class='ui form' id="chmail">
 		<div class="field">

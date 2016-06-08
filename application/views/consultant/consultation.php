@@ -1,4 +1,5 @@
-   <a class="ui button" href="<?php echo site_url('consultant/presentation') ?>">
+<div class="ui container">
+  <a class="ui button" href="<?php echo site_url('consultant/presentation') ?>">
     En savoir plus
   </a>
   <div class="ui equal width grid">
@@ -106,3 +107,4 @@ for ($i=0; $i <count($ref) ; $i++) {
   }
 ?>
 </div> 
+</div>
