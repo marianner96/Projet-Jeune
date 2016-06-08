@@ -30,5 +30,11 @@ function showList(){
   toggleView();
 }
 
+function sendEmail(e){
+  e.preventDefault();
+  console.log('lol');
+}
+
 window.onhashchange = showList;
 window.location.hash && showList();
+$('form.send').submit(sendEmail);

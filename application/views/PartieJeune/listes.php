@@ -3,6 +3,12 @@
     Listes de mes engagements
   </h1>
   <div>
+    <form class="send ui action input">
+      <input type="email" placeholder="Email du consultant...">
+      <button class="ui icon button">
+        <i class="send icon"></i>
+      </button>
+    </form>
     <a class="ui button pink liste-engagement hidden" href="#">
       <i class="icon arrow left"></i>
       Retour

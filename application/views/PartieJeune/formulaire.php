@@ -2,7 +2,7 @@ Cette référence sera envoyé par mail à votre référent qui pourra validé v
 <div class="ui grid">
 <div class="ten wide column">
  <?php
-      echo form_open('jeune/formulaire', array('class' => 'ui small form')); ?>
+      echo form_open('jeune/nouvelleDemande', array('class' => 'ui small form')); ?>
    <h4 class="ui dividing header">Savoir-être</h4>
    <div class="field">
     <select multiple="" class="ui dropdown" name="savoirEtre[]" data-validate="savoirEtre">

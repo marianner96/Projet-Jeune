@@ -202,6 +202,25 @@ class Jeune extends J64_Controller{
     $this->load->view('partials/liste.php', ['grps' => $res]);
   }
 
+  public function send_list($key = ''){ 
+    $this->load->model('groupement_model');
+    $res = $this->groupement_model->getGrpByLink($key);
+    if(!$res){
+      $this->output->set_status_header('404');
+      $this->output->_display();
+    }
+    $this->form_validation->set_rules('email', 'e-mail', 'required|valid_email');
+    if ($this->form_validation->run() == FALSE){ 
+      $this->output->set_status_header('400');
+      echo validation_errors();
+      $this->output->set_output(
+        json_encode(array(
+          'errors'=> array_filter(explode("\n", validation_errors(NULL,NULL))) //affichage des erreurs de validation
+          ))
+        );
+    }
+  }
+
   /**
    * Véréfie si l'utilisateur a entrée un nombre correct de savoir être
    *
