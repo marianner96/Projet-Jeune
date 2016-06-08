@@ -46,6 +46,7 @@
 			$this->form_validation->set_rules('mail', 'e-mail', 'required|valid_email|is_unique[jeune.mail]',
 			array('is_unique' => "L'adresse mail est déjà utilisée"));
 			$this->form_validation->set_rules('mdp', 'mot de passe', 'required');
+			$this->form_validation->set_rules('verifmdp', 'confirmation du mot de passe', 'required|matches[mdp]');
 			
 
 			$this->load->view('templates/head');
