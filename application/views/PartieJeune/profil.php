@@ -74,7 +74,7 @@
 	//TODO Gérer le submit avec un event de type submit plutot que click.
   $("#chmail").submit(function(event) {
   	event.preventDefault(); //on clique sur le bouton de modification de mail
-  	$.post(<?php echo "'".site_url("jeune/profil/chmail")."'"; ?>, { //on appelle le contrôleur de modifiaction de mail
+  	$.post(<?php echo "'".site_url("jeune/profil/chmail")."'"; ?>, { //on appelle le contrôleur de modification de mail
   		mail : $("input[name='mail']").val()
   	}, function() {
   		$('.message.success p').text("Vos changements ont bien été modifiés !"); //message mis si les changements ont été effectué
@@ -87,15 +87,18 @@
   $("#chmdp").submit(function(event) {
   	event.preventDefault();
   	$.post(<?php echo "'".site_url("jeune/profil/chmdp")."'";?>, {
-  		mdp : $("input[name='mdp']").val(),
+  		mdp : $("input[name='mdp']").val(),	
   		nvmdp : $("input[name='nvmdp']").val(),
   		comdp : $("input[name='comdp']").val()
   	}, function() {
   		$('.message.success p').text("Vos changements ont bien été modifiés !");
-  		$('.message.success').transition('fade down');
+  		$('.message.error.visible').transition({duration:0});
+  		$('.message.success.hidden').transition('fade down');
   	}).fail(function(xhr, status, messagehttp){
+  		$('.message.success.visible').transition({duration:0});
   		displayError(xhr.responseText, messagehttp);
-  	})
+  	});
+  	$('#chmdp input:password').val('');
   });
 
 </script>
