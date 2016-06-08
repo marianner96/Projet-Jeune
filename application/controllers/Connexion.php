@@ -10,6 +10,13 @@
                         $this->load->helper('url');
 		}
 
+
+		/**
+		* connection du jeune
+		*
+		*En cas d'erreur : retourne un message d'erreur lorsque le mail ou le mot de passe ne correspond pas
+		*En cas de réussite : va sur la page d'accueil du jeune 
+		*/
 		public function index() {
 
 			$this->form_validation->set_rules('mail', 'e-mail', 'required');
@@ -24,6 +31,12 @@
 			$this->load->view('templates/foot');
 		}
 
+		/**
+		*vérifie si le mot de passe rentré correspond  celui dans la bdd
+		*
+		*@param string $mdp : Le mot de passe rentré 
+		*@return bool Renvoie TRUE si le mot de passe correspond, FALSE sinon
+		*/
 		public function check_database($mdp) {
 			$mail = $this->input->post('mail');
 			$result = $this->users_model->login($mail, $mdp);
@@ -36,6 +49,12 @@
 			}
 		}
 
+		/**
+		*inscrit le jeune dans la bdd
+		*
+		*En cas d'erreur : retourne un message d'erreur, les champs remplis avant l'erreur garderont leur valeur sauf le mot de passe
+		*En cas de réussite : redirige vers la page d'accueil du site + met les données du jeune dans la variable de session
+		*/
 		public function inscription () {
 
 			$this->form_validation->set_rules('nom', 'nom', 'required');
@@ -46,6 +65,7 @@
 			$this->form_validation->set_rules('mail', 'e-mail', 'required|valid_email|is_unique[jeune.mail]',
 			array('is_unique' => "L'adresse mail est déjà utilisée"));
 			$this->form_validation->set_rules('mdp', 'mot de passe', 'required');
+			$this->form_validation->set_rules('verifmdp', 'confirmation du mot de passe', 'required|matches[mdp]');
 			
 
 			$this->load->view('templates/head');

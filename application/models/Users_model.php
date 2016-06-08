@@ -7,6 +7,10 @@
       $this->load->helper('date');
     }
 
+    /**
+    *ajoute le jeune dans la bdd et ajout de cet évènement dans le dashboard
+    *
+    */
     public function create_user(){
       $nom = $this->input->post('nom');
       $prenom = $this->input->post('prenom');
@@ -37,6 +41,12 @@
         );
     }
 
+    /**
+    * vérifie que le mail et le mdp correspondent bien
+    *
+    *@param string $mail : le mail rentré, string $password : le mdp rentré
+    *@return False si les mots de passes hachés correspondent sinon renvoie le tableau contenant les informations du jeune
+    */
     public function login($mail, $password) {
       $this->db->select('id, mail, rang, mdp, nom, prenom, date_naissance');
       $this->db->from('jeune');
@@ -81,6 +91,11 @@
       return $this->session->logged_in['rang'] >= 100;
     }
 
+    /**
+    * change le mail dans la bdd
+    *
+    * @return array : le nombre de ligne qui ont été changées
+    */
     public function change_mail(){
       $id_user = $this->session->userdata('logged_in')['id'];
       $nv = $this->input->post('mail');
@@ -90,6 +105,11 @@
       return array('affectedRows' => $this->db->affected_rows());
     }
 
+    /**
+    * change le mot de passe dans la bdd
+    *
+    * @return array : le nombre de ligne qui ont été changées
+    */
     public function change_mdp() {
       $id_user = $this->session->userdata('logged_in')['id'];
       $nv = $this->passwordhash->HashPassword($this->input->post('nvmdp'));

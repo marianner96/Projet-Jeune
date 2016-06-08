@@ -3,14 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Referent extends J64_Controller {
 	
-
+	/**
+   	* Vérifie si la référence à valider existe et affiche le formulaire associé
+   	*
+   	* Affiche une page d'erreur 404 si la clé est vide, ou si la référence à été validée
+   	*
+   	* @param string $cle : la clé correspondant à la référence
+	*/
 	function validation($cle=''){
 		if ($cle==''){
 			show_404();
 		}
 		
 		$data['title']=''; //Nom dans l'onglet
-		//$data['menu']=''; Dans le menu en haut
 		$this->load->library("form_validation");
 
 		//charge les models

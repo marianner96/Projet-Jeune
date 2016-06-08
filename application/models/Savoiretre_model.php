@@ -20,6 +20,11 @@
       return $query->result();
     }
 
+    /**
+    * les 4 savoir être les plus utilisés (dans le cas de la deuxième ou plus référence)
+    *
+    *@return array : les 4 savoir être
+    */
     public function getFavori() {
       $sql = 'SELECT id_savoir_etre, COUNT(id_savoir_etre) AS nb 
       FROM savoir_etre_user 

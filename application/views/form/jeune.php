@@ -72,7 +72,6 @@
 	<?php echo form_error('mail','<div class="ui error message">', "</div>"); ?>
 
 
-
 	<div class="field">
 		<label>Mot de passe</label>
 		<input type="password" name="mdp" value="">
@@ -80,6 +79,13 @@
 	<?php echo form_error('mdp', '<div class="ui error message">',"</div>"); ?>
 
 	
+	<div class="field">
+		<label>Confirmation du mot de passe</label>
+		<input type="password" name="verifmdp" value="">
+	</div>
+	<?php echo form_error('verifmdp', '<div class="ui error message">', "</div>"); ?>
+
+
 	<input class="ui button pink" type="submit" value="Valider">
 	
 

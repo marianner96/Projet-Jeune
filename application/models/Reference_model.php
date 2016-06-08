@@ -12,8 +12,10 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param $cle
-   * @return mixed
+   * Récupère les informations d'une référence à partir de la clé
+   *
+   * @param string $cle : la clé de la référence
+   * @return array : Retourne un tableau associatif des information d'une référence
    */
   public function getRef($cle){
     $this->db->select();
@@ -24,18 +26,20 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param $ref
-   * @return array
+   * Récupère les savoir être associés à une référence
+   *
+   * @param string $cle : La clé associée à une référence
+   * @return array Renvoie les noms des savoirs être associés à la demande dans un tableau
    * @todo nom de la fonction ne va pas avec ce qu'elle fait.
    */
-  public function getSavoirByRef($ref){
+  public function getSavoirByRef($cle){
     // recup id des savoirs etres
     $sqlRef= '
       SELECT nom
       FROM savoir_etre_user
       JOIN savoir_etre ON savoir_etre.id = savoir_etre_user.id_savoir_etre
       WHERE id_ref IN (SELECT id FROM reference WHERE lien_validation = ?) AND savoir_etre_user.type = 1';
-    $query = $this->db->query($sqlRef, array($ref));
+    $query = $this->db->query($sqlRef, array($cle));
     foreach ($query->result_array() as $nom){
       $res[]=$nom['nom'];
      }
@@ -43,13 +47,17 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param $ref
-   * @return mixed
+   * Récupère les informations associées au jeune
+   *
+   * Récupère nom|prenom|mail|date de naissance du jeune qui a crée la demande
+   *
+   * @param string $cle : La clé associée à la référence
+   * @return array Renvoie un tableau associatif contenant les informations du jeune
    */
-  public function getInfoJeuneByRef($ref){
+  public function getInfoJeuneByRef($cle){
     //recupere id du jeune
     $this->db->select('id_user');
-    $this->db->where('lien_validation', $ref); // selectionne tout parmis ceux qui ont $ref dans le champ lien_validation
+    $this->db->where('lien_validation', $cle); // selectionne tout parmis ceux qui ont $ref dans le champ lien_validation
     $query = $this->db->get('reference');
     $idJeune = $query->row_array();
 
@@ -62,7 +70,7 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param $id
+   * @param int $id : id associé au jeune
    * @return array
    * @todo rajouter savoir etre referent
    */
@@ -110,7 +118,7 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param $id
+   * @param int $id : id associé au jeune
    * @return array
    */
   public function countRefUser($id){
@@ -151,7 +159,11 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param $infoRef
+   * Ajoute à la base de donnée les informations remplies par le référent
+   * 
+   * Récupère l'id de la référence, puis met à jour les informations date-de-naissance|commentaire et change la valeur etat=2
+   *
+   * @param array $infoRef : tableau associatif des informations de la référence
    */
   public function addInfoReferent($infoRef){ // Ajoute la date de naissance du référent dans la table reference
     $naissance=$this->input->post('anneeNaissance')."-".$this->input->post('moisNaissance')."-".$this->input->post('jourNaissance');
@@ -166,7 +178,11 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param $infoRef
+   * Ajoute à la base de donnée les savoir être entrés par le référent
+   *
+   * Ajoute le lien dans savoir-etre-user vers les savoirs être correspondant à ceux entrés par le référent
+   *
+   * @param array $infoRef : tableau associatif des informations de la référence
    */
   public function addSavoirRef($infoRef){ // Ajoute les savoirs être référents
     $listSavoir=$this->input->post('savoirEtre');
@@ -180,6 +196,10 @@ class Reference_model extends CI_Model{
     }
   }
 
+  /**
+   *
+   * @param $ref
+   */
   public function checkRef($ref){
     $this->db->select('etat');
     $this->db->where('lien_validation', $ref); // selectionne tout parmis ceux qui ont $ref dans le champ lien_validation

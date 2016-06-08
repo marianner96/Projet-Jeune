@@ -329,7 +329,7 @@ class Jeune extends J64_Controller{
    * @todo Longueur minimum du mot de passe
    */
   private function chmdp(){
-    $this->form_validation->set_rules('mdp', 'mot de passe', 'required|trim|callback_change_mdp_possible');
+    $this->form_validation->set_rules('mdp', 'mot de passe', 'trim|callback_change_mdp_possible');
     $this->form_validation->set_rules('nvmdp', 'nouveau mot de passe', 'required|trim');
     $this->form_validation->set_rules('comdp', 'confirmation du nouveau mot de passe', 'required|trim|matches[nvmdp]'); //verification si la verification du mdp est la meme que le nouveau mdp
     $this->output->set_content_type('application/json');
@@ -362,6 +362,9 @@ class Jeune extends J64_Controller{
     $query = $this->db->get('jeune');
     $qr = $query->row();
     $this->form_validation->set_message('change_mdp_possible', "Mot de passe inconrect."); //le message d'erreur
+    if ($qr->mdp==NULL) {
+      return true;
+    }
     return ($this->passwordhash->CheckPassword($mdp, $qr->mdp)); //regarde si les mdp sont les mêmes 
   }
 }
