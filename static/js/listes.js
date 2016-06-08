@@ -32,7 +32,18 @@ function showList(){
 
 function sendEmail(e){
   e.preventDefault();
-  console.log('lol');
+  var cle = window.location.hash.slice(1);
+  var email = $('form.send input[type=email]').val();
+  if(!email.length){
+ //   return
+  }
+  $.post(reqUrl+'/send-list/'+cle, {email : email}, function(){ 
+    $('.message.success span').text(email);
+    $('.message.success.hidden').transition('fade down');
+  })
+    .fail(function (xhr, status, msg) {
+      displayError(xhr.responseText, msg);
+    });
 }
 
 window.onhashchange = showList;

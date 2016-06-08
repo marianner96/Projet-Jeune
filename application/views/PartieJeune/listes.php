@@ -1,9 +1,20 @@
+<div class="ui error message hidden">
+  <i class="close icon"></i>
+  <ul class="list">
+  </ul>
+</div>
+
+<div class="ui success message hidden grp">
+  <i class="close icon"></i>
+  Un email a bien été envoyé à <span></span>
+</div>
+
 <div class="customClearing jeuneHeader">
   <h1 class="ui left floated header">
     Listes de mes engagements
   </h1>
   <div>
-    <form class="send ui action input">
+    <form class="send ui action input liste-engagement hidden">
       <input type="email" placeholder="Email du consultant...">
       <button class="ui icon button">
         <i class="send icon"></i>

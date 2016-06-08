@@ -212,12 +212,13 @@ class Jeune extends J64_Controller{
     $this->form_validation->set_rules('email', 'e-mail', 'required|valid_email');
     if ($this->form_validation->run() == FALSE){ 
       $this->output->set_status_header('400');
-      echo validation_errors();
       $this->output->set_output(
         json_encode(array(
           'errors'=> array_filter(explode("\n", validation_errors(NULL,NULL))) //affichage des erreurs de validation
           ))
         );
+    }else{
+      $this->groupement_model->emailConsultant($key, $email);
     }
   }
 

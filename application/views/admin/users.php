@@ -4,7 +4,7 @@
   </ul>
 </div>
 <h1 class="ui left floated header">
-  Gestion des savoir-être
+  Gestion des membres
 </h1>
 <table class="ui very basic table users">
   <thead>
