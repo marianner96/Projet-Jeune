@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Class Consultant
+ * Controlleur du module "consultant". Match les routes de type /consultant/*
+ */
 class Consultant extends J64_Controller{
   public function __construct(){
     parent::__construct();

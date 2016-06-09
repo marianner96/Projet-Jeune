@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+/**
+ * Class Referent
+ * Controlleur du module "référent". Match les routes de type /referent/*
+ */
 class Referent extends J64_Controller {
 	
 	/**

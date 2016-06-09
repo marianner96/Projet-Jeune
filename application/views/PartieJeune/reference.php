@@ -5,7 +5,7 @@
     <i class="close icon"></i>
     <div class="header">Demande de référence</div>
     <p>
-      Votre demande de référence a bien été créee <?php echo $tab["prenom"] . ' ' . $tab["nom"]; ?>, elle sera envoyée à <?php echo $validation[0] . ' ' . $validation[1]; ?>
+      Votre demande de référence a bien été créée <?php echo $tab["prenom"] . ' ' . $tab["nom"]; ?>, elle sera envoyée à <?php echo $validation[0] . ' ' . $validation[1]; ?>
     </p>
   </div>
 <?php
@@ -29,7 +29,7 @@
 <!-- Header de la section -->
 <div class="customClearing jeuneHeader">
   <h1 class="ui left floated header">
-    Gérer mes références
+    Gérer mes engagements
   </h1>
   <div>
     <button class="ui button pink overView" name="createGrp">

@@ -1,7 +1,8 @@
 Cette référence sera envoyé par mail à votre référent qui pourra valider votre demande et selectionner les savoir-être vous correspondant.
 <div class="creation_reference">
  <?php
-      echo form_open('jeune/nouvelleDemande', array('class' => 'ui small form')); ?>
+  $classError = validation_errors()=="" ? "":"error";
+      echo form_open('jeune/nouvelleDemande', array('class' => 'ui small form ' . $classError)); ?>
    <h4 class="ui dividing header">Savoir-être</h4>
    <div class="field">
     <select multiple="" class="ui dropdown" name="savoirEtre[]" data-validate="savoirEtre">
@@ -46,18 +47,12 @@ foreach ($query as $value) {
     </div>
   <div class="field">
     <label>Adresse email</label>
-    <?php echo form_error('mail')?>
       <input placeholder="E-mail" type="email" name="mail" value="<?php echo set_value('mail'); ?>">
   </div>
    <input class="ui submit button" value="Envoyer" type="submit">
-  <div class="ui error message"></div>
-  <?php echo form_error('savoirEtre[]')?>
-   <?php echo form_error('description')?>
-   <?php echo form_error('duree')?>
-   <?php echo form_error('duree_type')?>
-   <?php echo form_error('prenom')?>
-   <?php echo form_error('nom')?>
-    <?php echo form_error('mail')?>
+  <div class="ui error message">
+    <?php echo validation_errors(); ?>
+  </div>
 </form>
 </div>
 <script>
