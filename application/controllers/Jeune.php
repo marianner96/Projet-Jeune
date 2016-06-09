@@ -37,11 +37,10 @@ class Jeune extends J64_Controller{
   }
 
   /**
-   * Route /jeune/formulaire
+   * Route /jeune/nouvelleDemande
    *
    * Affiche le form de création de reference et créer la référence.
    *
-   * @todo changer cette route parce que voila
    */
   public function nouvelleDemande(){
     $this->load->helper(array('form', 'url'));

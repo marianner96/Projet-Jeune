@@ -12,6 +12,12 @@ class Consultant extends J64_Controller{
     $this->load->model('savoiretre_model');
     $this->load->helper('url');
   }
+   /**
+   * Route /consultant
+   *
+   * Affiche la page par défaut du consultant contenant l'ensemble des références du jeune
+   *
+   */
   public function index(){
       $lien=$this->uri->segment(2);
       $this->data['tabRefGroupement']=$this->consultant_model->verifLien($lien);
@@ -29,10 +35,4 @@ class Consultant extends J64_Controller{
           $this->load->view('templates/foot');
         }     
   }
-  public function presentation(){
-      $this->load->view('templates/head');
-      $this->load->view('home/accueil');
-      $this->load->view('templates/foot');
-  }
-
 }

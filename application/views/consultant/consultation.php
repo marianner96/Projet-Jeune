@@ -1,5 +1,5 @@
 <div class="ui container">
-  <a class="ui button" href="<?php echo site_url('consultant/presentation') ?>">
+  <a class="ui button" href="<?php echo site_url('accueil') ?>">
     En savoir plus
   </a>
   <div class="ui equal width grid">
