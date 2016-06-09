@@ -20,7 +20,11 @@ class Jeune_model extends CI_Model {
     $this->load->library('linkGenerator');
     $lien = $this->linkgenerator->create(40,"reference.lien_validation");
     $tab = $this->session->userdata('logged_in');
-
+    $duree = $this->input->post('duree');
+    $type_duree = ' ' . $this->input->post('duree_type');
+    if($duree > 0)
+      $type_duree .= 's';
+    $duree .= $type_duree;
     $reference = array(
       'id_user' => $tab['id'] ,
       'description' => set_value('description'),

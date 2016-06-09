@@ -90,7 +90,7 @@ class Reference_model extends CI_Model{
     }
     $this->load->model('savoiretre_model');
     foreach ($this->savoiretre_model->getSavoirEtreByRefs($refsId) as $id_ref => $se){
-      $res[$id_ref]['savoir_etre'] = $se['jeune'];
+      $res[$id_ref]['savoir_etre'] = $se;
     }
     return $res;
   }

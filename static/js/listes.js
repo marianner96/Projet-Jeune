@@ -35,7 +35,7 @@ function sendEmail(e){
   var cle = window.location.hash.slice(1);
   var email = $('form.send input[type=email]').val();
   if(!email.length){
- //   return
+    return
   }
   $.post(reqUrl+'/send-list/'+cle, {email : email}, function(){ 
     $('.message.success span').text(email);

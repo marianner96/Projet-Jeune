@@ -110,7 +110,7 @@
                   </div>
                   <div class="twelve wide column">
                     <?php
-                    foreach ($reference['savoir_etre'] as $savoir_etre) {
+                    foreach ($reference['savoir_etre']['jeune'] as $savoir_etre) {
                       ?>
                       <label class="ui label"><?php echo $savoir_etre ?></label>
                       <?php
@@ -123,6 +123,19 @@
                   </div>
                   <div class="twelve wide column">
                     <?php echo $reference['prenom'] . ' ' . $reference['nom'] . ' - ' . mailto($reference['mail']) ?>
+                  </div>
+                  <!-- Savoir être référent-->
+                  <div class="four wide column header">
+                    Savoir-être référent
+                  </div>
+                  <div class="twelve wide column">
+                    <?php
+                    foreach ($reference['savoir_etre']['referent'] as $savoir_etre) {
+                      ?>
+                      <label class="ui label"><?php echo $savoir_etre ?></label>
+                      <?php
+                    }
+                    ?>
                   </div>
                   <!-- Commentaire du référent-->
                   <div class="four wide column header">
@@ -183,7 +196,7 @@
                   </div>
                   <div class="twelve wide column">
                     <?php
-                    foreach ($reference['savoir_etre'] as $savoir_etre) {
+                    foreach ($reference['savoir_etre']['jeune'] as $savoir_etre) {
                       ?>
                       <label class="ui label"><?php echo $savoir_etre ?></label>
                       <?php
@@ -243,7 +256,7 @@
                   </div>
                   <div class="twelve wide column">
                     <?php
-                    foreach ($reference['savoir_etre'] as $savoir_etre) {
+                    foreach ($reference['savoir_etre']['jeune'] as $savoir_etre) {
                       ?>
                       <label class="ui label"><?php echo $savoir_etre ?></label>
                       <?php

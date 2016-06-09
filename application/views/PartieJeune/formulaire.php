@@ -1,6 +1,5 @@
-Cette référence sera envoyé par mail à votre référent qui pourra validé votre demande et selectionner les savoir-être vous correspondant.
-<div class="ui grid">
-<div class="ten wide column">
+Cette référence sera envoyé par mail à votre référent qui pourra valider votre demande et selectionner les savoir-être vous correspondant.
+<div class="creation_reference">
  <?php
       echo form_open('jeune/nouvelleDemande', array('class' => 'ui small form')); ?>
    <h4 class="ui dividing header">Savoir-être</h4>
@@ -22,7 +21,15 @@ foreach ($query as $value) {
     </div>
     <div class="field">
       <label>Durée de l'engagement</label>
-      <input type="text" name="duree" value="<?php echo set_value('duree'); ?>">
+      <div class="ui action input">
+        <input type="text" name="duree" value="<?php echo set_value('duree'); ?>">
+        <select name="duree_type" class="ui compact selection dropdown">
+          <option value="j">Jours</option>
+          <option selected="selected" value="s">Semaines </option>
+          <option value="m">Mois</option>
+          <option value="a">Années</option>
+        </select>
+      </div>
     </div>
   </div>
   <h4 class="ui dividing header">Référent</h4>
@@ -47,12 +54,11 @@ foreach ($query as $value) {
   <?php echo form_error('savoirEtre[]')?>
    <?php echo form_error('description')?>
    <?php echo form_error('duree')?>
+   <?php echo form_error('duree_type')?>
    <?php echo form_error('prenom')?>
    <?php echo form_error('nom')?>
     <?php echo form_error('mail')?>
 </form>
-</div>
-  <div class="six wide column"></div> 
 </div>
 <script>
 $('select.dropdown')

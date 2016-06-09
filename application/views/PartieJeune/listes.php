@@ -30,15 +30,16 @@
 <div class="ui middle aligned divided list selection">
   <!-- Début de l'affichage  des listes d'engagement -->
   <?php
-    foreach ($grp as $list){
+    foreach ($grp as $key=>$list){
       ?>
       <div class="item">
         <div class="content">
           <a class="header" href="#<?php echo $list['lien_consultation'] ?>">
-            Liste n°<?php echo $list['lien_consultation'] ?>
+            Liste n°<?php printf('%03d',$key+1) ?>
           </a>
           <div class="description">
-            <?php echo $list['nb_ref'] . ' référence' . ($list['nb_ref'] > 1 ? 's' : '') ?>
+            <?php echo $list['nb_ref'] . ' référence' . ($list['nb_ref'] > 1 ? 's' : '') ?><br>
+            Lien de consultation : <?php echo anchor('/consultant/'.$list['lien_consultation'], $list['lien_consultation'], ['target'=>'_blank']) ?>
           </div>
         </div>
       </div>

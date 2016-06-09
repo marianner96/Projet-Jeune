@@ -69,6 +69,10 @@ aside.home{
 .jeuneHeader > div{
   float: right;
 }
+/* Demande de reference */
+.creation_reference{
+  width:75%;
+}
 /* Animation mise en valeur de la référence */
 .item.flash{
   -webkit-animation-name: flash;
@@ -159,6 +163,9 @@ header > .menu {
   width: 100vw;
 }
 @media (max-width: 767px) {
+  .creation_reference{
+    width:100%;
+  }
   header .menu i{
     display: inline-block;
   }
