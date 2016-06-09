@@ -50,10 +50,9 @@ class Jeune extends J64_Controller{
     $this->form_validation->set_rules('description', 'Description', 'required');
     $this->form_validation->set_rules('duree', 'Durée', 'required|is_natural|max_length[43]');
     $this->form_validation->set_rules('prenom', 'Prénom', 'required|max_length[100]');
-    $this->form_validation->set_rules('duree_type', 'Type de durée', 'required|in_list[p,l]', array('in_list'=>'%s ne peut contenir que jour,semaine,mois ou année'));
+    $this->form_validation->set_rules('duree_type', 'Type de durée', 'required|in_list[day,week,month,year]', array('in_list'=>'%s ne peut contenir que jour,semaine,mois ou année'));
     $this->form_validation->set_rules('nom', 'Nom', 'required|max_length[100]');
     $this->form_validation->set_rules('mail', 'Mail', 'valid_email|required|max_length[100]');
-
 
     $this->data['query'] = $this->savoiretre_model->getJeune();
     $this->data['favori'] = $this->savoiretre_model->getFavori();

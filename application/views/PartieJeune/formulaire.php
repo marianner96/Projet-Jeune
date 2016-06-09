@@ -25,10 +25,10 @@ foreach ($query as $value) {
       <div class="ui action input">
         <input type="text" name="duree" value="<?php echo set_value('duree'); ?>">
         <select name="duree_type" class="ui compact selection dropdown">
-          <option value="j">Jours</option>
-          <option selected="selected" value="s">Semaines </option>
-          <option value="m">Mois</option>
-          <option value="a">Années</option>
+          <option value="day">Jours</option>
+          <option selected="selected" value="week">Semaines </option>
+          <option value="month">Mois</option>
+          <option value="year">Ans</option>
         </select>
       </div>
     </div>

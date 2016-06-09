@@ -29,15 +29,16 @@ class Jeune_model extends CI_Model {
     $this->load->library('linkGenerator');
     $lien = $this->linkgenerator->create(40,"reference.lien_validation");
     $tab = $this->session->userdata('logged_in');
+    $this->lang->load('date_lang');
     $duree = $this->input->post('duree');
-    $type_duree = ' ' . $this->input->post('duree_type');
-    if($duree > 0)
+    $type_duree = 'date_' . $this->input->post('duree_type');
+    if($duree > 1)
       $type_duree .= 's';
-    $duree .= $type_duree;
+    $duree .= ' ' .$this->lang->line($type_duree);
     $reference = array(
       'id_user' => $tab['id'] ,
       'description' => set_value('description'),
-      'duree' => set_value('duree') ,
+      'duree' => $duree ,
       'etat' => 1,
       'nom' => set_value('nom') ,
       'prenom' => set_value('prenom'),
