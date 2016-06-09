@@ -1,7 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Class Admin
+ * Controlleur du module "administrateur". Match les routes de type /admin/*
+ */
 class Admin extends J64_Controller {
+
   public function __construct(){
     parent::__construct();
 
@@ -15,6 +20,10 @@ class Admin extends J64_Controller {
       show_error('Vous n\'avez pas la permission de voir cette page.', 403, 'Accès reffusé');
     }
   }
+
+  /*
+  *page d'accueil du module administrateur
+  */
   public function index(){
     $this->data['content'] = 'index';
     $this->data['users_count'] = $this->admin_model->countUsers();
@@ -24,6 +33,12 @@ class Admin extends J64_Controller {
     $this->load->view('templates/admin', $this->data);
     $this->load->view('templates/foot');
   }
+
+  /**
+  *montre les savoir être activés et desactivés du jeune et du référents avec possibilité de les changer
+  *et d'en ajouter
+  *
+  */
   public function savoir_etre(){
     if($this->uri->total_segments() == 2 ){
 
@@ -44,6 +59,12 @@ class Admin extends J64_Controller {
       $this->performAction();
     }
   }
+
+  /**
+  *gestion des membres du site : nom prénom des jeunes, email, rang(administrateur ou non)
+  * et possibilité de les supprimer
+  *
+  */
   public function utilisateurs($page = 1){
     if(!is_numeric($page) || $page < 1){
       show_404();

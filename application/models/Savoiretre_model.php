@@ -45,6 +45,11 @@
       return $res;
     }
 
+    /**
+    *récupère les savoir être disponible pour le référent
+    *
+    *@return le résultat de la requête
+    */
     public function getReferent($activeOnly = true)
     {
       $this->db->select('id, nom, etat');
@@ -60,14 +65,12 @@
       return $query->result();
     }
 
-    public function getAll(){
-      $this->db->select('id, nom, etat');
-      $this->db->where('etat', 1);
-      $query = $this->db->get('savoir_etre');
-
-      return $query->result();
-    }
-
+    /**
+    *récupère les savoir être d'une référence
+    *
+    *@param ?
+    *@return ?
+    */
     public function getSavoirEtreByRefs($refsId){
       if(empty($refsId)){
         return [];
