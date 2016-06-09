@@ -36,7 +36,8 @@
               SELECT id FROM reference WHERE id_user = ?
           ) 
       GROUP BY savoir_etre_user.id_savoir_etre 
-      ORDER BY nb DESC';
+      ORDER BY nb DESC
+      LIMIT 4';
       $user = $this->session->userdata('logged_in');
       $res = $this->db->query($sql, [$user['id']])->result_array();
       $res = array_map(function($case) {
