@@ -7,25 +7,24 @@ class Consultant_model extends CI_Model {
                 $this->load->database();
                 $this->load->library('session');
         }
+/**
+   * Vérifie si la clé présent dans l'url appartient à un groupement
+   *
+   * @param string $lien Clé de l'url
+   * @return array Retourne l'ensemble des groupements contenant la clé
+   */
 
         public function verifLien($lien){
             $tabLienGroupement = $this->db->get_where('groupement', array('lien_consultation' => $lien));
             return $tabLienGroupement->result();
         }
 
-//prend en paramètre la chaine de 40 caractère de l'url
-//retourne un tableau composé des elements de la table groupement dont l'url correspondant à l'url en cour
-        public function recupRefGroupement($lien)
-        {
-                $tabIdRef=[];
-                $tab=array(
-                        'lien_consultation'=>$lien);
-                $tabIdRef = $this->db->get_where("groupement",$tab);
-                return $tabIdRef->result();
-        }
-
-//prend en paramètre ce que renvoie la fonction precedente
-//retourne un tableau composé des références appartenant au groupement
+/**
+   * Permet de récuperer l'ensemble les informations des références appartenant au groupement
+   *
+   * @param array $tabRefGroupement Tableau contenant l'ensemble des informations du groupement
+   * @return array Retourne l'ensemble des références appartenant au groupement
+   */
 
         public function recupRef($tabRefGroupement)
         {
@@ -38,7 +37,12 @@ class Consultant_model extends CI_Model {
         $toto = $this->db->get();
         return $toto->result();
         }
-
+/**
+   * Permet de récuperer l'ensemble des id des savoir-être appartenant aux références au sein du groupement 
+   *
+   * @param array $tabRefGroupement Tableau contenant l'ensemble des informations du groupement
+   * @return array Retourne l'ensemble des id des savoir-être
+   */
 
         public function recupIdRef($tabRefGroupement){
             $tabId=[];
@@ -48,6 +52,13 @@ class Consultant_model extends CI_Model {
             return $tabId;
         }
         
+/**
+   * Permet de récuperer les informations sur le jeune
+   *
+   * @param array $ref Tableau contenant l'ensemble des références appartenant au groupement
+   * @return array Retourne l'ensemble des informations sur le jeune
+   */
+
         public function informationJeune($ref){
                 $idJeune = $ref[0]->id_user;
                 $infoJeune = $this->db->get_where('jeune', array('id' => $idJeune));
