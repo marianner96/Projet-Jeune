@@ -1,8 +1,8 @@
 <div class="ui container">
-   <div class="ui stackable two column divided grid"> 
+   <div class="ui stackable two column grid">
     <div class="column">
       <div class="ui pink segment">
-            Confirmez cette expérience que vous avez pu constater au contact de ce jeune. <br>
+            Confirmez cette expérience et ce que vous avez pu constater au contact de ce jeune. <br>
             
             <h2><?php echo($infoJeune['nom'].' '.$infoJeune{'prenom'});?></h2>
             <h4 class="ui dividing header">Description</h4>
@@ -30,14 +30,18 @@
 
     <div class="column">
       <div class="ui green segment">
-        <?php echo validation_errors(); ?>
-        <?php echo form_open('referent/validation/'.$cle, array('class' => 'ui small form')); ?>
+        <?php echo form_open('referent/validation/'.$cle, array('class' => 'ui small form ' . (validation_errors() == '' ? '' : 'error' ))); ?>
+        <div class="ui error message">
+          <ul class="list">
+            <?php echo validation_errors('<li>', '</li>'); ?>
+          </ul>
+        </div>
           <h4 class="ui dividing header">Savoir-être</h4>
       		<div class="field">
             <select multiple="" class="ui dropdown" name="savoirEtre[]">
               <option value="">Selectionner ses savoir être</option>
               <?php foreach ($savoirEtreRef as $savoir) {
-                echo('<option value="'.$savoir->id.'">'.$savoir->nom.'</option>');
+                echo('<option value="'.$savoir->id.'"' . set_select('savoirEtre', $savoir->id) . '>'.$savoir->nom.'</option>');
               } ?>
             </select>
           </div>
@@ -47,31 +51,44 @@
               <label>Nom et Prénom</label>
                 <div class="two fields">
                   <div class="field">
-                    <input type="text" name="prenom" value=<?php echo($ref['nom']) ?>>
+                    <input type="text" name="prenom" value=<?php echo(set_value('prenom', $ref['nom'])) ?>>
                   </div>
                   <div class="field">
-                    <input type="text" name="nom" value=<?php echo($ref['prenom']) ?>>
+                    <input type="text" name="nom" value=<?php echo( set_value('nom', $ref['prenom'])) ?>>
                   </div>
                 </div>
           </div>
           <div class="field">
             <label>Date de naissance</label>
-            <div class="inline fields">
-              <div class="three wide field">
-                <input type="text" name="jourNaissance" placeholder="17">
+            <div class="fields">
+              <div class="five wide field">
+                <input type="text" name="jourNaissance" placeholder="Exemple : 17" value="<?php echo set_value('jourNaissance')?>">
               </div>
-              <div class="eight wide field">
-                <input type="text" name="moisNaissance" placeholder="03">
+              <div class="six wide field">
+                <select name="moisNaissance" class="ui fluid search selection dropdown ">
+                  <option value="1" <?php echo set_select('moisNaissance', 1)?>>Janvier</option>
+                  <option value="2" <?php echo set_select('moisNaissance', 2)?>>Février</option>
+                  <option value="3" <?php echo set_select('moisNaissance', 3)?>>Mars</option>
+                  <option value="4" <?php echo set_select('moisNaissance', 4)?>>Avril</option>
+                  <option value="5" <?php echo set_select('moisNaissance', 5)?>>Mai</option>
+                  <option value="6" <?php echo set_select('moisNaissance', 6)?>>Juin</option>
+                  <option value="7" <?php echo set_select('moisNaissance', 7)?>>Juillet</option>
+                  <option value="8" <?php echo set_select('moisNaissance', 8)?>>Août</option>
+                  <option value="9" <?php echo set_select('moisNaissance', 9)?>>Septembre</option>
+                  <option value="10" <?php echo set_select('moisNaissance', 10)?>>Octobre</option>
+                  <option value="11" <?php echo set_select('moisNaissance', 11)?>>Novembre</option>
+                  <option value="12" <?php echo set_select('moisNaissance', 12)?>>Decembre</option>
+                </select>
               </div>
               <div class="five wide field">
-                <input type="text" name="anneeNaissance" placeholder="1977">
+                <input type="text" name="anneeNaissance" placeholder="Exemple : 1977" value="<?php echo set_value('anneeNaissance')?>">
               </div>
             </div>
           </div>
 
           <h4 class="ui dividing header">Ajouter un commentaire</h4>
           <div class="field">
-            <textarea name="commentary"></textarea>
+            <textarea name="commentary"><?php echo set_value('commentary')?></textarea>
           </div>
 
           <div class="ui error message"></div>
@@ -83,28 +100,31 @@
   </div>
 </div>
 
-<script> // Active checkbox
-$('select.dropdown')
-  .dropdown()
-;
-$('.ui.form') // Regles formulaire
-  .form({
-    fields: {
-      savoiretre :{
-        identifier :'savoirEtre',
-        rules: [
-          {
-            type   : 'maxCount[4]',
-            prompt : 'Veuillez selectionner au maximum 4 savoir-être'
-          },
-          {
-            type   : 'minCount[1]',
-            prompt : 'Veuillez selectionner au minimum 1 savoir-être'
-          }
-        ]
-      }
-    }
-  })
+<script> // Active dropdown
+  $('select.dropdown')
+    .dropdown()
+  ;
 
+  /*Ca marche pas
+
+  $('.ui.form') // Regles formulaire
+    .form({
+      fields: {
+        savoiretre :{
+          identifier :'savoirEtre',
+          rules: [
+            {
+              type   : 'maxCount[4]',
+              prompt : 'Veuillez selectionner au maximum 4 savoir-être'
+            },
+            {
+              type   : 'minCount[1]',
+              prompt : 'Veuillez selectionner au minimum 1 savoir-être'
+            }
+          ]
+        }
+      }
+    })
+*/
 
 </script>

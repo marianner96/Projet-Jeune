@@ -1,5 +1,6 @@
 <p>
   Cette référence sera envoyé par mail à votre référent qui pourra valider votre demande et selectionner les savoir-être vous correspondant.
+  Décrivez votre expérience et mettez en avant ce que vous en avez retiré.
 </p>
 <div class="creation_reference">
  <?php
@@ -53,7 +54,9 @@ foreach ($query as $value) {
   </div>
    <input class="ui submit button" value="Envoyer" type="submit">
   <div class="ui error message">
-    <?php echo validation_errors(); ?>
+    <ul clas="list">
+      <?php echo validation_errors('<li>', '</li>'); ?>
+    </ul>
   </div>
 </form>
 </div>
@@ -61,67 +64,67 @@ foreach ($query as $value) {
 $('select.dropdown')
   .dropdown()
 ;
-// $('.ui.form')
-//   .form({
-//     fields: {
-//       savoiretre :{
-//         identifier :'savoirEtre',
-//         rules: [
-//           {
-//             type   : 'maxCount[4]',
-//             prompt : 'Veuillez selectionner au maximum 4 savoir-être'
-//           },
-//           {
-//             type   : 'minCount[1]',
-//             prompt : 'Veuillez selectionner au moins un savoir-être'
-//           }
-//         ]
-//       },
-//     description:{
-//       identifier :'description',
-//         rules: [
-//           {
-//             type   : 'empty',
-//             prompt : 'Veuillez mettre une description'
-//           }
-//         ]
-//     },
-//     duree:{
-//       identifier :'duree',
-//         rules: [
-//           {
-//             type   : 'empty',
-//             prompt : 'Veuillez préciser la durée de votre engagement'
-//           }
-//         ]
-//     },
-//     prenom:{
-//       identifier :'prenom',
-//         rules: [
-//           {
-//             type   : 'empty',
-//             prompt : 'Veuillez préciser le prenom du référent'
-//           }
-//         ]
-//     },
-//       nom:{
-//       identifier :'nom',
-//         rules: [
-//           {
-//             type   : 'empty',
-//             prompt : 'Veuillez préciser le nom du référent'
-//           }
-//         ]
-//     },
-//   mail:{
-//       identifier :'mail',
-//         rules: [
-//           {
-//             type   : 'empty',
-//             prompt : 'Veuillez préciser le mail du référent'
-//           }
-//         ]
-//     },
-//   }
-// })
+ $('.ui.form')
+   .form({
+     fields: {
+       savoiretre :{
+         identifier :'savoirEtre',
+         rules: [
+           {
+             type   : 'maxCount[4]',
+             prompt : 'Veuillez selectionner au maximum 4 savoir-être'
+           },
+           {
+             type   : 'minCount[1]',
+             prompt : 'Veuillez selectionner au moins un savoir-être'
+           }
+         ]
+       },
+     description:{
+       identifier :'description',
+         rules: [
+           {
+             type   : 'empty',
+             prompt : 'Veuillez mettre une description'
+           }
+         ]
+     },
+     duree:{
+       identifier :'duree',
+         rules: [
+           {
+             type   : 'empty',
+             prompt : 'Veuillez préciser la durée de votre engagement'
+           }
+         ]
+     },
+     prenom:{
+       identifier :'prenom',
+         rules: [
+           {
+             type   : 'empty',
+             prompt : 'Veuillez préciser le prenom du référent'
+           }
+         ]
+     },
+       nom:{
+       identifier :'nom',
+         rules: [
+           {
+             type   : 'empty',
+             prompt : 'Veuillez préciser le nom du référent'
+           }
+         ]
+     },
+   mail:{
+       identifier :'mail',
+         rules: [
+           {
+             type   : 'empty',
+             prompt : 'Veuillez préciser le mail du référent'
+           }
+         ]
+     }
+   }
+ })
 </script>

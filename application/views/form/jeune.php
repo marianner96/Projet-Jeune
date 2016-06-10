@@ -33,18 +33,18 @@
 			<div class="field">
 				<label>Mois</label>
 				<select name="mois" class="ui dropdown search selection">
-		            <option value="1">Janvier</option>
-		            <option value="2">Février</option>
-		            <option value="3">Mars</option>
-		            <option value="4">Avril</option>
-		            <option value="5">Mai</option>
-		            <option value="6">Juin</option>
-		            <option value="7">Juillet</option>
-		            <option value="8">Août</option>
-		            <option value="9">Septembre</option>
-		            <option value="10">Octobre</option>
-		            <option value="11">Novembre</option>
-		            <option value="12">Decembre</option>
+					<option value="1" <?php echo set_select('mois', 1)?>>Janvier</option>
+					<option value="2" <?php echo set_select('mois', 2)?>>Février</option>
+					<option value="3" <?php echo set_select('mois', 3)?>>Mars</option>
+					<option value="4" <?php echo set_select('mois', 4)?>>Avril</option>
+					<option value="5" <?php echo set_select('mois', 5)?>>Mai</option>
+					<option value="6" <?php echo set_select('mois', 6)?>>Juin</option>
+					<option value="7" <?php echo set_select('mois', 7)?>>Juillet</option>
+					<option value="8" <?php echo set_select('mois', 8)?>>Août</option>
+					<option value="9" <?php echo set_select('mois', 9)?>>Septembre</option>
+					<option value="10" <?php echo set_select('mois', 10)?>>Octobre</option>
+					<option value="11" <?php echo set_select('mois', 11)?>>Novembre</option>
+					<option value="12" <?php echo set_select('mois', 12)?>>Decembre</option>
 		        </select>
 			</div>
 			<div class="field">

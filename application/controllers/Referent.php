@@ -43,10 +43,10 @@ class Referent extends J64_Controller {
 
 		//Regles du formulaire de confirmation
 		$this->load->helper(array('form', 'url'));
-		$this->form_validation->set_rules('jourNaissance', 'Jour : date de Naissance', 'trim|required|exact_length[2]|is_natural');
-		$this->form_validation->set_rules('moisNaissance', 'Mois : date de Naissance', 'trim|exact_length[2]|is_natural|required');
-		$this->form_validation->set_rules('anneeNaissance', 'Année : date de Naissance', 'trim|required|exact_length[4]|is_natural');
-		$this->form_validation->set_rules('savoirEtre[]','SavoirEtre','required|callback_savoirEtre_check'); /* Le check est sur une fonction crée plus bas*/
+		$this->form_validation->set_rules('jourNaissance', 'jour de naissance', 'required|is_natural|greater_than_equal_to[1]|less_than_equal_to[31]');
+		$this->form_validation->set_rules('moisNaissance', 'mois de naissance', 'required|is_natural|greater_than_equal_to[1]|less_than_equal_to[12]');
+		$this->form_validation->set_rules('anneeNaissance', 'année de naissance', 'required|exact_length[4]|is_natural');
+		$this->form_validation->set_rules('savoirEtre[]','savoir-être','required|callback_savoirEtre_check'); /* Le check est sur une fonction crée plus bas*/
 	
 		$this->load->view('templates/head');
 			if ($this->form_validation->run()==FALSE) {
