@@ -1,8 +1,16 @@
 <?php
 
-	class Connexion extends J64_Controller {
+/**
+ * Class Connexion
+ * Controlleur de la partie de connexion et d'inscription au site.
+ * Match les routes de type /connexion/*
+ */
+class Connexion extends J64_Controller {
 
-		public function __construct(){
+	/**
+	 * Connexion constructor.
+	 */
+	public function __construct(){
 			parent::__construct();
 			$this->load->library("form_validation");
 			$this->load->model('users_model');
@@ -12,11 +20,15 @@
 
 
 		/**
-		* connection du jeune
-		*
-		*En cas d'erreur : retourne un message d'erreur lorsque le mail ou le mot de passe ne correspond pas
-		*En cas de réussite : va sur la page d'accueil du jeune 
-		*/
+		 * Route /connexion/index | /connexion
+		 *
+		 * Connection du jeune
+		 * Affiche un message d'erreur lorsque le mail ou le mot de passe ne
+		 * correspondent pas. Redirige l'utlisateur vers la page d'accueil du jeune
+		 * en cas de succès.
+		 *
+		 * @return void
+		 */
 		public function index() {
 
 			$this->form_validation->set_rules('mail', 'e-mail', 'required');
@@ -32,11 +44,14 @@
 		}
 
 		/**
-		*vérifie si le mot de passe rentré correspond  celui dans la bdd
-		*
-		*@param string $mdp : Le mot de passe rentré 
-		*@return bool Renvoie TRUE si le mot de passe correspond, FALSE sinon
-		*/
+		 * Vérifie si le mot de passe rentré correspond  celui dans la bdd
+		 *
+		 * Si les mots de passe ne correspondent pas, une message d'erreur est
+		 * défini pour la validation du formulaire.
+		 *
+		 * @param string $mdp : Le mot de passe rentré
+		 * @return bool Renvoie TRUE si le mot de passe correspond, FALSE sinon
+		 */
 		public function check_database($mdp) {
 			$mail = $this->input->post('mail');
 			$result = $this->users_model->login($mail, $mdp);
@@ -50,11 +65,15 @@
 		}
 
 		/**
-		*inscrit le jeune dans la bdd
-		*
-		*En cas d'erreur : retourne un message d'erreur, les champs remplis avant l'erreur garderont leur valeur sauf le mot de passe
-		*En cas de réussite : redirige vers la page d'accueil du site + met les données du jeune dans la variable de session
-		*/
+		 * Route /connexion/inscription
+		 *
+		 * Inscrit le jeune dans la bdd. Si le formulaire est mal rempli, affiche un
+		 * message d'erreur, les champs remplis avant l'erreur garderont leur valeur
+		 * sauf le mot de passe. Redirige vers la page de la partie jeune et met les
+		 * données du jeune dans la variable de session.
+		 *
+		 * @return void
+		 */
 		public function inscription () {
 
 			$this->form_validation->set_rules('nom', 'nom', 'required');
@@ -80,12 +99,31 @@
 			$this->load->view('templates/foot');
 		}
 
-		public function deconnexion(){
+	/**
+	 * Route /connexion/deconnexion
+	 *
+	 * Supprime les variables de session ce qui aura pour effet de déconnecter
+	 * le jeune connecté. Redirige ensuite l'utilisateur vers la page d'accueil
+	 * du site.
+	 *
+	 * @return void
+	 */
+	public function deconnexion(){
 			$this->session->sess_destroy();
 			redirect('/accueil');
 		}
 
-		public function terminer_inscription(){
+	/**
+	 * Route /connexion/terminer-inscription
+	 *
+	 * L'utilisateur est redirigé vers cette page après une inscription via
+	 * un réseau social pour renseigner les informations qui n'ont pu pas être
+	 * récupérer. Si l'utilisateur tente d'accéder à cette page dans un autre
+	 * contexte, il sera rediriger vers la page de connexion.
+	 *
+	 * @return void
+	 */
+	public function terminer_inscription(){
       $socialType = $this->session->userdata('terminer_inscription');
       if(empty($socialType))
         redirect('/connexion');

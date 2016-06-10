@@ -1,8 +1,22 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Class Home
+ */
 class Home extends J64_Controller {
 
+  /**
+   * Route / | /home | /home/index
+   *
+   * Affiche la page d'entrée du site. Si une requête de type BREW est envoyée
+   * à cette page, un code d'erreur 418 (I'm a teapot, voir RFC2324) sera
+   * envoyé et une théière sera affichée.
+   *
+   * @link https://tools.ietf.org/html/rfc2324 Déclaration de la RFC2324
+   *
+   * @return void
+   */
   public function index(){
     if($_SERVER['REQUEST_METHOD'] == 'BREW'){
       $this->output->set_status_header('418', 'I\'m a teapot');
@@ -26,7 +40,14 @@ Vicky Wilks      |__________________|                \___________/
       $this->load->view('home/index');
     }
   }
-  
+
+  /**
+   * Route /accueil | /home/accueil
+   *
+   * Affiche la page d'accueil du site.
+   *
+   * @return void
+   */
   public function accueil(){
     $this->data['title'] = 'Accueil';
 
@@ -34,7 +55,14 @@ Vicky Wilks      |__________________|                \___________/
     $this->load->view('home/accueil');
     $this->load->view('templates/foot');
   }
-  
+
+  /**
+   * Route /partenaires | /home/partenaires
+   *
+   * Affiche la page contenant les partenaires du projet.
+   *
+   * @return void
+   */
   public function partenaires(){
     $this->data['title'] = 'Partenaires';
 

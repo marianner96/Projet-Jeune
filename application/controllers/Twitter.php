@@ -11,10 +11,21 @@ require_once (APPPATH. 'third_party/twitteroauth/autoload.php');
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
+/**
+ * Class Twitter
+ * Controlleur de gestion de la connnexion via twitter.
+ * Match les routes de type /twitter/*
+ */
 class Twitter extends CI_Controller{
 
+  /**
+   * @var TwitterOAuth
+   */
   private $connection;
 
+  /**
+   * Twitter constructor.
+   */
   public function __construct(){
     parent::__construct();
     $this->config->load('twitter');
@@ -23,6 +34,15 @@ class Twitter extends CI_Controller{
     $this->connection = new TwitterOAuth($this->config->item('twitter_consumer_key'), $this->config->item('twitter_consumer_secret'));
   }
 
+  /**
+   * Route /twitter/auth
+   *
+   * Génère l'url d'authentification twitter et redirige l'utilisateur
+   * vers celle-ci.
+   *
+   * @throws \Abraham\TwitterOAuth\TwitterOAuthException
+   * @return void
+   */
   public function auth(){
     $request_token = $this->connection->oauth('/oauth/request_token', ['oauth_callback' => site_url('/twitter/callback')]);
     $url = $this->connection->url('oauth/authenticate', ['oauth_token' => $request_token['oauth_token']]);
@@ -33,6 +53,19 @@ class Twitter extends CI_Controller{
     redirect($url);
   }
 
+  /**
+   * Route /twitter/callback
+   *
+   * L'utilisateur est redirigé vers cette route par les services
+   * d'authentification de twitter après qu'il se soit connecté et validé
+   * l'utilisation de l'appliaction ou qu'il est finalement annulé.
+   * En cas d'annulation l'utilisateur est redirigé vers le controlleur de
+   * connexion. En cas d'erreur (tokens expirés, invalides) une erreur lui est
+   * affiché. Si tout c'est bien passé, il est redirigé vers la page de fin
+   * d'inscription.
+   *
+   * @return void
+   */
   public function callback(){
     $denied = $this->input->get('denied');
     if(!empty($denied)){

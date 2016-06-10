@@ -22,9 +22,12 @@ class Jeune extends J64_Controller{
   }
 
   /**
-   * Route : /jeune/index
+   * Route : /jeune | /jeune/index
    *
-   * Page par défaut du module jeune.
+   * Page par défaut du module jeune. Affiche les activités liées à
+   * l'utilisateur connecté.
+   *
+   * @return void
    */
   public function index(){
     $this->data['content'] = 'accueil';
@@ -40,7 +43,11 @@ class Jeune extends J64_Controller{
   /**
    * Route /jeune/nouvelleDemande
    *
-   * Affiche le form de création de reference et créer la référence.
+   * Affiche le formulaire de création de demande reference et
+   * créer la démande de référence à la validation du formulaire. Affiches les
+   * erreurs relatifs au champs du formulaire si jamais il y en a.
+   *
+   * @return void
    *
    */
   public function nouvelleDemande(){
@@ -76,7 +83,7 @@ class Jeune extends J64_Controller{
    * Affiche une erreur 404 si l'action ne fait pas partie des actions
    *  attendues.
    *
-   * @param string $action : [""|"chmdp"|chmail"]
+   * @param string $action : ""|"chmdp"|"chmail"
    */
   public function profil($action=""){
     if ($action == "")  {
@@ -101,6 +108,8 @@ class Jeune extends J64_Controller{
    * Route /jeune/reference
    *
    * Affiche la vue reference.
+   *
+   * @return void
    */
   public function reference(){
     $this->load->model('reference_model');
@@ -127,6 +136,7 @@ class Jeune extends J64_Controller{
    * En cas d'erreur, affiche les erreurs avec le status 400.
    * En cas de réussite répond avec le status 200.
    *
+   * @return void
    */
   public function creer_groupement(){
     $err = array();
@@ -163,6 +173,8 @@ class Jeune extends J64_Controller{
    * Archive une référence.
    * En cas d'erreur, affiche les erreurs avec le status 400.
    * En cas de réussite répond avec le status 200.
+   *
+   * @return void
    */
   public function archiver_reference(){
     $id = $this->input->post('id');
@@ -180,6 +192,10 @@ class Jeune extends J64_Controller{
 
   /**
    * Route /jeune/listes-engagements
+   *
+   * Affiches les listes d'engagements du jeune.
+   * 
+   * @return void
    */
   public function listes_engagements(){
     $this->data['title'] = 'Mes listes d\'engagements';
@@ -194,6 +210,18 @@ class Jeune extends J64_Controller{
     $this->load->view('templates/foot', $this->data);
   }
 
+  /**
+   * Route /jeune/get-list/$key
+   * 
+   * Récupère la liste de référence correspond à la clé donnée et affiche la vue
+   * partielle correspondante. Renvoie une erreur 404 au client si la liste
+   * n'existe pas.
+   *
+   * @todo Vérifier si la liste voulue appartient à l'utilisateur connecté
+   * 
+   * @param string $key
+   * @return void
+   */
   public function get_liste($key = ''){
     $this->load->model('groupement_model');
     $res = $this->groupement_model->getGrpByLink($key);
@@ -203,6 +231,16 @@ class Jeune extends J64_Controller{
     $this->load->view('partials/liste.php', ['grps' => $res]);
   }
 
+  /**
+   * Route /jeune/send-list
+   *
+   * Envoie un message à l'adresse mail passée en POST. Renvoie un status 400
+   * aisni que les erreurs détaillées si l'email est invalide et 200 si tout
+   * c'est bien passé.
+   *
+   * @param string $key
+   * @return void
+   */
   public function send_list($key = ''){ 
     $this->load->model('groupement_model');
     $res = $this->groupement_model->getGrpByLink($key);
@@ -281,6 +319,7 @@ class Jeune extends J64_Controller{
    *  affectées dans la base de données.
    * 
    * @uses Jeune::changement_mail_possible
+   * @return void
    */
   private function chmail(){
     $this->form_validation->set_rules('mail', 'e_mail', 'required|valid_email|callback_changement_mail_possible'); 
@@ -328,7 +367,8 @@ class Jeune extends J64_Controller{
    * En cas d'erreur, affiche les erreurs avec le status 400.
    * En cas de réussite répond avec le status 200 et affiche le nombre de lignes
    *  affectées dans la base de données.
-   * @todo Longueur minimum du mot de passe
+   *
+   * @return void
    */
   private function chmdp(){
     $this->form_validation->set_rules('mdp', 'mot de passe', 'trim|callback_change_mdp_possible');

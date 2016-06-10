@@ -7,6 +7,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Admin extends J64_Controller {
 
+  /**
+   * Admin constructor.
+   */
   public function __construct(){
     parent::__construct();
 
@@ -24,6 +27,14 @@ class Admin extends J64_Controller {
   /*
   *page d'accueil du module administrateur
   */
+  /**
+   * Route /admin | /admin/index
+   *
+   * Page d'index du controlleur admin, affiche des statistiques sur le site :
+   * nombre d'utilisateurs/de références/de références validée
+   *
+   * @return void
+   */
   public function index(){
     $this->data['content'] = 'index';
     $this->data['users_count'] = $this->admin_model->countUsers();
@@ -35,10 +46,13 @@ class Admin extends J64_Controller {
   }
 
   /**
-  *montre les savoir être activés et desactivés du jeune et du référents avec possibilité de les changer
-  *et d'en ajouter
-  *
-  */
+   * Route /admin/savoir-etre/[(action)/(parametres)]
+   *
+   * Affiche les savoir être activés et desactivés du jeune et du référents avec
+   * possibilité de changer l'état et d'en ajouter
+   *
+   * @return void
+   */
   public function savoir_etre(){
     if($this->uri->total_segments() == 2 ){
 
@@ -61,10 +75,14 @@ class Admin extends J64_Controller {
   }
 
   /**
-  *gestion des membres du site : nom prénom des jeunes, email, rang(administrateur ou non)
-  * et possibilité de les supprimer
-  *
-  */
+   * Route /admin/utilisateurs
+   *
+   * Affichage des membres du site : nom prénom des jeunes, email,
+   * rang(administrateur ou non) et possibilité de les supprimer
+   *
+   * @param int $page
+   * @return void
+   */
   public function utilisateurs($page = 1){
     if(!is_numeric($page) || $page < 1){
       show_404();
@@ -92,6 +110,12 @@ class Admin extends J64_Controller {
     $this->load->view('templates/admin', $this->data);
     $this->load->view('templates/foot', $this->data);
   }
+
+  /**
+   *
+   * @return void
+   * @todo Diviser cette fonction en plusieurs : une par route
+   */
   private function performAction(){
     
     $action = $this->uri->segment(3);
@@ -135,6 +159,14 @@ class Admin extends J64_Controller {
       $this->output->set_output(json_encode($res));
     }
   }
+
+  /**
+   * Route /admin/toggle-admin
+   *
+   * Passe un utilisateur normal en administrateur et inversement
+   *
+   * @return void
+   */
   public function toggle_admin(){
     $id = $this->input->post('id_user');
     $ok = $this->admin_model->toggleAdmin($id);
@@ -147,6 +179,13 @@ class Admin extends J64_Controller {
     $this->output->set_output(json_encode(['errors' => $err]));
   }
 
+  /**
+   * Route /admin/delete-user
+   *
+   * Supprime un utilisateur
+   *
+   * @return void
+   */
   public function delete_user(){
     $id = $this->input->post('id_user', 0);
     var_dump($id);

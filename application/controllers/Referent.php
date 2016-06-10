@@ -9,12 +9,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Referent extends J64_Controller {
 	
 	/**
-   	* Vérifie si la référence à valider existe et affiche le formulaire associé
-   	*
-   	* Affiche une page d'erreur 404 si la clé est vide, ou si la référence à été validée
-   	*
-   	* @param string $cle : la clé correspondant à la référence
-	*/
+	 * Route /referent/validation/$clé
+	 *
+	 * Vérifie si la référence à valider existe et affiche le formulaire associé
+   * Affiche une page d'erreur 404 si la clé est vide, ou si la référence à été 
+	 * validée.
+   *
+   * @param string $cle : la clé correspondant à la référence
+	 * @return void
+	 */
 	function validation($cle=''){
 		if ($cle==''){
 			show_404();
@@ -62,7 +65,7 @@ class Referent extends J64_Controller {
 	} 
 
 	/**
-   	* Véréfie si l'utilisateur a entrée un nombre correct de savoir être
+   	* Véréfie si l'utilisateur a entré un nombre correct de savoir être
    	*
    	* @param string $chaine Un savoir etre
    	* @return bool|string Retourne le savoir etre s'il y a au plus quatre savoir

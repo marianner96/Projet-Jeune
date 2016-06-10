@@ -5,6 +5,9 @@
  * Controlleur du module "consultant". Match les routes de type /consultant/*
  */
 class Consultant extends J64_Controller{
+  /**
+   * Consultant constructor.
+   */
   public function __construct(){
     parent::__construct();
     $this->load->library('session');
@@ -12,11 +15,14 @@ class Consultant extends J64_Controller{
     $this->load->model('savoiretre_model');
     $this->load->helper('url');
   }
-   /**
-   * Route /consultant
+  /**
+   * Route /consultant/(clé)
    *
-   * Affiche la page par défaut du consultant contenant l'ensemble des références du jeune
+   * Affiche la page par défaut du consultant contenant l'ensemble des
+   * références du jeune. Affiche une erreur 404 si la liste d'engagement
+   * n'existe pas.
    *
+   * @return void
    */
   public function index(){
       $lien=$this->uri->segment(2);
