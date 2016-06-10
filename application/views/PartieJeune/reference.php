@@ -27,14 +27,18 @@
   La référence n°<span></span> a bien été archivée.
 </div>
 <!-- Header de la section -->
-<div class="customClearing jeuneHeader">
+<div class="jeuneHeader">
   <h1 class="ui left floated header">
-    Gérer mes engagements
+    Gérer mes références
   </h1>
   <div>
+    <a class="ui button pink" href="<?php echo site_url('jeune/nouvelleDemande') ?>">
+      <i class="icon plus"></i>
+      Demande de référence
+    </a>
     <button class="ui button pink overView" name="createGrp">
       <i class="icon plus"></i>
-      Créer un groupement
+      Créer une liste d'engagements
     </button>
     <button class="ui button pink selectionView" name="cancel">
       <i class="icon cancel"></i>
@@ -44,11 +48,20 @@
       <i class="icon check"></i>
       Valider
     </button>
-    <a class="ui button pink" href="<?php echo site_url('jeune/nouvelleDemande') ?>">
-      <i class="icon plus"></i>
-      Demande de référence
-    </a>
   </div>
+</div>
+
+<div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Comment ça marche ?</div>
+<div class="ui message info help hidden">
+  <i class="icon close"></i>
+  <p>
+    Une référence représente une expérience qui a pu vous être bénéfique et que vous souhaitez mettre en avant. Vous pouvez pour cela créer une demande de référence qui sera envoyée à votre <strong>référent</strong> qui confirmera cette expérience en faisant resortir les savoir-être qu'il a pu voir en vous.
+  </p>
+  <ul>
+    <li>Les références <strong>validées</strong> peuvent être rassemblées pour créer une <strong>liste d'engagements</strong> que vous pourrez envoyer par mail un consultant ou imprimer</li>
+    <li>Les références <strong>en cours de validation</strong> rassemblent vos demande de référence qui ne sont pas encore validées</li>
+    <li>Les références <strong>archivées</strong> sont des références que vous ne jugez plus nécessaires d'avoir et que vous avez voulu mettre de côté. Attention une fois qu'une références est archivée elle ne peut plus être utlisée.</li>
+  </ul>
 </div>
 <!-- Menu onglet -->
 <div class="ui top attached tabular menu">

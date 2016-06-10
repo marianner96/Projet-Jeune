@@ -1,4 +1,6 @@
-Cette référence sera envoyé par mail à votre référent qui pourra valider votre demande et selectionner les savoir-être vous correspondant.
+<p>
+  Cette référence sera envoyé par mail à votre référent qui pourra valider votre demande et selectionner les savoir-être vous correspondant.
+</p>
 <div class="creation_reference">
  <?php
   $classError = validation_errors()=="" ? "":"error";

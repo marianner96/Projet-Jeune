@@ -28,6 +28,7 @@ class Jeune extends J64_Controller{
    */
   public function index(){
     $this->data['content'] = 'accueil';
+    $this->data['scripts'] = ['utils', 'help'];
 
     $this->data['tableau'] = $this->Jeune_model->creadash();  //récupération des données du jeune (inscription/reference)
 
@@ -109,7 +110,7 @@ class Jeune extends J64_Controller{
 
     $this->data['content'] = 'reference';
     $this->data['title'] = 'Mes engagements';
-    $footerData['scripts'] = ['references', 'utils'];
+    $footerData['scripts'] = ['references', 'utils', 'help'];
 
     $this->data['references'] = $this->reference_model->getRefByUser($jeune['id']);
     $this->data['nb_references'] = $this->reference_model->countRefUser($jeune['id']);
@@ -183,7 +184,7 @@ class Jeune extends J64_Controller{
   public function listes_engagements(){
     $this->data['title'] = 'Mes listes d\'engagements';
     $this->data['content'] = 'listes';
-    $this->data['scripts'] = ['utils', 'listes'];
+    $this->data['scripts'] = ['utils', 'listes', 'help'];
     $this->load->model('groupement_model');
     $this->load->library('session');
     $userInfo = $this->session->userdata('logged_in');
@@ -331,8 +332,8 @@ class Jeune extends J64_Controller{
    */
   private function chmdp(){
     $this->form_validation->set_rules('mdp', 'mot de passe', 'trim|callback_change_mdp_possible');
-    $this->form_validation->set_rules('nvmdp', 'nouveau mot de passe', 'required|trim');
-    $this->form_validation->set_rules('comdp', 'confirmation du nouveau mot de passe', 'required|trim|matches[nvmdp]'); //verification si la verification du mdp est la meme que le nouveau mdp
+    $this->form_validation->set_rules('nvmdp', 'nouveau mot de passe', 'required|min_length[7]');
+    $this->form_validation->set_rules('comdp', 'confirmation du nouveau mot de passe', 'required|matches[nvmdp]'); //verification si la verification du mdp est la meme que le nouveau mdp
     $this->output->set_content_type('application/json');
     if ($this->form_validation->run() == false) {
       $this->output->set_status_header('400');

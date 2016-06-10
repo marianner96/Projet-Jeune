@@ -72,6 +72,9 @@ function archiver () {
     var tab = ref.parents('.tab').data('tab');
     $('.item[data-tab='+tab+'] label span').get(0).textContent--;
     $('.item[data-tab="archivee"] label span').get(0).textContent++;
+    if(!$('.tab[data-tab="archivee"] .list .item').length){
+      $('.tab[data-tab="archivee"] .list').empty();
+    }
     ref.appendTo('.tab[data-tab="archivee"] .list');
     ref.find('.right.floated.content').remove();
   })

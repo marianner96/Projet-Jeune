@@ -1,6 +1,13 @@
+
 <div class="ui container">
 	<h1>Mes informations personnelles</h1>
-
+  <div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Comment ça marche ?</div>
+  <div class="ui message info help hidden">
+    <i class="icon close"></i>
+    <p>
+      Vous trouverez ici les informations concernant votre identité ainsi que vos informations de connexion.
+    </p>
+  </div>
 	<div class="ui message error hidden">
 		<i class="icon close"></i>
 		<ul class="list"></ul>
@@ -38,32 +45,33 @@
 
 	<form class='ui form' id="chmail">
 		<div class="field">
-			<label>E-mail </label>
-			<input type="text" name="mail" value="<?php echo($tab['mail']); ?>">
+			<label for="mail">E-mail </label>
+			<input id="mail" type="email" name="mail" value="<?php echo($tab['mail']); ?>">
 		</div>
 		<input class="ui button pink" type="submit" value="Changer l'e-mail" name="chmail">
 	</form>
 
 	<form class='ui form' id="chmdp">
 		<div class="field">
-			<label>Mot de passe</label>
-			<input type="password" name="mdp" value="">
+			<label for="mdp">Mot de passe</label>
+			<input type="password" id="mdp" name="mdp" value="">
 		</div>
 
 		<div class="field">
-			<label>Nouveau mot de passe</label>
-			<input type="password" name="nvmdp" value="">
+			<label for="nvmpd">Nouveau mot de passe</label>
+			<input type="password" id="nvmpd" name="nvmdp" value="">
 		</div>
 		
 		<div class="field">
-			<label>Confirmer ce mot de passe</label>
-			<input type="password" name="comdp" value="">
+			<label for="compd">Confirmer ce mot de passe</label>
+			<input type="password" id="compd" name="comdp" value="">
 		</div>
 		<input class="ui button pink" type="submit" value="Changer le mot de passe" name="chmdp">
 	</form>
 </div>
 
 <script src="<?php echo base_url()?>static/js/utils.js"></script>
+<script src="<?php echo base_url()?>static/js/help.js"></script>
 
 <script>
 	//TODO Gérer le submit avec un event de type submit plutot que click.

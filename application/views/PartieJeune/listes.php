@@ -9,7 +9,7 @@
   Un email a bien été envoyé à <span></span>
 </div>
 
-<div class="customClearing jeuneHeader">
+<div class="jeuneHeader">
   <h1 class="ui left floated header">
     Listes de mes engagements
   </h1>
@@ -26,7 +26,16 @@
     </a>
   </div>
 </div>
-
+<div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Comment ça marche ?</div>
+<div class="ui message info help hidden">
+  <i class="icon close"></i>
+  <p>
+    Une liste d'engagement représente un groupement de références que vous pouvez envoyer par email à un consultant ou imprimer.
+  </p>
+  <ul>
+    <li>Pour envoyer une <strong>liste de références</strong> par email, cliquez sur la liste que vous voulez envoyer pour l'afficher en détail. Ensuite entrez l'email du <strong>consulant</strong> dans le champs prévu à cet effet puis cliquez sur le bouton <i class="icon send"> </i><i>Envoyer</i> (à droite du champs de l'email).</li>
+  </ul>
+</div>
 <div class="ui middle aligned divided list selection">
   <!-- Début de l'affichage  des listes d'engagement -->
   <?php
@@ -44,6 +53,8 @@
         </div>
       </div>
       <?php
+    }if(empty($grp)){
+      echo 'Aucune liste d\'engagements.';
     }
   ?>
   <!-- Fin de l'affichage  des liste d'engagements -->

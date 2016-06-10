@@ -27,7 +27,6 @@ aside.home{
 .users .icon{
   cursor: pointer;
 }
-
 .customClearing::after{
   content:'.';
   visibility: hidden;
@@ -41,6 +40,9 @@ aside.home{
 /* Jeune - Liste références */
 .jeuneHeader {
   margin-bottom: -2em;
+}
+.jeuneHeader ~ *{
+  clear: both;
 }
 .ui.button.selectionView,
 .long{
@@ -179,6 +181,9 @@ header > .menu {
   .jeuneHeader *{
     float: none!important;
   }
+  .jeuneHeader{
+    margin-bottom: 0;
+  }
   .jeuneHeader > div {
     display: flex;
     flex-wrap: wrap;
@@ -202,4 +207,9 @@ header > .menu {
   .tabular.menu label i{
     display: inline-block;
   }
+}
+/* Message d'aide */
+div.help{
+  color:#0048b4;
+  cursor: pointer;
 }
