@@ -1,9 +1,10 @@
  
   <h1>Création d'une référence</h1>
-  <div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Comment ça marche ?</div>
+  <div class="help title" title="Afficher l'aide"><i class="icon idea"></i>Demande de référence : Comment ça marche ?</div>
   <div class="ui message info help hidden">
     <i class="icon close"></i>
     <p>
+      Renseignez un engagement, une expérience que vous avez effectuez.</br>
       Cette référence sera envoyé par mail à votre référent qui pourra valider votre demande et également selectionner les savoir-être vous correspondant selon lui.
       Décrivez votre expérience et mettez en avant ce que vous en avez retiré.
     </p>
@@ -66,6 +67,7 @@ foreach ($query as $value) {
   </div>
 </form>
 </div>
+<script src="<?php echo base_url()?>static/js/utils.js"></script>
 <script src="<?php echo base_url()?>static/js/help.js"></script>
 
 <script>

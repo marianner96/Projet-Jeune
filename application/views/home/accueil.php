@@ -5,8 +5,8 @@
       <article class="column">
         <h2 class="ui header">De quoi s'agit-il ?</h2>
         <p>
-          D'une opportunité : celle qu'un engagement quel qu'il soit puisse être considérer à sa juste valeur ! <br>
-          Toute expérience est source d'enrichissement et doit être reconnu largement.<br>
+          D'une opportunité : celle qu'un engagement quel qu'il soit puisse être considéré à sa juste valeur ! <br>
+          Toute expérience est source d'enrichissement et doit être reconnue largement.<br>
           Elle révèle un potentiel, l'expression d'un savoir-être à concrétiser.
         </p>
       </article>
@@ -20,7 +20,7 @@
           C'est l'occasion de vous engager à votre tour pour ces jeunes en confirmant leur richesse pour en avoir été un temps les témoins mais aussi les bénéficiares !
         </p>
         <p>
-          A vous, employeurs, recruteurs en ressourcees humainesn, représentants d'organismes de formation, qui recevez ces jeunes, pour un emploi, un stage, un cursus de qualification, pour qui le savoir-être constitue le premier fondement de toute capacité humaine.
+          A vous, employeurs, recruteurs en ressources humaines, représentants d'organismes de formation, qui recevez ces jeunes, pour un emploi, un stage, un cursus de qualification, pour qui le savoir-être constitue le premier fondement de toute capacité humaine.
         </p>
       </article>
     </div>

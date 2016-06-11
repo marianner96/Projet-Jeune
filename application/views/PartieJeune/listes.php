@@ -29,36 +29,36 @@
     </a>
   </div>
 </div>
-<div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Comment ça marche ?</div>
+<div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Listes d'engagement : Comment ça marche ?</div>
 <div class="ui message info help hidden">
   <i class="icon close"></i>
   <p>
     Une liste d'engagement représente un groupement de références que vous pouvez envoyer par email à un consultant ou imprimer.
   </p>
   <ul>
-    <li>Pour envoyer une <strong>liste de références</strong> par email, cliquez sur la liste que vous voulez envoyer pour l'afficher en détail. Ensuite entrez l'email du <strong>consulant</strong> dans le champs prévu à cet effet puis cliquez sur le bouton <i class="icon send"> </i><i>Envoyer</i> (à droite du champs de l'email).</li>
-    <li>Pour imprimer une <strong>liste de références</strong>, cliquez sur la liste pour la voir en détail. Vous pourrez ensuite accéder à la verison PDF en cliquant sur le bouton <i class="file pdf outline icon"></i> <i>Voir la version PDF</i> OU vous pourrez cliquez sur le lien de consultation puis sur "Voir en PDF". Servez vous ensuite de la boite de dialogque d'impression de votre navigateur pour l'imprimer (généralement accessible avec <em>CTR-P</em></li>
+    <li>Pour envoyer une <strong>liste de références</strong> par email, cliquez sur le numéro de la liste que vous voulez envoyer pour l'afficher en détail. Ensuite entrez l'email du <strong>consulant</strong> dans le champs prévu à cet effet puis cliquez sur le bouton <i class="icon send"> </i><i>Envoyer</i> (à droite du champs de l'email).</li>
+    <li>Pour imprimer une <strong>liste de références</strong>, cliquez sur le numéro de la liste pour la voir en détail. Vous pourrez ensuite accéder à la verison PDF en cliquant sur le bouton <i class="file pdf outline icon"></i> <i>Voir la version PDF</i> OU vous pourrez cliquez sur le lien de consultation puis sur "Voir en PDF". Servez vous ensuite de la boite de dialogque d'impression de votre navigateur pour l'imprimer (généralement accessible avec <em>CTR-P</em></li>
   </ul>
 </div>
-<div class="ui middle aligned divided list selection">
+<div class="ui middle aligned divided list">
   <!-- Début de l'affichage  des listes d'engagement -->
   <?php
     foreach ($grp as $key=>$list){
       ?>
       <div class="item">
         <div class="content">
-          <a class="header" href="#<?php echo $list['lien_consultation'] ?>">
+          <a class="header tooltip" href="#<?php echo $list['lien_consultation'] ?>" data-content="Voir votre liste en détail, l'imprimer ou l'envoyer à un consultant">
             Liste n°<?php printf('%03d',$key+1) ?>
           </a>
           <div class="description">
             <?php echo $list['nb_ref'] . ' référence' . ($list['nb_ref'] > 1 ? 's' : '') ?><br>
-            Lien de consultation : <?php echo anchor('/consultant/'.$list['lien_consultation'], $list['lien_consultation'], ['target'=>'_blank']) ?>
+            Lien de consultation : <?php echo anchor('/consultant/'.$list['lien_consultation'], $list['lien_consultation'], ['target'=>'_blank', 'data-content'=>"Cliquer ici pour avoir un aperçu de ce que verra le consultant.", 'class'=>'tooltip']) ?>
           </div>
         </div>
       </div>
       <?php
     }if(empty($grp)){
-      echo 'Aucune liste d\'engagements.';
+      echo 'Aucune liste d\'engagements. Vous pouvez en créer à partir de vos ' . anchor(site_url('/jeune/reference'), 'références validées'). '.';
     }
   ?>
   <!-- Fin de l'affichage  des liste d'engagements -->
