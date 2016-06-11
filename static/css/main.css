@@ -37,7 +37,7 @@ aside.home{
 .ui.button.creationSavoirEtre{
   display: none;
 }
-/* Jeune - Liste références */
+/* Jeune - Liste références / Consultant */
 .jeuneHeader {
   margin-bottom: -2em;
 }
@@ -51,14 +51,22 @@ aside.home{
 .reference i ~ .content{
   width: 100%;
 }
-.reference.list .ui.grid{
+.reference.list .ui.grid,
+.consultant .row .ui.grid.stackable{
   margin-top:0;
   margin-bottom:0;
+  padding-bottom:0.5em;
 }
-.reference.list .ui.grid .column{
+.reference.list .ui.grid .column,
+.consultant .row .ui.grid.stackable .column{
   padding-bottom: 0;
   padding-top: 0.5rem;
 }
+.consultant .ui.sub.header{
+  margin-top: 0;
+  padding-bottom: 0.25em;
+}
+
 .reference .item.state-selection > i.icon:before{
   content : "\f096";
 }
@@ -199,6 +207,9 @@ header > .menu {
   .liste-engagement.content{
     margin-top: 1.5em;
   }
+  .consultant .header a{
+    display: block;
+  }
 }
 @media (max-width: 500px) {
   .tabular.menu a > span{
@@ -209,7 +220,7 @@ header > .menu {
   }
 }
 /* Message d'aide */
-div.help{
+div.help, a.help{
   color:#0048b4;
   cursor: pointer;
 }
