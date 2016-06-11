@@ -101,7 +101,7 @@ class Groupement_model extends CI_Model
     $nom = $user['nom'];
     $prenom = $user['prenom'];
     mail($mail, 'Jeune 6.4 - Liste d\'engagements',"Madame, Monsieur,\n
-    $prenom $nom a validé plusieurs savoir-être avec le projet Jeune 6.4 et souhaiterait vous les faire connaître. Le projet Jeune 6.4 est un projet visant à valoriser les savoir-être auprès des recruteurs, employeurs ou représentants d'organisme de formation. Vous pouvez les visualiser en cliquant sur ce lient : " . site_url("/consultant/$cle") . " . \n
+    $prenom $nom a validé plusieurs savoir-être avec le projet Jeune 6.4 et souhaiterait vous les partager. Vous pouvez les visualiser en cliquant sur ce lient : " . site_url("/consultant/$cle") . " . \n
 Cordialement,
 L'équipe de Jeune 6.4");
   }
