@@ -1,7 +1,13 @@
-<p>
-  Cette référence sera envoyé par mail à votre référent qui pourra valider votre demande et selectionner les savoir-être vous correspondant.
-  Décrivez votre expérience et mettez en avant ce que vous en avez retiré.
-</p>
+ 
+  <h1>Création d'une référence</h1>
+  <div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Comment ça marche ?</div>
+  <div class="ui message info help hidden">
+    <i class="icon close"></i>
+    <p>
+      Cette référence sera envoyé par mail à votre référent qui pourra valider votre demande et également selectionner les savoir-être vous correspondant selon lui.
+      Décrivez votre expérience et mettez en avant ce que vous en avez retiré.
+    </p>
+  </div>
 <div class="creation_reference">
  <?php
   $classError = validation_errors()=="" ? "":"error";
@@ -60,6 +66,8 @@ foreach ($query as $value) {
   </div>
 </form>
 </div>
+<script src="<?php echo base_url()?>static/js/help.js"></script>
+
 <script>
 $('select.dropdown')
   .dropdown()
