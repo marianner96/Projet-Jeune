@@ -33,10 +33,7 @@ class Consultant extends J64_Controller{
       else{
           $this->data['ref'] = $this->consultant_model->recupRef($this->data['tabRefGroupement']);
           $this->data['idRef'] = $this->consultant_model->recupIdRef($this->data['tabRefGroupement']);
-          var_dump($this->data['idRef']);
-          echo "<br/>";
           $this->data['savoirEtre']=$this->savoiretre_model->getSavoirEtreByRefs($this->data['idRef']);
-          var_dump($this->data['savoirEtre']);
           $this->data['jeune'] = $this->consultant_model->informationJeune($this->data['ref']);
           $this->load->view('templates/head', $this->data); 
           $this->load->view('consultant/consultation', $this->data);
