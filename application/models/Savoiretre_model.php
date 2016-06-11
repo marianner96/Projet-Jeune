@@ -7,6 +7,11 @@
       $this->load->library('session');
     }
     //Accès
+    /**
+   * Permet de récuperer l'ensemble des références dont l'état est égal à 1
+   * @param $activeOnly : bool = true
+   * @return array Retourne l'ensemble des références dont l'état est égal à 1
+   */
     public function getJeune($activeOnly = true)
     { 
       $this->db->select('id, nom, etat');
@@ -69,8 +74,8 @@
     /**
     *récupère les savoir être d'une référence
     *
-    *@param ?
-    *@return ?
+    *@param $refsId Prend en paramètre un tableau contenant des id de référence
+    *@return array Retourne un tableau contenant pour chaque référence les savoir-être du jeune et du référent
     */
     public function getSavoirEtreByRefs($refsId){
       if(empty($refsId)){
@@ -93,6 +98,12 @@
     }
 
     //Modification
+    /**
+    *récupère les savoir être d'une référence
+    *
+    *@param $refsId Prend en paramètre un tableau contenant des id de référence
+    *@return array Retourne un tableau contenant pour chaque référence les savoir-être du jeune et du référent
+    */
     public function create($param){
       $data = array(
         'nom' => urldecode($param['nom']),
