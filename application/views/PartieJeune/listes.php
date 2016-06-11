@@ -20,7 +20,7 @@
         <i class="send icon"></i>
       </button>
     </form>
-    <a class="ui icon button red inverted liste-engagement hidden pdf" title="Voir la version PDF" target="_blank">
+    <a class="ui icon button red liste-engagement hidden pdf" title="Voir la version PDF" target="_blank">
       <i class="file pdf outline icon"></i>
     </a>
     <a class="ui button pink liste-engagement hidden" href="#" title="Retourner à la liste des références">
