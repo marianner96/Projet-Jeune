@@ -81,6 +81,13 @@ class Groupement_model extends CI_Model
     return $this->reference_model->getRefsById($idRefs);
   }
 
+ /**
+   * Permet de récuperer pour chaque groupement du jeune, le lien de consultation et le nomrbe de référence dans le groupement
+   *
+   * @param $id prend en paramètre une string contenant l'id du jeune
+   * @return array Retourne un tableau contenant pour chaque groupement crée par le jeune, le lien du groupement ainsi que le nombre de référence au sein du groupement
+   */
+
   public function getGrpsLinkByUser($id){
     $sql = '
       SELECT lien_consultation, COUNT(*) AS nb_ref 
@@ -96,6 +103,13 @@ class Groupement_model extends CI_Model
     return $query->result_array();
   }
   
+/**
+   * Permet d'envoyer un mail au consultant
+   *
+   * @param $cle prend en paramètre le lien d groupement
+   * @param $mail prend en paramètre l'email du consultant'
+   */
+
   public function emailConsultant($cle, $mail){
     $user = $this->session->userdata('logged_in');
     $nom = $user['nom'];
