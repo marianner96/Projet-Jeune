@@ -55,9 +55,11 @@ class Groupement_model extends CI_Model
     $sqlGrp = '
       SELECT id_ref
       FROM groupement
-      WHERE lien_consultation = ?
+      JOIN reference ON reference.id = groupement.id_ref
+      WHERE lien_consultation = ? AND reference.id_user = ?
     ';
-    $query = $this->db->query($sqlGrp, array($key));
+    $user = $this->session->userdata('logged_in');
+    $query = $this->db->query($sqlGrp, array($key, $user['id']));
     $idRefs = $query->result_array();
     $this->load->model('reference_model');
     $idRefs = array_map(function ($item) {
