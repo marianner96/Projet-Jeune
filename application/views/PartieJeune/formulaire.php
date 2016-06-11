@@ -4,7 +4,7 @@
   <div class="ui message info help hidden">
     <i class="icon close"></i>
     <p>
-      Cette référence sera envoyé par mail à votre référent qui pourra valider votre demande et également selectionner les savoir-être vous correspondant selon lui.
+      Cette référence sera envoyée par mail à votre référent qui pourra valider votre demande et également selectionner les savoir-être vous correspondant selon lui.
       Décrivez votre expérience et mettez en avant ce que vous en avez retiré.
     </p>
   </div>
