@@ -1,10 +1,15 @@
 /**
  * Created by zorg on 05/06/16.
  */
+
+//Initialisation de la gestion des tooltip
+$('.tooltip')
+  .popup();
+
 var detail = false;
 function toggleView(){
   $('.liste-engagement').toggleClass('hidden');
-  $('.list.selection').toggle();
+  $('.list').toggle();
 }
 
 function showList(){

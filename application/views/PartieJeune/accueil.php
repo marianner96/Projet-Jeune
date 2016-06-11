@@ -6,7 +6,7 @@
     Cette page représente l'accueil de la partie <strong>Jeune</strong>, vous y trouverez les différentes activités de votre compte à savoir votre inscription, les créations de <strong>références</strong>, les créations de <strong>listes d'engagements</strong> ainsi que les validation de vos <strong>références</strong>.
   </p>
   <p>
-    Pour avoir une aide détaillée de chacune des sections de la partie Jeune, veuillez vous rendre dans chacunes des ces sections. Vous y trouverez une aide semblable à celle-ci.
+    Pour avoir une aide détaillée de chacune des sections de la partie Jeune, veuillez vous rendre dans chacune des ces sections. Vous y trouverez une aide semblable à celle-ci.
   </p>
 </div>
 <div class="ui feed">

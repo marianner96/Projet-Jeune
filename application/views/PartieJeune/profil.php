@@ -1,7 +1,7 @@
 
 <div class="ui container">
 	<h1>Mes informations personnelles</h1>
-  <div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Comment ça marche ?</div>
+  <div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Profil : Comment ça marche ?</div>
   <div class="ui message info help hidden">
     <i class="icon close"></i>
     <p>
