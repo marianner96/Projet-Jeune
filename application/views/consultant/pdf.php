@@ -53,8 +53,8 @@
       <tr>
         <td style="width: 45%">
           <span style="text-decoration: underline;">Durée :</span> <?php echo $ref['duree'] ?>
-        </td style="width: 45%">
-        <td>
+        </td>
+        <td  style="width: 45%">
           <span style="text-decoration: underline;">Commentaire :</span> <?php echo $ref['commentaire'] ?>
         </td>
       </tr>
