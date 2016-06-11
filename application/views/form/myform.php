@@ -2,20 +2,10 @@
 <div class="ui container">
   <div class="ui grid stackable two column middle aligned relative very relaxed">
     <div class="column">
-      <div class="ui grid">
-        <div class="eight wide column">
-          <a href="<?php echo site_url('twitter/auth')?>" class="ui twitter button fluid">
-            <i class="icon twitter"></i>
-            Connexion avec Twitter
-          </a>
-        </div>
-        <div class="eight wide column">
-          <a href="#" class="ui google plus button fluid">
-            <i class="icon google"></i>
-            Connexion avec Google
-          </a>
-        </div>
-      </div>
+      <a href="<?php echo site_url('twitter/auth')?>" class="ui twitter button fluid">
+        <i class="icon twitter"></i>
+        Connexion avec Twitter
+      </a>
     </div>
     <div class="ui vertical divider">ou</div>
     <div class="column">
