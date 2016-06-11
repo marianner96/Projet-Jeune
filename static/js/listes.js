@@ -10,16 +10,19 @@ function toggleView(){
 function showList(){
   var key = window.location.hash.slice(1);
   if(key) {
-    if(!detail)
+    if(!detail) {
       toggleView();
-    $
-      .get(reqUrl + '/get-liste/' + key, function (data) {
+    }
+    $.get(reqUrl + '/get-liste/' + key, function (data) {
         $('.liste-engagement.content').html(data);
       })
       .fail(function () {
         $('.liste-engagement.content')
           .html('<div class="ui message error">Une erreur est survenue, êtes-vous sur que cette liste d\'engagements existe?</div>')
       });
+    
+    $('a.pdf')
+      .attr('href', consUrl + '/' + key + '.pdf');
 
     detail = true;
     return;

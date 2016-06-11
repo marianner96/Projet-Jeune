@@ -16,11 +16,14 @@
   <div>
     <form class="send ui action input liste-engagement hidden">
       <input type="email" placeholder="Email du consultant...">
-      <button class="ui icon button">
+      <button class="ui icon button" title="Envoyer">
         <i class="send icon"></i>
       </button>
     </form>
-    <a class="ui button pink liste-engagement hidden" href="#">
+    <a class="ui icon button red inverted liste-engagement hidden pdf" title="Voir la version PDF" target="_blank">
+      <i class="file pdf outline icon"></i>
+    </a>
+    <a class="ui button pink liste-engagement hidden" href="#" title="Retourner à la liste des références">
       <i class="icon arrow left"></i>
       Retour
     </a>
@@ -34,6 +37,7 @@
   </p>
   <ul>
     <li>Pour envoyer une <strong>liste de références</strong> par email, cliquez sur la liste que vous voulez envoyer pour l'afficher en détail. Ensuite entrez l'email du <strong>consulant</strong> dans le champs prévu à cet effet puis cliquez sur le bouton <i class="icon send"> </i><i>Envoyer</i> (à droite du champs de l'email).</li>
+    <li>Pour imprimer une <strong>liste de références</strong>, cliquez sur la liste pour la voir en détail. Vous pourrez ensuite accéder à la verison PDF en cliquant sur le bouton <i class="file pdf outline icon"></i> <i>Voir la version PDF</i> OU vous pourrez cliquez sur le lien de consultation puis sur "Voir en PDF". Servez vous ensuite de la boite de dialogque d'impression de votre navigateur pour l'imprimer (généralement accessible avec <em>CTR-P</em></li>
   </ul>
 </div>
 <div class="ui middle aligned divided list selection">
@@ -63,3 +67,4 @@
   Chargements...
 </div>
 <script>var reqUrl = '<?php echo site_url('/jeune/'); ?>' </script>
+<script>var consUrl = '<?php echo site_url('/consultant/'); ?>' </script>

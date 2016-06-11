@@ -51,15 +51,28 @@ class Groupement_model extends CI_Model
     return $res;
   }
 
-  public function getGrpByLink($key){
-    $sqlGrp = '
+  /**
+   * @param string $key
+   * @param bool $checkUser Indique si le groupement doit appartenir à
+   * l'utilisateur connecté
+   */
+  public function getGrpByLink($key, $checkUser = true){
+    $sqlGrpCheckUser = '
       SELECT id_ref
       FROM groupement
       JOIN reference ON reference.id = groupement.id_ref
       WHERE lien_consultation = ? AND reference.id_user = ?
     ';
+    $sqlGrp = '
+      SELECT id_ref
+      FROM groupement
+      WHERE lien_consultation = ? 
+    ';
     $user = $this->session->userdata('logged_in');
-    $query = $this->db->query($sqlGrp, array($key, $user['id']));
+    if($checkUser)
+      $query = $this->db->query($sqlGrpCheckUser, array($key, $user['id']));
+    else
+      $query = $this->db->query($sqlGrp, array($key));
     $idRefs = $query->result_array();
     $this->load->model('reference_model');
     $idRefs = array_map(function ($item) {

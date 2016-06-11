@@ -99,7 +99,7 @@ class Reference_model extends CI_Model{
     if(empty($idRefs))
         return NULL;
     $sql = '
-      SELECT id, description, duree, commentaire, etat, nom, prenom, DATE_FORMAT(date_naissance, \'%d/%m/%Y\') AS naissance, mail
+      SELECT id, id_user, description, duree, commentaire, etat, nom, prenom, DATE_FORMAT(date_naissance, \'%d/%m/%Y\') AS naissance, mail
       FROM reference
       WHERE id IN ('.implode(',',$idRefs).')
     ';

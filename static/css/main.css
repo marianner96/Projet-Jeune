@@ -164,6 +164,12 @@ h2.engagement hr.pink{
 .liste-engagement.content{
   clear: both;
 }
+.pdfLink{
+  color: #ca2128;
+}
+.pdfLink:hover{
+  color: #fd222a;
+}
 /* Fix responsive design */
 header .menu i,
 .tabular.menu label i{

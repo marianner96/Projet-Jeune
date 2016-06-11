@@ -31,7 +31,6 @@ class Consultant extends J64_Controller{
         show_404($page = '', $log_error = TRUE);
       }
       else{
-          $this->data['jeune'] = $lien;
           $this->data['ref'] = $this->consultant_model->recupRef($this->data['tabRefGroupement']);
           $this->data['idRef'] = $this->consultant_model->recupIdRef($this->data['tabRefGroupement']);
           $this->data['savoirEtre']=$this->savoiretre_model->getSavoirEtreByRefs($this->data['idRef']);
@@ -40,5 +39,36 @@ class Consultant extends J64_Controller{
           $this->load->view('consultant/consultation', $this->data);
           $this->load->view('templates/foot');
         }     
+  }
+
+  /**
+   * Route /consultant/$lien.pdf
+   *
+   * Affiche la liste de référence demandé en PDF. Affiche une erreur 404 si
+   * le groupement n'existe pas.
+   *
+   * @param string $lien Lien du groupement dans la base de donées
+   * @return void
+   */
+  public function pdf($lien = ''){
+    require_once (APPPATH . '/third_party/html2pdf/autoload.php');
+    $this->load->model('groupement_model');
+    $grp = $this->groupement_model->getGrpByLink($lien, false);
+    if(empty($grp))
+      show_404();
+    $jeune = $this->consultant_model->informationJeune([(object) array_values($grp)[0]]);
+    $jeune = $jeune[0];
+    ob_start();
+      $this->load->view('consultant/pdf.php', ['grp' => $grp, 'jeune' => $jeune]);
+    $content = ob_get_clean();
+    try {
+      $html2pdf = $html2pdf = new HTML2PDF('P', 'A4', 'fr', true, 'UTF-8', array(10, 10, 10, 10));
+      $html2pdf->setDefaultFont('dejavusans');
+      $html2pdf->writeHTML($content);
+      $html2pdf->Output($jeune->prenom . $jeune->nom . '.pdf');
+    }catch(HTML2PDF_exception $e){
+      show_error($e->getMessage(), 500);
+    }
+
   }
 }

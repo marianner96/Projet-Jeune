@@ -2,8 +2,9 @@
     <h1 class="ui header">
       Consultant
       <h2 class="ui sub header blue">
-        Validez cet engagement en prenant en compte sa valeur.
-        <a class="help title" href="<?php echo site_url('/accueil')?>"><i class="icon idea"></i> En savoir plus</a>
+        Validez cet engagement en prenant en compte sa valeur. -
+        <a class="help title" href="<?php echo site_url('/accueil')?>"> En savoir plus <i class="icon idea"></i></a>
+        <a class="pdfLink" href="<?php echo current_url() . '.pdf'?>"> Voir en PDF <i class="file pdf outline icon"></i></a>
       </h2>
     </h1>
   <div class="ui equal width grid stackable">
