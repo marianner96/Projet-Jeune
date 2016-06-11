@@ -1,17 +1,26 @@
 <?php
-  class Savoiretre_model extends CI_Model
+
+/**
+ * Class Savoiretre_model
+ */
+class Savoiretre_model extends CI_Model
   {
-    public function __construct()
+  /**
+   * Savoiretre_model constructor.
+   */
+  public function __construct()
     {
       $this->load->database();
       $this->load->library('session');
     }
     //Accès
     /**
-   * Permet de récuperer l'ensemble des références dont l'état est égal à 1
-   * @param $activeOnly : bool = true
-   * @return array Retourne l'ensemble des références dont l'état est égal à 1
-   */
+     * Permet de récuperer l'ensemble des références du jeune
+     *
+     * @param $activeOnly bool TRUE si on veut seulement les savoir-être activés
+     * FALSE si on veut les activés et les désactivés
+     * @return array Retourne un tableau des savoirs être séléctionnés
+     */
     public function getJeune($activeOnly = true)
     { 
       $this->db->select('id, nom, etat');
@@ -26,10 +35,11 @@
     }
 
     /**
-    * les 4 savoir être les plus utilisés (dans le cas de la deuxième ou plus référence)
-    *
-    *@return array : les 4 savoir être
-    */
+     * Récupère les quatre savoir-être les plus utilisés par l'utilisateur
+     * connecté
+     *
+     * @return array Un tableau des IDs des quatres savoir-être
+     */
     public function getFavori() {
       $sql = 'SELECT id_savoir_etre, COUNT(id_savoir_etre) AS nb 
       FROM savoir_etre_user 
@@ -52,10 +62,12 @@
     }
 
     /**
-    *récupère les savoir être disponible pour le référent
-    *
-    *@return le résultat de la requête
-    */
+     * Permet de récuperer l'ensemble des références du référent
+     *
+     * @param $activeOnly bool TRUE si on veut seulement les savoir-être activés
+     * FALSE si on veut les activés et les désactivés
+     * @return array Retourne un tableau des savoirs être séléctionnés
+     */
     public function getReferent($activeOnly = true)
     {
       $this->db->select('id, nom, etat');
@@ -72,11 +84,12 @@
     }
 
     /**
-    *récupère les savoir être d'une référence
-    *
-    *@param $refsId Prend en paramètre un tableau contenant des id de référence
-    *@return array Retourne un tableau contenant pour chaque référence les savoir-être du jeune et du référent
-    */
+     * Récupère les savoir être relatifs à un ensemble de références
+     *
+     * @param $refsId array Un tableau contenant des IDs de référence
+     * @return array Un tableau indexé par les ID des références contenant pour
+     * chaque référence les savoir-être du jeune et du référent
+     */
     public function getSavoirEtreByRefs($refsId){
       if(empty($refsId)){
         return [];
@@ -99,11 +112,14 @@
 
     //Modification
     /**
-    *
-    *
-    *@param 
-    *@return 
-    */
+     * Ajout un savoir être dans la base de données
+     *
+     * @param $param array Un tableau associatif contenant le nom du savoir-etre
+     * à ajouter ainsi que le type du savoir-etre
+     * @return array Un tableau associatif dont la valeur à la clé "id" contient
+     * l'id du savoir-etre ajouté
+     * @todo Avoir deux paramêtres au lieu d'un tableau associatif à deux cases
+     */
     public function create($param){
       $data = array(
         'nom' => urldecode($param['nom']),
@@ -113,7 +129,18 @@
       return array('id' => $this->db->insert_id());
 
     }
-    public function toggle($param){
+
+  /**
+   * Active ou désactive un savoir-être
+   *
+   * @param $param array Un tableau associatif dont la case "id" contient l'ID du
+   * savoir-etre sur lequel il faut executer l'action
+   * @return array Un tableau associatif renseignant le nombre de lignes
+   * affectées par la requête, si tout se passe bien ça devrait être à un
+   *
+   * @todo Avoir comme paramètre seulement l'id voulue et non pas un tableau associatif contenant l'id
+   */
+  public function toggle($param){
       $query = $this->db->select('etat')->where('id', $param['id'])->get('savoir_etre');
       $res = $query->row();
       if(empty($res)){
@@ -129,7 +156,17 @@
       return array('affectedRows' => $this->db->affected_rows());
     }
 
-    public function delete($param){
+  /**
+   * Supprime un savoir-être
+   *
+   * @param $param array Un tableau associatif dont la case "id" contient l'ID du
+   * savoir-etre à supprimer
+   * @return array Un tableau associatif renseignant le nombre de lignes
+   * affectées par la requête, si tout se passe bien ça devrait être à un
+   *
+   * @todo Avoir comme paramètre seulement l'id voulue et non pas un tableau associatif contenant l'id
+   */
+  public function delete($param){
       $this->db->set('etat', -1)
         ->where('id', $param['id'])
         ->update('savoir_etre');

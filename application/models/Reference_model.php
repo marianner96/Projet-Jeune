@@ -96,8 +96,11 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param $idRefs int 
-   * @return array|null
+   * Récupère les références qui correspondent aux Ids passés en paramètre
+   *
+   * @param $idRefs array Tableau des IDs des références voulues
+   * @return array|null Tableau des références voulues indexé par les Ids des
+   * références ou NULL si le tableau en entrée est vide
    */
   public function getRefsById($idRefs){
     if(empty($idRefs))
@@ -122,8 +125,12 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param int $id : id associé au jeune
-   * @return array
+   * Compte les références associées à un utilisateur repéré par son ID
+   *
+   * @param int $id id associé au jeune
+   * @return array Un tableau de trois case indéxé à partir de 1 où chaque
+   * cellule contient le nombre de références, respectivement validées, en cours
+   * de validation et archivées
    */
   public function countRefUser($id){
     $sql = '
@@ -141,8 +148,10 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param $grp
-   * @return mixed
+   * Créer un groupement à partir des IDs des références associées
+   *
+   * @param $grp array Tableau d'id de référence à regrouper
+   * @return string Lien du groupement qui vient d'être créé
    */
   public function creerGrp($grp){
     $this->load->library('LinkGenerator');
@@ -155,7 +164,10 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param $id
+   * Archive une référence renseignée par son id
+   *
+   * @param $id int ID de la référence à archiver
+   * @return void
    */
   public function archiver($id){
     $sql = 'UPDATE reference SET etat=3 WHERE id = ?';
@@ -167,7 +179,8 @@ class Reference_model extends CI_Model{
    * 
    * Récupère l'id de la référence, puis met à jour les informations date-de-naissance|commentaire et change la valeur etat=2
    *
-   * @param array $infoRef : tableau associatif des informations de la référence
+   * @param array $infoRef Tableau associatif des informations de la référence
+   * @return void
    */
   public function addInfoReferent($infoRef){ // Ajoute la date de naissance du référent dans la table reference
     $naissance=$this->input->post('anneeNaissance')."-".$this->input->post('moisNaissance')."-".$this->input->post('jourNaissance');
@@ -186,7 +199,8 @@ class Reference_model extends CI_Model{
    *
    * Ajoute le lien dans savoir-etre-user vers les savoirs être correspondant à ceux entrés par le référent
    *
-   * @param array $infoRef : tableau associatif des informations de la référence
+   * @param array $infoRef Tableau associatif des informations de la référence
+   * @return void
    */
   public function addSavoirRef($infoRef){ // Ajoute les savoirs être référents
     $listSavoir=$this->input->post('savoirEtre');
@@ -201,8 +215,10 @@ class Reference_model extends CI_Model{
   }
 
   /**
+   * Renvoie l'état d'une référence renseignée par son lien de validation
    *
-   * @param $ref
+   * @param $ref string Lien de validation d'une référence
+   * @return int
    */
   public function checkRef($ref){
     $this->db->select('etat');
