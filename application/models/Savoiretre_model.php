@@ -99,10 +99,10 @@
 
     //Modification
     /**
-    *récupère les savoir être d'une référence
     *
-    *@param $refsId Prend en paramètre un tableau contenant des id de référence
-    *@return array Retourne un tableau contenant pour chaque référence les savoir-être du jeune et du référent
+    *
+    *@param 
+    *@return 
     */
     public function create($param){
       $data = array(

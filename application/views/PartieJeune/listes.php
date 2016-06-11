@@ -29,15 +29,15 @@
     </a>
   </div>
 </div>
-<div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Listes d'engagement : Comment ça marche ?</div>
+<div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Listes d'engagements : Comment ça marche ?</div>
 <div class="ui message info help hidden">
   <i class="icon close"></i>
   <p>
-    Une liste d'engagement représente un groupement de références que vous pouvez envoyer par email à un consultant ou imprimer.
+    Une liste d'engagements représente un groupement de références que vous pouvez envoyer par email à un consultant ou imprimer.
   </p>
   <ul>
-    <li>Pour envoyer une <strong>liste de références</strong> par email, cliquez sur le numéro de la liste que vous voulez envoyer pour l'afficher en détail. Ensuite entrez l'email du <strong>consulant</strong> dans le champs prévu à cet effet puis cliquez sur le bouton <i class="icon send"> </i><i>Envoyer</i> (à droite du champs de l'email).</li>
-    <li>Pour imprimer une <strong>liste de références</strong>, cliquez sur le numéro de la liste pour la voir en détail. Vous pourrez ensuite accéder à la verison PDF en cliquant sur le bouton <i class="file pdf outline icon"></i> <i>Voir la version PDF</i> ou vous pourrez cliquer sur le lien de consultation puis sur "Voir en PDF". Servez vous ensuite de la boite de dialogue d'impression de votre navigateur pour l'imprimer (généralement accessible avec <em>CTRL-P</em>)</li>
+    <li>Pour envoyer une <strong>liste de références</strong> par email, cliquez sur le numéro de la liste que vous voulez envoyer pour l'afficher en détail. Ensuite entrez l'email du <strong>consulant</strong> dans le champ prévu à cet effet puis cliquez sur le bouton <i class="icon send"> </i><i>Envoyer</i> (à droite du champ de l'email).</li>
+    <li>Pour imprimer une <strong>liste de références</strong>, cliquez sur le numéro de la liste pour la voir en détail. Vous pourrez ensuite accéder à la verison PDF en cliquant sur le bouton <i class="file pdf outline icon"></i> <i>Voir la version PDF</i> ou vous pourrez cliquer sur le lien de consultation puis sur "Voir en PDF". Servez-vous ensuite de la boîte de dialogue d'impression de votre navigateur pour l'imprimer (généralement accessible avec <em>CTRL-P</em>)</li>
   </ul>
 </div>
 <div class="ui middle aligned divided list">

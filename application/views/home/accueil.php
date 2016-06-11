@@ -17,7 +17,7 @@
         </p>
         <p>
           A vous, responsables de structures ou référents d'un jour, qui avez croisé la route de ces jeunes et avez bénéficié même ponctuellement de cette implication citoyenne !<br>
-          C'est l'occasion de vous engager à votre tour pour ces jeunes en confirmant leur richesse pour en avoir été un temps les témoins mais aussi les bénéficiares !
+          C'est l'occasion de vous engager à votre tour pour ces jeunes, en confirmant leur richesse pour en avoir été un temps les témoins mais aussi les bénéficiares !
         </p>
         <p>
           A vous, employeurs, recruteurs en ressources humaines, représentants d'organismes de formation, qui recevez ces jeunes, pour un emploi, un stage, un cursus de qualification, pour qui le savoir-être constitue le premier fondement de toute capacité humaine.

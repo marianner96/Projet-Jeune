@@ -14,8 +14,8 @@ class Reference_model extends CI_Model{
   /**
    * Récupère les informations d'une référence à partir de la clé
    *
-   * @param string $cle : la clé de la référence
-   * @return array : Retourne un tableau associatif des information d'une référence
+   * @param string $cle la clé de la référence
+   * @return array Retourne un tableau associatif des information d'une référence
    */
   public function getRef($cle){
     $this->db->select();
@@ -28,9 +28,8 @@ class Reference_model extends CI_Model{
   /**
    * Récupère les savoir être associés à une référence
    *
-   * @param string $cle : La clé associée à une référence
+   * @param string $cle La clé associée à une référence
    * @return array Renvoie les noms des savoirs être associés à la demande dans un tableau
-   * @todo nom de la fonction ne va pas avec ce qu'elle fait.
    */
   public function getSavoirByRef($cle){
     // recup id des savoirs etres
@@ -51,7 +50,7 @@ class Reference_model extends CI_Model{
    *
    * Récupère nom|prenom|mail|date de naissance du jeune qui a crée la demande
    *
-   * @param string $cle : La clé associée à la référence
+   * @param string $cle La clé associée à la référence
    * @return array Renvoie un tableau associatif contenant les informations du jeune
    */
   public function getInfoJeuneByRef($cle){
@@ -70,9 +69,10 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * @param int $id : id associé au jeune
-   * @return array
-   * @todo rajouter savoir etre referent
+   * Récupère toutes les références associées à une jeune
+   *
+   * @param int $id Id du jeune pour lequel on veut les références
+   * @return array Tableau des références, les clés sont les ID des références
    */
   public function getRefByUser($id){
     $sqlRef = '
@@ -95,6 +95,10 @@ class Reference_model extends CI_Model{
     return $res;
   }
 
+  /**
+   * @param $idRefs int 
+   * @return array|null
+   */
   public function getRefsById($idRefs){
     if(empty($idRefs))
         return NULL;

@@ -58,9 +58,9 @@
     Une référence représente une expérience qui a pu vous être bénéfique et que vous souhaitez mettre en avant. Vous pouvez pour cela créer une demande de référence qui sera envoyée à votre <strong>référent</strong> qui confirmera cette expérience en faisant resortir les savoir-être qu'il a pu voir en vous.
   </p>
   <ul>
-    <li>Les références <strong>validées</strong> peuvent être rassemblées pour créer une <strong>liste d'engagements</strong> que vous pourrez envoyer par mail à un consultant ou imprimer</li>
-    <li>Les références <strong>en cours de validation</strong> rassemblent vos demandes de référence qui ne sont pas encore validées</li>
-    <li>Les références <strong>archivées</strong> sont des références que vous ne jugez plus nécessaires d'avoir et que vous avez voulu mettre de côté. Attention une fois qu'une référence est archivée, elle ne peut plus être utlisée.</li>
+    <li>Les références <strong>validées</strong> peuvent être rassemblées pour créer une <strong>liste d'engagements</strong> que vous pourrez envoyer par mail à un consultant ou imprimer.</li>
+    <li>Les références <strong>en cours de validation</strong> rassemblent vos demandes de référence qui ne sont pas encore validées.</li>
+    <li>Les références <strong>archivées</strong> sont des références que vous ne jugez plus nécessaires d'avoir et que vous avez voulu mettre de côté. Attention ! Une fois qu'une référence est archivée, elle ne peut plus être utlisée.</li>
   </ul>
 </div>
 <!-- Menu onglet -->

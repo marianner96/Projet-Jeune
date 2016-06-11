@@ -1,11 +1,24 @@
 <?php
+
+/**
+ * Class Groupement_model
+ */
 class Groupement_model extends CI_Model
 {
+  /**
+   * Groupement_model constructor.
+   */
   public function __construct()
   {
     $this->load->database();
   }
 
+  /**
+   * Récupère un groupement de références par les références.
+   *
+   * @param $refsId array Tableau des ids des références
+   * @return array Retourne les groupements contenant les références
+   */
   public function getGrpByRefs($refsId)
   {
     $sqlGrp = '
@@ -18,43 +31,13 @@ class Groupement_model extends CI_Model
   }
 
   /**
-   * @param $id
-   * @return mixed
-   * @deprecated
-   * @uses Groupement_model::getGrpByRefs
-   */
-  public function getGrpsByUser($id)
-  {
-    $sqlRef = "
-      SELECT * 
-      FROM reference 
-      WHERE 
-        id IN (
-          SELECT id_ref 
-          FROM groupement
-        ) 
-        AND id_user = ?
-    ";
-    $query = $this->db->query($sqlRef, array($id));
-    $refs = array();
-    $refsId = array();
-    foreach ($query->result_array() as $reference) {
-      $refs[$reference['id']] = $reference;
-      $refsId[] = $reference['id'];
-    }
-    foreach ($this->getSavoirEtreByRefs($refsId) as $refId => $savoir_etre) {
-      $refs[$refId]['savoir_etre'] = $savoir_etre;
-    }
-    foreach ($this->getGrpByRefs($refsId) as $grp) {
-      $res[$grp['lien_consultation']][] = $refs[$grp['id_ref']];
-    }
-    return $res;
-  }
-
-  /**
-   * @param string $key
+   * Récupère un groupement par son lien associé
+   *
+   * @param string $key Lien du groupement à récupérer
    * @param bool $checkUser Indique si le groupement doit appartenir à
    * l'utilisateur connecté
+   * @return array Le groupement de référence, les clés du tableau sont les ids
+   * des références
    */
   public function getGrpByLink($key, $checkUser = true){
     $sqlGrpCheckUser = '
@@ -81,13 +64,13 @@ class Groupement_model extends CI_Model
     return $this->reference_model->getRefsById($idRefs);
   }
 
- /**
-   * Permet de récuperer pour chaque groupement du jeune, le lien de consultation et le nomrbe de référence dans le groupement
+  /**
+   * Récupère tout les liens des groupement d'un utilisateur en particulier ansi
+   * que le nombre de référence dans les groupement en question.
    *
-   * @param $id prend en paramètre une string contenant l'id du jeune
-   * @return array Retourne un tableau contenant pour chaque groupement crée par le jeune, le lien du groupement ainsi que le nombre de référence au sein du groupement
+   * @param $id int Id de l'utilisateur
+   * @return array Un tableau de pair lien du groupement / nombre de références
    */
-
   public function getGrpsLinkByUser($id){
     $sql = '
       SELECT lien_consultation, COUNT(*) AS nb_ref 
@@ -102,20 +85,20 @@ class Groupement_model extends CI_Model
     $query = $this->db->query($sql, array($id));
     return $query->result_array();
   }
-  
-/**
-   * Permet d'envoyer un mail au consultant
-   *
-   * @param $cle prend en paramètre le lien d groupement
-   * @param $mail prend en paramètre l'email du consultant'
-   */
 
+  /**
+   * Envoie un groupement par mail au consultant.
+   *
+   * @param $cle string Clé du groupement à envoyer
+   * @param $mail string email du référent
+   * @return void
+   */
   public function emailConsultant($cle, $mail){
     $user = $this->session->userdata('logged_in');
     $nom = $user['nom'];
     $prenom = $user['prenom'];
     mail($mail, 'Jeune 6.4 - Liste d\'engagements',"Madame, Monsieur,\n
-    $prenom $nom a validé plusieurs savoir-être avec le projet Jeune 6.4 et souhaiterait vous les partager. Vous pouvez les visualiser en cliquant sur ce lient : " . site_url("/consultant/$cle") . " . \n
+    $prenom $nom a validé plusieurs savoir-être avec le projet Jeune 6.4 et souhaiterait vous les faire connaître. Le projet Jeune 6.4 est un projet visant à valoriser les savoir-être auprès des recruteurs, employeurs ou représentants d'organisme de formation. Vous pouvez les visualiser en cliquant sur ce lient : " . site_url("/consultant/$cle") . " . \n
 Cordialement,
 L'équipe de Jeune 6.4");
   }

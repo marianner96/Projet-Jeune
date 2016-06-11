@@ -28,26 +28,34 @@
         <td style="width: 45%;">
           <span style="text-decoration: underline;">Mes savoir-être :</span> Je suis
           <?php
+          $count = 0;
           foreach ($ref['savoir_etre']['jeune'] as $savoir_etre){
-            echo $savoir_etre .  ' ';
+            if($count++)
+              echo ', ';
+            echo strtolower($savoir_etre);
           }
+          echo '.';
           ?>
         </td>
         <td style="width: 45%;">
           <span style="text-decoration: underline;">Ses savoir-être :</span> Je confirme qu'il/elle est
           <?php
+          $count = 0;
           foreach ($ref['savoir_etre']['referent'] as $savoir_etre){
-            echo $savoir_etre .  ' ';
+            if($count++)
+              echo ', ';
+            echo strtolower($savoir_etre);
           }
+          echo '.';
           ?>
         </td>
       </tr>
       <tr>
         <td style="width: 45%">
-          <span style="text-decoration: underline;">Description : </span> <?php echo $ref['description'] ?>
+          <span style="text-decoration: underline;">Description :</span> <?php echo $ref['description'] ?>
         </td>
         <td style="width: 45%">
-          <span style="text-decoration: underline;">Coordonnée : </span> <?php echo $ref['prenom'] . ' ' . $ref['nom'] . ' - ' . mailto($ref['mail']); ?>
+          <span style="text-decoration: underline;">Coordonnées :</span> <?php echo $ref['prenom'] . ' ' . $ref['nom'] . ' - ' . mailto($ref['mail']); ?>
         </td>
       </tr>
       <tr>
