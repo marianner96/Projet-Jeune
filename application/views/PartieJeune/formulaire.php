@@ -5,7 +5,7 @@
     <i class="icon close"></i>
     <p>
       Renseignez un engagement, une expérience que vous avez effectuez.</br>
-      Cette référence sera envoyé par mail à votre référent qui pourra valider votre demande et également selectionner les savoir-être vous correspondant selon lui.
+      Cette référence sera envoyée par mail à votre référent qui pourra valider votre demande et également selectionner les savoir-être vous correspondant selon lui.
       Décrivez votre expérience et mettez en avant ce que vous en avez retiré.
     </p>
   </div>
@@ -16,7 +16,7 @@
    <h4 class="ui dividing header">Savoir-être</h4>
    <div class="field">
     <select multiple="" class="ui dropdown" name="savoirEtre[]" data-validate="savoirEtre">
-      <option value="">Selectionner vos savoir être</option>
+      <option value="">Selectionner vos savoir-être</option>
       <?php
 foreach ($query as $value) {
     echo "<option value=\"$value->id\" " . set_select('savoirEtre', $value->id, in_array($value->id, $favori)) . ">" . $value->nom . "</option>";
