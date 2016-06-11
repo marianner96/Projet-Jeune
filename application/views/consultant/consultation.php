@@ -49,9 +49,13 @@
                 Je suis
                 <?php
                   $savoir_etre= $savoirEtre[$tabRefGroupement[$i]->id_ref];
+                  $count = 0;
                   foreach ($savoir_etre["jeune"] as $key) {
-                    echo $key . " ";
+                    if($count++)
+                      echo ', ';
+                    echo strtolower($key);
                   }
+                  echo '.';
                 ?>
               </div>
               <div class="seven wide column">
@@ -78,9 +82,14 @@
                 Je confirme qu'il/elle est
                 <?php
                 $savoir_etre= $savoirEtre[$tabRefGroupement[$i]->id_ref];
-                    foreach ($savoir_etre["referent"] as $key) {
-                      echo $key . " ";
-                    }
+
+                $count = 0;
+                foreach ($savoir_etre["referent"] as $key) {
+                  if($count++)
+                    echo ', ';
+                  echo strtolower($key);
+                }
+                echo '.';
                 ?>
               </div>
               <div class="seven wide column">

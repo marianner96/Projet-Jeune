@@ -64,7 +64,7 @@ aside.home{
 }
 .consultant .ui.sub.header{
   margin-top: 0;
-  padding-bottom: 0.25em;
+  padding-bottom: 0.5em;
 }
 
 .reference .item.state-selection > i.icon:before{
@@ -229,4 +229,7 @@ header > .menu {
 div.help, a.help{
   color:#0048b4;
   cursor: pointer;
+}
+div.help.profile{
+  margin-bottom: 0.5em;
 }
