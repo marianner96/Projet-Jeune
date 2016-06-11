@@ -217,8 +217,6 @@ class Jeune extends J64_Controller{
    * partielle correspondante. Renvoie une erreur 404 au client si la liste
    * n'existe pas.
    *
-   * @todo Vérifier si la liste voulue appartient à l'utilisateur connecté
-   * 
    * @param string $key
    * @return void
    */

@@ -113,6 +113,8 @@ class Admin extends J64_Controller {
 
   /**
    *
+   * Execute une action sur les savoir être. Actions : create / toggle / delete
+   *
    * @return void
    * @todo Diviser cette fonction en plusieurs : une par route
    */

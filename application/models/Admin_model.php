@@ -1,7 +1,14 @@
 <?php
-  class Admin_model extends CI_Model
+
+/**
+ * Class Admin_model
+ */
+class Admin_model extends CI_Model
   {
-    public function __construct()
+  /**
+   * Admin_model constructor.
+   */
+  public function __construct()
     {
       $this->load->database();
     }
