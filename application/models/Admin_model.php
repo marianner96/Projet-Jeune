@@ -5,10 +5,24 @@
     {
       $this->load->database();
     }
+/**
+   * Permet de déterminer le nombre de jeune inscrit sur le site
+   *
+   * 
+   * @return int Retourne le nombre de jeune inscrit sur le site
+   */
 
     public function countUsers(){
       return $this->db->count_all_results('jeune');
     }
+
+/**
+   * Permet de déterminer le nombre de référence ainsi que leurs états
+   *
+   * 
+   * @return array Retourne un tableau de taille 3 (nombre de référence en cour de validation, nombre de référence validée, nombre de référence archivée)
+   */
+
 
     public function countRefs(){
       $sql = '
@@ -24,6 +38,13 @@
       return $res;
     }
 
+    /**
+   * Permet de récuperer les informations des jeunes inscrits pour chaque page pouvant contenir 5 jeunes
+   *
+   * @param $page Prend en paramètre un int correspondant au numéro de la page en cour
+   * @return array Retourne un tableau contenant les informations de chaque jeune inscrit
+   */
+
     public function getUsers($page){
       $sql = '
         SELECT *
@@ -34,6 +55,13 @@
       ';
       return $this->db->query($sql, [($page - 1)*5])->result_array();
     }
+
+    /**
+   * Permet de changer le status d'un jeune
+   *
+   * @param $id Prend en paramètre l'id du jeune
+   * @return bool Retourne true
+   */
     
     public function toggleAdmin($id){
       $sqlGet = '
@@ -54,6 +82,14 @@
       return true;
     }
     
+
+    /**
+   * Permet de supprimer un jeune
+   *
+   * @param $id Prend en paramètre l'id du jeune
+   */
+
+
     public function deleteUser($id){
       $sql1 = '
         DELETE groupement, reference, savoir_etre_user FROM groupement 
