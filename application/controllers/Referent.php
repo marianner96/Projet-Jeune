@@ -32,7 +32,7 @@ class Referent extends J64_Controller {
 		$this->load->model('jeune_model');
 
 
-		if ($this->reference_model->checkRef($cle)==2){ // Si la ref à déjà été validée
+		if ($this->reference_model->checkRef($cle)!=1){ // Si la ref à déjà été validée
 			show_404();
 		}
 

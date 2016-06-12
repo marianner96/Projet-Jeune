@@ -1,3 +1,5 @@
+<!--Inscription -->
+
 <div class="separateur"></div>
 <div class="ui container">
 

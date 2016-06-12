@@ -1,3 +1,5 @@
+<!--Connexion-->
+
 <div class="separateur"></div>
 <div class="ui container">
   <div class="ui grid stackable two column middle aligned relative very relaxed">

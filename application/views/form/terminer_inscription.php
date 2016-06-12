@@ -1,3 +1,4 @@
+<!-- Fin de l'inscription Twitter -->
 <div class="ui container">
 
 	<?php echo form_open('connexion/terminer-inscription', array('class' => 'ui error form')); ?>
