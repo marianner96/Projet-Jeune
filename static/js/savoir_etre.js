@@ -5,7 +5,7 @@ $('.tooltip')
 //Initialisation des radios
 $('.radio.checkbox')
   .checkbox();
-
+//Active ou désactive un savoir etre
 function toggleSavoirEtre(){
   var self = this;
   $.get(reqUrl+'/toggle/'+this.value, function (data) {
@@ -16,6 +16,8 @@ function toggleSavoirEtre(){
     });
   return false;
 }
+
+//Supprime le savoir etre sur lequel on a cliqué
 function deleteSavoirEtre(){
   var self = this;
   $.get(reqUrl+'/delete/'+this.dataset.value, function(){
@@ -31,7 +33,8 @@ function deleteSavoirEtre(){
       displayError(xhr.responseText, msg);
     });
 }
-
+//Fonction appelée à la validation de la création de savoir-etre
+//Créé un savoir et l'ajoute dans la vue du client
 function createSavoirEtre(e){
   e.preventDefault();
   if ($(this).hasClass('loading'))
@@ -75,10 +78,12 @@ function createSavoirEtre(e){
       $(self).toggleClass('loading');
     });
 }
-
+//Change la vue entre la vue création de savoir etre et le listage de tout les
+//savoir etre
 function toggleDisplay() {
   $('.creationSavoirEtre, .listeSavoirEtre').toggle();
 }
+//Initialise les events sur les savoir etre
 function initEvent() {
   $('.toggleSavoirEtre')
     .checkbox({
@@ -90,7 +95,7 @@ function initEvent() {
 }
 
 initEvent();
-
+//Initialisation des autres events
 $('#savoirEtreHeader button').click(toggleDisplay);
 
 $('.creationSavoirEtre form').submit(createSavoirEtre);

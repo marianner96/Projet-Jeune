@@ -18,6 +18,7 @@ function toggleView(){
     .toggleClass('active', false)
     .toggleClass('state-selection', selectGroup);
 }
+
 /* Créer un groupement de référence */
 function creerGrp (){
   var tab = [];
@@ -59,7 +60,7 @@ function goToRef(){
       .removeClass('flash');
   }, 1000);
 }
-
+/* Affiche une popup de confirmation d'archivage de référence */
 function archiver(){
   var self = this;
   $('.ui.basic.modal')
@@ -69,7 +70,7 @@ function archiver(){
     .modal('show')
   ;
 }
-
+/*Archive un référence */
 function archiverAction () {
   var ref = $(this).parents('.item');
   var refId = ref.data('value');

@@ -7,10 +7,16 @@ $('.tooltip')
   .popup();
 
 var detail = false;
+/* Change de vue entre la vue en détail d'une liste et l'overview des listes de
+ * reférences
+ */
 function toggleView(){
   $('.liste-engagement').toggleClass('hidden');
   $('.list').toggle();
 }
+/* Affiche une liste de référence en detail en récupérant la vue partielle en
+ * ajax
+ */
 
 function showList(){
   var key = window.location.hash.slice(1);
@@ -38,6 +44,8 @@ function showList(){
   toggleView();
 }
 
+ /*Envoie la requête pour envoyer l'email au consultant
+  */
 function sendEmail(e){
   e.preventDefault();
   var cle = window.location.hash.slice(1);
@@ -53,7 +61,8 @@ function sendEmail(e){
       displayError(xhr.responseText, msg);
     });
 }
-
+/*Initialisation des events
+ */
 window.onhashchange = showList;
 window.location.hash && showList();
 $('form.send').submit(sendEmail);

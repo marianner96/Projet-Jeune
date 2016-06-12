@@ -2,6 +2,7 @@
  * Created by zorg on 06/06/16.
  */
 
+//Change le rang de l'utilisateur et le met à jour sur la vue du client
 function updateRank (){
   var id = $(this)
     .parents('tr')
@@ -19,7 +20,7 @@ function updateRank (){
       displayError(xhr.responseText, msg);
     });
 }
-
+//Supprime un utilisateur du site et l'enlève de la vue du client
 function deleteUser() {
   var id = $(this)
     .parents('tr')
@@ -33,7 +34,7 @@ function deleteUser() {
       displayError(xhr.responseText, msg);
     });
 }
-
+//Initialisation des events
 $('.icon.star').click(updateRank);
 
 $('.icon.remove.user').click(deleteUser);

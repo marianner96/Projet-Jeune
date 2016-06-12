@@ -7,7 +7,7 @@ $('.message .close')
       .closest('.message')
       .transition('fade down');
   });
-
+//Affiche une erreur en fonction du message reçu du serveur
 function displayError(rep, msg){
   var data;
   //Récupération de l'erreur
