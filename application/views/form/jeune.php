@@ -10,8 +10,8 @@
 
 
 	<div class="field">
-		<label>Nom </label>
-		<input type="text" name="nom" value="<?php echo set_value('nom'); ?>">
+		<label for="nom">Nom </label>
+		<input id="nom" type="text" name="nom" value="<?php echo set_value('nom'); ?>">
 		
 	</div>
 	<?php echo form_error('nom',"<div class='ui error message'>","</div>") ?>
@@ -19,8 +19,8 @@
 
 
 	<div class="field">
-		<label>Prénom </label>
-		<input type="text" name="prenom" value="<?php echo set_value('prenom'); ?>">
+		<label for="prenom">Prénom </label>
+		<input type="text" id="prenom" name="prenom" value="<?php echo set_value('prenom'); ?>">
 	</div>
 	<?php echo form_error('prenom','<div class="ui error message">',"</div>")?>
 
@@ -29,12 +29,12 @@
 		<label>Date de naissance </label>
 		<div class="three fields">
 			<div class="field">
-				<label>Jour</label>
-				<input type="number" name="jour" value="<?php echo set_value('jour'); ?>">
+				<label for="jour">Jour</label>
+				<input id="jour" type="number" name="jour" value="<?php echo set_value('jour'); ?>">
 			</div>
 			<div class="field">
-				<label>Mois</label>
-				<select name="mois" class="ui dropdown search selection">
+				<label for="mois">Mois</label>
+				<select id="mois" name="mois" class="ui dropdown search selection">
 					<option value="1" <?php echo set_select('mois', 1)?>>Janvier</option>
 					<option value="2" <?php echo set_select('mois', 2)?>>Février</option>
 					<option value="3" <?php echo set_select('mois', 3)?>>Mars</option>
@@ -47,11 +47,11 @@
 					<option value="10" <?php echo set_select('mois', 10)?>>Octobre</option>
 					<option value="11" <?php echo set_select('mois', 11)?>>Novembre</option>
 					<option value="12" <?php echo set_select('mois', 12)?>>Decembre</option>
-		        </select>
+        </select>
 			</div>
 			<div class="field">
-				<label>Année</label>
-				<input type="number" name="annee" value="<?php echo set_value('annee'); ?>">
+				<label for="annee">Année</label>
+				<input type="number" id="annee" name="annee" value="<?php echo set_value('annee'); ?>">
 			</div>
 		</div>
 	</div>
@@ -68,22 +68,22 @@
 
 
 	<div class="field">
-		<label>E-mail </label>
-		<input type="text" name="mail" value="<?php echo set_value('mail'); ?>">
+		<label for="mail">E-mail </label>
+		<input id="mail" type="email" name="mail" value="<?php echo set_value('mail'); ?>">
 	</div>
 	<?php echo form_error('mail','<div class="ui error message">', "</div>"); ?>
 
 
 	<div class="field">
-		<label>Mot de passe</label>
-		<input type="password" name="mdp" value="">
+		<label for="mdp">Mot de passe</label>
+		<input id="mdp" type="password" name="mdp" value="">
 	</div>
 	<?php echo form_error('mdp', '<div class="ui error message">',"</div>"); ?>
 
 	
 	<div class="field">
-		<label>Confirmation du mot de passe</label>
-		<input type="password" name="verifmdp" value="">
+		<label for="verifmdp">Confirmation du mot de passe</label>
+		<input type="password" id="verifmdp" name="verifmdp" value="">
 	</div>
 	<?php echo form_error('verifmdp', '<div class="ui error message">', "</div>"); ?>
 
