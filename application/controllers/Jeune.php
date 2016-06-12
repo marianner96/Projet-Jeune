@@ -84,6 +84,7 @@ class Jeune extends J64_Controller{
    *  attendues.
    *
    * @param string $action : ""|"chmdp"|"chmail"
+   * @return void
    */
   public function profil($action=""){
     if ($action == "")  {
