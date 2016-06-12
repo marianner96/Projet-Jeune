@@ -35,6 +35,8 @@ $db['mysql'] = array(
 ```
 
 Pour créer la base de données, importer le fichier ```db.sql``` dans votre interface d'administration MySQL.  
+**Attention :** Ce fichier n'est pas compatible avec SQLite !!
+
 Un compte fictif sera créer pour vous permettre de vous connecter la première fois : 
  - Email : rogerdu64@gmai.com
  - Mot de passe  : roger64
@@ -52,7 +54,7 @@ Pour supporter la connexion avec twitter, renseigner vos clés d'API twitter dan
 
 Les extensions php suivantes sont nécessaires pour faire fonctionner le site :
  - ext-curl (pour la connexion Twitter)
- - sqlite (si vous choisissez d'utiliser SQLite pour votre base de données)
+ - sqlite3 (si vous choisissez d'utiliser SQLite pour votre base de données)
  - mysql (si vous choississez d'utiliser MySQL pour votre base de données)
 
 Une version de php supérieure à la 5.5 est nécessaire pour la connexion avec twitter.
