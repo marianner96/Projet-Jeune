@@ -23,10 +23,7 @@ class Admin extends J64_Controller {
       show_error('Vous n\'avez pas la permission de voir cette page.', 403, 'Accès reffusé');
     }
   }
-
-  /*
-  *page d'accueil du module administrateur
-  */
+  
   /**
    * Route /admin | /admin/index
    *
@@ -97,7 +94,7 @@ class Admin extends J64_Controller {
     $this->load->library('pagination');
     $config['base_url'] = site_url('/admin/utilisateurs/');
     $config['total_rows'] = $this->data['nbUsers'];
-    $config['per_page'] = 5;
+    $config['per_page'] = 10;
     $config['use_page_numbers'] = TRUE;
     $config['full_tag_open'] = '<div class="ui pagination menu">';
     $config['full_tag_close'] = '</div>';

@@ -15,7 +15,7 @@ class Referent extends J64_Controller {
    * Affiche une page d'erreur 404 si la clé est vide, ou si la référence à été 
 	 * validée.
    *
-   * @param string $cle : la clé correspondant à la référence
+   * @param string $cle la clé correspondant à la référence
 	 * @return void
 	 */
 	function validation($cle=''){

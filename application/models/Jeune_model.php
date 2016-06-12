@@ -65,6 +65,7 @@ class Jeune_model extends CI_Model {
    * @param string $nomRef le nom du référent
    * @param string $prenomRef le prénom du référent
    * @param string $mail le mail du référent
+   * @return void
    */
   public function emailReferent($lien, $nomRef, $prenomRef, $mail){
     $sql = 'SELECT nom, prenom FROM jeune WHERE id = ?';
@@ -81,8 +82,9 @@ L'équipe de Jeune 6.4");
   /**
    * Ajoute une reference dans le dashboard
    *
-   * @param string $id l'id de la référence
+   * @param int $id l'id de la référence
    * @param string $user l'id de l'utilisateur
+   * @return void
    */
   public function addRefToDashboard($id, $user){
     $this->addEntryToDashboard(2, $user, $id);
@@ -92,7 +94,8 @@ L'équipe de Jeune 6.4");
    * Ajoute un groupement dans le dashboard
    *
    * @param string $lien lien de consultation
-   * @param string $user l'id de l'utilisateur
+   * @param int $user l'id de l'utilisateur
+   * @return void
    */
   public function addGrpToDashboard($lien, $user){
     $this->addEntryToDashboard(4, $user, $lien);
@@ -101,7 +104,8 @@ L'équipe de Jeune 6.4");
   /**
    * Ajoute une référence validée
    *
-   * @param string $ref Info sur la référence
+   * @param array $ref Info sur la référence contenant l'id de l'utilisateur
+   * ainsi que l'id de la référence
    */
   public function addRefvalidateToDashboard($ref){
     $idUser=$ref['id_user'];
@@ -112,7 +116,7 @@ L'équipe de Jeune 6.4");
   /**
    * Ajoute une inscription dans le dashboard
    *
-   * @param string $id l'id du jeune
+   * @param int $id l'id du jeune
    */
   public function addInscriptionToDashboard($id){
     $this->addEntryToDashboard(1, $id, NULL);
@@ -122,7 +126,7 @@ L'équipe de Jeune 6.4");
    * Ajoute un évènement dans le dashboard
    *
    * @param int $type le type d'entrée
-   * @param string $user id du jeune
+   * @param int $user id du jeune
    * @param string|NULL $opt option possibles
    */
   private function addEntryToDashboard($type, $user, $opt){

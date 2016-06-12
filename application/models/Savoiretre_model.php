@@ -17,7 +17,7 @@ class Savoiretre_model extends CI_Model
     /**
      * Permet de récuperer l'ensemble des références du jeune
      *
-     * @param $activeOnly bool TRUE si on veut seulement les savoir-être activés
+     * @param bool $activeOnly TRUE si on veut seulement les savoir-être activés
      * FALSE si on veut les activés et les désactivés
      * @return array Retourne un tableau des savoirs être séléctionnés
      */
@@ -64,7 +64,7 @@ class Savoiretre_model extends CI_Model
     /**
      * Permet de récuperer l'ensemble des références du référent
      *
-     * @param $activeOnly bool TRUE si on veut seulement les savoir-être activés
+     * @param bool $activeOnly TRUE si on veut seulement les savoir-être activés
      * FALSE si on veut les activés et les désactivés
      * @return array Retourne un tableau des savoirs être séléctionnés
      */
@@ -86,7 +86,7 @@ class Savoiretre_model extends CI_Model
     /**
      * Récupère les savoir être relatifs à un ensemble de références
      *
-     * @param $refsId array Un tableau contenant des IDs de référence
+     * @param array $refsId Un tableau contenant des IDs de référence
      * @return array Un tableau indexé par les ID des références contenant pour
      * chaque référence les savoir-être du jeune et du référent
      */
@@ -114,7 +114,7 @@ class Savoiretre_model extends CI_Model
     /**
      * Ajout un savoir être dans la base de données
      *
-     * @param $param array Un tableau associatif contenant le nom du savoir-etre
+     * @param array $param Un tableau associatif contenant le nom du savoir-etre
      * à ajouter ainsi que le type du savoir-etre
      * @return array Un tableau associatif dont la valeur à la clé "id" contient
      * l'id du savoir-etre ajouté
@@ -133,7 +133,7 @@ class Savoiretre_model extends CI_Model
   /**
    * Active ou désactive un savoir-être
    *
-   * @param $param array Un tableau associatif dont la case "id" contient l'ID du
+   * @param array $param Un tableau associatif dont la case "id" contient l'ID du
    * savoir-etre sur lequel il faut executer l'action
    * @return array Un tableau associatif renseignant le nombre de lignes
    * affectées par la requête, si tout se passe bien ça devrait être à un
@@ -159,7 +159,7 @@ class Savoiretre_model extends CI_Model
   /**
    * Supprime un savoir-être
    *
-   * @param $param array Un tableau associatif dont la case "id" contient l'ID du
+   * @param array $param Un tableau associatif dont la case "id" contient l'ID du
    * savoir-etre à supprimer
    * @return array Un tableau associatif renseignant le nombre de lignes
    * affectées par la requête, si tout se passe bien ça devrait être à un

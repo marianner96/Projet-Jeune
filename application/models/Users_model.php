@@ -86,7 +86,7 @@ class Users_model extends CI_Model {
   /**
    * Récupère les informations du jeune après un loggin via twitter
    *
-   * @param $id int ID du jeune
+   * @param int $id ID du jeune
    * @return array Un tableau contenant les informations du jeune
    */
   public function twitterLogin($id){
@@ -198,7 +198,7 @@ class Users_model extends CI_Model {
   /**
    * Récupèrte l'ID du jeune à partir de son ID twitter
    *
-   * @param $id int ID twitter d'un jeune
+   * @param int $id ID twitter d'un jeune
    * @return null|int renvoie NULL si l'utilisateur n'est pas enregistré ou
    * l'ID jeune de l'utilisateur si c'est le cas
    */

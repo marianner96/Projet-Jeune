@@ -98,7 +98,7 @@ class Reference_model extends CI_Model{
   /**
    * Récupère les références qui correspondent aux Ids passés en paramètre
    *
-   * @param $idRefs array Tableau des IDs des références voulues
+   * @param array $idRefs Tableau des IDs des références voulues
    * @return array|null Tableau des références voulues indexé par les Ids des
    * références ou NULL si le tableau en entrée est vide
    */
@@ -150,7 +150,7 @@ class Reference_model extends CI_Model{
   /**
    * Créer un groupement à partir des IDs des références associées
    *
-   * @param $grp array Tableau d'id de référence à regrouper
+   * @param array $grp Tableau d'id de référence à regrouper
    * @return string Lien du groupement qui vient d'être créé
    */
   public function creerGrp($grp){
@@ -164,19 +164,8 @@ class Reference_model extends CI_Model{
   }
 
   /**
-   * Archive une référence renseignée par son id
-   *
-   * @param $id int ID de la référence à archiver
-   * @return void
-   */
-  public function archiver($id){
-    $sql = 'UPDATE reference SET etat=3 WHERE id = ?';
-    $this->db->query($sql, [$id]);
-  }
-
-  /**
    * Ajoute à la base de donnée les informations remplies par le référent
-   * 
+   *
    * Récupère l'id de la référence, puis met à jour les informations date-de-naissance|commentaire et change la valeur etat=2
    *
    * @param array $infoRef Tableau associatif des informations de la référence
@@ -189,9 +178,20 @@ class Reference_model extends CI_Model{
       'date_naissance' => $naissance ,
       'commentaire' => $commentaire ,
       'etat' => 2
-      );
+    );
     $this->db->where('id', $infoRef['id']);
     $this->db->update('reference', $referent);
+  }
+
+  /**
+   * Archive une référence renseignée par son id
+   *
+   * @param int $id ID de la référence à archiver
+   * @return void
+   */
+  public function archiver($id){
+    $sql = 'UPDATE reference SET etat=3 WHERE id = ?';
+    $this->db->query($sql, [$id]);
   }
 
   /**
@@ -217,8 +217,8 @@ class Reference_model extends CI_Model{
   /**
    * Renvoie l'état d'une référence renseignée par son lien de validation
    *
-   * @param $ref string Lien de validation d'une référence
-   * @return int
+   * @param string $ref Lien de validation d'une référence
+   * @return int 1, 2 ou 3 : l'état de la référence
    */
   public function checkRef($ref){
     $this->db->select('etat');
@@ -228,7 +228,6 @@ class Reference_model extends CI_Model{
 
     return $etat['etat'];
   }
-
 
 }
 

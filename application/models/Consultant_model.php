@@ -13,22 +13,22 @@ class Consultant_model extends CI_Model {
     $this->load->database();
     $this->load->library('session');
   }
-    /**
-     * Vérifie si la clé présent dans l'url appartient à un groupement
-     *
-     * @param string $lien Clé de l'url
-     * @return array Retourne l'ensemble des groupements contenant la clé
-     */
-    public function verifLien($lien){
-      $tabLienGroupement = $this->db->get_where('groupement', array('lien_consultation' => $lien));
-      return $tabLienGroupement->result();
-    }
+  /**
+   * Vérifie si la clé présent dans l'url appartient à un groupement
+   *
+   * @param string $lien Clé de l'url
+   * @return object Retourne l'ensemble des groupements contenant la clé
+   */
+  public function verifLien($lien){
+    $tabLienGroupement = $this->db->get_where('groupement', array('lien_consultation' => $lien));
+    return $tabLienGroupement->result();
+  }
 
   /**
    * Permet de récuperer l'ensemble les informations des références appartenant au groupement
    *
    * @param array $tabRefGroupement Tableau contenant l'ensemble des informations du groupement
-   * @return array Retourne l'ensemble des références appartenant au groupement
+   * @return object Retourne l'ensemble des références appartenant au groupement
    */
   public function recupRef($tabRefGroupement){
     $acc=[];
@@ -40,6 +40,7 @@ class Consultant_model extends CI_Model {
     $toto = $this->db->get();
     return $toto->result();
   }
+
   /**
    * Permet de récuperer l'ensemble des id des savoir-être appartenant aux références au sein du groupement 
    *
@@ -58,7 +59,7 @@ class Consultant_model extends CI_Model {
    * Permet de récuperer les informations sur le jeune
    *
    * @param array $ref Tableau contenant l'ensemble des références appartenant au groupement
-   * @return array Retourne l'ensemble des informations sur le jeune
+   * @return object Retourne l'ensemble des informations sur le jeune
    */
   public function informationJeune($ref){
     $idJeune = $ref[0]->id_user;

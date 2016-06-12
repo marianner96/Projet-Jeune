@@ -68,7 +68,7 @@ class Groupement_model extends CI_Model
    * Récupère tout les liens des groupement d'un utilisateur en particulier ansi
    * que le nombre de référence dans les groupement en question.
    *
-   * @param $id int Id de l'utilisateur
+   * @param int $id Id de l'utilisateur
    * @return array Un tableau de pair lien du groupement / nombre de références
    */
   public function getGrpsLinkByUser($id){
@@ -89,8 +89,8 @@ class Groupement_model extends CI_Model
   /**
    * Envoie un groupement par mail au consultant.
    *
-   * @param $cle string Clé du groupement à envoyer
-   * @param $mail string email du référent
+   * @param string $cle Clé du groupement à envoyer
+   * @param string $mail Email du référent
    * @return void
    */
   public function emailConsultant($cle, $mail){
