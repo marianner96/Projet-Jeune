@@ -71,8 +71,8 @@
   </div>
   <div class="content">
     <p>
-      Une fois qu'une référence est archivée il n'y a pas moyen de revenir en arrière.<br>
-      Cette référence verra encore visible dans vos listes d'engement.
+      Une fois qu'une référence est archivée il n'y a plus moyen de revenir en arrière.<br>
+      Cette référence sera encore visible dans vos listes d'engement.
     </p>
   </div>
   <div class="actions">
