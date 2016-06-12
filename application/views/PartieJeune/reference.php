@@ -50,7 +50,7 @@
     </button>
   </div>
 </div>
-
+<!-- Aide -->
 <div class="help title" title="Afficher l'aide"><i class="icon idea"></i> Références : Comment ça marche ?</div>
 <div class="ui message info help hidden">
   <i class="icon close"></i>
@@ -62,6 +62,23 @@
     <li>Les références <strong>en cours de validation</strong> rassemblent vos demandes de référence qui ne sont pas encore validées.</li>
     <li>Les références <strong>archivées</strong> sont des références que vous ne jugez plus nécessaires d'avoir et que vous avez voulu mettre de côté. Attention ! Une fois qu'une référence est archivée, elle ne peut plus être utlisée.</li>
   </ul>
+</div>
+<!-- Popup de confirmation -->
+<div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="icon archive"></i>
+    Êtes-vous sûr de vouloir archiver cette référence?
+  </div>
+  <div class="content">
+    <p>
+      Une fois qu'une référence est archivée il n'y a pas moyen de revenir en arrière.<br>
+      Cette référence verra encore visible dans vos listes d'engement.
+    </p>
+  </div>
+  <div class="actions">
+    <div class="ui red basic cancel button inverted">Non</div>
+    <div class="ui green ok button inverted">Oui</div>
+  </div>
 </div>
 <!-- Menu onglet -->
 <div class="ui top attached tabular menu">

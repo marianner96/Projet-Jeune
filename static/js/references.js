@@ -60,7 +60,17 @@ function goToRef(){
   }, 1000);
 }
 
-function archiver () {
+function archiver(){
+  var self = this;
+  $('.ui.basic.modal')
+    .modal({
+      onApprove : archiverAction.bind(self)
+    })
+    .modal('show')
+  ;
+}
+
+function archiverAction () {
   var ref = $(this).parents('.item');
   var refId = ref.data('value');
   $.post(reqUrl+'/archiver-reference', {id : refId}, function () {
