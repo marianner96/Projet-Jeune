@@ -7,6 +7,15 @@ Normalement l'url de base du projet est reconnue automatiquement mais vous pouve
 Pour ce qui est de la base de donnée, la configuration pour MySQL et SQLite est déjà faite mais d'autre drivers peuvent être utlisés au 
 besoin, cf la documentation de [CodeIngiter](https://codeigniter.com/).
 
+**Note** Ce projet fonctionne en grande partie sur webetu : seul les mails et la connexion via Twitter sont indisponnibles. Si vous voulez lancer le site en serveur local effectuez la commande 
+```php -S localhost:8080``` à la racine du projet. Vous pourrez ensuite y accéder en vous connectant à ```http://localhost:8080```.
+
+**Note 2** En cas de warning de la part des fonctions SQL, veuillez passer l'environnement de ```development``` à ```testing``` dans le fichier ```index.php``` à la racine du projet : 
+
+```php
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'testing');
+```
+
 ### Base de données
 
 Pour configurer la base de données avec MySQL, modifiez dans le fichier ```application/config/database.php```, les champs ```database```, ```password```, ```username``` et ```hostname``` à cet endroit :
@@ -48,7 +57,7 @@ Notez aussi que des savoir-être vont aussi etre créés. Vous pourrez à tout m
 ### Connexion avec twitter :bird:
 
 Pour supporter la connexion avec twitter, renseigner vos clés d'API twitter dans le fichier ```application/config/twitter.php```.  
-(Pour le bien du projet ces champs sont déjà configurés avec les clé d'API d'un compte d'un membre du groupe)
+(Pour le bien du projet ces champs sont déjà configurés avec les clés d'API d'un compte d'un membre du groupe)
 
 ### Dépendances 
 
@@ -79,4 +88,3 @@ Une version de php supérieure à la 5.5 est nécessaire pour la connexion avec 
     - ```static/semantic``` [Semantic UI](http://semantic-ui.com/) (style et animations côté client)
   - ```docs/``` Documentation de l'ensemble des fonctions et classe PHP créés pour le projet
     
-  -
