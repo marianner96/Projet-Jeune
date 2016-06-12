@@ -9,7 +9,7 @@ besoin, cf la documentation de [CodeIngiter](https://codeigniter.com/).
 
 ### Base de données
 
-Pour configurer la base de données avec MySQL, modifiez le dans le fichier ```application/config/database.php``` les champs ```database```, ```password```, ```username``` et ```hostname``` à cet endroit :
+Pour configurer la base de données avec MySQL, modifiez dans le fichier ```application/config/database.php```, les champs ```database```, ```password```, ```username``` et ```hostname``` à cet endroit :
 ```php
 $db['mysql'] = array(
 	'dsn'	=> '',
@@ -54,7 +54,8 @@ Les extensions php suivantes sont nécessaires pour faire fonctionner le site :
  - ext-curl (pour la connexion Twitter)
  - sqlite (si vous choisissez d'utiliser SQLite pour votre base de données)
  - mysql (si vous choississez d'utiliser MySQL pour votre base de données)
- - une version de php supérieur à la 5.5 pour la connexion avec twitter
+
+Une version de php supérieure à la 5.5 est nécessaire pour la connexion avec twitter.
  
 ## Architecture 
  
@@ -77,4 +78,3 @@ Les extensions php suivantes sont nécessaires pour faire fonctionner le site :
   - ```docs/``` Documentation de l'ensemble des fonctions et classe PHP créés pour le projet
     
   -
-
