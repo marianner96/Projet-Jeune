@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+  <title>Projet Jeune 6.4</title>
+  <parser>
+    <target>docs/</target>
+  </parser>
+  <transformer>
+    <target>docs/</target>
+  </transformer>
+  <files>
+    <directory>application/controllers/</directory>
+    <directory>application/models/</directory>
+    <file>application/libraries/LinkGenerator.php</file>
+  </files>
+</phpdoc>
