@@ -2,7 +2,7 @@
 
 ## Installation
 
-Pour installer le projet, il suffit mettre ce dossier là où vous voulez qu'il soit dans votre site web. 
+Pour installer le projet, il suffit mettre le contenu de ce dossier là où vous voulez qu'il soit dans votre site web. 
 Normalement l'url de base du projet est reconnue automatiquement mais vous pouvez la configurer dans ```application/config/config.php```.  
 Pour ce qui est de la base de donnée, la configuration pour MySQL et SQLite est déjà faite mais d'autre drivers peuvent être utlisés au 
 besoin, cf la documentation de [CodeIngiter](https://codeigniter.com/).
@@ -87,4 +87,3 @@ Une version de php supérieure à la 5.5 est nécessaire pour la connexion avec 
   - ```static/``` ensemble des fichiers statiques du site tels que les fichiers de style CSS et les fichiers de scripts JavaScript ou encore les images
     - ```static/semantic``` [Semantic UI](http://semantic-ui.com/) (style et animations côté client)
   - ```docs/``` Documentation de l'ensemble des fonctions et classe PHP créés pour le projet
-    
