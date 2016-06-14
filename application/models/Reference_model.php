@@ -76,7 +76,7 @@ class Reference_model extends CI_Model{
    */
   public function getRefByUser($id){
     $sqlRef = '
-      SELECT id, description, duree, commentaire, etat, nom, prenom, DATE_FORMAT(date_naissance, \'%d/%m/%Y\') AS naissance, mail
+      SELECT id, description, duree, commentaire, etat, nom, prenom, date_naissance AS naissance, mail
       FROM reference
       WHERE id_user = ?
      ';
@@ -86,6 +86,8 @@ class Reference_model extends CI_Model{
     foreach ($queryRef->result_array() as $ref){
       $res[$ref['id']] = $ref;
       $res[$ref['id']]['savoir_etre'] = [];
+      $res[$ref['id']]['date_naissance'] = date('d/m/Y',strtotime($ref['naissance']));
+
       $refsId[] = $ref['id'];
     }
     $this->load->model('savoiretre_model');
@@ -106,7 +108,7 @@ class Reference_model extends CI_Model{
     if(empty($idRefs))
         return NULL;
     $sql = '
-      SELECT id, id_user, description, duree, commentaire, etat, nom, prenom, DATE_FORMAT(date_naissance, \'%d/%m/%Y\') AS naissance, mail
+      SELECT id, id_user, description, duree, commentaire, etat, nom, prenom, date_naissance AS naissance, mail
       FROM reference
       WHERE id IN ('.implode(',',$idRefs).')
     ';
@@ -115,6 +117,7 @@ class Reference_model extends CI_Model{
     $refIds = [];
     foreach ($query->result_array() as $reference) {
       $res[$reference['id']] = $reference;
+      $res[$reference['id']]['date_naissance'] = date('d/m/Y',strtotime($reference['naissance']));
       $refIds[] = $reference['id'];
     }
     $this->load->model('savoiretre_model');
