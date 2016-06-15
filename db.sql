@@ -2,9 +2,7 @@
 DROP TABLE IF EXISTS jeune ;
 DROP TABLE IF EXISTS reference ;
 DROP TABLE IF EXISTS savoir_etre_user;
-DROP TABLE IF EXISTS consultant;
 DROP TABLE IF EXISTS groupement;
-DROP TABLE IF EXISTS connexion;
 DROP TABLE IF EXISTS savoir_etre;
 DROP TABLE IF EXISTS dashboard;
 DROP TABLE IF EXISTS twitter;

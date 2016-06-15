@@ -182,7 +182,7 @@ class Jeune extends J64_Controller{
     if(!$this->checkIdRef($id)){
       $this->output->set_content_type('application/json');
       $this->output->set_status_header('400');
-      $this->output->set_output(json_encode(['errors' => 'Vous n\'avez pas accès à la cette référence n°'. $id . '. Raisons possibles : vous n\'avez pas les droits nécessaire, elle n\'existe pas, elle n\'est pas dans l\'état "validée".']));
+      $this->output->set_output(json_encode(['errors' => 'Vous n\'avez pas accès à la référence n°'. $id . '. Raisons possibles : vous n\'avez pas les droits nécessaires, elle n\'existe pas, elle n\'est pas dans l\'état "validée".']));
       $this->output->_display();
       exit;
     }
