@@ -10,7 +10,7 @@
             <?php echo($ref['description']) ?>
             <h4 class="ui dividing header">Durée de l'engagement</h4> <?php echo($ref['duree']) ?>
             
-            <h4 class="ui dividing header">Savoirs-être dévoloppés</h4>
+            <h4 class="ui dividing header">Savoir-être développés</h4>
             <?php foreach ($savoirEtreJeune as $ligne){
               echo"<div class=\"ui label\">";
               echo($ligne);  //Haha ..
